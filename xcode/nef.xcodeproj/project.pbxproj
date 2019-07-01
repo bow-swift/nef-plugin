@@ -11,6 +11,10 @@
 		8BF75EEC22CA0DC100EC53A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BF75EEB22CA0DC100EC53A1 /* Assets.xcassets */; };
 		8BF75EEF22CA0DC100EC53A1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF75EED22CA0DC100EC53A1 /* MainMenu.xib */; };
 		8BF75EFB22CA0DC200EC53A1 /* nefTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF75EFA22CA0DC200EC53A1 /* nefTests.swift */; };
+		8BF75F0F22CA19E500EC53A1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF75F0E22CA19E500EC53A1 /* Cocoa.framework */; };
+		8BF75F1222CA19E500EC53A1 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF75F1122CA19E500EC53A1 /* SourceEditorExtension.swift */; };
+		8BF75F1422CA19E500EC53A1 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF75F1322CA19E500EC53A1 /* SourceEditorCommand.swift */; };
+		8BF75F1922CA19E500EC53A1 /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF75F0C22CA19E500EC53A1 /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,7 +25,28 @@
 			remoteGlobalIDString = 8BF75EE522CA0DC000EC53A1;
 			remoteInfo = nef;
 		};
+		8BF75F1722CA19E500EC53A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BF75EDE22CA0DC000EC53A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BF75F0B22CA19E500EC53A1;
+			remoteInfo = "nef-plugin";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8BF75F1D22CA19E500EC53A1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8BF75F1922CA19E500EC53A1 /* nef-plugin.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8BF75EE622CA0DC000EC53A1 /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +58,12 @@
 		8BF75EF622CA0DC200EC53A1 /* nefTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nefTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BF75EFA22CA0DC200EC53A1 /* nefTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nefTests.swift; sourceTree = "<group>"; };
 		8BF75EFC22CA0DC200EC53A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BF75F0C22CA19E500EC53A1 /* nef-plugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "nef-plugin.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF75F0E22CA19E500EC53A1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		8BF75F1122CA19E500EC53A1 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		8BF75F1322CA19E500EC53A1 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		8BF75F1522CA19E500EC53A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BF75F1622CA19E500EC53A1 /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF75F0922CA19E500EC53A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF75F0F22CA19E500EC53A1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +97,8 @@
 			children = (
 				8BF75EE822CA0DC000EC53A1 /* nef */,
 				8BF75EF922CA0DC200EC53A1 /* nefTests */,
+				8BF75F1022CA19E500EC53A1 /* nef-plugin */,
+				8BF75F0D22CA19E500EC53A1 /* Frameworks */,
 				8BF75EE722CA0DC000EC53A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +108,7 @@
 			children = (
 				8BF75EE622CA0DC000EC53A1 /* nef.app */,
 				8BF75EF622CA0DC200EC53A1 /* nefTests.xctest */,
+				8BF75F0C22CA19E500EC53A1 /* nef-plugin.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,8 +119,7 @@
 				8BF75EE922CA0DC000EC53A1 /* AppDelegate.swift */,
 				8BF75EEB22CA0DC100EC53A1 /* Assets.xcassets */,
 				8BF75EED22CA0DC100EC53A1 /* MainMenu.xib */,
-				8BF75EF022CA0DC100EC53A1 /* Info.plist */,
-				8BF75EF122CA0DC100EC53A1 /* nef.entitlements */,
+				8BF75F0722CA192D00EC53A1 /* Support Files */,
 			);
 			path = nef;
 			sourceTree = "<group>";
@@ -92,6 +133,42 @@
 			path = nefTests;
 			sourceTree = "<group>";
 		};
+		8BF75F0722CA192D00EC53A1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BF75EF022CA0DC100EC53A1 /* Info.plist */,
+				8BF75EF122CA0DC100EC53A1 /* nef.entitlements */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		8BF75F0D22CA19E500EC53A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BF75F0E22CA19E500EC53A1 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BF75F1022CA19E500EC53A1 /* nef-plugin */ = {
+			isa = PBXGroup;
+			children = (
+				8BF75F1122CA19E500EC53A1 /* SourceEditorExtension.swift */,
+				8BF75F1322CA19E500EC53A1 /* SourceEditorCommand.swift */,
+				8BF75F1E22CA19FA00EC53A1 /* Support Files */,
+			);
+			path = "nef-plugin";
+			sourceTree = "<group>";
+		};
+		8BF75F1E22CA19FA00EC53A1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BF75F1522CA19E500EC53A1 /* Info.plist */,
+				8BF75F1622CA19E500EC53A1 /* nef_plugin.entitlements */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,10 +179,12 @@
 				8BF75EE222CA0DC000EC53A1 /* Sources */,
 				8BF75EE322CA0DC000EC53A1 /* Frameworks */,
 				8BF75EE422CA0DC000EC53A1 /* Resources */,
+				8BF75F1D22CA19E500EC53A1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8BF75F1822CA19E500EC53A1 /* PBXTargetDependency */,
 			);
 			name = nef;
 			productName = nef;
@@ -130,6 +209,23 @@
 			productReference = 8BF75EF622CA0DC200EC53A1 /* nefTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8BF75F0B22CA19E500EC53A1 /* nef-plugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BF75F1A22CA19E500EC53A1 /* Build configuration list for PBXNativeTarget "nef-plugin" */;
+			buildPhases = (
+				8BF75F0822CA19E500EC53A1 /* Sources */,
+				8BF75F0922CA19E500EC53A1 /* Frameworks */,
+				8BF75F0A22CA19E500EC53A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "nef-plugin";
+			productName = "nef-plugin";
+			productReference = 8BF75F0C22CA19E500EC53A1 /* nef-plugin.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -146,6 +242,9 @@
 					8BF75EF522CA0DC200EC53A1 = {
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = 8BF75EE522CA0DC000EC53A1;
+					};
+					8BF75F0B22CA19E500EC53A1 = {
+						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
 			};
@@ -164,6 +263,7 @@
 			targets = (
 				8BF75EE522CA0DC000EC53A1 /* nef */,
 				8BF75EF522CA0DC200EC53A1 /* nefTests */,
+				8BF75F0B22CA19E500EC53A1 /* nef-plugin */,
 			);
 		};
 /* End PBXProject section */
@@ -179,6 +279,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8BF75EF422CA0DC200EC53A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BF75F0A22CA19E500EC53A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,6 +311,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF75F0822CA19E500EC53A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF75F1222CA19E500EC53A1 /* SourceEditorExtension.swift in Sources */,
+				8BF75F1422CA19E500EC53A1 /* SourceEditorCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -211,6 +327,11 @@
 			isa = PBXTargetDependency;
 			target = 8BF75EE522CA0DC000EC53A1 /* nef */;
 			targetProxy = 8BF75EF722CA0DC200EC53A1 /* PBXContainerItemProxy */;
+		};
+		8BF75F1822CA19E500EC53A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BF75F0B22CA19E500EC53A1 /* nef-plugin */;
+			targetProxy = 8BF75F1722CA19E500EC53A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -344,17 +465,21 @@
 		8BF75F0022CA0DC200EC53A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = nef/nef.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = nef/Info.plist;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				INFOPLIST_FILE = "$(SRCROOT)/nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -362,17 +487,21 @@
 		8BF75F0122CA0DC200EC53A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = nef/nef.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = nef/Info.plist;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				INFOPLIST_FILE = "$(SRCROOT)/nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -417,6 +546,50 @@
 			};
 			name = Release;
 		};
+		8BF75F1B22CA19E500EC53A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				INFOPLIST_FILE = "$(SRCROOT)/nef-plugin/Support Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8BF75F1C22CA19E500EC53A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				INFOPLIST_FILE = "$(SRCROOT)/nef-plugin/Support Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -443,6 +616,15 @@
 			buildConfigurations = (
 				8BF75F0322CA0DC200EC53A1 /* Debug */,
 				8BF75F0422CA0DC200EC53A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BF75F1A22CA19E500EC53A1 /* Build configuration list for PBXNativeTarget "nef-plugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BF75F1B22CA19E500EC53A1 /* Debug */,
+				8BF75F1C22CA19E500EC53A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
