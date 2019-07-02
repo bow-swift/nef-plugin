@@ -32,7 +32,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     private func exportSnippet(textRange: XCSourceTextRange, lines: [String]) {
         let hasSelection = (textRange.start.column != textRange.end.column) ||
-                           (textRange.start.column == 0 && textRange.end.column == 0 && textRange.start.line != textRange.end.line)
+            (textRange.start.column == 0 && textRange.end.column == 0 && textRange.start.line != textRange.end.line)
         guard lines.count > 0, hasSelection else { return }
         
         let start = textRange.start.line
@@ -40,6 +40,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let selection = lines[start..<end].joined().trimmingCharacters(in: .newlines)
         
         // TODO: export using carbon
+        
     }
     
     // MARK: Constants
