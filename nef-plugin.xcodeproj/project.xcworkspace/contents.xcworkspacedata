@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/miguelangel/Documents/47deg/nef-plugin/nef-plugin.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

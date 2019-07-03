@@ -5,17 +5,33 @@ import XcodeKit
 
 class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
-    /*
-    func extensionDidFinishLaunching() {
-        // If your extension needs to do any work at launch, implement this optional method.
-    }
-    */
-    
-    /*
     var commandDefinitions: [[XCSourceEditorCommandDefinitionKey: Any]] {
-        // If your extension needs to return a collection of command definitions that differs from those in its Info.plist, implement this optional property getter.
-        return []
+        return [preferences, carbon]
     }
-    */
     
+    // MARK: editor options <nef>
+    private let nefClassName = NefEditorCommand.className()
+    
+    private var preferences: [XCSourceEditorCommandDefinitionKey: Any] {
+        return [.identifierKey: Command.preferences.rawValue,
+                .classNameKey: nefClassName,
+                .nameKey: i18n.preferences]
+    }
+    
+    private var carbon: [XCSourceEditorCommandDefinitionKey: Any] {
+        return [.identifierKey: Command.exportSnippet.rawValue,
+                .classNameKey: nefClassName,
+                .nameKey: i18n.exportSnippet]
+    }
+    
+    // MARK: - Constants
+    enum i18n {
+        static let preferences = NSLocalizedString("Preferences", comment: "")
+        static let exportSnippet = NSLocalizedString("Export code snippet", comment: "")
+    }
+    
+    enum Command: String {
+        case preferences
+        case exportSnippet
+    }
 }

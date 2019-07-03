@@ -2,7 +2,7 @@
 <Scheme
    LastUpgradeVersion = "1100"
    wasCreatedForAppExtension = "YES"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-               BuildableName = "nef.app"
-               BlueprintName = "nef"
+               BuildableName = "nef-app.app"
+               BlueprintName = "nef-app"
                ReferencedContainer = "container:nef-plugin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,24 +50,21 @@
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
-      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
+      allowLocationSimulation = "YES">
+      <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.apple.dt.Xcode"
-         RemotePath = "/Applications/Xcode.app">
-      </RemoteRunnable>
+         FilePath = "/Applications/Xcode.app">
+      </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-            BuildableName = "nef.app"
-            BlueprintName = "nef"
+            BuildableName = "nef-app.app"
+            BlueprintName = "nef-app"
             ReferencedContainer = "container:nef-plugin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,8 +81,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-            BuildableName = "nef.app"
-            BlueprintName = "nef"
+            BuildableName = "nef-app.app"
+            BlueprintName = "nef-app"
             ReferencedContainer = "container:nef-plugin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

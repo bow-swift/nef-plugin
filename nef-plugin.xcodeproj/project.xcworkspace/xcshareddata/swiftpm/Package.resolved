@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "nef",
+        "repositoryURL": "https://github.com/bow-swift/nef.git",
+        "state": {
+          "branch": null,
+          "revision": "37bf0b45736b55e6e2a96c765235bffc18c835df",
+          "version": "0.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
