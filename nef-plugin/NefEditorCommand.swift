@@ -2,10 +2,11 @@
 
 import Foundation
 import XcodeKit
+import AppKit
 
 class NefEditorCommand: NSObject, XCSourceEditorCommand {
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
+    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
         defer { completionHandler(nil) }
         guard let command = SourceEditorExtension.Command(rawValue: invocation.commandIdentifier) else { return }
         guard let textRange = invocation.buffer.selections.firstObject as? XCSourceTextRange else { return }
@@ -14,20 +15,27 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         let selection = userSelection(textRange: textRange, lines: lines)
         
         switch command {
-        case .preferences: preferences(text: selection)
+        case .preferences: preferences()
         case .exportSnippet: carbon(text: selection)
         }
     }
     
     // MARK: Commands
-    private func preferences(text: String) {
+    private func preferences() {
         // TODO
         print("PREFERENCES")
     }
     
     private func carbon(text: String) {
-        // TODO: export using carbon
-        print("CARBON")
+        let codeItem = URLQueryItem(name: Operation.carbon.rawValue, value: text)
+        var urlComponents = URLComponents()
+        urlComponents.scheme = Constants.scheme
+        urlComponents.host = "xcode"
+        urlComponents.queryItems = [codeItem]
+        
+        try! NSWorkspace.shared.open(urlComponents.url!,
+                                     options: .newInstance,
+                                     configuration: [:])
     }
     
     // MARK: private methods
@@ -44,8 +52,12 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
     }
     
     // MARK: Constants
-    enum Command { // defined in Info.plist
-        static let preferences = "preferences"
-        static let exportSnippet = "carbon"
+    enum Constants {
+        static let scheme = "nef-plugin"
+        static let bundleIdentifier = "com.47deg.nef"
+    }
+    
+    enum Operation: String {
+        case carbon
     }
 }

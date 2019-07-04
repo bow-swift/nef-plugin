@@ -7,39 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B575C6C22CCC589006DBD62 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */; };
-		8B575C6D22CCC59E006DBD62 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */; };
-		8B575C7722CCE8DB006DBD62 /* nef_core.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B575C7622CCE8DB006DBD62 /* nef_core.m */; };
-		8B575C7922CCE8DB006DBD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B575C7822CCE8DB006DBD62 /* main.m */; };
-		8B575C7D22CCE8DB006DBD62 /* nef-core.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 8B575C7222CCE8DB006DBD62 /* nef-core.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8B575C8422CCEAE0006DBD62 /* AppNef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B575C8322CCEAE0006DBD62 /* AppNef */; };
-		8B575C8722CCEBE9006DBD62 /* nef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B575C8622CCEBE9006DBD62 /* nef.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
 		8BB2893522CB6EFD006E4CCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */; };
 		8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893622CB6EFD006E4CCB /* Main.storyboard */; };
-		8BB2894422CB6EFD006E4CCB /* nefTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2894322CB6EFD006E4CCB /* nefTests.swift */; };
-		8BB2895522CB6F81006E4CCB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2895422CB6F81006E4CCB /* Cocoa.framework */; };
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCCE9DE22CE496700BF0A62 /* nef */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8B575C7B22CCE8DB006DBD62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B575C7122CCE8DB006DBD62;
-			remoteInfo = "nef-core";
-		};
-		8BB2894022CB6EFD006E4CCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BB2892922CB6EFB006E4CCB;
-			remoteInfo = nef;
-		};
 		8BB2895D22CB6F81006E4CCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
@@ -50,15 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8B575C8122CCE8DB006DBD62 /* Embed XPC Services */ = {
+		8B575CBF22CCF998006DBD62 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
 			dstSubfolderSpec = 16;
 			files = (
-				8B575C7D22CCE8DB006DBD62 /* nef-core.xpc in Embed XPC Services */,
 			);
-			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8BB2896322CB6F81006E4CCB /* Embed App Extensions */ = {
@@ -72,19 +48,21 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BD0046B22CD0E9200A26B9D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		8B575C7222CCE8DB006DBD62 /* nef-core.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = "nef-core.xpc"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B575C7422CCE8DB006DBD62 /* nef_coreProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nef_coreProtocol.h; sourceTree = "<group>"; };
-		8B575C7522CCE8DB006DBD62 /* nef_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nef_core.h; sourceTree = "<group>"; };
-		8B575C7622CCE8DB006DBD62 /* nef_core.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nef_core.m; sourceTree = "<group>"; };
-		8B575C7822CCE8DB006DBD62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B575C7A22CCE8DB006DBD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B575C8522CCEBE9006DBD62 /* nef-core-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nef-core-Bridging-Header.h"; sourceTree = "<group>"; };
-		8B575C8622CCEBE9006DBD62 /* nef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nef.swift; sourceTree = "<group>"; };
-		8BB2892A22CB6EFB006E4CCB /* nef-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nef-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B575CC322CD0257006DBD62 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8BB2892A22CB6EFB006E4CCB /* Nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB2892F22CB6EFB006E4CCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8BB2893122CB6EFD006E4CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,9 +70,6 @@
 		8BB2893722CB6EFD006E4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB2893922CB6EFD006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2893A22CB6EFD006E4CCB /* nef.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef.entitlements; sourceTree = "<group>"; };
-		8BB2893F22CB6EFD006E4CCB /* nefTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nefTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB2894322CB6EFD006E4CCB /* nefTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nefTests.swift; sourceTree = "<group>"; };
-		8BB2894522CB6EFD006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2895222CB6F81006E4CCB /* nef-plugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "nef-plugin.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2895422CB6F81006E4CCB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -104,26 +79,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8B575C6F22CCE8DB006DBD62 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8B575C8422CCEAE0006DBD62 /* AppNef in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BB2892722CB6EFB006E4CCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B575C6C22CCC589006DBD62 /* NetworkExtension.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BB2893C22CB6EFD006E4CCB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,43 +91,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B575C6D22CCC59E006DBD62 /* NetworkExtension.framework in Frameworks */,
-				8BB2895522CB6F81006E4CCB /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8B575C7322CCE8DB006DBD62 /* nef-core */ = {
-			isa = PBXGroup;
-			children = (
-				8B575C7422CCE8DB006DBD62 /* nef_coreProtocol.h */,
-				8B575C7522CCE8DB006DBD62 /* nef_core.h */,
-				8B575C7622CCE8DB006DBD62 /* nef_core.m */,
-				8B575C7822CCE8DB006DBD62 /* main.m */,
-				8B575C8622CCEBE9006DBD62 /* nef.swift */,
-				8B575C8822CCEBF1006DBD62 /* Support Files */,
-				8B575C7A22CCE8DB006DBD62 /* Info.plist */,
-				8B575C8522CCEBE9006DBD62 /* nef-core-Bridging-Header.h */,
-			);
-			path = "nef-core";
-			sourceTree = "<group>";
-		};
-		8B575C8822CCEBF1006DBD62 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Support Files";
-			sourceTree = "<group>";
-		};
 		8BB2892122CB6EFB006E4CCB = {
 			isa = PBXGroup;
 			children = (
 				8BB2892C22CB6EFB006E4CCB /* nef */,
 				8BB2895622CB6F81006E4CCB /* nef-plugin */,
-				8B575C7322CCE8DB006DBD62 /* nef-core */,
-				8BB2894222CB6EFD006E4CCB /* nefTests */,
 				8BB2895322CB6F81006E4CCB /* Frameworks */,
 				8BB2892B22CB6EFB006E4CCB /* Products */,
 			);
@@ -176,10 +110,8 @@
 		8BB2892B22CB6EFB006E4CCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8BB2892A22CB6EFB006E4CCB /* nef-app.app */,
-				8BB2893F22CB6EFD006E4CCB /* nefTests.xctest */,
+				8BB2892A22CB6EFB006E4CCB /* Nef.app */,
 				8BB2895222CB6F81006E4CCB /* nef-plugin.appex */,
-				8B575C7222CCE8DB006DBD62 /* nef-core.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,18 +137,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8BB2894222CB6EFD006E4CCB /* nefTests */ = {
-			isa = PBXGroup;
-			children = (
-				8BB2894322CB6EFD006E4CCB /* nefTests.swift */,
-				8BB2894522CB6EFD006E4CCB /* Info.plist */,
-			);
-			path = nefTests;
-			sourceTree = "<group>";
-		};
 		8BB2895322CB6F81006E4CCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B575CC322CD0257006DBD62 /* AppKit.framework */,
 				8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */,
 				8BB2895422CB6F81006E4CCB /* Cocoa.framework */,
 			);
@@ -254,66 +178,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B575C7122CCE8DB006DBD62 /* nef-core */ = {
+		8BB2892922CB6EFB006E4CCB /* Nef */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B575C7E22CCE8DB006DBD62 /* Build configuration list for PBXNativeTarget "nef-core" */;
-			buildPhases = (
-				8B575C6E22CCE8DB006DBD62 /* Sources */,
-				8B575C6F22CCE8DB006DBD62 /* Frameworks */,
-				8B575C7022CCE8DB006DBD62 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "nef-core";
-			packageProductDependencies = (
-				8B575C8322CCEAE0006DBD62 /* AppNef */,
-			);
-			productName = "nef-core";
-			productReference = 8B575C7222CCE8DB006DBD62 /* nef-core.xpc */;
-			productType = "com.apple.product-type.xpc-service";
-		};
-		8BB2892922CB6EFB006E4CCB /* nef-app */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef-app" */;
+			buildConfigurationList = 8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "Nef" */;
 			buildPhases = (
 				8BB2892622CB6EFB006E4CCB /* Sources */,
 				8BB2892722CB6EFB006E4CCB /* Frameworks */,
 				8BB2892822CB6EFB006E4CCB /* Resources */,
 				8BB2896322CB6F81006E4CCB /* Embed App Extensions */,
-				8B575C8122CCE8DB006DBD62 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8BB2895E22CB6F81006E4CCB /* PBXTargetDependency */,
-				8B575C7C22CCE8DB006DBD62 /* PBXTargetDependency */,
 			);
-			name = "nef-app";
+			name = Nef;
 			packageProductDependencies = (
+				8BCCE9DE22CE496700BF0A62 /* nef */,
 			);
 			productName = nef;
-			productReference = 8BB2892A22CB6EFB006E4CCB /* nef-app.app */;
+			productReference = 8BB2892A22CB6EFB006E4CCB /* Nef.app */;
 			productType = "com.apple.product-type.application";
-		};
-		8BB2893E22CB6EFD006E4CCB /* nefTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8BB2894B22CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nefTests" */;
-			buildPhases = (
-				8BB2893B22CB6EFD006E4CCB /* Sources */,
-				8BB2893C22CB6EFD006E4CCB /* Frameworks */,
-				8BB2893D22CB6EFD006E4CCB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8BB2894122CB6EFD006E4CCB /* PBXTargetDependency */,
-			);
-			name = nefTests;
-			productName = nefTests;
-			productReference = 8BB2893F22CB6EFD006E4CCB /* nefTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8BB2895122CB6F81006E4CCB /* nef-plugin */ = {
 			isa = PBXNativeTarget;
@@ -322,6 +207,8 @@
 				8BB2894E22CB6F81006E4CCB /* Sources */,
 				8BB2894F22CB6F81006E4CCB /* Frameworks */,
 				8BB2895022CB6F81006E4CCB /* Resources */,
+				8B575CBF22CCF998006DBD62 /* CopyFiles */,
+				8BD0046B22CD0E9200A26B9D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -344,16 +231,8 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
-					8B575C7122CCE8DB006DBD62 = {
-						CreatedOnToolsVersion = 11.0;
-						LastSwiftMigration = 1100;
-					};
 					8BB2892922CB6EFB006E4CCB = {
 						CreatedOnToolsVersion = 11.0;
-					};
-					8BB2893E22CB6EFD006E4CCB = {
-						CreatedOnToolsVersion = 11.0;
-						TestTargetID = 8BB2892922CB6EFB006E4CCB;
 					};
 					8BB2895122CB6F81006E4CCB = {
 						CreatedOnToolsVersion = 11.0;
@@ -376,22 +255,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BB2892922CB6EFB006E4CCB /* nef-app */,
+				8BB2892922CB6EFB006E4CCB /* Nef */,
 				8BB2895122CB6F81006E4CCB /* nef-plugin */,
-				8B575C7122CCE8DB006DBD62 /* nef-core */,
-				8BB2893E22CB6EFD006E4CCB /* nefTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8B575C7022CCE8DB006DBD62 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BB2892822CB6EFB006E4CCB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,13 +269,6 @@
 				8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */,
 				8BB2893522CB6EFD006E4CCB /* Preview Assets.xcassets in Resources */,
 				8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BB2893D22CB6EFD006E4CCB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,29 +282,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8B575C6E22CCE8DB006DBD62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8B575C8722CCEBE9006DBD62 /* nef.swift in Sources */,
-				8B575C7922CCE8DB006DBD62 /* main.m in Sources */,
-				8B575C7722CCE8DB006DBD62 /* nef_core.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BB2892622CB6EFB006E4CCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BB2893B22CB6EFD006E4CCB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8BB2894422CB6EFD006E4CCB /* nefTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,16 +302,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8B575C7C22CCE8DB006DBD62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B575C7122CCE8DB006DBD62 /* nef-core */;
-			targetProxy = 8B575C7B22CCE8DB006DBD62 /* PBXContainerItemProxy */;
-		};
-		8BB2894122CB6EFD006E4CCB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8BB2892922CB6EFB006E4CCB /* nef-app */;
-			targetProxy = 8BB2894022CB6EFD006E4CCB /* PBXContainerItemProxy */;
-		};
 		8BB2895E22CB6F81006E4CCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8BB2895122CB6F81006E4CCB /* nef-plugin */;
@@ -486,51 +321,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8B575C7F22CCE8DB006DBD62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PKCNK63FZQ;
-				INFOPLIST_FILE = "nef-core/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef-core";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "nef-core/nef-core-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		8B575C8022CCE8DB006DBD62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = PKCNK63FZQ;
-				INFOPLIST_FILE = "nef-core/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef-core";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "nef-core/nef-core-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		8BB2894622CB6EFD006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -698,46 +488,6 @@
 			};
 			name = Release;
 		};
-		8BB2894C22CB6EFD006E4CCB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = nefTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nefTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nef-plugin.app/Contents/MacOS/nef-plugin";
-			};
-			name = Debug;
-		};
-		8BB2894D22CB6EFD006E4CCB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = nefTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nefTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nef-plugin.app/Contents/MacOS/nef-plugin";
-			};
-			name = Release;
-		};
 		8BB2896122CB6F81006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -787,15 +537,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8B575C7E22CCE8DB006DBD62 /* Build configuration list for PBXNativeTarget "nef-core" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8B575C7F22CCE8DB006DBD62 /* Debug */,
-				8B575C8022CCE8DB006DBD62 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8BB2892522CB6EFB006E4CCB /* Build configuration list for PBXProject "nef-plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -805,20 +546,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef-app" */ = {
+		8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "Nef" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB2894922CB6EFD006E4CCB /* Debug */,
 				8BB2894A22CB6EFD006E4CCB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8BB2894B22CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nefTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8BB2894C22CB6EFD006E4CCB /* Debug */,
-				8BB2894D22CB6EFD006E4CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -846,10 +578,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B575C8322CCEAE0006DBD62 /* AppNef */ = {
+		8BCCE9DE22CE496700BF0A62 /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */;
-			productName = AppNef;
+			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
