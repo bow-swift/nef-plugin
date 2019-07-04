@@ -11,7 +11,6 @@ import Markup
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
-    private let textArea = NSText(frame: CarbonScreen.bounds)
     private var code: String = ""
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -28,34 +27,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: life cycle
     private func preferencesDidFinishLaunching() {
-        //        // Insert code here to initialize your application
-        //        window = NSWindow(
-        //            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-        //            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-        //            backing: .buffered, defer: false)
-        ////        window.contentView = NSHostingView(rootView: ContentView())
-        
-        
-        //        window.setFrameAutosaveName("Main Window")
+        // TODO
     }
     
     private func carbonDidFinishLaunching() {
         guard !code.isEmpty else { terminate(); return }
-        
         window = NSWindow(contentRect: CarbonScreen.bounds,
                           styleMask: [.titled],
                           backing: .buffered,
                           defer: true,
                           screen: CarbonScreen())
         window.makeKey()
-        
         carbon(code: code)
     }
     
     // MARK: actions
     private func carbon(code: String) {
         guard let parentView = window.contentView else { return }
-        let outputPath = "/Users/miguelangel/Downloads/output"
+        let outputPath = "~/Downloads/nef"
         let style = CarbonStyle(background: .bow,
                                 theme: .dracula,
                                 size: .x2,
@@ -63,14 +52,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 lineNumbers: true,
                                 watermark: true)
         
-        DispatchQueue.main.async {
-            nef.carbon(parentView: parentView, code: code, style: style, outputPath: outputPath)
-        }
-        
+        nef.carbon(parentView: parentView,
+                   code: code,
+                   style: style,
+                   outputPath: outputPath,
+                   success: terminate, failure: terminate)
     }
     
     private func terminate() {
-        NSApplication.shared.terminate(nil)
+        DispatchQueue.main.async {
+            NSApplication.shared.terminate(nil)
+        }
     }
     
     // MARK: scheme url types

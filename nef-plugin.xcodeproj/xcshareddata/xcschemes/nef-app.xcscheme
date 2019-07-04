@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-               BuildableName = "Nef.app"
-               BlueprintName = "Nef"
+               BuildableName = "nef.app"
+               BlueprintName = "nef"
                ReferencedContainer = "container:nef-plugin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-            BuildableName = "Nef.app"
-            BlueprintName = "Nef"
+            BuildableName = "nef.app"
+            BlueprintName = "nef"
             ReferencedContainer = "container:nef-plugin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB2892922CB6EFB006E4CCB"
-            BuildableName = "Nef.app"
-            BlueprintName = "Nef"
+            BuildableName = "nef.app"
+            BlueprintName = "nef"
             ReferencedContainer = "container:nef-plugin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
