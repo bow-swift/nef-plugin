@@ -28,20 +28,18 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
     }
 
     // MARK: Commands
-    enum Operation: String {
-        case carbon
-    }
-    
     private func preferences(completion: @escaping (Error?) -> Void) {
         print("PREFERENCES")
-        completion(nil)
+        
         // TODO
+        completion(EditorError.invalidCommand)
     }
     
     private func carbon(textRange: XCSourceTextRange, lines: [String], completion: @escaping (Error?) -> Void) {
         guard let selection = userSelection(textRange: textRange, lines: lines) else { completion(EditorError.selection); return }
         
-        let codeItem = URLQueryItem(name: Operation.carbon.rawValue, value: selection)
+        let code = removeLeadingMargin(selection)
+        let codeItem = URLQueryItem(name: "carbon", value: code)
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.scheme
         urlComponents.host = "xcode"
@@ -67,10 +65,17 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         return selection
     }
     
+    private func removeLeadingMargin(_ code: String) -> String {
+        let lines = code.components(separatedBy: "\n")
+        guard let firstLine = lines.first,
+              let leading = firstLine.map({ $0 }).enumerated().first(where: { $0.element != " " })?.offset else { return code }
+        
+        return lines.map { $0.dropFirst(leading) }.joined(separator: "\n")
+    }
+    
     // MARK: Constants
     enum Constants {
         static let scheme = "nef-plugin"
-        static let bundleIdentifier = "com.47deg.nef"
     }
     
     enum EditorError {

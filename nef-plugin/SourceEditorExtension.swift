@@ -5,6 +5,11 @@ import XcodeKit
 
 class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
+    enum Command: String {
+        case preferences
+        case exportSnippet
+    }
+    
     var commandDefinitions: [[XCSourceEditorCommandDefinitionKey: Any]] {
         return [preferences, carbon]
     }
@@ -28,10 +33,5 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     enum i18n {
         static let preferences = NSLocalizedString("Preferences", comment: "")
         static let exportSnippet = NSLocalizedString("Export code snippet", comment: "")
-    }
-    
-    enum Command: String {
-        case preferences
-        case exportSnippet
     }
 }
