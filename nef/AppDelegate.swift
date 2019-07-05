@@ -11,10 +11,17 @@ import Markup
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
-    private var code: String = ""
+    private var command: Command?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        carbonDidFinishLaunching()
+        guard let command = command else { applicationDidFinishLaunching(); return }
+        
+        switch command {
+        case .preferences:
+            preferencesDidFinishLaunching()
+        case .carbon(let code):
+            carbonDidFinishLaunching(code: code)
+        }
     }
     
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -26,37 +33,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: life cycle
+    private func applicationDidFinishLaunching() {
+        // TODO
+    }
+    
     private func preferencesDidFinishLaunching() {
         // TODO
     }
     
-    private func carbonDidFinishLaunching() {
+    private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        window = NSWindow(contentRect: CarbonScreen.bounds,
-                          styleMask: [.titled],
-                          backing: .buffered,
-                          defer: true,
-                          screen: CarbonScreen())
+        guard let carbonWindow = carbonWindow(code: code) else { terminate(); return }
+        
+        window = carbonWindow
         window.makeKey()
-        carbon(code: code)
     }
     
     // MARK: actions
-    private func carbon(code: String) {
-        guard let parentView = window.contentView else { return }
-        let outputPath = "~/Downloads/nef"
-        let style = CarbonStyle(background: .bow,
+    private func carbonWindow(code: String) -> NSWindow? {
+        guard let downloadsFolder = try? FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
+        
+        let filename = "nef"
+        let outputPath = downloadsFolder.appendingPathComponent(filename).path
+        let style = CarbonStyle(background: .nef,
                                 theme: .dracula,
-                                size: .x2,
+                                size: .x1,
                                 fontType: .firaCode,
                                 lineNumbers: true,
                                 watermark: true)
         
-        nef.carbon(parentView: parentView,
-                   code: code,
-                   style: style,
-                   outputPath: outputPath,
-                   success: terminate, failure: terminate)
+        return nef.carbon(code: code,
+                          style: style,
+                          outputPath: outputPath,
+                          success: terminate, failure: terminate)
     }
     
     private func terminate() {
@@ -75,26 +84,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let queryItems = components.queryItems else { return }
         
         let params = queryItems.map { item in (name: item.name, value: item.value ?? "") }
-        let operation = params.first(where: self.isOperation).flatMap(self.operation)
-        operation?()
+        self.command = params.first(where: self.isOperation).flatMap(self.operation)
     }
     
     private func isOperation(param: (name: String, value: String)) -> Bool {
         return operation(for: param) != nil
     }
     
-    private func operation(for param: (name: String, value: String)) -> (() -> Void)? {
+    private func operation(for param: (name: String, value: String)) -> Command? {
         switch param {
-        case let ("carbon", value): return { self.code = value }
-        default: return nil
+        case ("preferences", _):
+            return .preferences
+        case let ("carbon", value):
+            return .carbon(code: value)
+        default:
+            return nil
         }
     }
     
-    // MARK: private classes
-    private class CarbonScreen: NSScreen {
-        static let bounds = NSRect(x: 0, y: 0, width: 5000, height: 15000)
-        
-        override var frame: NSRect { return CarbonScreen.bounds }
-        override var visibleFrame: NSRect { return CarbonScreen.bounds }
+    // MARK: Commands
+    enum Command {
+        case preferences
+        case carbon(code: String)
     }
 }
