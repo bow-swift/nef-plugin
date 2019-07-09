@@ -27,7 +27,7 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         }
     }
 
-    // MARK: Commands
+    // MARK: commands
     private func preferences(completion: @escaping (Error?) -> Void) {
         print("PREFERENCES")
         
@@ -73,7 +73,7 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         return lines.map { $0.dropFirst(leading) }.joined(separator: "\n")
     }
     
-    // MARK: Constants
+    // MARK: - Constants
     enum Constants {
         static let scheme = "nef-plugin"
     }

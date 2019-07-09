@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return nef.carbon(code: code,
                           style: style,
                           outputPath: outputPath,
-                          success: terminate, failure: terminate)
+                          success: terminate, failure: { _ in self.terminate() })
     }
     
     private func terminate() {
