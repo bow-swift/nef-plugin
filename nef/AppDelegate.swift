@@ -53,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func carbonWindow(code: String) -> NSWindow? {
         guard let downloadsFolder = try? FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
         
-        let filename = "nef"
+        let filename = "nef \(Date.now.human)"
         let outputPath = downloadsFolder.appendingPathComponent(filename).path
         
         let style = CarbonStyle(background: .nef,
