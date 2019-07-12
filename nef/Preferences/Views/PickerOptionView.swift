@@ -11,9 +11,10 @@ struct PickerOptionView: View {
     var body: some View {
         HStack {
             Text("\(title):")
-                .frame(width: 50, alignment: .trailing)
+                .frame(width: PreferencesView.Layout.leftPanel, alignment: .trailing)
+            
             Picker(selection: $selection, label: Text(title)) { self.texts(from: self.items) }
-                .frame(width: 200)
+                .frame(width: PreferencesView.Layout.rightPanel)
         }
     }
     

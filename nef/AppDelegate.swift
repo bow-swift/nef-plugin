@@ -118,6 +118,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     enum i18n {
-        static let preferencesTitle = NSLocalizedString("nef", comment: "")
+        static let preferencesTitle = NSLocalizedString("Preferences", comment: "")
     }
 }
