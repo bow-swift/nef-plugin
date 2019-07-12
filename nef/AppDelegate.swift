@@ -34,11 +34,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: life cycle
     private func applicationDidFinishLaunching() {
-        // TODO
+        preferencesDidFinishLaunching()
     }
     
     private func preferencesDidFinishLaunching() {
-        // TODO
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 550),
+                          styleMask: [.titled, .closable, .miniaturizable],
+                          backing: .buffered, defer: false)
+        
+        window.center()
+        window.title = i18n.preferencesTitle
+        window.setFrameAutosaveName(i18n.preferencesTitle)
+        window.contentView = NSHostingView(rootView: PreferencesView())
+        window.makeKeyAndOrderFront(nil)
     }
     
     private func carbonDidFinishLaunching(code: String) {
@@ -103,9 +111,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    // MARK: Commands
+    // MARK: Constants
     enum Command {
         case preferences
         case carbon(code: String)
+    }
+    
+    enum i18n {
+        static let preferencesTitle = NSLocalizedString("nef", comment: "")
     }
 }

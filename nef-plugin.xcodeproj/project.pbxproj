@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1A0C0522D779510049B48F /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B1A0C0422D779510049B48F /* nef */; };
+		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
+		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
+		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
@@ -15,7 +19,6 @@
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCCE9DE22CE496700BF0A62 /* nef */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,12 +55,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
+		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
 		8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		8B575CC322CD0257006DBD62 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8BB2892A22CB6EFB006E4CCB /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BB2892F22CB6EFB006E4CCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		8BB2893122CB6EFD006E4CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8BB2893722CB6EFD006E4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */,
+				8B1A0C0522D779510049B48F /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,9 +126,11 @@
 			isa = PBXGroup;
 			children = (
 				8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */,
-				8BB2892F22CB6EFB006E4CCB /* ContentView.swift */,
-				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
+				8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */,
+				8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */,
+				8B4D1E1622D88A5E004432CF /* OptionItem.swift */,
 				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
+				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
 				8BAAB73B22D4DB1200FD3636 /* Utils */,
 				8BB2896422CB6FF0006E4CCB /* Support Files */,
 				8BB2893322CB6EFD006E4CCB /* Preview Content */,
@@ -196,7 +203,7 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8BCCE9DE22CE496700BF0A62 /* nef */,
+				8B1A0C0422D779510049B48F /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -250,7 +257,7 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */,
+				8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -287,8 +294,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
+				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
+				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +464,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -482,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -506,7 +516,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -529,7 +539,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -571,20 +581,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */ = {
+		8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
+				minimumVersion = 0.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BCCE9DE22CE496700BF0A62 /* nef */ = {
+		8B1A0C0422D779510049B48F /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
