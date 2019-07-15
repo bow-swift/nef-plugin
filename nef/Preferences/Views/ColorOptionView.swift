@@ -4,10 +4,7 @@ import SwiftUI
 import NefModels
 
 struct ColorOptionView: View {
-    let changed: (CarbonStyle.Color?) -> Void
     @Binding var value: String
-    
-    @State private var circleColor: Color = .gray
     
     var body: some View {
         HStack {
@@ -15,7 +12,7 @@ struct ColorOptionView: View {
             
             HStack(spacing: 2) {
                 Text("└ Hex.  #")
-                TextField("", text: $value, onCommit: textFieldChangedValue).frame(width: 80)
+                TextField("", text: $value, onEditingChanged: textFieldEditingChanged, onCommit: textFieldChangedValue).frame(width: 80)
                 Circle().foregroundColor(CarbonStyle.Color(hex: value)?.color ?? .gray)
                         .offset(x: 12)
                         .frame(width: 22, height: 22)
@@ -25,9 +22,12 @@ struct ColorOptionView: View {
         }
     }
     
+    private func textFieldEditingChanged(_ editing: Bool) {
+        guard !editing, value.count == 6 else { return }
+        value = "\(value)FF".uppercased()
+    }
+    
     private func textFieldChangedValue() {
-        let carbonColor = CarbonStyle.Color(hex: value)
         value = value.uppercased()
-        changed(carbonColor)
     }
 }
