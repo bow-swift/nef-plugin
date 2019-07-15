@@ -8,22 +8,10 @@ class PickerColorViewModel: BindableObject {
     public let didChange = PassthroughSubject<PickerColorViewModel, Never>()
     let options: [OptionItem]
     let colors: [String: CarbonStyle.Color]
+    var selectedColor: CarbonStyle.Color { colorFromHex! }
     
     var selection: Int = 0 { didSet { changedSelection() }}
     var hex = "" { didSet { changedHex() }}
-    
-    var colorFromHex: CarbonStyle.Color? {
-        guard hex.count == 8 else { return nil }
-        return CarbonStyle.Color(hex: hex)
-    }
-    
-    var hexFromColor: String? {
-        let selectedColor = options[selection].name.lowercased()
-        guard let selectedColorKey = colors.keys.first(where: { $0 == selectedColor }),
-              let color = colors[selectedColorKey] else { return colorFromHex?.hex }
-        
-        return color.hex
-    }
     
     init(colors: [String: CarbonStyle.Color]) {
         let colorOptions = colors.keys.sorted().map { $0 != "nef" ? $0.capitalized : $0 }.enumerated().map(OptionItem.init)
@@ -42,12 +30,26 @@ class PickerColorViewModel: BindableObject {
         self.selection = nefSelection
     }
     
+    // MARK: internal attributes
+    private var colorFromHex: CarbonStyle.Color? {
+        guard hex.count == 8 else { return nil }
+        return CarbonStyle.Color(hex: hex)
+    }
+    
+    private var hexFromColor: String? {
+        let selectedColor = options[selection].name.lowercased()
+        guard let selectedColorKey = colors.keys.first(where: { $0 == selectedColor }),
+            let color = colors[selectedColorKey] else { return colorFromHex?.hex }
+        
+        return color.hex
+    }
+    
     // MARK: update models and notify
     private func changedSelection() {
         guard let hexValue = hexFromColor else { return }
         
-        let hexHasChanged = hex != hexValue
-        if hexHasChanged {
+        let hasHexChanged = hex != hexValue
+        if hasHexChanged {
             hex = hexValue
         } else {
             didChange.send(self)
