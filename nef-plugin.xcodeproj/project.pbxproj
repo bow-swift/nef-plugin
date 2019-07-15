@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B1A0C0522D779510049B48F /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B1A0C0422D779510049B48F /* nef */; };
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
@@ -23,6 +22,8 @@
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
+		8BBDE55022DCC25000598565 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB2895422CB6F81006E4CCB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,15 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8B575CBF22CCF998006DBD62 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BB2896322CB6F81006E4CCB /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1A0C0522D779510049B48F /* nef in Frameworks */,
+				8BBDE53C22DC86BB00598565 /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BBDE55022DCC25000598565 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +240,7 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8B1A0C0422D779510049B48F /* nef */,
+				8BBDE53B22DC86BB00598565 /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -260,7 +253,6 @@
 				8BB2894E22CB6F81006E4CCB /* Sources */,
 				8BB2894F22CB6F81006E4CCB /* Frameworks */,
 				8BB2895022CB6F81006E4CCB /* Resources */,
-				8B575CBF22CCF998006DBD62 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -301,7 +293,7 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */,
+				8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -431,7 +423,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -485,7 +476,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -512,7 +502,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -540,7 +529,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -564,7 +552,6 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -587,7 +574,6 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.47deg.nef.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -629,20 +615,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */ = {
+		8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.1;
+				minimumVersion = 0.3.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B1A0C0422D779510049B48F /* nef */ = {
+		8BBDE53B22DC86BB00598565 /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B1A0C0322D779510049B48F /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
