@@ -27,8 +27,9 @@
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
-		8BF68FAF22DE09C2009E57A9 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FAE22DE09C2009E57A9 /* PreferencesViewModel.swift */; };
 		8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */; };
+		8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */; };
+		8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +83,9 @@
 		8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
 		8BF68FA022DDD8BD009E57A9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
-		8BF68FAE22DE09C2009E57A9 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesViewModel.swift; path = Pickers/PreferencesViewModel.swift; sourceTree = "<group>"; };
 		8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesModel.swift; sourceTree = "<group>"; };
+		8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
+		8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
+				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
 				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
 			);
 			path = Extensions;
@@ -230,7 +233,7 @@
 			children = (
 				8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */,
 				8B4D1E1622D88A5E004432CF /* OptionItem.swift */,
-				8BF68FAE22DE09C2009E57A9 /* PreferencesViewModel.swift */,
+				8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -354,8 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */,
+				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
 				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
-				8BF68FAF22DE09C2009E57A9 /* PreferencesViewModel.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
@@ -363,6 +366,7 @@
 				8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */,
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
 				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
+				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,

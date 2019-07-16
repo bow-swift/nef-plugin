@@ -5,7 +5,7 @@ import NefModels
 
 extension CarbonStyle.Color {
     var color: Color {
-        return Color(red: Double(r)/255.0, green: Double(g)/255.0, blue: Double(b)/255.0, opacity: a)
+        Color(red: Double(r)/255.0, green: Double(g)/255.0, blue: Double(b)/255.0, opacity: a)
     }
     
     var hex: String {
@@ -15,7 +15,5 @@ extension CarbonStyle.Color {
 }
 
 private extension UInt8 {
-    var hex: String {
-        return String(format: "%02X", self)
-    }
+    var hex: String { String(format: "%02X", self) }
 }

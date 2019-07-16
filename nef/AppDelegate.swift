@@ -55,7 +55,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: private methods
     private func carbonWindow(code: String) -> NSWindow? {
-        return assembler.resolveCarbonWindow(code: code, completion: terminate)
+        guard let downloadsFolder = try? FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
+        
+        let filename = "nef \(Date.now.human)"
+        let outputPath = downloadsFolder.appendingPathComponent(filename).path
+        
+        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath, completion: terminate)
     }
     
     private func terminate() {

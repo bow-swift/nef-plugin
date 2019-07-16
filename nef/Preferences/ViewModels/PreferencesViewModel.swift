@@ -100,7 +100,7 @@ class PreferencesViewModel: BindableObject {
     }
     
     func selectionFromColor(_ color: CarbonStyle.Color) -> Int? {
-        guard let carbonColor = CarbonStyle.Color.all.first(where: { _, value in color.description == value.description }) else { return nil }
+        guard let carbonColor = CarbonStyle.Color.all.first(where: { _, value in color == value }) else { return nil }
         let keys = colorItems.map { $0.name.lowercased() }
         return keys.enumerated().first(where: { $0.element == carbonColor.key.lowercased() })?.offset
     }

@@ -3,7 +3,7 @@
 import Foundation
 import NefModels
 
-struct PreferencesModel {
+struct PreferencesModel: Codable {
     let showLines: Bool
     let showWatermark: Bool
     let font: CarbonStyle.Font
