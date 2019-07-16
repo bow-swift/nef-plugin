@@ -8,7 +8,7 @@ import NefModels
 
 class Assembler {
     
-    lazy var preferencesDataSource = resolvePreferencesDataSource()
+    private lazy var preferencesDataSource = resolvePreferencesDataSource()
     
     func resolvePreferencesView() -> some View {
         return PreferencesView(viewModel: resolvePreferencesViewModel())
