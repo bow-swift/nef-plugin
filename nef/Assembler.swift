@@ -11,12 +11,7 @@ class Assembler {
     lazy var preferencesDataSource = resolvePreferencesDataSource()
     
     func resolvePreferencesView() -> some View {
-        return PreferencesView(checkLinesViewModel: resolveCheckLinesViewModel(),
-                               checkWatermarkViewModel: resolveCheckWatermarkViewModel(),
-                               colorViewModel: resolveColorViewModel(),
-                               fontViewModel: resolveFontViewModel(),
-                               themeViewModel: resolveThemeViewModel(),
-                               sizeViewModel: resolveSizeViewModel())
+        return PreferencesView(viewModel: resolvePreferencesViewModel())
     }
     
     func resolveCarbonWindow(code: String, completion: @escaping () -> Void) -> NSWindow? {
@@ -38,45 +33,16 @@ class Assembler {
                           success: completion, failure: { _ in completion() })
     }
     
-    // MARK: - View-Models
-    private func resolveCheckLinesViewModel() -> CheckViewModel {
-        return CheckViewModel(dataSource: preferencesDataSource)
-    }
-    
-    private func resolveCheckWatermarkViewModel() -> CheckViewModel {
-        return CheckViewModel(dataSource: preferencesDataSource)
-    }
-    
-    private func resolveColorViewModel() -> PickerColorViewModel {
-        return PickerColorViewModel(dataSource: preferencesDataSource,
-                                    colors: CarbonStyle.Color.all)
+    // MARK: - private methods
+    private func resolvePreferencesViewModel() -> PreferencesViewModel {
+        return PreferencesViewModel(preferences: preferencesDataSource,
+                                    colors: CarbonStyle.Color.all,
+                                    fonts: CarbonStyle.Font.allCases,
+                                    themes: CarbonStyle.Theme.allCases,
+                                    sizes: CarbonStyle.Size.allCases)
     }
     
     private func resolvePreferencesDataSource() -> PreferencesDataSource {
         return PreferencesDataSource()
-    }
-    
-    private func resolveFontViewModel() -> PickerOptionViewModel {
-        let fonts  = CarbonStyle.Font.allCases
-        let fontItems = fonts.map { $0.rawValue.capitalized }.enumerated().map(OptionItem.init)
-        
-        return PickerOptionViewModel(dataSource: preferencesDataSource,
-                                     options: fontItems)
-    }
-    
-    private func resolveThemeViewModel() -> PickerOptionViewModel {
-        let themes = CarbonStyle.Theme.allCases
-        let themeItems = themes.map { $0.rawValue.replacingOccurrences(of: "-", with: " ").capitalized }.enumerated().map(OptionItem.init)
-        
-        return PickerOptionViewModel(dataSource: preferencesDataSource,
-                                     options: themeItems)
-    }
-    
-    private func resolveSizeViewModel() -> PickerOptionViewModel {
-        let sizes  = CarbonStyle.Size.allCases
-        let sizeItems = sizes.map { "\($0.rawValue)".replacingOccurrences(of: ".0", with: "x") }.enumerated().map(OptionItem.init)
-        
-        return PickerOptionViewModel(dataSource: preferencesDataSource,
-                                     options: sizeItems)
     }
 }

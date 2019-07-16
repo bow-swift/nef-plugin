@@ -1,31 +1,12 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
-import NefModels
 
 struct PreferencesView: View {
-    @ObjectBinding private var checkLinesViewModel: CheckViewModel
-    @ObjectBinding private var checkWatermarkViewModel: CheckViewModel
-    @ObjectBinding private var colorViewModel: PickerColorViewModel
-    @ObjectBinding private var fontViewModel: PickerOptionViewModel
-    @ObjectBinding private var themeViewModel: PickerOptionViewModel
-    @ObjectBinding private var sizeViewModel: PickerOptionViewModel
+    @ObjectBinding private var viewModel: PreferencesViewModel
     
-    private var actionViewModels: [ActionViewModel] { [checkLinesViewModel, checkWatermarkViewModel, colorViewModel, fontViewModel, themeViewModel, sizeViewModel] }
-    
-    init(checkLinesViewModel: CheckViewModel,
-         checkWatermarkViewModel: CheckViewModel,
-         colorViewModel: PickerColorViewModel,
-         fontViewModel: PickerOptionViewModel,
-         themeViewModel: PickerOptionViewModel,
-         sizeViewModel: PickerOptionViewModel) {
-        
-        self.checkLinesViewModel = checkLinesViewModel
-        self.checkWatermarkViewModel = checkWatermarkViewModel
-        self.colorViewModel = colorViewModel
-        self.fontViewModel = fontViewModel
-        self.themeViewModel = themeViewModel
-        self.sizeViewModel = sizeViewModel
+    init(viewModel: PreferencesViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -45,16 +26,16 @@ struct PreferencesView: View {
                 .border(NefColor.gray)
 
             VStack {
-                CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $checkLinesViewModel.selection)
-                CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $checkWatermarkViewModel.selection)
+                CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $viewModel.showLines)
+                CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $viewModel.showWatermark)
             }.padding(.all).offset(x: -12)
 
             VStack {
-                PickerOptionView(title: i18n.Option.font, items: fontViewModel.options, selection: $fontViewModel.selection)
-                PickerOptionView(title: i18n.Option.theme, items: themeViewModel.options, selection: $themeViewModel.selection)
-                PickerOptionView(title: i18n.Option.size, items: sizeViewModel.options, selection: $sizeViewModel.selection)
-                PickerOptionView(title: i18n.Option.color, items: colorViewModel.options, selection: $colorViewModel.selection)
-                ColorOptionView(value: $colorViewModel.hex)
+                PickerOptionView(title: i18n.Option.font, items: viewModel.fontItems, selection: $viewModel.selectionFont)
+                PickerOptionView(title: i18n.Option.theme, items: viewModel.themeItems, selection: $viewModel.selectionTheme)
+                PickerOptionView(title: i18n.Option.size, items: viewModel.sizeItems, selection: $viewModel.selectionSize)
+                PickerOptionView(title: i18n.Option.color, items: viewModel.colorItems, selection: $viewModel.selectionColor)
+                ColorOptionView(value: $viewModel.hex)
             }.padding(.bottom).offset(x: -12)
 
             Spacer()
@@ -67,11 +48,11 @@ struct PreferencesView: View {
     
     // MARK: private methods
     private func onAppear() {
-        actionViewModels.forEach { $0.onAppear() }
+        viewModel.onAppear()
     }
     
     private func restore() {
-        actionViewModels.forEach { $0.tapOnRestore() }
+        viewModel.tapOnRestore()
     }
     
     // MARK: - Constants
@@ -100,4 +81,23 @@ struct PreferencesView: View {
         static let gray = Color(red: 0.78, green: 0.78, blue: 0.78)
         static let white = Color(red: 1, green: 1, blue: 1)
     }
+}
+
+// MARK: - CarbonStyle View
+import NefModels
+
+extension CarbonStyle.Font {
+    var itemName: String { rawValue.capitalized }
+}
+
+extension CarbonStyle.Size {
+    var itemName: String { "\(rawValue)".replacingOccurrences(of: ".0", with: "x") }
+}
+
+extension CarbonStyle.Theme {
+    var itemName: String { rawValue.replacingOccurrences(of: "-", with: " ").capitalized }
+}
+
+extension String {
+    var itemColorName: String { self != "nef" ? capitalized : self }
 }
