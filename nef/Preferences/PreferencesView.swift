@@ -4,24 +4,28 @@ import SwiftUI
 import NefModels
 
 struct PreferencesView: View {
-    private let fonts  = CarbonStyle.Font.allCases
-    private let themes = CarbonStyle.Theme.allCases
-    private let sizes  = CarbonStyle.Size.allCases
-
-    private var fontItems: [OptionItem]  { fonts.map { $0.rawValue.capitalized }.enumerated().map(OptionItem.init) }
-    private var themeItems: [OptionItem] { themes.map { $0.rawValue.replacingOccurrences(of: "-", with: " ").capitalized }.enumerated().map(OptionItem.init) }
-    private var sizeItems: [OptionItem]  { sizes.map { "\($0.rawValue)".replacingOccurrences(of: ".0", with: "x") }.enumerated().map(OptionItem.init)  }
-    
-    @State private var selectedFont: Int  = 0
-    @State private var selectedTheme: Int = 0
-    @State private var selectedSize: Int  = 0
-    @State private var showLines = true
-    @State private var showWatermark = true
-    
+    @ObjectBinding private var checkLinesViewModel: CheckViewModel
+    @ObjectBinding private var checkWatermarkViewModel: CheckViewModel
     @ObjectBinding private var colorViewModel: PickerColorViewModel
+    @ObjectBinding private var fontViewModel: PickerOptionViewModel
+    @ObjectBinding private var themeViewModel: PickerOptionViewModel
+    @ObjectBinding private var sizeViewModel: PickerOptionViewModel
     
-    init(colorViewModel: PickerColorViewModel) {
+    private var actionViewModels: [ActionViewModel] { [checkLinesViewModel, checkWatermarkViewModel, colorViewModel, fontViewModel, themeViewModel, sizeViewModel] }
+    
+    init(checkLinesViewModel: CheckViewModel,
+         checkWatermarkViewModel: CheckViewModel,
+         colorViewModel: PickerColorViewModel,
+         fontViewModel: PickerOptionViewModel,
+         themeViewModel: PickerOptionViewModel,
+         sizeViewModel: PickerOptionViewModel) {
+        
+        self.checkLinesViewModel = checkLinesViewModel
+        self.checkWatermarkViewModel = checkWatermarkViewModel
         self.colorViewModel = colorViewModel
+        self.fontViewModel = fontViewModel
+        self.themeViewModel = themeViewModel
+        self.sizeViewModel = sizeViewModel
     }
     
     var body: some View {
@@ -41,14 +45,14 @@ struct PreferencesView: View {
                 .border(NefColor.gray)
 
             VStack {
-                CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $showLines)
-                CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $showWatermark)
+                CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $checkLinesViewModel.selection)
+                CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $checkWatermarkViewModel.selection)
             }.padding(.all).offset(x: -12)
 
             VStack {
-                PickerOptionView(title: i18n.Option.font, items: fontItems, selection: $selectedFont)
-                PickerOptionView(title: i18n.Option.theme, items: themeItems, selection: $selectedTheme)
-                PickerOptionView(title: i18n.Option.size, items: sizeItems, selection: $selectedSize)
+                PickerOptionView(title: i18n.Option.font, items: fontViewModel.options, selection: $fontViewModel.selection)
+                PickerOptionView(title: i18n.Option.theme, items: themeViewModel.options, selection: $themeViewModel.selection)
+                PickerOptionView(title: i18n.Option.size, items: sizeViewModel.options, selection: $sizeViewModel.selection)
                 PickerOptionView(title: i18n.Option.color, items: colorViewModel.options, selection: $colorViewModel.selection)
                 ColorOptionView(value: $colorViewModel.hex)
             }.padding(.bottom).offset(x: -12)
@@ -58,26 +62,16 @@ struct PreferencesView: View {
          .background(NefColor.white)
          .frame(maxWidth: .infinity, maxHeight: .infinity)
          .padding(20)
-         .onAppear(perform: setInitialValues)
+         .onAppear(perform: onAppear)
     }
     
     // MARK: private methods
+    private func onAppear() {
+        actionViewModels.forEach { $0.onAppear() }
+    }
+    
     private func restore() {
-        setInitialValues()
-        persist()
-    }
-    
-    private func setInitialValues() {
-        selectedFont = fonts.enumerated().first(where: { $0.element == .firaCode })?.offset ?? 0
-        selectedTheme = themes.enumerated().first(where: { $0.element == .dracula })?.offset ?? 0
-        selectedSize = sizes.enumerated().first(where: { $0.element == .x2 })?.offset ?? 0
-        colorViewModel.reset()
-        showLines = true
-        showWatermark = true
-    }
-    
-    private func persist() {
-        // TODO
+        actionViewModels.forEach { $0.tapOnRestore() }
     }
     
     // MARK: - Constants

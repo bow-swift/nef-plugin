@@ -4,11 +4,12 @@ import SwiftUI
 import Combine
 import NefModels
 
-class PickerColorViewModel: BindableObject {
+class PickerColorViewModel: BindableObject, ActionViewModel {
     public let didChange = PassthroughSubject<PickerColorViewModel, Never>()
+    private let dataSource: PreferencesDataSource
+    
     let options: [OptionItem]
     let colors: [String: CarbonStyle.Color]
-    let dataSource: PreferencesDataSource
     var selectedColor: CarbonStyle.Color { colorFromHex! }
     
     var selection: Int = 0 { didSet { changedSelection() }}
@@ -23,13 +24,13 @@ class PickerColorViewModel: BindableObject {
         self.colors = colors
     }
     
-    func load() {
+    // MARK: delegate methods <ActionViewModel>
+    func onAppear() {
         reset()
     }
     
-    func reset() {
-        let nefSelection = options.enumerated().first(where: { $0.element.name == "nef" })?.offset ?? 0
-        self.selection = nefSelection
+    func tapOnRestore() {
+        reset()
     }
     
     // MARK: internal attributes
@@ -47,6 +48,11 @@ class PickerColorViewModel: BindableObject {
     }
     
     // MARK: update models and notify
+    private func reset() {
+        let nefSelection = options.enumerated().first(where: { $0.element.name == "nef" })?.offset ?? 0
+        self.selection = nefSelection
+    }
+    
     private func changedSelection() {
         guard let hexValue = hexFromColor else { return }
         

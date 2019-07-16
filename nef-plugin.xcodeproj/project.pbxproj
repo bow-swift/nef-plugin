@@ -28,6 +28,8 @@
 		8BF68F9C22DCE114009E57A9 /* PickerColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9B22DCE114009E57A9 /* PickerColorViewModel.swift */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
+		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
+		8BF68FA522DDE36F009E57A9 /* CheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA422DDE36F009E57A9 /* CheckViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		8BF68F9B22DCE114009E57A9 /* PickerColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerColorViewModel.swift; sourceTree = "<group>"; };
 		8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
 		8BF68FA022DDD8BD009E57A9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
+		8BF68FA422DDE36F009E57A9 /* CheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,9 +230,9 @@
 		8BF68F9822DCDD5E009E57A9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				8B4D1E1622D88A5E004432CF /* OptionItem.swift */,
-				8BF68F9922DCDD9E009E57A9 /* PickerOptionViewModel.swift */,
-				8BF68F9B22DCE114009E57A9 /* PickerColorViewModel.swift */,
+				8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */,
+				8BF68FA722DDE5A6009E57A9 /* Pickers */,
+				8BF68FA622DDE59C009E57A9 /* Checks */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -239,6 +243,24 @@
 				8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		8BF68FA622DDE59C009E57A9 /* Checks */ = {
+			isa = PBXGroup;
+			children = (
+				8BF68FA422DDE36F009E57A9 /* CheckViewModel.swift */,
+			);
+			path = Checks;
+			sourceTree = "<group>";
+		};
+		8BF68FA722DDE5A6009E57A9 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				8B4D1E1622D88A5E004432CF /* OptionItem.swift */,
+				8BF68F9922DCDD9E009E57A9 /* PickerOptionViewModel.swift */,
+				8BF68F9B22DCE114009E57A9 /* PickerColorViewModel.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +376,7 @@
 				8BF68F9C22DCE114009E57A9 /* PickerColorViewModel.swift in Sources */,
 				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
+				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
 				8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */,
 				8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */,
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
@@ -362,6 +385,7 @@
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
 				8BF68F9A22DCDD9E009E57A9 /* PickerOptionViewModel.swift in Sources */,
+				8BF68FA522DDE36F009E57A9 /* CheckViewModel.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
