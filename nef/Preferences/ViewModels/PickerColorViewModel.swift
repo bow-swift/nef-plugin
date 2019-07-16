@@ -8,15 +8,17 @@ class PickerColorViewModel: BindableObject {
     public let didChange = PassthroughSubject<PickerColorViewModel, Never>()
     let options: [OptionItem]
     let colors: [String: CarbonStyle.Color]
+    let dataSource: PreferencesDataSource
     var selectedColor: CarbonStyle.Color { colorFromHex! }
     
     var selection: Int = 0 { didSet { changedSelection() }}
     var hex = "" { didSet { changedHex() }}
     
-    init(colors: [String: CarbonStyle.Color]) {
+    init(dataSource: PreferencesDataSource, colors: [String: CarbonStyle.Color]) {
         let colorOptions = colors.keys.sorted().map { $0 != "nef" ? $0.capitalized : $0 }.enumerated().map(OptionItem.init)
         let customOption = OptionItem(id: colors.count, name: "-")
         
+        self.dataSource = dataSource
         self.options = colorOptions + [customOption]
         self.colors = colors
     }

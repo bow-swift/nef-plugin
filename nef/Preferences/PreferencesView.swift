@@ -18,7 +18,11 @@ struct PreferencesView: View {
     @State private var showLines = true
     @State private var showWatermark = true
     
-    @ObjectBinding private var color = PickerColorViewModel(colors: CarbonStyle.Color.all)
+    @ObjectBinding private var colorViewModel: PickerColorViewModel
+    
+    init(colorViewModel: PickerColorViewModel) {
+        self.colorViewModel = colorViewModel
+    }
     
     var body: some View {
         VStack {
@@ -45,8 +49,8 @@ struct PreferencesView: View {
                 PickerOptionView(title: i18n.Option.font, items: fontItems, selection: $selectedFont)
                 PickerOptionView(title: i18n.Option.theme, items: themeItems, selection: $selectedTheme)
                 PickerOptionView(title: i18n.Option.size, items: sizeItems, selection: $selectedSize)
-                PickerOptionView(title: i18n.Option.color, items: color.options, selection: $color.selection)
-                ColorOptionView(value: $color.hex)
+                PickerOptionView(title: i18n.Option.color, items: colorViewModel.options, selection: $colorViewModel.selection)
+                ColorOptionView(value: $colorViewModel.hex)
             }.padding(.bottom).offset(x: -12)
 
             Spacer()
@@ -67,7 +71,7 @@ struct PreferencesView: View {
         selectedFont = fonts.enumerated().first(where: { $0.element == .firaCode })?.offset ?? 0
         selectedTheme = themes.enumerated().first(where: { $0.element == .dracula })?.offset ?? 0
         selectedSize = sizes.enumerated().first(where: { $0.element == .x2 })?.offset ?? 0
-        color.reset()
+        colorViewModel.reset()
         showLines = true
         showWatermark = true
     }

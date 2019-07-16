@@ -11,6 +11,7 @@ import NefModels
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
+    private let assembler = Assembler()
     private var command: Command?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -45,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.title = i18n.preferencesTitle
         window.setFrameAutosaveName(i18n.preferencesTitle)
-        window.contentView = NSHostingView(rootView: PreferencesView())
+        window.contentView = NSHostingView(rootView: assembler.resolvePreferencesView())
         window.makeKeyAndOrderFront(nil)
     }
     
