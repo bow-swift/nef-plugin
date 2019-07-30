@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct PreferencesView: View {
-    @ObjectBinding private var viewModel: PreferencesViewModel
+    @ObservedObject private var viewModel: PreferencesViewModel
     
     init(viewModel: PreferencesViewModel) {
         self.viewModel = viewModel
@@ -11,12 +11,13 @@ struct PreferencesView: View {
     
     var body: some View {
         VStack {
+            // Title bar
             HStack {
                 Spacer()
                 Text(i18n.title)
                     .font(.system(size: 11))
                     .fontWeight(.regular)
-                    .color(.blue)
+                    .foregroundColor(.blue)
                 Spacer()
                 
                 ImageButton(image: NefImage.restore, color: .blue, action: restore)
@@ -24,7 +25,8 @@ struct PreferencesView: View {
             }.padding(6)
                 .frame(maxWidth: .infinity, maxHeight: 30)
                 .border(NefColor.gray)
-
+            
+            // Preferences options
             VStack {
                 CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $viewModel.showLines)
                 CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $viewModel.showWatermark)
@@ -38,7 +40,8 @@ struct PreferencesView: View {
                 ColorOptionView(value: $viewModel.hex)
             }.padding(.bottom).offset(x: -12)
             
-            CarbonView(state: $viewModel.state)
+            // Carbon viewer
+            CarbonViewer(state: $viewModel.state)
                 .frame(maxWidth: .infinity).padding(20)
             
         }.border(NefColor.gray)

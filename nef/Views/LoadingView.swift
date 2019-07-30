@@ -29,7 +29,6 @@ class LoadingView: NSView {
         
         let width_2 = frame.width * 0.5
         let height_2 = frame.height * 0.5
-        
         activity.setFrameOrigin(NSPoint(x: width_2 - Layout.activitySize_2,
                                         y: height_2 - Layout.activitySize_2))
     }

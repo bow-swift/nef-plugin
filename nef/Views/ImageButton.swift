@@ -18,7 +18,7 @@ struct ImageButton: View {
     var body: some View {
         image.resizable()
             .foregroundColor(imageColor)
-            .tapAction {
+            .onTapGesture {
                 self.action()
                 self.imageColor = self.color
             }

@@ -4,18 +4,15 @@ import SwiftUI
 import Combine
 import NefModels
 
-class PreferencesViewModel: BindableObject {
-    public let didChange = PassthroughSubject<PreferencesViewModel, Never>()
-    
-    var state: PreferencesModel
-    
-    var showLines: Bool = false     { didSet { changedOption() }}
-    var showWatermark: Bool = false { didSet { changedOption() }}
-    var selectionFont: Int = 0  { didSet { changedOption() }}
-    var selectionTheme: Int = 0 { didSet { changedOption() }}
-    var selectionSize: Int = 0  { didSet { changedOption() }}
-    var selectionColor: Int = 0 { didSet { changedColor()  }}
-    var hex = "" { didSet { changedHex() }}
+class PreferencesViewModel: ObservableObject {
+    @Published var state: PreferencesModel { didSet { persistState() }}
+    @Published var showLines: Bool = false     { didSet { changedOption() }}
+    @Published var showWatermark: Bool = false { didSet { changedOption() }}
+    @Published var selectionFont: Int = 0  { didSet { changedOption() }}
+    @Published var selectionTheme: Int = 0 { didSet { changedOption() }}
+    @Published var selectionSize: Int = 0  { didSet { changedOption() }}
+    @Published var selectionColor: Int = 0 { didSet { changedColor()  }}
+    @Published var hex = "" { didSet { changedHex() }}
     
     let colorItems: [OptionItem]
     let fontItems:  [OptionItem]
@@ -103,20 +100,15 @@ class PreferencesViewModel: BindableObject {
         return keys.enumerated().first(where: { $0.element == carbonColorKey })?.offset
     }
     
-    // MARK: update models and notify
+    // MARK: update models <observers>
     private func changedOption() {
-        publishChanges()
+        updateState()
     }
     
     private func changedColor() {
         guard let hexValue = hexFromColor else { return }
-        
-        let hasHexChanged = hex != hexValue
-        if hasHexChanged {
-            hex = hexValue
-        } else {
-            publishChanges()
-        }
+        if hex != hexValue { hex = hexValue }
+        updateState()
     }
     
     private func changedHex() {
@@ -124,16 +116,12 @@ class PreferencesViewModel: BindableObject {
               let selection = selectionFromColor(color) else { setSelectionColorToCustom(); return }
         
         selectionColor = selection
+        updateState()
     }
     
+    // MARK: update models <helpers>
     private func setSelectionColorToCustom() {
         selectionColor = colorItems.count - 1
-    }
-    
-    private func publishChanges() {
-        updateState()
-        persistState()
-        didChange.send(self)
     }
     
     private func updateState() {

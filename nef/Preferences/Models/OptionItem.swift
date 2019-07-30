@@ -1,6 +1,6 @@
 //  Copyright © 2019 The nef Authors.
 
-import SwiftUI
+import Foundation
 
 struct OptionItem: Identifiable {
     let id: Int
