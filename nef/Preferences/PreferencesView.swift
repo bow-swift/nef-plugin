@@ -19,7 +19,7 @@ struct PreferencesView: View {
                     .color(.blue)
                 Spacer()
                 
-                ImageButton(image: Image("restore"), color: .blue, action: restore)
+                ImageButton(image: NefImage.restore, color: .blue, action: restore)
                     .frame(width: 20, height: 20)
             }.padding(6)
                 .frame(maxWidth: .infinity, maxHeight: 30)
@@ -37,8 +37,10 @@ struct PreferencesView: View {
                 PickerOptionView(title: i18n.Option.color, items: viewModel.colorItems, selection: $viewModel.selectionColor)
                 ColorOptionView(value: $viewModel.hex)
             }.padding(.bottom).offset(x: -12)
-
-            Spacer()
+            
+            CarbonView(state: $viewModel.state)
+                .frame(maxWidth: .infinity).padding(20)
+            
         }.border(NefColor.gray)
          .background(NefColor.white)
          .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -77,6 +79,10 @@ struct PreferencesView: View {
         static let rightPanel: CGFloat = 220
     }
     
+    enum NefImage {
+        static let restore = Image("restore")
+    }
+    
     enum NefColor {
         static let gray = Color(red: 0.78, green: 0.78, blue: 0.78)
         static let white = Color(red: 1, green: 1, blue: 1)
@@ -87,7 +93,7 @@ struct PreferencesView: View {
 import NefModels
 
 extension CarbonStyle.Font {
-    var itemName: String { rawValue.capitalized }
+    var itemName: String { rawValue }
 }
 
 extension CarbonStyle.Size {
