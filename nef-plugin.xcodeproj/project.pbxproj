@@ -146,7 +146,6 @@
 				8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */,
 				8B41588B22D8E47100588921 /* Views */,
 				8BF68F9822DCDD5E009E57A9 /* ViewModels */,
-				8B0389AE22F04F6C000741A5 /* Models */,
 				8BF68F9D22DDD7CD009E57A9 /* Data */,
 			);
 			path = Preferences;
@@ -160,6 +159,7 @@
 				8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */,
 				8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */,
 				8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */,
+				8B0389AE22F04F6C000741A5 /* Models */,
 			);
 			path = Views;
 			sourceTree = "<group>";
