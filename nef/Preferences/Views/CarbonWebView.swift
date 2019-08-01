@@ -27,6 +27,10 @@ class CarbonWebView: WKWebView, WKNavigationDelegate {
         loadCarbonWebView()
     }
     
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        return nil // disabled user interaction
+    }
+    
     func update(state: PreferencesModel) {
         guard self.state != state else { return }
         self.state = state
