@@ -21,10 +21,11 @@ struct PreferencesView: View {
                 Spacer()
                 
                 ImageButton(image: NefImage.restore, color: .blue, action: restore)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 14, height: 14)
+                    .offset(x: -4)
             }.padding(6)
-                .frame(maxWidth: .infinity, maxHeight: 30)
-                .border(NefColor.gray)
+             .frame(maxWidth: .infinity, maxHeight: 30)
+             .border(NefColor.gray)
             
             // Preferences options
             VStack {
@@ -83,7 +84,7 @@ struct PreferencesView: View {
     }
     
     enum NefImage {
-        static let restore = Image("String")
+        static let restore = Image("restore")
     }
     
     enum NefColor {

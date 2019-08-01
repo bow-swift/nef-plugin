@@ -2,7 +2,6 @@
 
 import AppKit
 import SwiftUI
-
 import nef
 import NefModels
 
