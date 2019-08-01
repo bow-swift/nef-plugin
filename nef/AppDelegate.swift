@@ -8,6 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
     private let assembler = Assembler()
     private var command: Command?
+    @IBOutlet weak var aboutMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let command = command else { applicationDidFinishLaunching(); return }
@@ -26,6 +27,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                      andSelector: #selector(handle(event:withReplyEvent:)),
                                      forEventClass: AEEventClass(kInternetEventClass),
                                      andEventID: AEEventID(kAEGetURL))
+    }
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
+    // MARK: Aplication actions
+    @IBAction func showAbout(_ sender: Any) {
+        // TODO
     }
     
     // MARK: life cycle
