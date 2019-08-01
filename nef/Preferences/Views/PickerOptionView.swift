@@ -13,8 +13,9 @@ struct PickerOptionView: View {
             Text("\(title):")
                 .frame(width: PreferencesView.Layout.leftPanel, alignment: .trailing)
             
-            Picker(selection: $selection, label: Text(title)) { self.texts(from: self.items) }
+            Picker(selection: $selection, label: Text("")) { self.texts(from: self.items) }
                 .frame(width: PreferencesView.Layout.rightPanel)
+                .offset(x: -6)
         }
     }
     

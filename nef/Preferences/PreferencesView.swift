@@ -83,7 +83,7 @@ struct PreferencesView: View {
     }
     
     enum NefImage {
-        static let restore = Image("restore")
+        static let restore = Image("String")
     }
     
     enum NefColor {

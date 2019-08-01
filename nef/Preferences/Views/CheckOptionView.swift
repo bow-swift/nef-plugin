@@ -14,7 +14,7 @@ struct CheckOptionView: View {
                 .frame(width: PreferencesView.Layout.leftPanel, alignment: .trailing)
             
             Toggle(isOn: $selection) { Text(text) }
-                .frame(width: PreferencesView.Layout.rightPanel)
+                .frame(width: PreferencesView.Layout.rightPanel, alignment: .leading)
         }
     }
     
