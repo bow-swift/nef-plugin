@@ -42,8 +42,9 @@ struct PreferencesView: View {
             }.padding(.bottom).offset(x: -12)
             
             // Carbon viewer
-            CarbonViewer(state: $viewModel.state)
-                .frame(maxWidth: .infinity).padding(20)
+            CarbonViewer(state: $viewModel.state).frame(maxWidth: .infinity)
+                .cornerRadius(10, antialiased: true)
+                .padding(20)
             
         }.border(NefColor.gray)
          .background(NefColor.white)
