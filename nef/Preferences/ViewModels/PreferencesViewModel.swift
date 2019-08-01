@@ -6,13 +6,14 @@ import NefModels
 
 class PreferencesViewModel: ObservableObject {
     @Published var state: PreferencesModel { didSet { persistState() }}
-    @Published var showLines: Bool = false     { didSet { changedOption() }}
-    @Published var showWatermark: Bool = false { didSet { changedOption() }}
-    @Published var selectionFont: Int = 0  { didSet { changedOption() }}
-    @Published var selectionTheme: Int = 0 { didSet { changedOption() }}
-    @Published var selectionSize: Int = 0  { didSet { changedOption() }}
-    @Published var selectionColor: Int = 0 { didSet { changedColor()  }}
-    @Published var hex = "" { didSet { changedHex() }}
+    
+    var showLines: Bool = false     { didSet { changedOption() }}
+    var showWatermark: Bool = false { didSet { changedOption() }}
+    var selectionFont: Int = 0  { didSet { changedOption() }}
+    var selectionTheme: Int = 0 { didSet { changedOption() }}
+    var selectionSize: Int = 0  { didSet { changedOption() }}
+    var selectionColor: Int = 0 { didSet { changedColor()  }}
+    var hex = "" { didSet { changedHex() }}
     
     let colorItems: [OptionItem]
     let fontItems:  [OptionItem]
@@ -40,7 +41,7 @@ class PreferencesViewModel: ObservableObject {
         let colorOptions = colors.keys.sorted().map { $0.itemColorName }.enumerated().map(OptionItem.init)
         let customColorOption = OptionItem(id: colors.count, name: "-")
         
-        self.state = preferences.default
+        self.state = preferences.state
         self.colorItems = colorOptions + [customColorOption]
         self.fontItems  = fonts.map { $0.itemName }.enumerated().map(OptionItem.init)
         self.themeItems = themes.map { $0.itemName }.enumerated().map(OptionItem.init)
@@ -73,7 +74,7 @@ class PreferencesViewModel: ObservableObject {
         self.selectionFont = selectionFromFont(state.font) ?? 0
         self.selectionTheme = selectionFromTheme(state.theme) ?? 0
         self.selectionSize = selectionFromSize(state.size) ?? 0
-        self.selectionColor = selectionFromColor(state.color) ?? 0
+        self.hex = state.color.hex
     }
     
     private func persistState() {
@@ -81,19 +82,19 @@ class PreferencesViewModel: ObservableObject {
     }
     
     // MARK: helpers
-    func selectionFromFont(_ font: CarbonStyle.Font) -> Int? {
+    private func selectionFromFont(_ font: CarbonStyle.Font) -> Int? {
         return fontItems.enumerated().first(where: { $0.element.name == font.itemName })?.offset
     }
     
-    func selectionFromTheme(_ theme: CarbonStyle.Theme) -> Int? {
+    private func selectionFromTheme(_ theme: CarbonStyle.Theme) -> Int? {
         return themeItems.enumerated().first(where: { $0.element.name == theme.itemName })?.offset
     }
     
-    func selectionFromSize(_ size: CarbonStyle.Size) -> Int? {
+    private func selectionFromSize(_ size: CarbonStyle.Size) -> Int? {
         return sizeItems.enumerated().first(where: { $0.element.name == size.itemName })?.offset
     }
     
-    func selectionFromColor(_ color: CarbonStyle.Color) -> Int? {
+    private func selectionFromColor(_ color: CarbonStyle.Color) -> Int? {
         guard let carbonColor = CarbonStyle.Color.all.first(where: { _, value in color == value }) else { return nil }
         let carbonColorKey = carbonColor.key.lowercased()
         let keys = colorItems.map { $0.name.lowercased() }
@@ -139,7 +140,7 @@ class PreferencesViewModel: ObservableObject {
 extension PreferencesViewModel: ActionViewModel {
     
     func onAppear() {
-        apply(state: preferences.state)
+        apply(state: state)
     }
     
     func tapOnRestore() {

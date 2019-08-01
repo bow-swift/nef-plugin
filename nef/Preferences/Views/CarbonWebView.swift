@@ -22,20 +22,28 @@ class CarbonWebView: WKWebView, WKNavigationDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillMove(toSuperview newSuperview: NSView?) {
+        guard newSuperview != nil else { return }
+        loadCarbonWebView()
+    }
+    
     func update(state: PreferencesModel) {
         guard self.state != state else { return }
         self.state = state
-        
-        loadingView.show()
-        
-        let carbon = Carbon(code: Constants.code, style: state.style)
-        let request = nef.carbonURLRequest(withConfiguration: carbon)
-        load(request)
+        loadCarbonWebView()
     }
     
     private func insertLoadingView() {
         addSubview(loadingView)
         loadingView.align(toView: self)
+    }
+    
+    private func loadCarbonWebView() {
+        loadingView.show()
+        
+        let carbon = Carbon(code: Constants.code, style: state.style)
+        let request = nef.carbonURLRequest(withConfiguration: carbon)
+        load(request)
     }
     
     // MARK: delegate <WKNavigationDelegate>
