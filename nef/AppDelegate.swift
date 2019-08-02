@@ -1,17 +1,14 @@
 //  Copyright © 2019 The nef Authors.
 
-import Cocoa
-import AppKit
 import SwiftUI
-
-import nef
-import NefModels
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
+    private let assembler = Assembler()
     private var command: Command?
+    @IBOutlet weak var aboutMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let command = command else { applicationDidFinishLaunching(); return }
@@ -32,13 +29,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                      andEventID: AEEventID(kAEGetURL))
     }
     
-    // MARK: life cycle
-    private func applicationDidFinishLaunching() {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
+    // MARK: Aplication actions
+    @IBAction func showAbout(_ sender: Any) {
         // TODO
     }
     
+    // MARK: life cycle
+    private func applicationDidFinishLaunching() {
+        preferencesDidFinishLaunching()
+    }
+    
     private func preferencesDidFinishLaunching() {
-        // TODO
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 740),
+                          styleMask: [.titled, .closable, .miniaturizable],
+                          backing: .buffered, defer: false)
+        
+        window.center()
+        window.title = i18n.preferencesTitle
+        window.setFrameAutosaveName(i18n.preferencesTitle)
+        window.contentView = NSHostingView(rootView: assembler.resolvePreferencesView())
+        window.makeKeyAndOrderFront(nil)
     }
     
     private func carbonDidFinishLaunching(code: String) {
@@ -56,17 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let filename = "nef \(Date.now.human)"
         let outputPath = downloadsFolder.appendingPathComponent(filename).path
         
-        let style = CarbonStyle(background: .nef,
-                                theme: .dracula,
-                                size: .x3,
-                                fontType: .firaCode,
-                                lineNumbers: true,
-                                watermark: true)
-        
-        return nef.carbon(code: code,
-                          style: style,
-                          outputPath: outputPath,
-                          success: terminate, failure: { _ in self.terminate() })
+        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath, completion: terminate)
     }
     
     private func terminate() {
@@ -103,9 +107,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    // MARK: Commands
+    // MARK: Constants
     enum Command {
         case preferences
         case carbon(code: String)
+    }
+    
+    enum i18n {
+        static let preferencesTitle = NSLocalizedString("Preferences", comment: "")
     }
 }

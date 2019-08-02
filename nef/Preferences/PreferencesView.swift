@@ -1,0 +1,116 @@
+//  Copyright © 2019 The nef Authors.
+
+import SwiftUI
+
+struct PreferencesView: View {
+    @ObservedObject private var viewModel: PreferencesViewModel
+    
+    init(viewModel: PreferencesViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
+        VStack {
+            // Title bar
+            HStack {
+                Spacer()
+                Text(i18n.title)
+                    .font(.system(size: 11))
+                    .fontWeight(.regular)
+                    .foregroundColor(.blue)
+                Spacer()
+                
+                ImageButton(image: NefImage.restore, color: .blue, action: restore)
+                    .frame(width: 14, height: 14)
+                    .offset(x: -4)
+            }.padding(6)
+             .frame(maxWidth: .infinity, maxHeight: 30)
+             .border(NefColor.gray)
+            
+            // Preferences options
+            VStack {
+                CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $viewModel.showLines)
+                CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $viewModel.showWatermark)
+            }.padding(.all).offset(x: -12)
+
+            VStack {
+                PickerOptionView(title: i18n.Option.font, items: viewModel.fontItems, selection: $viewModel.selectionFont)
+                PickerOptionView(title: i18n.Option.theme, items: viewModel.themeItems, selection: $viewModel.selectionTheme)
+                PickerOptionView(title: i18n.Option.size, items: viewModel.sizeItems, selection: $viewModel.selectionSize)
+                PickerOptionView(title: i18n.Option.color, items: viewModel.colorItems, selection: $viewModel.selectionColor)
+                ColorOptionView(value: $viewModel.hex)
+            }.padding(.bottom).offset(x: -12)
+            
+            // Carbon viewer
+            CarbonViewer(state: $viewModel.state).frame(maxWidth: .infinity)
+                .cornerRadius(10, antialiased: true)
+                .padding(20)
+            
+        }.border(NefColor.gray)
+         .background(NefColor.white)
+         .frame(maxWidth: .infinity, maxHeight: .infinity)
+         .padding(20)
+         .onAppear(perform: onAppear)
+    }
+    
+    // MARK: private methods
+    private func onAppear() {
+        viewModel.onAppear()
+    }
+    
+    private func restore() {
+        viewModel.tapOnRestore()
+    }
+    
+    // MARK: - Constants
+    enum i18n {
+        static let title = NSLocalizedString("Carbon", comment: "")
+        
+        enum Option {
+            static let font = NSLocalizedString("Font type", comment: "")
+            static let theme = NSLocalizedString("Theme", comment: "")
+            static let color = NSLocalizedString("Background color", comment: "")
+            static let size = NSLocalizedString("Size", comment: "")
+        }
+        
+        enum Description {
+            static let showLines = NSLocalizedString("Line numbers", comment: "")
+            static let showWatermark = NSLocalizedString("Watermark", comment: "")
+        }
+    }
+    
+    enum Layout {
+        static let leftPanel: CGFloat  = 150
+        static let rightPanel: CGFloat = 220
+    }
+    
+    enum NefImage {
+        static let restore = Image("restore")
+    }
+    
+    enum NefColor {
+        static let gray = Color(red: 0.78, green: 0.78, blue: 0.78)
+        static let white = Color(red: 1, green: 1, blue: 1)
+    }
+}
+
+// MARK: - CarbonStyle View
+import NefModels
+
+extension CarbonStyle.Font {
+    var itemName: String { rawValue }
+}
+
+extension CarbonStyle.Size {
+    var itemName: String { "\(rawValue)".replacingOccurrences(of: ".0", with: "x") }
+}
+
+extension CarbonStyle.Theme {
+    var itemName: String { rawValue.replacingOccurrences(of: "-", with: " ").capitalized }
+}
+
+extension CarbonStyle {
+    static func itemColorName(in value: String) -> String {
+        value.lowercased() != "nef" ? value.capitalized : value
+    }
+}

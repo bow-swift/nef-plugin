@@ -29,10 +29,11 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
 
     // MARK: commands
     private func preferences(completion: @escaping (Error?) -> Void) {
-        print("PREFERENCES")
+        let preferencesItem = URLQueryItem(name: "preferences", value: nil)
+        let url = nefAppURL(from: preferencesItem)
         
-        // TODO
-        completion(EditorError.invalidCommand)
+        try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
+        completion(nil)
     }
     
     private func carbon(textRange: XCSourceTextRange, lines: [String], completion: @escaping (Error?) -> Void) {
@@ -40,16 +41,18 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         
         let code = removeLeadingMargin(selection)
         let codeItem = URLQueryItem(name: "carbon", value: code)
+        let url = nefAppURL(from: codeItem)
+        
+        try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
+        completion(nil)
+    }
+    
+    private func nefAppURL(from item: URLQueryItem) -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.scheme
         urlComponents.host = "xcode"
-        urlComponents.queryItems = [codeItem]
-        
-        try! NSWorkspace.shared.open(urlComponents.url!,
-                                     options: .newInstance,
-                                     configuration: [:])
-        
-        completion(nil)
+        urlComponents.queryItems = [item]
+        return urlComponents.url!
     }
     
     // MARK: private methods

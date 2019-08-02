@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
+		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
+		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
+		8B41588522D8DDE700588921 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588422D8DDE700588921 /* ImageButton.swift */; };
+		8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */; };
+		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
+		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
+		8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */; };
+		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
+		8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF222F036E3001EE2DF /* LoadingView.swift */; };
+		8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */; };
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
@@ -15,7 +26,13 @@
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCCE9DE22CE496700BF0A62 /* nef */; };
+		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
+		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
+		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
+		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
+		8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */; };
+		8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */; };
+		8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,15 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8B575CBF22CCF998006DBD62 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BB2896322CB6F81006E4CCB /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,26 +57,49 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF851A222F07215003D1EBD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		8B575CC322CD0257006DBD62 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8B2CE74522D89C8900571F24 /* CheckOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOptionView.swift; sourceTree = "<group>"; };
+		8B2CE74722D8A35400571F24 /* ColorOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionView.swift; sourceTree = "<group>"; };
+		8B41588422D8DDE700588921 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Color.swift"; sourceTree = "<group>"; };
+		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
+		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
+		8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonWebView.swift; sourceTree = "<group>"; };
+		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
+		8B9F3CF222F036E3001EE2DF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8BB2892A22CB6EFB006E4CCB /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BB2892F22CB6EFB006E4CCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		8BB2893122CB6EFD006E4CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8BB2893722CB6EFD006E4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB2893922CB6EFD006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2893A22CB6EFD006E4CCB /* nef.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef.entitlements; sourceTree = "<group>"; };
 		8BB2895222CB6F81006E4CCB /* nef-plugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "nef-plugin.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB2895422CB6F81006E4CCB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefEditorCommand.swift; sourceTree = "<group>"; };
 		8BB2895B22CB6F81006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
+		8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
+		8BF68FA022DDD8BD009E57A9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
+		8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesModel.swift; sourceTree = "<group>"; };
+		8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
+		8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BCCE9DF22CE496700BF0A62 /* nef in Frameworks */,
+				8BBDE53C22DC86BB00598565 /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,12 +121,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8BAAB73B22D4DB1200FD3636 /* Utils */ = {
+		8B0389AE22F04F6C000741A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
+				8B4D1E1622D88A5E004432CF /* OptionItem.swift */,
 			);
-			path = Utils;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B41588622D8E42C00588921 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
+				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
+				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
+				8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8B41588922D8E45400588921 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */,
+				8B41588B22D8E47100588921 /* Views */,
+				8BF68F9822DCDD5E009E57A9 /* ViewModels */,
+				8BF68F9D22DDD7CD009E57A9 /* Data */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		8B41588B22D8E47100588921 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B2CE74522D89C8900571F24 /* CheckOptionView.swift */,
+				8B2CE74722D8A35400571F24 /* ColorOptionView.swift */,
+				8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */,
+				8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */,
+				8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */,
+				8B0389AE22F04F6C000741A5 /* Models */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8B41588C22D8E48300588921 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B41588422D8DDE700588921 /* ImageButton.swift */,
+				8B9F3CF222F036E3001EE2DF /* LoadingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8BB2892122CB6EFB006E4CCB = {
@@ -121,12 +196,14 @@
 			isa = PBXGroup;
 			children = (
 				8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */,
-				8BB2892F22CB6EFB006E4CCB /* ContentView.swift */,
+				8BF68FA022DDD8BD009E57A9 /* Assembler.swift */,
+				8B41588922D8E45400588921 /* Preferences */,
+				8B41588C22D8E48300588921 /* Views */,
+				8B41588622D8E42C00588921 /* Extensions */,
 				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
 				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
-				8BAAB73B22D4DB1200FD3636 /* Utils */,
-				8BB2896422CB6FF0006E4CCB /* Support Files */,
 				8BB2893322CB6EFD006E4CCB /* Preview Content */,
+				8BB2896422CB6FF0006E4CCB /* Support Files */,
 			);
 			path = nef;
 			sourceTree = "<group>";
@@ -142,9 +219,6 @@
 		8BB2895322CB6F81006E4CCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8B575CC322CD0257006DBD62 /* AppKit.framework */,
-				8B575C6B22CCC589006DBD62 /* NetworkExtension.framework */,
-				8BB2895422CB6F81006E4CCB /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,6 +251,24 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		8BF68F9822DCDD5E009E57A9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */,
+				8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8BF68F9D22DDD7CD009E57A9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */,
+				8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,6 +280,7 @@
 				8BB2892722CB6EFB006E4CCB /* Frameworks */,
 				8BB2892822CB6EFB006E4CCB /* Resources */,
 				8BB2896322CB6F81006E4CCB /* Embed App Extensions */,
+				8BF851A222F07215003D1EBD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +289,7 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8BCCE9DE22CE496700BF0A62 /* nef */,
+				8BBDE53B22DC86BB00598565 /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -209,7 +302,6 @@
 				8BB2894E22CB6F81006E4CCB /* Sources */,
 				8BB2894F22CB6F81006E4CCB /* Frameworks */,
 				8BB2895022CB6F81006E4CCB /* Resources */,
-				8B575CBF22CCF998006DBD62 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -250,7 +342,7 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */,
+				8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -287,8 +379,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */,
+				8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */,
+				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
+				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
+				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
+				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
+				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
+				8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */,
+				8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */,
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
+				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
+				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
+				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
+				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
+				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
+				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
+				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
+				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,11 +482,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -427,10 +533,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -454,7 +558,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -482,7 +585,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.47deg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
@@ -571,20 +673,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */ = {
+		8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
+				minimumVersion = 0.3.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BCCE9DE22CE496700BF0A62 /* nef */ = {
+		8BBDE53B22DC86BB00598565 /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B575C8222CCEAE0006DBD62 /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
