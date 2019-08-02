@@ -38,7 +38,7 @@ class PreferencesViewModel: ObservableObject {
         self.themes = themes
         self.sizes = sizes
         
-        let colorOptions = colors.keys.sorted().map { $0.itemColorName }.enumerated().map(OptionItem.init)
+        let colorOptions = colors.keys.sorted().map(CarbonStyle.itemColorName).enumerated().map(OptionItem.init)
         let customColorOption = OptionItem(id: colors.count, name: "-")
         
         self.state = preferences.state

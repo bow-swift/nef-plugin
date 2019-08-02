@@ -109,6 +109,8 @@ extension CarbonStyle.Theme {
     var itemName: String { rawValue.replacingOccurrences(of: "-", with: " ").capitalized }
 }
 
-extension String {
-    var itemColorName: String { self != "nef" ? capitalized : self }
+extension CarbonStyle {
+    static func itemColorName(in value: String) -> String {
+        value.lowercased() != "nef" ? value.capitalized : value
+    }
 }

@@ -23,7 +23,11 @@ class PreferencesDataSource {
     }
     
     func persist(model: PreferencesModel) {
-        store(state: model)
+        guard let file = file,
+              let data = try? JSONEncoder().encode(state) else { return }
+        
+        removeFile(file)
+        fileManager.createFile(atPath: file.path, contents: data, attributes: nil)
     }
     
     // MARK: private methods
@@ -42,15 +46,7 @@ class PreferencesDataSource {
         guard !fileManager.fileExists(atPath: appFolder.path) else { return }
         
         try? fileManager.createDirectory(at: appFolder, withIntermediateDirectories: true, attributes: nil)
-        store(state: self.default)
-    }
-    
-    private func store(state: PreferencesModel) {
-        guard let file = file,
-              let data = try? JSONEncoder().encode(state) else { return }
-        
-        removeFile(file)
-        fileManager.createFile(atPath: file.path, contents: data, attributes: nil)
+        persist(model: self.default)
     }
     
     private func retrieveState() -> PreferencesModel? {
