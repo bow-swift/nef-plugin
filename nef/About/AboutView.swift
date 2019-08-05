@@ -17,14 +17,17 @@ struct AboutView: View {
             nefView
             SeparatorView(height: 16, color: .purple)
             
-            InstallStepView(image: NefImage.preferences, opacity: 0.85, description: i18n.installPreferences).onTapGesture(perform: openPreferences)
-            InstallStepView(image: NefImage.extensions, opacity: 0.9, description: i18n.installExtensions).onTapGesture(perform: openPreferences)
+            InstallStepView(image: NefImage.preferences, opacity: 0.85, description: i18n.installPreferences)
+                .onTapGesture(perform: openPreferences)
+            InstallStepView(image: NefImage.extensions, opacity: 0.9, description: i18n.installExtensions)
+                .onTapGesture(perform: openPreferences)
             FixedToggle(title: "nef", description: i18n.nefExtension, isOn: true)
             
             Spacer()
             
             githubView.padding(8)
             Text(i18n.copyright)
+                .foregroundColor(.init(white: 0.7))
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
          .padding(16)
