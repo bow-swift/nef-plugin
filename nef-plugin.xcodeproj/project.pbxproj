@@ -10,6 +10,11 @@
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
+		8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A622F82AAE00E92BC9 /* AboutView.swift */; };
+		8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A922F8329900E92BC9 /* Browser.swift */; };
+		8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21AB22F8644000E92BC9 /* FixedToggle.swift */; };
+		8B3B21AE22F8691800E92BC9 /* InstallStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21AD22F8691800E92BC9 /* InstallStepView.swift */; };
+		8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21AF22F86C5600E92BC9 /* SeparatorView.swift */; };
 		8B41588522D8DDE700588921 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588422D8DDE700588921 /* ImageButton.swift */; };
 		8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */; };
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
@@ -72,6 +77,11 @@
 /* Begin PBXFileReference section */
 		8B2CE74522D89C8900571F24 /* CheckOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOptionView.swift; sourceTree = "<group>"; };
 		8B2CE74722D8A35400571F24 /* ColorOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionView.swift; sourceTree = "<group>"; };
+		8B3B21A622F82AAE00E92BC9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8B3B21A922F8329900E92BC9 /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		8B3B21AB22F8644000E92BC9 /* FixedToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedToggle.swift; sourceTree = "<group>"; };
+		8B3B21AD22F8691800E92BC9 /* InstallStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallStepView.swift; sourceTree = "<group>"; };
+		8B3B21AF22F86C5600E92BC9 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		8B41588422D8DDE700588921 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Color.swift"; sourceTree = "<group>"; };
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
@@ -129,6 +139,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8B3B21A522F8246E00E92BC9 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				8B3B21A622F82AAE00E92BC9 /* AboutView.swift */,
+				8B3B21AB22F8644000E92BC9 /* FixedToggle.swift */,
+				8B3B21AD22F8691800E92BC9 /* InstallStepView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		8B3B21A822F8328B00E92BC9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8B3B21A922F8329900E92BC9 /* Browser.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8B41588622D8E42C00588921 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +197,7 @@
 			children = (
 				8B41588422D8DDE700588921 /* ImageButton.swift */,
 				8B9F3CF222F036E3001EE2DF /* LoadingView.swift */,
+				8B3B21AF22F86C5600E92BC9 /* SeparatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,8 +226,10 @@
 			children = (
 				8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */,
 				8BF68FA022DDD8BD009E57A9 /* Assembler.swift */,
+				8B3B21A522F8246E00E92BC9 /* About */,
 				8B41588922D8E45400588921 /* Preferences */,
 				8B41588C22D8E48300588921 /* Views */,
+				8B3B21A822F8328B00E92BC9 /* Utils */,
 				8B41588622D8E42C00588921 /* Extensions */,
 				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
 				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
@@ -383,6 +414,8 @@
 				8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */,
 				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
 				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
+				8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */,
+				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
@@ -395,9 +428,12 @@
 				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
 				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
+				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,
+				8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */,
+				8B3B21AE22F8691800E92BC9 /* InstallStepView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
