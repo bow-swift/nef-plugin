@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: life cycle
     private func applicationDidFinishLaunching() {
-        preferencesDidFinishLaunching()
+        aboutDidFinishLaunching()
     }
     
     private func aboutDidFinishLaunching() {
