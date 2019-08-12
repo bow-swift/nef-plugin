@@ -31,7 +31,7 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
     // MARK: - Constants
     enum i18n {
-        static let preferences = NSLocalizedString("Preferences", comment: "")
-        static let exportSnippet = NSLocalizedString("Export code snippet", comment: "")
+        static let preferences = NSLocalizedString("preferences", comment: "")
+        static let exportSnippet = NSLocalizedString("plugin_carbon", comment: "")
     }
 }

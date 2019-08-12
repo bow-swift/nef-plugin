@@ -64,18 +64,18 @@ struct PreferencesView: View {
     
     // MARK: - Constants
     enum i18n {
-        static let title = NSLocalizedString("Carbon", comment: "")
+        static let title = NSLocalizedString("preferences_title", comment: "")
         
         enum Option {
-            static let font = NSLocalizedString("Font type", comment: "")
-            static let theme = NSLocalizedString("Theme", comment: "")
-            static let color = NSLocalizedString("Background color", comment: "")
-            static let size = NSLocalizedString("Size", comment: "")
+            static let font = NSLocalizedString("preferences_option_font", comment: "")
+            static let theme = NSLocalizedString("preferences_option_theme", comment: "")
+            static let color = NSLocalizedString("preferences_option_color", comment: "")
+            static let size = NSLocalizedString("preferences_option_size", comment: "")
         }
         
         enum Description {
-            static let showLines = NSLocalizedString("Line numbers", comment: "")
-            static let showWatermark = NSLocalizedString("Watermark", comment: "")
+            static let showLines = NSLocalizedString("preferences_description_lines", comment: "")
+            static let showWatermark = NSLocalizedString("preferences_description_watermark", comment: "")
         }
     }
     

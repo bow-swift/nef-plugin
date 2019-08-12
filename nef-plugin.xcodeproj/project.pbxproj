@@ -26,12 +26,14 @@
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
-		8BB2893522CB6EFD006E4CCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */; };
 		8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893622CB6EFD006E4CCB /* Main.storyboard */; };
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
+		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
+		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
+		8BEFF9372301AEDB009AA042 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
@@ -95,7 +97,6 @@
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		8BB2893122CB6EFD006E4CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8BB2893722CB6EFD006E4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB2893922CB6EFD006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2893A22CB6EFD006E4CCB /* nef.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef.entitlements; sourceTree = "<group>"; };
@@ -104,6 +105,11 @@
 		8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefEditorCommand.swift; sourceTree = "<group>"; };
 		8BB2895B22CB6F81006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
+		8BEFF92C2301A86B009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BEFF92F2301A8B9009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BEFF9312301A8CE009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		8BEFF9332301A8CF009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		8BEFF9382301AEDB009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
 		8BF68FA022DDD8BD009E57A9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 			children = (
 				8BB2892C22CB6EFB006E4CCB /* nef */,
 				8BB2895622CB6F81006E4CCB /* nef-plugin */,
+				8BEFF92E2301A897009AA042 /* Support Files */,
 				8BB2895322CB6F81006E4CCB /* Frameworks */,
 				8BB2892B22CB6EFB006E4CCB /* Products */,
 			);
@@ -233,18 +240,9 @@
 				8B41588622D8E42C00588921 /* Extensions */,
 				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
 				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
-				8BB2893322CB6EFD006E4CCB /* Preview Content */,
 				8BB2896422CB6FF0006E4CCB /* Support Files */,
 			);
 			path = nef;
-			sourceTree = "<group>";
-		};
-		8BB2893322CB6EFD006E4CCB /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				8BB2893422CB6EFD006E4CCB /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		8BB2895322CB6F81006E4CCB /* Frameworks */ = {
@@ -278,6 +276,15 @@
 			children = (
 				8BB2895B22CB6F81006E4CCB /* Info.plist */,
 				8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		8BEFF92E2301A897009AA042 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BEFF92D2301A86B009AA042 /* Localizable.strings */,
+				8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -370,6 +377,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
@@ -390,8 +398,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BEFF9372301AEDB009AA042 /* Localizable.stringsdict in Resources */,
 				8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */,
-				8BB2893522CB6EFD006E4CCB /* Preview Assets.xcassets in Resources */,
+				8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */,
 				8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,8 +471,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				8BB2893722CB6EFD006E4CCB /* Base */,
+				8BEFF9312301A8CE009AA042 /* en */,
+				8BEFF9332301A8CF009AA042 /* es */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8BEFF92D2301A86B009AA042 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BEFF92C2301A86B009AA042 /* en */,
+				8BEFF92F2301A8B9009AA042 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BEFF9382301AEDB009AA042 /* en */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -472,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -529,6 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -586,9 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "nef/Preview\\ Content";
 				DEVELOPMENT_TEAM = PKCNK63FZQ;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -613,9 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "nef/Preview\\ Content";
 				DEVELOPMENT_TEAM = PKCNK63FZQ;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

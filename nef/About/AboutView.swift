@@ -80,10 +80,10 @@ struct AboutView: View {
     }
     
     enum i18n {
-        static let copyright = NSLocalizedString("Copyright © 2019 The nef authors", comment: "")
-        static let github = NSLocalizedString("Read more about nef on GitHub", comment: "")
-        static let installPreferences = NSLocalizedString("Open 'System Preferences'", comment: "")
-        static let installExtensions = NSLocalizedString("Select 'Extension'", comment: "")
-        static let nefExtension = NSLocalizedString("Xcode Source Editor", comment: "")
+        static let copyright = NSLocalizedString("copyright", comment: "")
+        static let github = NSLocalizedString("github", comment: "")
+        static let installPreferences = NSLocalizedString("install_preferences", comment: "")
+        static let installExtensions = NSLocalizedString("install_extensions", comment: "")
+        static let nefExtension = NSLocalizedString("nef_extension", comment: "")
     }
 }

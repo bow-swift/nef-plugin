@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: life cycle
     private func applicationDidFinishLaunching() {
-        aboutDidFinishLaunching()
+        preferencesDidFinishLaunching()
     }
     
     private func aboutDidFinishLaunching() {
@@ -133,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     enum i18n {
-        static let preferencesTitle = NSLocalizedString("Preferences", comment: "")
-        static let aboutTitle = NSLocalizedString("About", comment: "")
+        static let preferencesTitle = NSLocalizedString("preferences", comment: "")
+        static let aboutTitle = NSLocalizedString("about", comment: "")
     }
 }
