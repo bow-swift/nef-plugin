@@ -20,6 +20,6 @@ struct CheckOptionView: View {
     
     // MARK: - Constants
     enum i18n {
-        static let title = NSLocalizedString("Show", comment: "")
+        static let title = NSLocalizedString("check_option_title", comment: "")
     }
 }

@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesDidFinishLaunching()
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
+        case .about:
+            aboutDidFinishLaunching()
         }
     }
     
@@ -35,12 +37,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Aplication actions
     @IBAction func showAbout(_ sender: Any) {
-        // TODO
+        aboutDidFinishLaunching()
     }
     
     // MARK: life cycle
     private func applicationDidFinishLaunching() {
-        preferencesDidFinishLaunching()
+        aboutDidFinishLaunching()
+    }
+    
+    private func aboutDidFinishLaunching() {
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 350, height: 350),
+                          styleMask: [.titled, .closable],
+                          backing: .buffered, defer: false)
+        
+        window.center()
+        window.title = i18n.aboutTitle
+        window.setFrameAutosaveName(i18n.aboutTitle)
+        window.contentView = NSHostingView(rootView: assembler.resolveAboutView())
+        window.makeKeyAndOrderFront(nil)
+        
+        aboutMenuItem.isHidden = true
     }
     
     private func preferencesDidFinishLaunching() {
@@ -102,6 +118,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .preferences
         case let ("carbon", value):
             return .carbon(code: value)
+        case ("about", _):
+            return .about
         default:
             return nil
         }
@@ -109,11 +127,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Constants
     enum Command {
+        case about
         case preferences
         case carbon(code: String)
     }
     
     enum i18n {
-        static let preferencesTitle = NSLocalizedString("Preferences", comment: "")
+        static let preferencesTitle = NSLocalizedString("preferences", comment: "")
+        static let aboutTitle = NSLocalizedString("about", comment: "")
     }
 }

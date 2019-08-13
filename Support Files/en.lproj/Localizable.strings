@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Copyright © 2019 The nef Authors.
+*/
+
+// MARK: - Plugin
+"plugin_carbon" = "Export code snippet";
+
+// MARK: - Screens
+"about" = "About";
+"preferences" = "Preferences";
+
+// MARK: - About
+"copyright" = "Copyright © 2019 The nef authors";
+"github" = "Read more about nef on GitHub";
+"install_preferences" = "Open 'System Preferences'";
+"install_extensions" = "Select 'Extension'";
+"nef_extension" = "Xcode Source Editor";
+
+// MARK: - Preferences
+"check_option_title" = "Show";
+"preferences_title" = "Carbon";
+"preferences_option_font" = "Font type";
+"preferences_option_theme" = "Theme";
+"preferences_option_color" = "Background color";
+"preferences_option_size" = "Size";
+"preferences_description_lines" = "Line numbers";
+"preferences_description_watermark" = "Watermark";

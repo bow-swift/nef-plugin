@@ -9,6 +9,11 @@ class Assembler {
     
     private lazy var preferencesDataSource = resolvePreferencesDataSource()
     
+    func resolveAboutView() -> some View {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+        return AboutView(version: version, browser: Browser())
+    }
+    
     func resolvePreferencesView() -> some View {
         return PreferencesView(viewModel: resolvePreferencesViewModel())
     }
