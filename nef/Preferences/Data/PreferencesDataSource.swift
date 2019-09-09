@@ -24,7 +24,7 @@ class PreferencesDataSource {
     
     func persist(model: PreferencesModel) {
         guard let file = file,
-              let data = try? JSONEncoder().encode(state) else { return }
+              let data = try? JSONEncoder().encode(model) else { return }
         
         removeFile(file)
         fileManager.createFile(atPath: file.path, contents: data, attributes: nil)
@@ -36,7 +36,7 @@ class PreferencesDataSource {
     
     private var file: URL? { appFolder?.appendingPathComponent("\(fileName).json", isDirectory: false) }
     private var appFolder: URL? {
-        let root = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+        let root = fileManager.urls(for: .autosavedInformationDirectory, in: .userDomainMask).first
         let app = root?.appendingPathComponent(folderName, isDirectory: true)
         return app
     }
