@@ -17,6 +17,24 @@
     </a>
 </p>
 
+It is a plugin for Xcode to integrate some of the nef's features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
+
+## 📥 Installation
+
+You can install `nef` plugin from [Mac App Store](TODO) or download the last binary from the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
+
+To complete the installation, you should enable `nef` plugin from `System Preferences > Extensions > Xcode Source Editor`
+
+## 🌁 Export code selection to snippet
+
+In Xcode you can find the nef plugin options in `Editor`. 
+
+If you want to export your current code selection into a snippet, you only need to select the action `` - you can associate these actions to shortcuts.
+
+## 🔨 Xcode navigation keyboard shortcuts
+
+To make you a more productive developer, you can associate a shortcuts to each `nef` actions.
+
 # ⚖️ License
 
     Copyright (C) 2019 The nef Authors
