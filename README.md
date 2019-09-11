@@ -17,6 +17,12 @@
     </a>
 </p>
 
+It is a plugin for Xcode to integrate some of the nef's features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly Xcode.
+
+## 📥 Installation
+
+You can install `nef` plugin from [Mac App Store](TODO) or download the last binary from the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
+
 # ⚖️ License
 
     Copyright (C) 2019 The nef Authors
