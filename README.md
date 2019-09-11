@@ -1,8 +1,8 @@
-![](assets/nef-brand-xcode.png)
+![](https://github.com/bow-swift/bow-art/blob/master/assets/nef-brand-xcode.png?raw=true)
 [![nef](https://img.shields.io/badge/nef-%E2%9C%93-blueviolet)](https://github.com/bow-swift/nef)
 [![Swift 5](https://img.shields.io/badge/swift-5-ED523F.svg?style=flat)](https://swift.org/download/)
 [![Swift UI](https://img.shields.io/badge/Swift%20UI-%E2%9C%93-orange)](https://developer.apple.com/xcode/swiftui/)
-[![Xcode 11](https://img.shields.io/badge/platform-Xcode%2011-blue)](https://developer.apple.com/xcode/)
+[![Xcode 11](https://img.shields.io/badge/IDE-Xcode%2011-blue)](https://developer.apple.com/xcode/)
 
 # ⚖️ License
 
