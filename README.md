@@ -1,8 +1,21 @@
-![](https://github.com/bow-swift/bow-art/blob/master/assets/nef-brand-xcode.png?raw=true)
-[![nef](https://img.shields.io/badge/nef-%E2%9C%93-blueviolet)](https://github.com/bow-swift/nef)
-[![Swift 5](https://img.shields.io/badge/swift-5-ED523F.svg?style=flat)](https://swift.org/download/)
-[![Swift UI](https://img.shields.io/badge/Swift%20UI-%E2%9C%93-orange)](https://developer.apple.com/xcode/swiftui/)
-[![Xcode 11](https://img.shields.io/badge/IDE-Xcode%2011-blue)](https://developer.apple.com/xcode/)
+<p align="center">
+    <img src="https://github.com/bow-swift/bow-art/blob/master/assets/nef-brand-xcode-shadow.png?raw=true" alt="nef: an Xcode 11 plugin" width="30%"/>
+</p>
+
+<p align="center">
+    <a href="https://github.com/bow-swift/nef">
+    <img src="https://img.shields.io/badge/nef-%E2%9C%93-blueviolet" alt="nef">
+    </a>
+    <a href="https://swift.org/download">
+    <img src="https://img.shields.io/badge/swift-5-ED523F.svg?style=flat" alt="Swift 5">
+    </a>
+    <a href="https://developer.apple.com/xcode/swiftui">
+    <img src="https://img.shields.io/badge/Swift%20UI-%E2%9C%93-orange" alt="Swift UI">
+    </a>
+    <a href="https://developer.apple.com/xcode">
+    <img src="https://img.shields.io/badge/IDE-Xcode%2011-blue" alt="Xcode 11">
+    </a>
+</p>
 
 # ⚖️ License
 
