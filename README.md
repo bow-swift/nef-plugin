@@ -30,7 +30,7 @@ You can install `nef` plugin from [Mac App Store](TODO) or download the last bin
 To complete the installation, you should enable `nef` extension from `System Preferences > Extensions > Xcode Source Editor`
 
 <p align="center">
-    <img src="assets/nef-xcode-shortcuts.png" alt="nef: enable Xcode extension" width="90%"/>
+    <img src="assets/nef-plugin-extensions.png" alt="nef: enable Xcode extension" width="90%"/>
 </p>
 
 ## 🌁 Export code selection to snippet
