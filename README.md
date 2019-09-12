@@ -17,7 +17,11 @@
     </a>
 </p>
 
+&nbsp;
+
 It is a plugin for Xcode to integrate some of the nef's features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
+
+&nbsp;
 
 ## 📥 Installation
 
@@ -25,15 +29,29 @@ You can install `nef` plugin from [Mac App Store](TODO) or download the last bin
 
 To complete the installation, you should enable `nef` plugin from `System Preferences > Extensions > Xcode Source Editor`
 
+<p align="center">
+    <img src="assets/nef-xcode-shortcuts.png" alt="nef: enable Xcode extension" width="90%"/>
+</p>
+
 ## 🌁 Export code selection to snippet
 
 In Xcode you can find the nef plugin options in `Editor`. 
 
-If you want to export your current code selection into a snippet, you only need to select the action `` - you can associate these actions to shortcuts.
+If you want to export your current code selection into a snippet, you only need to select the action `Editor > nef > Export code snippet`
+
+&nbsp;
+
+<p align="center">
+    <img src="assets/nef-plugin-action-export.png" alt="nef: action for exporting code selection to snippet" width="90%"/>
+</p>
 
 ## 🔨 Xcode navigation keyboard shortcuts
 
-To make you a more productive developer, you can associate a shortcuts to each `nef` actions.
+To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action. Open the shortcut menu in `Xcode > Preferences... > Key Bindings` and set your command.
+
+<p align="center">
+    <img src="assets/nef-xcode-shortcuts.png" alt="nef: set keyboard shortcut"/>
+</p>
 
 # ⚖️ License
 
