@@ -19,7 +19,7 @@
 
 &nbsp;
 
-It is a plugin for Xcode to integrate some of the nef's features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
+This project provides a plugin for Xcode to integrate some nef features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
 
 &nbsp;
 
