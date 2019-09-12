@@ -27,7 +27,7 @@ It is a plugin for Xcode to integrate some of the nef's features directly in the
 
 You can install `nef` plugin from [Mac App Store](TODO) or download the last binary from the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
 
-To complete the installation, you should enable `nef` plugin from `System Preferences > Extensions > Xcode Source Editor`
+To complete the installation, you should enable `nef` extension from `System Preferences > Extensions > Xcode Source Editor`
 
 <p align="center">
     <img src="assets/nef-xcode-shortcuts.png" alt="nef: enable Xcode extension" width="90%"/>
@@ -47,7 +47,8 @@ If you want to export your current code selection into a snippet, you only need 
 
 ## 🔨 Xcode navigation keyboard shortcuts
 
-To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action. Open the shortcut menu in `Xcode > Preferences... > Key Bindings` and set your command.
+To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action. 
+Open the shortcut menu in `Xcode > Preferences... > Key Bindings` and set your command.
 
 <p align="center">
     <img src="assets/nef-xcode-shortcuts.png" alt="nef: set keyboard shortcut"/>
