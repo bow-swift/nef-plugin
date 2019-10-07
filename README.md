@@ -6,20 +6,24 @@
     <a href="https://github.com/bow-swift/nef">
     <img src="https://img.shields.io/badge/nef-%E2%9C%93-blueviolet" alt="nef">
     </a>
-    <a href="https://swift.org/download">
-    <img src="https://img.shields.io/badge/swift-5-ED523F.svg?style=flat" alt="Swift 5">
-    </a>
     <a href="https://developer.apple.com/xcode/swiftui">
     <img src="https://img.shields.io/badge/Swift%20UI-%E2%9C%93-orange" alt="Swift UI">
     </a>
-    <a href="https://developer.apple.com/xcode">
-    <img src="https://img.shields.io/badge/IDE-Xcode%2011-blue" alt="Xcode 11">
+    <a href="https://swift.org/download">
+    <img src="https://img.shields.io/badge/Swift-5.1-orange" alt="Swift 5.1">
     </a>
+    <a href="https://developer.apple.com/xcode">
+    <img src="https://img.shields.io/badge/IDE-Xcode%2011-blue" alt="Xcode 11+">
+    </a>
+    <a href="https://www.apple.com/macos/catalina/">
+    <img src="https://img.shields.io/badge/macOS-10.15%2B-blue" alt="macOS 10.15+">
+    </a>
+    
 </p>
 
 &nbsp;
 
-This project provides a plugin for Xcode to integrate some nef features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
+This project provides an extension for Xcode to integrate some nef features directly in the IDE. Using the core of `nef`, you can [export snippets](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) from your code selection directly in Xcode.
 
 &nbsp;
 
