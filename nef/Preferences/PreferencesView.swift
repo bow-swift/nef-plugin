@@ -43,6 +43,7 @@ struct PreferencesView: View {
             
             // Carbon viewer
             CarbonViewer(state: $viewModel.state).frame(maxWidth: .infinity)
+                .background(NefColor.background)
                 .cornerRadius(12, antialiased: true)
                 .padding(22)
             
