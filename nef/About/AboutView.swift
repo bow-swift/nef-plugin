@@ -15,7 +15,7 @@ struct AboutView: View {
     var body: some View {
         VStack(spacing: 16) {
             nefView
-            SeparatorView(height: 16, color: .purple)
+            SeparatorView(height: 16, color: NefColor.separator)
             
             InstallStepView(image: NefImage.preferences, opacity: 0.85, description: i18n.installPreferences)
                 .onTapGesture(perform: openPreferences)
@@ -73,6 +73,10 @@ struct AboutView: View {
         static let logo = Image("nef-favicon")
         static let preferences = Image("system-preferences")
         static let extensions = Image("system-extensions")
+    }
+    
+    enum NefColor {
+        static let separator = Color("panel-border-color")
     }
     
     enum Constants {

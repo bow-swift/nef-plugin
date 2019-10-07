@@ -25,7 +25,7 @@ struct PreferencesView: View {
                     .offset(x: -4)
             }.padding(6)
              .frame(maxWidth: .infinity, maxHeight: 30)
-             .border(NefColor.gray)
+             .border(NefColor.border)
             
             // Preferences options
             VStack {
@@ -43,11 +43,11 @@ struct PreferencesView: View {
             
             // Carbon viewer
             CarbonViewer(state: $viewModel.state).frame(maxWidth: .infinity)
-                .cornerRadius(10, antialiased: true)
-                .padding(20)
+                .cornerRadius(12, antialiased: true)
+                .padding(22)
             
-        }.border(NefColor.gray)
-         .background(NefColor.white)
+        }.border(NefColor.border)
+         .background(NefColor.panel)
          .frame(maxWidth: .infinity, maxHeight: .infinity)
          .padding(20)
          .onAppear(perform: onAppear)
@@ -89,8 +89,9 @@ struct PreferencesView: View {
     }
     
     enum NefColor {
-        static let gray = Color(red: 0.78, green: 0.78, blue: 0.78)
-        static let white = Color(red: 1, green: 1, blue: 1)
+        static let background = Color("background-color")
+        static let panel = Color("panel-color")
+        static let border = Color("panel-border-color")
     }
 }
 
