@@ -53,7 +53,7 @@ If you want to export your current code selection into a snippet, you only need 
 ## 🔨 Xcode navigation keyboard shortcuts
 
 To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action.
-Open the shortcut menu in `Xcode > Preferences... > Key Bindings` and set your command.
+Open the shortcuts menu in `Xcode > Preferences... > Key Bindings` and set your command.
 
 <p align="center">
     <img src="assets/nef-xcode-shortcuts.png" alt="nef: set keyboard shortcut"/>
