@@ -20,7 +20,7 @@ struct InstallStepView: View {
                 Text(description)
             }
             
-            SeparatorView(height: 30, color: .purple)
+            SeparatorView(height: 30, color: AboutView.NefColor.separator)
         }
     }
 }

@@ -15,13 +15,13 @@ class LoadingView: NSView {
     }
     
     func show() {
-        self.layer?.backgroundColor = NSColor.white.cgColor
+        self.layer?.backgroundColor = LoadingView.Color.background.cgColor
         activity.startAnimation(nil)
     }
     
     func hide() {
         self.activity.stopAnimation(nil)
-        self.layer?.backgroundColor = NSColor.clear.cgColor
+        self.layer?.backgroundColor = LoadingView.Color.clear.cgColor
     }
     
     override func layout() {
@@ -47,5 +47,10 @@ class LoadingView: NSView {
     enum Layout {
         static let activitySize: CGFloat = 25
         static let activitySize_2: CGFloat = activitySize * 0.5
+    }
+    
+    enum Color {
+        static let background = NSColor(named: "background-color")!
+        static let clear = NSColor.clear
     }
 }
