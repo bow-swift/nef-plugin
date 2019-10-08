@@ -18,11 +18,11 @@ class Assembler {
         return PreferencesView(viewModel: resolvePreferencesViewModel())
     }
     
-    func resolveCarbonWindow(code: String, outputPath: String, completion: @escaping () -> Void) -> NSWindow {
+    func resolveCarbonWindow(code: String, outputPath: String, completion: @escaping (_ status: Bool) -> Void) -> NSWindow {
         nef.carbon(code: code,
                    style: preferencesDataSource.state.style,
                    outputPath: outputPath,
-                   success: completion, failure: { _ in completion() })
+                   success: { completion(true) }, failure: { _ in completion(false) })
     }
     
     // MARK: - private methods
