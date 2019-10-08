@@ -86,12 +86,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let filename = "nef \(Date.now.human)"
         let outputPath = downloadsFolder.appendingPathComponent(filename).path
         
-        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath, completion: terminate)
+        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
+            if status { self.openFolder(downloadsFolder) }
+            self.beep(success: status)
+            self.terminate()
+        }
+    }
+    
+    private func openFolder(_ url: URL) {
+        NSWorkspace.shared.open(url)
+    }
+    
+    private func beep(success: Bool) {
+        NSSound(named: success ? "Tink" : "Bottle")?.play()
     }
     
     private func terminate() {
-        DispatchQueue.main.async {
-            NSApplication.shared.terminate(nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
+            DispatchQueue.main.async {
+                NSApplication.shared.terminate(nil)
+            }
         }
     }
     

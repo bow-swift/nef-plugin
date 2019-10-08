@@ -33,10 +33,11 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         let url = nefAppURL(from: preferencesItem)
         
         try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
-        completion(nil)
+        terminate(deadline: .now(), completion)
     }
     
     private func carbon(textRange: XCSourceTextRange, lines: [String], completion: @escaping (Error?) -> Void) {
+        guard Reachability.isConnected else { completion(EditorError.internetConnection); return }
         guard let selection = userSelection(textRange: textRange, lines: lines) else { completion(EditorError.selection); return }
         
         let code = removeLeadingMargin(selection)
@@ -44,7 +45,7 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         let url = nefAppURL(from: codeItem)
         
         try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
-        completion(nil)
+        terminate(deadline: .now() + .seconds(5), completion)
     }
     
     private func nefAppURL(from item: URLQueryItem) -> URL {
@@ -53,6 +54,10 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
         urlComponents.host = "xcode"
         urlComponents.queryItems = [item]
         return urlComponents.url!
+    }
+    
+    private func terminate(deadline: DispatchTime, _ completion: @escaping (Error?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: deadline) { completion(nil) }
     }
     
     // MARK: private methods
@@ -82,8 +87,9 @@ class NefEditorCommand: NSObject, XCSourceEditorCommand {
     }
     
     enum EditorError {
-        static let unknown = NSError(domain: "nef editor", code: 1, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Undefined error.", comment: "")])
-        static let invalidCommand = NSError(domain: "nef editor", code: 2, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("This command has not being implemented.", comment: "")])
-        static let selection = NSError(domain: "nef editor", code: 3, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("You must make a selection first.", comment: "")])
+        static let unknown = NSError(domain: "nef editor", code: 1, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Undefined error", comment: "")])
+        static let invalidCommand = NSError(domain: "nef editor", code: 2, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("This command has not being implemented", comment: "")])
+        static let selection = NSError(domain: "nef editor", code: 3, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("You must make a code selection first", comment: "")])
+        static let internetConnection = NSError(domain: "nef editor", code: 4, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("You can not create a code snippet without an internet connection", comment: "")])
     }
 }

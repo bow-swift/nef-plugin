@@ -18,7 +18,7 @@
     <a href="https://www.apple.com/macos/catalina/">
     <img src="https://img.shields.io/badge/macOS-10.15%2B-blue" alt="macOS 10.15+">
     </a>
-    
+
 </p>
 
 &nbsp;
@@ -29,7 +29,7 @@ This project provides an extension for Xcode to integrate some nef features dire
 
 ## 📥 Installation
 
-You can install `nef` plugin from [Mac App Store](TODO) or download the last binary from the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
+You can install `nef` plugin from [Mac App Store](https://apps.apple.com/app/nef/id1479391704?mt=8) or download the last binary from the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
 
 To complete the installation, you should enable `nef` extension from `System Preferences > Extensions > Xcode Source Editor`
 
@@ -39,20 +39,21 @@ To complete the installation, you should enable `nef` extension from `System Pre
 
 ## 🌁 Export code selection to snippet
 
-In Xcode you can find the nef plugin options in `Editor`. 
+In Xcode you can find the nef plugin options in `Editor`.
 
 If you want to export your current code selection into a snippet, you only need to select the action `Editor > nef > Export code snippet`
 
-&nbsp;
-
 <p align="center">
     <img src="assets/nef-plugin-action-export.png" alt="nef: action for exporting code selection to snippet" width="90%"/>
+    <img src="assets/nef-plugin-action-snippet.png" alt="nef: action for exporting code selection to snippet" width="50%"/>
 </p>
+
+&nbsp;
 
 ## 🔨 Xcode navigation keyboard shortcuts
 
-To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action. 
-Open the shortcut menu in `Xcode > Preferences... > Key Bindings` and set your command.
+To make you a more productive developer, you can associate a keyboard shortcut to each `nef` action.
+Open the shortcuts menu in `Xcode > Preferences... > Key Bindings` and set your command.
 
 <p align="center">
     <img src="assets/nef-xcode-shortcuts.png" alt="nef: set keyboard shortcut"/>
