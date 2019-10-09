@@ -87,14 +87,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let outputPath = downloadsFolder.appendingPathComponent(filename).path
         
         return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
-            if status { self.openFolder(downloadsFolder) }
+            if status {
+                let file = URL(fileURLWithPath: "\(outputPath).png")
+                self.showFile(file)
+            }
+            
             self.beep(success: status)
             self.terminate()
         }
     }
     
-    private func openFolder(_ url: URL) {
-        NSWorkspace.shared.open(url)
+    private func showFile(_ file: URL) {
+        NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
     private func beep(success: Bool) {
