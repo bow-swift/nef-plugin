@@ -25,6 +25,9 @@ class Assembler {
                    success: { completion(true) }, failure: { _ in completion(false) })
     }
     
+    // MARK: - utils
+    func resolveOpenPanel() -> OpenPanel { OpenPanel() }
+    
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {
         return PreferencesViewModel(preferences: preferencesDataSource,

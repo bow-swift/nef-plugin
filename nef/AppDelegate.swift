@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func preferencesDidFinishLaunching() {
-        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 740),
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 760),
                           styleMask: [.titled, .closable, .miniaturizable],
                           backing: .buffered, defer: false)
         
@@ -73,18 +73,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        guard let carbonWindow = carbonWindow(code: code) else { terminate(); return }
+        guard let _ = carbonWindow(code: code) else { terminate(); return }
         
-        window = carbonWindow
-        window.makeKey()
+        window = NSWindow.empty
+        window.makeKeyAndOrderFront(nil)
     }
     
     // MARK: private methods
     private func carbonWindow(code: String) -> NSWindow? {
-        guard let downloadsFolder = try? FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
+        guard let writableFolder = assembler.resolveOpenPanel().writableFolder(create: true) else { return nil }
         
         let filename = "nef \(Date.now.human)"
-        let outputPath = downloadsFolder.appendingPathComponent(filename).path
+        let outputPath = writableFolder.appendingPathComponent(filename).path
         
         return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
             if status {
@@ -92,24 +92,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.showFile(file)
             }
             
-            self.beep(success: status)
             self.terminate()
         }
     }
-    
+
     private func showFile(_ file: URL) {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
-    private func beep(success: Bool) {
-        NSSound(named: success ? "Tink" : "Bottle")?.play()
-    }
-    
     private func terminate() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
-            }
+        DispatchQueue.main.async {
+            NSApplication.shared.terminate(nil)
         }
     }
     

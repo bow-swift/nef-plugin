@@ -18,6 +18,7 @@
 "nef_extension" = "Editor de código de Xcode";
 
 // MARK: - Preferences
+"output_folder_title" = "Directorio de salida";
 "check_option_title" = "Mostrar";
 "preferences_title" = "Carbon";
 "preferences_option_font" = "Tipo de fuente";

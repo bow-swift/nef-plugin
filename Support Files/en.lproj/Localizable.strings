@@ -18,6 +18,7 @@
 "nef_extension" = "Xcode Source Editor";
 
 // MARK: - Preferences
+"output_folder_title" = "Output Folder";
 "check_option_title" = "Show";
 "preferences_title" = "Carbon";
 "preferences_option_font" = "Font type";
