@@ -1,7 +1,6 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
-import NefCarbon
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
