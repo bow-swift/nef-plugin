@@ -76,8 +76,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard !code.isEmpty else { terminate(); return }
         guard let _ = carbonWindow(code: code) else { terminate(); return }
         
-        self.window = NSWindow.empty
-        self.window.makeKeyAndOrderFront(nil)
+        window = NSWindow.empty
+        window.makeKeyAndOrderFront(nil)
     }
     
     // MARK: private methods
