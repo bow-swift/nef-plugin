@@ -61,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func preferencesDidFinishLaunching() {
-        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 740),
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 760),
                           styleMask: [.titled, .closable, .miniaturizable],
                           backing: .buffered, defer: false)
         
@@ -82,7 +82,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: private methods
     private func carbonWindow(code: String) -> NSWindow? {
-        guard let writableFolder = assembler.resolveOpenPanel().writableFolder() else { return nil }
+        guard let writableFolder = assembler.resolveOpenPanel().writableFolder(create: true) else { return nil }
         
         let filename = "nef \(Date.now.human)"
         let outputPath = writableFolder.appendingPathComponent(filename).path

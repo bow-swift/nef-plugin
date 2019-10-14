@@ -28,6 +28,8 @@ struct PreferencesView: View {
              .border(NefColor.border)
             
             // Preferences options
+            OutputFolderView().offset(x: -12, y: 12)
+            
             VStack {
                 CheckOptionView(text: i18n.Description.showLines, nested: false, selection: $viewModel.showLines)
                 CheckOptionView(text: i18n.Description.showWatermark, nested: true, selection: $viewModel.showWatermark)

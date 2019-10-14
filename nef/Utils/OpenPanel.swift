@@ -15,16 +15,15 @@ class OpenPanel {
         dialog.allowsMultipleSelection = false
     }
     
-    func writableFolder() -> URL? {
+    func writableFolder(create: Bool) -> URL? {
         guard let url = retrieveBookmark(), existFolder(at: url) else {
-            return selectWritableFolder()
+            return create ? selectWritableFolder() : nil
         }
         
         return url
     }
     
-    // MARK: private methods
-    private func selectWritableFolder() -> URL? {
+    func selectWritableFolder() -> URL? {
         guard dialog.runModal() == .OK,
               let selection = dialog.url else { return nil }
         
@@ -34,6 +33,7 @@ class OpenPanel {
         return selection
     }
     
+    // MARK: private methods
     private func persistBookmark(url: URL) {
         let data = try? url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
         storage.setValue(data, forKey: Key.bookmark)
