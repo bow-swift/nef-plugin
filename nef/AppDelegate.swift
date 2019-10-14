@@ -1,6 +1,7 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import NefCarbon
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -73,18 +74,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        guard let carbonWindow = carbonWindow(code: code) else { terminate(); return }
+        guard let _ = carbonWindow(code: code) else { terminate(); return }
         
-        window = carbonWindow
-        window.makeKey()
+        self.window = NSWindow.empty
+        self.window.makeKeyAndOrderFront(nil)
     }
     
     // MARK: private methods
     private func carbonWindow(code: String) -> NSWindow? {
-        guard let downloadsFolder = try? FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
+        guard let writableFolder = assembler.resolveOpenPanel().writableFolder() else { return nil }
         
         let filename = "nef \(Date.now.human)"
-        let outputPath = downloadsFolder.appendingPathComponent(filename).path
+        let outputPath = writableFolder.appendingPathComponent(filename).path
         
         return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
             if status {
@@ -92,24 +93,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.showFile(file)
             }
             
-            self.beep(success: status)
             self.terminate()
         }
     }
-    
+
     private func showFile(_ file: URL) {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
-    private func beep(success: Bool) {
-        NSSound(named: success ? "Tink" : "Bottle")?.play()
-    }
-    
     private func terminate() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(250)) {
-            DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
-            }
+        DispatchQueue.main.async {
+            NSApplication.shared.terminate(nil)
         }
     }
     

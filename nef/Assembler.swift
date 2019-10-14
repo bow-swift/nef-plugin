@@ -25,6 +25,17 @@ class Assembler {
                    success: { completion(true) }, failure: { _ in completion(false) })
     }
     
+    func resolveCarbonWindow(parent: NSView, code: String, outputPath: String, completion: @escaping (_ status: Bool) -> Void) {
+        nef.carbon(parentView: parent,
+                   code: code,
+                   style: preferencesDataSource.state.style,
+                   outputPath: outputPath,
+                   success: { completion(true) }, failure: { _ in completion(false) })
+    }
+    
+    // MARK: - utils
+    func resolveOpenPanel() -> OpenPanel { OpenPanel() }
+    
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {
         return PreferencesViewModel(preferences: preferencesDataSource,
