@@ -34,6 +34,7 @@
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
+		8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEAFB11235C96F700118F31 /* Bookmark.swift */; };
 		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9372301AEDB009AA042 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */; };
@@ -102,6 +103,7 @@
 		8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefEditorCommand.swift; sourceTree = "<group>"; };
 		8BB2895B22CB6F81006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
+		8BEAFB11235C96F700118F31 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8BEFF92C2301A86B009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF92F2301A8B9009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF9312301A8CE009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				8B3B21A922F8329900E92BC9 /* Browser.swift */,
 				8BF9220523546D8D00C58AA0 /* OpenPanel.swift */,
+				8BEAFB11235C96F700118F31 /* Bookmark.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -360,7 +363,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
 					8BB2892922CB6EFB006E4CCB = {
@@ -440,6 +443,7 @@
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
 				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
+				8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */,
 				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
@@ -556,6 +560,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -620,11 +625,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -645,11 +651,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,11 +675,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -692,11 +700,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
