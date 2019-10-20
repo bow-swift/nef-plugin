@@ -14,13 +14,15 @@ struct Bookmark {
     var wrappedValue: URL? {
         get {
             guard let url = retrieveBookmark(), existItem(at: url) else { return nil }
-            openAccessingBookmark()
+            openAccessing(bookmark: url)
             return url
         }
         set {
             guard let url = newValue else { return }
-            closeAccessingBookmark()
+            
+            closeAccessing(bookmark: retrieveBookmark())
             persistBookmark(url: url)
+            openAccessing(bookmark: url)
         }
     }
     
@@ -37,12 +39,12 @@ struct Bookmark {
     }
     
     // MARK: private methods <grant access>
-    private func openAccessingBookmark() {
-        _ = retrieveBookmark()?.startAccessingSecurityScopedResource()
+    private func openAccessing(bookmark: URL?) {
+        _ = bookmark?.startAccessingSecurityScopedResource()
     }
     
-    private func closeAccessingBookmark() {
-        retrieveBookmark()?.stopAccessingSecurityScopedResource()
+    private func closeAccessing(bookmark: URL?) {
+        bookmark?.stopAccessingSecurityScopedResource()
     }
     
     // MARK: helpers

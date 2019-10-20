@@ -18,7 +18,7 @@ struct OutputFolderView: View {
                     .lineLimit(1)
                     .ligthGray
                 
-                Text("➲")
+                Text("➤")
                     .font(.system(.caption)).fontWeight(.light)
                     .regularGray
             }.frame(width: PreferencesView.Layout.rightPanel+Constant.rightPanelExtraWidth, alignment: .leading)
