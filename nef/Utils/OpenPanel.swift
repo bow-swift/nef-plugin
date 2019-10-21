@@ -1,6 +1,15 @@
 //  Copyright © 2019 The nef Authors.
 
 import AppKit
+import BowEffects
+
+
+typealias BookmarkResource = Resource<IOPartial<OpenPanelError>, URL>
+
+enum OpenPanelError: Error {
+    case denied
+}
+
 
 class OpenPanel {
     private let dialog: NSOpenPanel
@@ -14,19 +23,41 @@ class OpenPanel {
         dialog.allowsMultipleSelection = false
     }
     
-    func writableFolder(create: Bool) -> URL? {
-        guard let bookmark = bookmark else {
-            return create ? selectWritableFolder() : nil
-        }
-        
-        return bookmark
+    func writableFolder(create: Bool) -> BookmarkResource {
+        Resource.from(acquire: {
+            IO.invoke {
+                if self.bookmark == nil && create { self.bookmark = self.runUserSelectionModal() }
+                guard let url = self.bookmark else { throw OpenPanelError.denied }
+                url.openAccessingResource()
+                return url
+            }
+        }, release: { url, _ in
+            IO.invoke {
+                url.closeAccessingResource()
+            }
+        })
     }
     
-    func selectWritableFolder() -> URL? {
+    func selectWritableFolder() -> BookmarkResource {
+        Resource.from(acquire: {
+            IO.invoke {
+                self.bookmark = self.runUserSelectionModal()
+                guard let url = self.bookmark else { throw OpenPanelError.denied }
+                url.openAccessingResource()
+                return url
+            }
+        }, release: { url, _ in
+            IO.invoke {
+                url.closeAccessingResource()
+            }
+        })
+    }
+    
+    // MARK: private methods
+    private func runUserSelectionModal() -> URL? {
         guard dialog.runModal() == .OK,
               let selection = dialog.url else { return nil }
         
-        bookmark = selection
         return selection
     }
     

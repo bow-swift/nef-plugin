@@ -1,6 +1,8 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import BowEffects
+
 
 struct OutputFolderView: View {
     
@@ -22,19 +24,28 @@ struct OutputFolderView: View {
                     .font(.system(.caption)).fontWeight(.light)
                     .regularGray
             }.frame(width: PreferencesView.Layout.rightPanel+Constant.rightPanelExtraWidth, alignment: .leading)
-             .onTapGesture { self.selectWritableFolder() }
+             .onTapGesture { try? self.selectWritableFolder().unsafeRunSync() }
             
         }.offset(x: Constant.rightPanelExtraWidth/2)
          .onAppear(perform: onAppear)
     }
     
     private func onAppear() {
-        outputPath = openPanel.writableFolder(create: false)?.path ?? ""
+        let updateOutputPathIO: IO<OpenPanelError, ()> = openPanel.writableFolder(create: false).use { url in
+            IO.invoke {
+                self.outputPath = url.path
+            }
+        }^
+        
+        try? updateOutputPathIO.unsafeRunSync()
     }
     
-    private func selectWritableFolder() {
-        guard let url = openPanel.selectWritableFolder() else { return }
-        outputPath = url.path
+    private func selectWritableFolder() -> IO<OpenPanelError, ()> {
+        openPanel.selectWritableFolder().use { url in
+            IO.invoke {
+                self.outputPath = url.path
+            }
+        }^
     }
     
     // MARK: - Constants

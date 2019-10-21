@@ -1,6 +1,8 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import BowEffects
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -73,27 +75,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        guard let _ = carbonWindow(code: code) else { terminate(); return }
+        guard let _ = try? carbonIO(code: code).unsafeRunSync() else { terminate(); return }
         
         window = NSWindow.empty
         window.makeKeyAndOrderFront(nil)
     }
     
     // MARK: private methods
-    private func carbonWindow(code: String) -> NSWindow? {
-        guard let writableFolder = assembler.resolveOpenPanel().writableFolder(create: true) else { return nil }
-        
-        let filename = "nef \(Date.now.human)"
-        let outputPath = writableFolder.appendingPathComponent(filename).path
-        
-        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
-            if status {
-                let file = URL(fileURLWithPath: "\(outputPath).png")
-                self.showFile(file)
+    private func carbonIO(code: String) -> IO<AppDelegateError, ()> {
+        func runCarbon(code: String, outputPath: String) {
+            _ = assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
+                if status {
+                    let file = URL(fileURLWithPath: "\(outputPath).png")
+                    self.showFile(file)
+                }
+                
+                self.terminate()
             }
-            
-            self.terminate()
         }
+        
+        return assembler.resolveOpenPanel().writableFolder(create: true).use { url in
+            IO.invoke {
+                let filename = "nef \(Date.now.human)"
+                let outputPath = url.appendingPathComponent(filename).path
+                runCarbon(code: code, outputPath: outputPath)
+            }
+        }^.mapLeft { _ in AppDelegateError.carbon }
     }
 
     private func showFile(_ file: URL) {
@@ -146,5 +153,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     enum i18n {
         static let preferencesTitle = NSLocalizedString("preferences", comment: "")
         static let aboutTitle = NSLocalizedString("about", comment: "")
+    }
+    
+    // MARK: Errors
+    enum AppDelegateError: Error {
+        case carbon
     }
 }
