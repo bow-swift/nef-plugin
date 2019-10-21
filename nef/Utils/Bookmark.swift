@@ -5,10 +5,11 @@ import Foundation
 @propertyWrapper
 struct Bookmark {
     private let key: String
-    private let storage = UserDefaults.standard
+    private let storage: Storage
     
-    init(key: String) {
+    init(key: String, storage: Storage = UserDefaults.standard) {
         self.key = key
+        self.storage = storage
     }
 
     var wrappedValue: URL? {
@@ -28,8 +29,8 @@ struct Bookmark {
     
     // MARK: private methods <storage>
     private func persistBookmark(url: URL) {
-        let data = try? url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-        storage.setValue(data, forKey: key)
+        guard let data = try? url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil) else { return }
+        storage.set(data: data, forKey: key)
     }
     
     private func retrieveBookmark() -> URL? {
@@ -50,5 +51,18 @@ struct Bookmark {
     // MARK: helpers
     private func existItem(at url: URL) -> Bool {
         FileManager.default.fileExists(atPath: url.path)
+    }
+}
+
+
+// MARK: Storage resources
+protocol Storage {
+    func set(data: Data, forKey key: String)
+    func data(forKey: String) -> Data?
+}
+
+extension UserDefaults: Storage {
+    func set(data: Data, forKey key: String) {
+        setValue(data, forKey: key)
     }
 }
