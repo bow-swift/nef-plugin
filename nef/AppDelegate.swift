@@ -99,17 +99,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }^
         }
         
-        func fileURL(parent url: URL) -> IO<OpenPanelError, URL> {
+        func outputURL(inFolder url: URL) -> IO<OpenPanelError, URL> {
             let filename = "nef \(Date.now.human)"
             return IO.pure(url.appendingPathComponent(filename))^
         }
         
-        return assembler.resolveOpenPanel().writableFolder(create: true).use { url in
+        return assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
             
             return binding(
+                file <- outputURL(inFolder: folder),
                         continueOn(.main),
-                file <- fileURL(parent: url),
                      |<-runCarbon(code: code, outputPath: file.get.path),
             yield: ())
         }^.mapLeft { _ in AppDelegateError.carbon }
