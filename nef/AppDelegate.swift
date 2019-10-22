@@ -1,8 +1,8 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import Bow
 import BowEffects
-
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -75,31 +75,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        guard let _ = try? carbonIO(code: code).unsafeRunSync() else { terminate(); return }
         
         window = NSWindow.empty
         window.makeKeyAndOrderFront(nil)
+        
+        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { _ in self.terminate() }
     }
     
     // MARK: private methods
     private func carbonIO(code: String) -> IO<AppDelegateError, ()> {
-        func runCarbon(code: String, outputPath: String) {
-            _ = assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
-                if status {
-                    let file = URL(fileURLWithPath: "\(outputPath).png")
-                    self.showFile(file)
+        
+        func runCarbon(code: String, outputPath: String) -> IO<OpenPanelError, ()> {
+            IO.async { callback in
+                self.assembler.carbon(code: code, outputPath: outputPath) { status in
+                    if status {
+                        let file = URL(fileURLWithPath: "\(outputPath).png")
+                        self.showFile(file)
+                        callback(.right(()))
+                    } else {
+                        callback(.left(.denied))
+                    }
                 }
-                
-                self.terminate()
-            }
+            }^
+        }
+        
+        func fileURL(parent url: URL) -> IO<OpenPanelError, URL> {
+            let filename = "nef \(Date.now.human)"
+            return IO.pure(url.appendingPathComponent(filename))^
         }
         
         return assembler.resolveOpenPanel().writableFolder(create: true).use { url in
-            IO.invoke {
-                let filename = "nef \(Date.now.human)"
-                let outputPath = url.appendingPathComponent(filename).path
-                runCarbon(code: code, outputPath: outputPath)
-            }
+            let file = IO<OpenPanelError, URL>.var()
+            
+            return binding(
+                        continueOn(.main),
+                file <- fileURL(parent: url),
+                     |<-runCarbon(code: code, outputPath: file.get.path),
+            yield: ())
         }^.mapLeft { _ in AppDelegateError.carbon }
     }
 

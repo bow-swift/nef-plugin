@@ -33,7 +33,6 @@
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
 		8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEAFB11235C96F700118F31 /* Bookmark.swift */; };
 		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
@@ -41,6 +40,7 @@
 		8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4C235E0A1E0081C27C /* BowOptics */; };
 		8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4E235E0A1E0081C27C /* BowEffects */; };
 		8BF53F51235E0A1E0081C27C /* Bow in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F50235E0A1E0081C27C /* Bow */; };
+		8BF53F59235F0D020081C27C /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F58235F0D020081C27C /* nef */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBDE53C22DC86BB00598565 /* nef in Frameworks */,
+				8BF53F59235F0D020081C27C /* nef in Frameworks */,
 				8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */,
 				8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */,
 				8BF53F51235E0A1E0081C27C /* Bow in Frameworks */,
@@ -337,10 +337,10 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8BBDE53B22DC86BB00598565 /* nef */,
 				8BF53F4C235E0A1E0081C27C /* BowOptics */,
 				8BF53F4E235E0A1E0081C27C /* BowEffects */,
 				8BF53F50235E0A1E0081C27C /* Bow */,
+				8BF53F58235F0D020081C27C /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -394,8 +394,8 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */,
 				8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */,
+				8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -635,12 +635,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
-				ENABLE_HARDENED_RUNTIME = YES;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,12 +661,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
-				ENABLE_HARDENED_RUNTIME = YES;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,12 +685,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
-				ENABLE_HARDENED_RUNTIME = YES;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -710,12 +710,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
-				ENABLE_HARDENED_RUNTIME = YES;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -764,14 +764,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bow-swift/nef.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.3;
-			};
-		};
 		8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "http://github.com/bow-swift/bow.git";
@@ -780,14 +772,17 @@
 				kind = branch;
 			};
 		};
+		8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bow-swift/nef.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BBDE53B22DC86BB00598565 /* nef */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */;
-			productName = nef;
-		};
 		8BF53F4C235E0A1E0081C27C /* BowOptics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
@@ -802,6 +797,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
 			productName = Bow;
+		};
+		8BF53F58235F0D020081C27C /* nef */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */;
+			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

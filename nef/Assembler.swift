@@ -18,13 +18,6 @@ class Assembler {
         return PreferencesView(viewModel: resolvePreferencesViewModel())
     }
     
-    func resolveCarbonWindow(code: String, outputPath: String, completion: @escaping (_ status: Bool) -> Void) -> NSWindow {
-        nef.carbon(code: code,
-                   style: preferencesDataSource.state.style,
-                   outputPath: outputPath,
-                   success: { completion(true) }, failure: { _ in completion(false) })
-    }
-    
     // MARK: - utils
     func resolveOpenPanel() -> OpenPanel { OpenPanel() }
     
@@ -39,5 +32,16 @@ class Assembler {
     
     private func resolvePreferencesDataSource() -> PreferencesDataSource {
         return PreferencesDataSource(fileManager: .default)
+    }
+}
+
+
+extension Assembler {
+    
+    func carbon(code: String, outputPath: String, completion: @escaping (_ status: Bool) -> Void) {
+        nef.carbon(code: code,
+                   style: preferencesDataSource.state.style,
+                   outputPath: outputPath,
+                   success: { completion(true) }, failure: { _ in completion(false) })
     }
 }
