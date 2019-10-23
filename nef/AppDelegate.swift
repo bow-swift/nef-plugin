@@ -1,6 +1,8 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import Bow
+import BowEffects
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -73,27 +75,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        guard let _ = carbonWindow(code: code) else { terminate(); return }
         
         window = NSWindow.empty
         window.makeKeyAndOrderFront(nil)
+        
+        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { _ in self.terminate() }
     }
     
     // MARK: private methods
-    private func carbonWindow(code: String) -> NSWindow? {
-        guard let writableFolder = assembler.resolveOpenPanel().writableFolder(create: true) else { return nil }
+    private func carbonIO(code: String) -> IO<AppDelegateError, ()> {
         
-        let filename = "nef \(Date.now.human)"
-        let outputPath = writableFolder.appendingPathComponent(filename).path
-        
-        return assembler.resolveCarbonWindow(code: code, outputPath: outputPath) { status in
-            if status {
-                let file = URL(fileURLWithPath: "\(outputPath).png")
-                self.showFile(file)
-            }
-            
-            self.terminate()
+        func runCarbon(code: String, outputPath: String) -> IO<OpenPanelError, ()> {
+            IO.async { callback in
+                self.assembler.carbon(code: code, outputPath: outputPath) { status in
+                    if status {
+                        let file = URL(fileURLWithPath: "\(outputPath).png")
+                        self.showFile(file)
+                        callback(.right(()))
+                    } else {
+                        callback(.left(.denied))
+                    }
+                }
+            }^
         }
+        
+        func outputURL(inFolder url: URL) -> IO<OpenPanelError, URL> {
+            let filename = "nef \(Date.now.human)"
+            return IO.pure(url.appendingPathComponent(filename))^
+        }
+        
+        return assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
+            let file = IO<OpenPanelError, URL>.var()
+            
+            return binding(
+                file <- outputURL(inFolder: folder),
+                        continueOn(.main),
+                     |<-runCarbon(code: code, outputPath: file.get.path),
+            yield: ())
+        }^.mapLeft { _ in AppDelegateError.carbon }
     }
 
     private func showFile(_ file: URL) {
@@ -146,5 +165,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     enum i18n {
         static let preferencesTitle = NSLocalizedString("preferences", comment: "")
         static let aboutTitle = NSLocalizedString("about", comment: "")
+    }
+    
+    // MARK: Errors
+    enum AppDelegateError: Error {
+        case carbon
     }
 }

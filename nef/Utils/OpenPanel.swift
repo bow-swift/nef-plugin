@@ -1,13 +1,21 @@
 //  Copyright © 2019 The nef Authors.
 
 import AppKit
+import BowEffects
+
+
+typealias BookmarkResource = Resource<IOPartial<OpenPanelError>, URL>
+
+enum OpenPanelError: Error {
+    case denied
+}
+
 
 class OpenPanel {
     private let dialog: NSOpenPanel
-    private let storage: UserDefaults
+    @Bookmark(key: Key.bookmark) private var bookmark: URL?
     
     init() {
-        self.storage = UserDefaults.standard
         self.dialog = NSOpenPanel()
         
         dialog.canChooseFiles = false
@@ -15,44 +23,42 @@ class OpenPanel {
         dialog.allowsMultipleSelection = false
     }
     
-    func writableFolder(create: Bool) -> URL? {
-        guard let url = retrieveBookmark(), existFolder(at: url) else {
-            return create ? selectWritableFolder() : nil
-        }
-        
-        return url
+    func writableFolder(create: Bool) -> BookmarkResource {
+        Resource.from(acquire: {
+            IO.invoke {
+                if self.bookmark == nil && create { self.bookmark = self.runUserSelectionModal() }
+                guard let url = self.bookmark else { throw OpenPanelError.denied }
+                url.openAccessingResource()
+                return url
+            }
+        }, release: { url, _ in
+            IO.invoke {
+                url.closeAccessingResource()
+            }
+        })
     }
     
-    func selectWritableFolder() -> URL? {
-        guard dialog.runModal() == .OK,
-              let selection = dialog.url else { return nil }
-        
-        closeAccessingBookmark()
-        persistBookmark(url: selection)
-        
-        return selection
+    func selectWritableFolder() -> BookmarkResource {
+        Resource.from(acquire: {
+            IO.invoke {
+                self.bookmark = self.runUserSelectionModal()
+                guard let url = self.bookmark else { throw OpenPanelError.denied }
+                url.openAccessingResource()
+                return url
+            }
+        }, release: { url, _ in
+            IO.invoke {
+                url.closeAccessingResource()
+            }
+        })
     }
     
     // MARK: private methods
-    private func persistBookmark(url: URL) {
-        let data = try? url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-        storage.setValue(data, forKey: Key.bookmark)
-    }
-    
-    private func retrieveBookmark() -> URL? {
-        guard let data = storage.data(forKey: Key.bookmark) else { return nil }
-        var bookmarkDataIsStale: Bool = true
-        let url = try? URL(resolvingBookmarkData: data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &bookmarkDataIsStale)
-        _ = url?.startAccessingSecurityScopedResource()
-        return url
-    }
-    
-    private func closeAccessingBookmark() {
-        retrieveBookmark()?.stopAccessingSecurityScopedResource()
-    }
-    
-    private func existFolder(at url: URL) -> Bool {
-        FileManager.default.fileExists(atPath: url.path)
+    private func runUserSelectionModal() -> URL? {
+        guard dialog.runModal() == .OK,
+              let selection = dialog.url else { return nil }
+        
+        return selection
     }
     
     // MARK: constants

@@ -33,10 +33,14 @@
 		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
 		8BB2895A22CB6F81006E4CCB /* NefEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BBDE53C22DC86BB00598565 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BBDE53B22DC86BB00598565 /* nef */; };
+		8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEAFB11235C96F700118F31 /* Bookmark.swift */; };
 		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9372301AEDB009AA042 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */; };
+		8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4C235E0A1E0081C27C /* BowOptics */; };
+		8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4E235E0A1E0081C27C /* BowEffects */; };
+		8BF53F51235E0A1E0081C27C /* Bow in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F50235E0A1E0081C27C /* Bow */; };
+		8BF53F59235F0D020081C27C /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F58235F0D020081C27C /* nef */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
@@ -102,6 +106,7 @@
 		8BB2895922CB6F81006E4CCB /* NefEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefEditorCommand.swift; sourceTree = "<group>"; };
 		8BB2895B22CB6F81006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
+		8BEAFB11235C96F700118F31 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8BEFF92C2301A86B009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF92F2301A8B9009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF9312301A8CE009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -121,7 +126,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BBDE53C22DC86BB00598565 /* nef in Frameworks */,
+				8BF53F59235F0D020081C27C /* nef in Frameworks */,
+				8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */,
+				8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */,
+				8BF53F51235E0A1E0081C27C /* Bow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +166,7 @@
 			children = (
 				8B3B21A922F8329900E92BC9 /* Browser.swift */,
 				8BF9220523546D8D00C58AA0 /* OpenPanel.swift */,
+				8BEAFB11235C96F700118F31 /* Bookmark.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -328,7 +337,10 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8BBDE53B22DC86BB00598565 /* nef */,
+				8BF53F4C235E0A1E0081C27C /* BowOptics */,
+				8BF53F4E235E0A1E0081C27C /* BowEffects */,
+				8BF53F50235E0A1E0081C27C /* Bow */,
+				8BF53F58235F0D020081C27C /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -360,7 +372,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
 					8BB2892922CB6EFB006E4CCB = {
@@ -382,7 +394,8 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */,
+				8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */,
+				8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -440,6 +453,7 @@
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
 				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
+				8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */,
 				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
@@ -556,6 +570,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -623,8 +638,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,8 +664,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,8 +688,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -695,8 +713,9 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -745,7 +764,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */ = {
+		8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "http://github.com/bow-swift/bow.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
@@ -756,9 +783,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8BBDE53B22DC86BB00598565 /* nef */ = {
+		8BF53F4C235E0A1E0081C27C /* BowOptics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8BBDE53A22DC86BB00598565 /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
+			productName = BowOptics;
+		};
+		8BF53F4E235E0A1E0081C27C /* BowEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
+			productName = BowEffects;
+		};
+		8BF53F50235E0A1E0081C27C /* Bow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
+			productName = Bow;
+		};
+		8BF53F58235F0D020081C27C /* nef */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
