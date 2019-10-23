@@ -55,10 +55,11 @@ class OpenPanel {
     
     // MARK: private methods
     private func runUserSelectionModal() -> URL? {
-        guard dialog.runModal() == .OK,
-              let selection = dialog.url else { return nil }
-        
-        return selection
+        runSync {
+            guard self.dialog.runModal() == .OK,
+                  let url = self.dialog.url else { return nil }
+            return url
+        }
     }
     
     // MARK: constants
