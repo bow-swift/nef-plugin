@@ -99,7 +99,7 @@ struct PreferencesView: View {
 }
 
 // MARK: - CarbonStyle View
-import NefModels
+import nef
 
 extension CarbonStyle.Font {
     var itemName: String { rawValue }

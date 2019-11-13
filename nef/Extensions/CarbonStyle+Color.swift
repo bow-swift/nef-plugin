@@ -1,7 +1,7 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
-import NefModels
+import nef
 
 extension CarbonStyle.Color {
     var color: Color {

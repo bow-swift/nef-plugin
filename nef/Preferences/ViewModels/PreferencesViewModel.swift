@@ -2,7 +2,7 @@
 
 import SwiftUI
 import Combine
-import NefModels
+import nef
 
 class PreferencesViewModel: ObservableObject {
     @Published var state: PreferencesModel { didSet { persistState() }}

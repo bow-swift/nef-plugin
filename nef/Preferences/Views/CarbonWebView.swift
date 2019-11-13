@@ -3,7 +3,6 @@
 import AppKit
 import WebKit
 import nef
-import NefModels
 
 class CarbonWebView: WKWebView, WKNavigationDelegate {
     private let loadingView: LoadingView
@@ -46,7 +45,7 @@ class CarbonWebView: WKWebView, WKNavigationDelegate {
         loadingView.show()
         
         let carbon = Carbon(code: Constants.code, style: state.style)
-        let request = nef.carbonURLRequest(withConfiguration: carbon)
+        let request = nef.Render.build.carbonURLRequest(withConfiguration: carbon)
         load(request)
     }
     
