@@ -27,6 +27,10 @@ class Assembler {
         return nef.Carbon.render(carbon: model, toFile: output).mapLeft { _ in .carbon }
     }
     
+    func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
+        nef.Render.Page.build.markdownIO(content: playground, toFile: output).mapLeft { _ in .markdown }
+    }
+    
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {
         return PreferencesViewModel(preferences: preferencesDataSource,

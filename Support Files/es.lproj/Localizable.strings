@@ -5,6 +5,7 @@
 
 // MARK: - Plugin
 "plugin_carbon"    = "Selección → Imagen";
+"markdown_page"    = "Plaground → Markdown";
 "swift_playground" = "Package   → Swift Playground (iPad)";
 
 // MARK: - Screens

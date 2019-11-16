@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesDidFinishLaunching()
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
+        case .markdownPage(let playground):
+            markdownPageDidFinishLaunching(playground: playground)
         case .playground(let package):
             playgroundDidFinishLaunching(package: package)
         case .about:
@@ -87,6 +89,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    private func markdownPageDidFinishLaunching(playground: String) {
+        guard !playground.isEmpty else { terminate(); return }
+        
+        _ = markdownIO(playground: playground).unsafeRunSyncEither().map(self.showFile)
+        self.terminate()
+    }
+    
     private func playgroundDidFinishLaunching(package: String) {
         guard !package.isEmpty else { terminate(); return }
         
@@ -96,22 +105,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
-        func outputURL(inFolder url: URL) -> IO<OpenPanelError, URL> {
-            let filename = "nef \(Date.now.human)"
-            return IO.pure(url.appendingPathComponent(filename))^
-        }
-        
-        return assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
+        assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
             let output = IO<OpenPanelError, URL>.var()
             
             return binding(
-                  file <- outputURL(inFolder: folder),
+                  file <- self.outputURL(inFolder: folder, command: .carbon(code: code)),
                 output <- self.assembler.resolveCarbon(code: code, output: file.get).mapLeft { _ in .unknown },
             yield: output.get)
         }^.mapLeft { _ in .carbon }
     }
+    
+    private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
+        assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
+            let file = IO<OpenPanelError, URL>.var()
+            let output = IO<OpenPanelError, URL>.var()
+            
+            return binding(
+                  file <- self.outputURL(inFolder: folder, command: .markdownPage(playground: playground)),
+                output <- self.assembler.resolveMarkdownPage(playground: playground, output: file.get).mapLeft { _ in .unknow },
+            yield: output.get)
+        }^.mapLeft { _ in .markdown }
+    }
 
+    private func outputURL(inFolder url: URL, command: Command) -> IO<OpenPanelError, URL> {
+        let filename = "nef-\(command) \(Date.now.human)"
+        return IO.pure(url.appendingPathComponent(filename))^
+    }
+    
     private func showFile(_ file: URL) {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
@@ -123,11 +144,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: scheme url types
-    enum Command {
+    enum Command: CustomStringConvertible {
         case about
         case preferences
         case carbon(code: String)
+        case markdownPage(playground: String)
         case playground(package: String)
+        
+        var description: String {
+            switch self {
+            case .about: return "about"
+            case .preferences: return "preferences"
+            case .carbon: return "carbon"
+            case .markdownPage: return "markdown"
+            case .playground: return "playground"
+            }
+        }
     }
     
     @objc private func handle(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
@@ -152,6 +184,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .preferences
         case let ("carbon", value):
             return .carbon(code: value)
+        case let ("markdownPage", value):
+            return .markdownPage(playground: value)
         case let ("playground", value):
             return .playground(package: value)
         case ("about", _):
@@ -169,5 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     enum Error: Swift.Error {
         case carbon
+        case markdown
+        case playground
     }
 }
