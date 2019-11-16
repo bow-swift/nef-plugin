@@ -21,13 +21,12 @@
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
 		8B50B4A1234C8FBC00C2429D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50B4A0234C8FBC00C2429D /* Reachability.swift */; };
+		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
 		8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B1922360A3690041F79B /* DispatchGroup.swift */; };
-		8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */; };
 		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
 		8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF222F036E3001EE2DF /* LoadingView.swift */; };
-		8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */; };
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
@@ -88,14 +87,13 @@
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
 		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
 		8B50B4A0234C8FBC00C2429D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		8B75AF98238061FF00388B1C /* NSView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
 		8B91B1922360A3690041F79B /* DispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchGroup.swift; sourceTree = "<group>"; };
 		8B9954E5237987D000C81A2A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "../../../Library/Developer/Xcode/DerivedData/nef-plugin-gocpczkxmkvqayefticjfgnzzzmg/SourcePackages/checkouts/nef/project/Component/nef/Support Files/module.modulemap"; sourceTree = "<group>"; };
-		8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonWebView.swift; sourceTree = "<group>"; };
 		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
 		8B9F3CF222F036E3001EE2DF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8BB2892A22CB6EFB006E4CCB /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,7 +179,7 @@
 				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
 				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
 				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
-				8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */,
+				8B75AF98238061FF00388B1C /* NSView+Layout.swift */,
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
 			);
 			path = Extensions;
@@ -205,7 +203,6 @@
 				8B2CE74722D8A35400571F24 /* ColorOptionView.swift */,
 				8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */,
 				8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */,
-				8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */,
 				8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */,
 				8B0389AE22F04F6C000741A5 /* Models */,
 			);
@@ -451,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */,
-				8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */,
 				8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */,
 				8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */,
 				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
@@ -469,12 +465,12 @@
 				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
-				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
 				8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */,
 				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
+				8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,
 				8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */,
