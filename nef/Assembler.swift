@@ -24,7 +24,7 @@ class Assembler {
     
     func resolveCarbon(code: String, output: URL) -> IO<AppDelegate.Error, URL> {
         let model = Carbon(code: code, style: preferencesDataSource.state.carbonStyle)
-        return nef.Render.build.carbonIO(model, output: output).mapLeft { _ in .carbon }
+        return nef.Render.build.carbonIO(carbon: model, toFile: output).mapLeft { _ in .carbon }
     }
     
     // MARK: - private methods
