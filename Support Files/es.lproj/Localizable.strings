@@ -4,7 +4,8 @@
 */
 
 // MARK: - Plugin
-"plugin_carbon" = "Selección → Imagen";
+"plugin_carbon"    = "Selección → Imagen";
+"swift_playground" = "Package   → Swift Playground (iPad)";
 
 // MARK: - Screens
 "about" = "Acerca de...";

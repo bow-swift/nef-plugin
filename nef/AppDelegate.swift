@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesDidFinishLaunching()
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
+        case .playground(let package):
+            playgroundDidFinishLaunching(package: package)
         case .about:
             aboutDidFinishLaunching()
         }
@@ -85,7 +87,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    // MARK: private methods
+    private func playgroundDidFinishLaunching(package: String) {
+        guard !package.isEmpty else { terminate(); return }
+        
+        // TODO: create swift-playground
+        print("playgroundDidFinishLaunching(package:)\n\(package)")
+    }
+    
+    // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
         func outputURL(inFolder url: URL) -> IO<OpenPanelError, URL> {
             let filename = "nef \(Date.now.human)"
@@ -114,6 +123,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: scheme url types
+    enum Command {
+        case about
+        case preferences
+        case carbon(code: String)
+        case playground(package: String)
+    }
+    
     @objc private func handle(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         let keyword = AEKeyword(keyDirectObject)
         let urlDescriptor = event.paramDescriptor(forKeyword: keyword)
@@ -136,6 +152,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .preferences
         case let ("carbon", value):
             return .carbon(code: value)
+        case let ("playground", value):
+            return .playground(package: value)
         case ("about", _):
             return .about
         default:
@@ -144,18 +162,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: Constants
-    enum Command {
-        case about
-        case preferences
-        case carbon(code: String)
-    }
-    
     enum i18n {
         static let preferencesTitle = NSLocalizedString("preferences", comment: "")
         static let aboutTitle = NSLocalizedString("about", comment: "")
     }
     
-    // MARK: Errors
     enum Error: Swift.Error {
         case carbon
     }

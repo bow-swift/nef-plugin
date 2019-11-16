@@ -3,7 +3,6 @@
 import SystemConfiguration
 
 class Reachability {
-
     static var isConnected: Bool {
         var flags = SCNetworkReachabilityFlags(rawValue: 0)
         var address = zeroAddress
