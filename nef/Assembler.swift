@@ -23,8 +23,8 @@ class Assembler {
     func resolveOpenPanel() -> OpenPanel { OpenPanel() }
     
     func resolveCarbon(code: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        let model = Carbon(code: code, style: preferencesDataSource.state.carbonStyle)
-        return nef.Render.build.carbonIO(carbon: model, toFile: output).mapLeft { _ in .carbon }
+        let model = CarbonModel(code: code, style: preferencesDataSource.state.carbonStyle)
+        return nef.Carbon.render(carbon: model, toFile: output).mapLeft { _ in .carbon }
     }
     
     // MARK: - private methods

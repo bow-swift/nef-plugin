@@ -8,7 +8,8 @@ struct CarbonViewer: NSViewRepresentable {
     
     func makeNSView(context: NSViewRepresentableContext<CarbonViewer>) -> NSView {
         let loadingView = LoadingView()
-        let carbonView = nef.Render.build.carbonView(code: Constants.code, state: state.carbonStyle)
+        let configuration = CarbonModel(code: Constants.code, style: state.carbonStyle)
+        let carbonView = nef.Carbon.view(with: configuration)
         carbonView.loadingView = loadingView
         
         carbonView.addSubview(loadingView)
