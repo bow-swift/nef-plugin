@@ -98,7 +98,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             return binding(
                   file <- outputURL(inFolder: folder),
-                output <- self.assembler.resolveCarbon(code: code, output: file.get).mapLeft { _ in .unknow },
+                output <- self.assembler.resolveCarbon(code: code, output: file.get).mapLeft { _ in .unknown },
             yield: output.get)
         }^.mapLeft { _ in .carbon }
     }

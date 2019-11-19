@@ -8,7 +8,7 @@ typealias BookmarkResource = Resource<IOPartial<OpenPanelError>, URL>
 
 enum OpenPanelError: Error {
     case denied
-    case unknow
+    case unknown
 }
 
 
