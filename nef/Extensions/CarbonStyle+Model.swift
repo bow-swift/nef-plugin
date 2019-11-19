@@ -1,10 +1,10 @@
 //  Copyright © 2019 The nef Authors.
 
 import Foundation
-import NefModels
+import nef
 
 extension PreferencesModel {
-    var style: CarbonStyle {
+    var carbonStyle: CarbonStyle {
         CarbonStyle(background: color,
                     theme: theme,
                     size: size,

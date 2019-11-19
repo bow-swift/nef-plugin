@@ -1,7 +1,7 @@
 //  Copyright © 2019 The nef Authors.
 
 import Foundation
-import NefModels
+import nef
 
 struct PreferencesModel {
     let showLines: Bool

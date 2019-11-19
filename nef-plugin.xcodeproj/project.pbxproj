@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0FB5AF237C2CBD00221548 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B0FB5AE237C2CBD00221548 /* nef */; };
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
@@ -20,13 +21,12 @@
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
 		8B50B4A1234C8FBC00C2429D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50B4A0234C8FBC00C2429D /* Reachability.swift */; };
+		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
 		8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B1922360A3690041F79B /* DispatchGroup.swift */; };
-		8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */; };
 		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
 		8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF222F036E3001EE2DF /* LoadingView.swift */; };
-		8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */; };
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
@@ -41,7 +41,6 @@
 		8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4C235E0A1E0081C27C /* BowOptics */; };
 		8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4E235E0A1E0081C27C /* BowEffects */; };
 		8BF53F51235E0A1E0081C27C /* Bow in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F50235E0A1E0081C27C /* Bow */; };
-		8BF53F59235F0D020081C27C /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F58235F0D020081C27C /* nef */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
@@ -88,13 +87,13 @@
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
 		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
 		8B50B4A0234C8FBC00C2429D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		8B75AF98238061FF00388B1C /* NSView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
 		8B91B1922360A3690041F79B /* DispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchGroup.swift; sourceTree = "<group>"; };
-		8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonWebView.swift; sourceTree = "<group>"; };
+		8B9954E5237987D000C81A2A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "../../../Library/Developer/Xcode/DerivedData/nef-plugin-gocpczkxmkvqayefticjfgnzzzmg/SourcePackages/checkouts/nef/project/Component/nef/Support Files/module.modulemap"; sourceTree = "<group>"; };
 		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
 		8B9F3CF222F036E3001EE2DF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8BB2892A22CB6EFB006E4CCB /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BF53F59235F0D020081C27C /* nef in Frameworks */,
+				8B0FB5AF237C2CBD00221548 /* nef in Frameworks */,
 				8BF53F4D235E0A1E0081C27C /* BowOptics in Frameworks */,
 				8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */,
 				8BF53F51235E0A1E0081C27C /* Bow in Frameworks */,
@@ -180,7 +179,7 @@
 				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
 				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
 				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
-				8B9F3CF422F03704001EE2DF /* NSView+Layout.swift */,
+				8B75AF98238061FF00388B1C /* NSView+Layout.swift */,
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
 			);
 			path = Extensions;
@@ -204,7 +203,6 @@
 				8B2CE74722D8A35400571F24 /* ColorOptionView.swift */,
 				8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */,
 				8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */,
-				8B9F3CEE22EF2D48001EE2DF /* CarbonWebView.swift */,
 				8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */,
 				8B0389AE22F04F6C000741A5 /* Models */,
 			);
@@ -261,6 +259,7 @@
 		8BB2895322CB6F81006E4CCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B9954E5237987D000C81A2A /* module.modulemap */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -323,11 +322,22 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		8B9954E72379886000C81A2A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		8BB2892922CB6EFB006E4CCB /* nef */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef" */;
 			buildPhases = (
+				8B9954E72379886000C81A2A /* Headers */,
 				8BB2892622CB6EFB006E4CCB /* Sources */,
 				8BB2892722CB6EFB006E4CCB /* Frameworks */,
 				8BB2892822CB6EFB006E4CCB /* Resources */,
@@ -343,7 +353,7 @@
 				8BF53F4C235E0A1E0081C27C /* BowOptics */,
 				8BF53F4E235E0A1E0081C27C /* BowEffects */,
 				8BF53F50235E0A1E0081C27C /* Bow */,
-				8BF53F58235F0D020081C27C /* nef */,
+				8B0FB5AE237C2CBD00221548 /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -398,7 +408,7 @@
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
 				8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */,
-				8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */,
+				8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -438,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */,
-				8B9F3CF522F03704001EE2DF /* NSView+Layout.swift in Sources */,
 				8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */,
 				8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */,
 				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
@@ -456,12 +465,12 @@
 				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
-				8B9F3CEF22EF2D48001EE2DF /* CarbonWebView.swift in Sources */,
 				8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */,
 				8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */,
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
+				8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,
 				8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */,
@@ -768,6 +777,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bow-swift/nef.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
 		8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "http://github.com/bow-swift/bow.git";
@@ -776,17 +793,14 @@
 				kind = branch;
 			};
 		};
-		8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bow-swift/nef.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8B0FB5AE237C2CBD00221548 /* nef */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */;
+			productName = nef;
+		};
 		8BF53F4C235E0A1E0081C27C /* BowOptics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
@@ -801,11 +815,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
 			productName = Bow;
-		};
-		8BF53F58235F0D020081C27C /* nef */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BF53F57235F0D020081C27C /* XCRemoteSwiftPackageReference "nef" */;
-			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

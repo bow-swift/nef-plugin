@@ -2,11 +2,12 @@
 
 import AppKit
 import SwiftUI
+
 import nef
-import NefModels
+import BowEffects
+
 
 class Assembler {
-    
     private lazy var preferencesDataSource = resolvePreferencesDataSource()
     
     func resolveAboutView() -> some View {
@@ -21,6 +22,11 @@ class Assembler {
     // MARK: - utils
     func resolveOpenPanel() -> OpenPanel { OpenPanel() }
     
+    func resolveCarbon(code: String, output: URL) -> IO<AppDelegate.Error, URL> {
+        let model = CarbonModel(code: code, style: preferencesDataSource.state.carbonStyle)
+        return nef.Carbon.render(carbon: model, toFile: output).mapLeft { _ in .carbon }
+    }
+    
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {
         return PreferencesViewModel(preferences: preferencesDataSource,
@@ -32,16 +38,5 @@ class Assembler {
     
     private func resolvePreferencesDataSource() -> PreferencesDataSource {
         return PreferencesDataSource(fileManager: .default)
-    }
-}
-
-
-extension Assembler {
-    
-    func carbon(code: String, outputPath: String, completion: @escaping (_ status: Bool) -> Void) {
-        nef.carbon(code: code,
-                   style: preferencesDataSource.state.style,
-                   outputPath: outputPath,
-                   success: { completion(true) }, failure: { _ in completion(false) })
     }
 }

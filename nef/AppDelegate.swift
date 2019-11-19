@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func preferencesDidFinishLaunching() {
-        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 760),
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 768),
                           styleMask: [.titled, .closable, .miniaturizable],
                           backing: .buffered, defer: false)
         
@@ -79,26 +79,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window = NSWindow.empty
         window.makeKeyAndOrderFront(nil)
         
-        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { _ in self.terminate() }
+        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
+            _ = output.map(self.showFile)
+            self.terminate()
+        }
     }
     
     // MARK: private methods
-    private func carbonIO(code: String) -> IO<AppDelegateError, ()> {
-        
-        func runCarbon(code: String, outputPath: String) -> IO<OpenPanelError, ()> {
-            IO.async { callback in
-                self.assembler.carbon(code: code, outputPath: outputPath) { status in
-                    if status {
-                        let file = URL(fileURLWithPath: "\(outputPath).png")
-                        self.showFile(file)
-                        callback(.right(()))
-                    } else {
-                        callback(.left(.denied))
-                    }
-                }
-            }^
-        }
-        
+    private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
         func outputURL(inFolder url: URL) -> IO<OpenPanelError, URL> {
             let filename = "nef \(Date.now.human)"
             return IO.pure(url.appendingPathComponent(filename))^
@@ -106,13 +94,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         return assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
+            let output = IO<OpenPanelError, URL>.var()
             
             return binding(
-                file <- outputURL(inFolder: folder),
-                        continueOn(.main),
-                     |<-runCarbon(code: code, outputPath: file.get.path),
-            yield: ())
-        }^.mapLeft { _ in AppDelegateError.carbon }
+                  file <- outputURL(inFolder: folder),
+                output <- self.assembler.resolveCarbon(code: code, output: file.get).mapLeft { _ in .unknown },
+            yield: output.get)
+        }^.mapLeft { _ in .carbon }
     }
 
     private func showFile(_ file: URL) {
@@ -168,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: Errors
-    enum AppDelegateError: Error {
+    enum Error: Swift.Error {
         case carbon
     }
 }

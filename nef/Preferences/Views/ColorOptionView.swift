@@ -1,7 +1,7 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
-import NefModels
+import nef
 
 struct ColorOptionView: View {
     @Binding var value: String

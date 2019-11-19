@@ -1,8 +1,9 @@
 //  Copyright © 2019 The nef Authors.
 
 import AppKit
+import nef
 
-class LoadingView: NSView {
+class LoadingView: NSView, CarbonLoadingView {
     private let activity = NSProgressIndicator(frame: NSRect(x: 0, y: 0, width: Layout.activitySize, height: Layout.activitySize))
     
     init() {
