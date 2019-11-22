@@ -4,7 +4,7 @@
 */
 
 // MARK: - Plugin
-"plugin_carbon" = "Selección de código > Carbon";
+"plugin_carbon" = "Selección → Imagen";
 
 // MARK: - Screens
 "about" = "Acerca de...";
