@@ -18,7 +18,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         case .exportSnippet:
             carbon(editor: editor, completion: completion)
         case .swiftPlayground:
-            playground(editor: editor, completion: completion)
+            swiftplayground(editor: editor, completion: completion)
         case .markdownPage:
             markdownPage(editor: editor, completion: completion)
         }
@@ -45,10 +45,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         terminate(deadline: .now(), completion)
     }
     
-    private func playground(editor: Editor, completion: @escaping (Error?) -> Void) {
+    private func swiftplayground(editor: Editor, completion: @escaping (Error?) -> Void) {
         guard editor.contentUTI == .package else { completion(EditorError.noPackage); return }
         
-        AppScheme(action: .playground(package: editor.code)).run()
+        AppScheme(action: .swiftplayground(package: editor.code)).run()
         terminate(deadline: .now(), completion)
     }
     

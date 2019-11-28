@@ -7,14 +7,14 @@ struct AppScheme {
         case preferences
         case carbon(selection: String)
         case markdownPage(playground: String)
-        case playground(package: String)
+        case swiftplayground(package: String)
         
         var item: URLQueryItem {
             switch self {
             case .preferences: return URLQueryItem(name: "preferences", value: nil)
             case let .carbon(selection): return URLQueryItem(name: "carbon", value: selection)
             case let .markdownPage(playground): return URLQueryItem(name: "markdownPage", value: playground)
-            case let .playground(package): return URLQueryItem(name: "playground", value: package)
+            case let .swiftplayground(package): return URLQueryItem(name: "swiftplayground", value: package)
             }
         }
     }

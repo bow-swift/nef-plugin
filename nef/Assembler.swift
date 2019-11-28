@@ -9,6 +9,8 @@ import BowEffects
 
 class Assembler {
     private lazy var preferencesDataSource = resolvePreferencesDataSource()
+    private lazy var console = resolveSwiftPlaygroundConsole()
+    
     
     func resolveAboutView() -> some View {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
@@ -16,7 +18,15 @@ class Assembler {
     }
     
     func resolvePreferencesView() -> some View {
-        return PreferencesView(viewModel: resolvePreferencesViewModel())
+        PreferencesView(viewModel: resolvePreferencesViewModel())
+    }
+    
+//    func resolveSwiftPlaygroundView() -> some View {
+//        fatalError()
+//    }
+//    
+    func resolveSwiftPlaygroundConsole() -> Console {
+        SwiftPlaygroundConsole()
     }
     
     // MARK: - utils
@@ -28,7 +38,13 @@ class Assembler {
     }
     
     func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        nef.Render.Page.build.markdownIO(content: playground, toFile: output).mapLeft { _ in .markdown }
+        nef.Markdown.render(content: playground, toFile: output).mapLeft { _ in .markdown }
+    }
+    
+    func resolveSwiftPlayground(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
+        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
+                           .provide(console)
+                           .mapLeft { _ in .swiftPlayground }
     }
     
     // MARK: - private methods
