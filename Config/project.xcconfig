@@ -1,0 +1,9 @@
+//  Copyright © 2019 The nef Authors.
+
+#include "project-shared.xcconfig"
+
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) APPSTORE=0
+
+CODE_SIGN_IDENTITY = Mac Developer
+CODE_SIGN_IDENTITY[sdk=macosx*] = Mac Developer
+PROVISIONING_PROFILE_SPECIFIER = $(PRODUCT_NAME)
