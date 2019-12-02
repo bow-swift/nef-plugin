@@ -47,9 +47,9 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>carbon</string>
+					<string>exportSnippet</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Export code snippet</string>
+					<string>Code selection → Image</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

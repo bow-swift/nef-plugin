@@ -4,7 +4,7 @@
 */
 
 // MARK: - Plugin
-"plugin_carbon" = "Export code snippet";
+"plugin_carbon" = "Selection → Image";
 
 // MARK: - Screens
 "about" = "About";

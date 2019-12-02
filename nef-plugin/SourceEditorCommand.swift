@@ -4,7 +4,7 @@ import Foundation
 import XcodeKit
 import AppKit
 
-class NefEditorCommand: NSObject, XCSourceEditorCommand {
+class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
         guard let command = SourceEditorExtension.Command(rawValue: invocation.commandIdentifier) else {
