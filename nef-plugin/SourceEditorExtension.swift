@@ -9,6 +9,8 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     enum Command: String {
         case preferences
         case exportSnippet
+        case markdownPage
+        case swiftPlayground
     }
     
     // MARK: - Constants
