@@ -1,5 +1,6 @@
 //  Copyright © 2019 The nef Authors.
 
-#include "project.xcconfig"
+#include "../project.xcconfig"
 
 CODE_SIGN_ENTITLEMENTS = $(SRCROOT)/nef/Support Files/nef.entitlements
+INFOPLIST_FILE = $(SRCROOT)/nef/Support Files/Info.plist

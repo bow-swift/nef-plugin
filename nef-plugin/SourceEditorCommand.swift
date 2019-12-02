@@ -1,5 +1,6 @@
 //  Copyright © 2019 The nef Authors.
 
+import Foundation
 import XcodeKit
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
@@ -17,8 +18,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             preferences(completion: completion)
         case .exportSnippet:
             carbon(editor: editor, completion: completion)
-        case .swiftPlayground:
-            swiftplayground(editor: editor, completion: completion)
+        case .playgroundBook:
+            playgroundBook(editor: editor, completion: completion)
         case .markdownPage:
             markdownPage(editor: editor, completion: completion)
         }
@@ -45,10 +46,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         terminate(deadline: .now(), completion)
     }
     
-    private func swiftplayground(editor: Editor, completion: @escaping (Error?) -> Void) {
+    private func playgroundBook(editor: Editor, completion: @escaping (Error?) -> Void) {
         guard editor.contentUTI == .package else { completion(EditorError.noPackage); return }
         
-        AppScheme(action: .swiftplayground(package: editor.code)).run()
+        AppScheme(action: .playgroundBook(package: editor.code)).run()
         terminate(deadline: .now(), completion)
     }
     

@@ -10,12 +10,6 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
         case preferences
         case exportSnippet
         case markdownPage
-        case swiftPlayground
-    }
-    
-    // MARK: - Constants
-    enum i18n {
-        static let preferences = NSLocalizedString("preferences", comment: "")
-        static let exportSnippet = NSLocalizedString("plugin_carbon", comment: "")
+        case playgroundBook
     }
 }

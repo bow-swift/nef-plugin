@@ -59,14 +59,6 @@
 					<key>XCSourceEditorCommandName</key>
 					<string>Plaground → Markdown</string>
 				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>swiftPlayground</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Package    → Swift Playground (iPad)</string>
-				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>

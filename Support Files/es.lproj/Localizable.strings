@@ -3,11 +3,6 @@
   Copyright © 2019 The nef Authors.
 */
 
-// MARK: - Plugin
-"plugin_carbon"    = "Selección  → Imagen";
-"markdown_page"    = "Plaground → Markdown";
-"swift_playground" = "Package    → Swift Playground (iPad)";
-
 // MARK: - Screens
 "about" = "Acerca de...";
 "preferences" = "Preferencias";
