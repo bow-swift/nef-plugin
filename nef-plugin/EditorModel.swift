@@ -10,7 +10,8 @@ struct Editor {
     
     enum ContentUTI: String {
         case package = "com.apple.dt.swiftpm-package-manifest"
-        case playground = "com.apple.dt.playgroundpage"
+        case playground = "com.apple.dt.playground"
+        case playgroundPage = "com.apple.dt.playgroundpage"
         case swift = "public.swift-source"
         case objc = "public.objective-c-source"
         case h = "public.c-header"

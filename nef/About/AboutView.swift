@@ -81,7 +81,7 @@ struct AboutView: View {
     }
     
     enum Constants {
-        static let githubURL = "https://github.com/bow-swift/nef#-features"
+        static let githubURL = "https://github.com/bow-swift/nef#features"
     }
     
     enum i18n {

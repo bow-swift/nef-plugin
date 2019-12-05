@@ -40,7 +40,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     }
     
     private func markdownPage(editor: Editor, completion: @escaping (Error?) -> Void) {
-        guard editor.contentUTI == .playground else { completion(EditorError.noPlayground); return }
+        guard editor.contentUTI == .playground || editor.contentUTI == .playgroundPage else { completion(EditorError.noPlayground); return }
         
         AppScheme(action: .markdownPage(playground: editor.code)).run()
         terminate(deadline: .now(), completion)
@@ -65,6 +65,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         static let selection = NSError(domain: "nef editor", code: 3, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("You must make a code selection first", comment: "")])
         static let internetConnection = NSError(domain: "nef editor", code: 4, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("You can not create a code snippet without an internet connection", comment: "")])
         static let noPackage = NSError(domain: "nef editor", code: 5, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("This command only works on Swift Package files", comment: "")])
-        static let noPlayground = NSError(domain: "nef editor", code: 5, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("This command only works on Playground pages", comment: "")])
+        static let noPlayground = NSError(domain: "nef editor", code: 6, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("This command only works on Playground", comment: "")])
     }
 }

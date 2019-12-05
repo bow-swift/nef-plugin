@@ -92,14 +92,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func markdownPageDidFinishLaunching(playground: String) {
         guard !playground.isEmpty else { terminate(); return }
         
-        _ = markdownIO(playground: playground).unsafeRunSyncEither().map(self.showFile)
+        _ = markdownIO(playground: playground)
+                .unsafeRunSyncEither()
+                .map(self.showFile)
         self.terminate()
     }
     
     private func playgroundBookDidFinishLaunching(package: String) {
         guard !package.isEmpty else { terminate(); return }
         
-        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 160),
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 150),
                           styleMask: [.titled, .closable],
                           backing: .buffered, defer: false)
         
@@ -111,6 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
+            guard output.isRight else { return }
             Thread.sleep(forTimeInterval: 1)
             _ = output.map(self.showFile)
             self.terminate()

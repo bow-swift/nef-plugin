@@ -13,22 +13,25 @@ struct PlaygroundBookView: View {
         VStack(spacing: 16) {
             Text("\(console.task)")
                 .font(.body).fontWeight(.light)
-            ProgressView(total: $console.totalSteps, partial: $console.currentStep, duration: $console.duration)
+            ProgressView(total: $console.totalSteps, partial: $console.currentStep, duration: $console.duration, status: $console.status)
                 .frame(maxWidth: .infinity)
             
             Text(console.details)
                 .font(.footnote).fontWeight(.ultraLight)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(2)
                 .offset(y: -8)
             
             HStack {
                 NefImage.nef
                     .resizable()
-                    .frame(width: 56, height: 56)
+                    .frame(width: 64, height: 64)
                     .aspectRatio(contentMode: .fit)
                 Text(console.historical)
                     .font(.caption).fontWeight(.light)
-                    .offset(x: 16)
+                    .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(3)
+                    .offset(x: 16)
                 Spacer()
             }.padding(.init(top: -8, leading: 8, bottom: 8, trailing: 0))
             

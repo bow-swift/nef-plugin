@@ -49,7 +49,8 @@ class PlaygroundBookConsole: Console, ObservableObject {
             self.totalSteps  = step.total
             self.currentStep = step.partial
             
-            self.task = step.total == step.partial ? "Completed!" : task
+            self.task = step.total == step.partial ? "Completed!"
+                                                   : status == .failure ? "Error!" : task
             self.details = details.isEmpty ? self.details : details.joined(separator: " - ")
             self.historical = self.lastTasks.map { "✓ \($0)"}.joined(separator: "\n")
             

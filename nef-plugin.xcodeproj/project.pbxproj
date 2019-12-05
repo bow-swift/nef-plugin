@@ -17,12 +17,12 @@
 		8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21AF22F86C5600E92BC9 /* SeparatorView.swift */; };
 		8B41588522D8DDE700588921 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588422D8DDE700588921 /* ImageButton.swift */; };
 		8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */; };
+		8B497A7D239A91EF00CEC130 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B497A7C239A91EF00CEC130 /* nef */; settings = {ATTRIBUTES = (Required, ); }; };
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
 		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
-		8B7F5C7F2397D30B0040575D /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F5C7E2397D30B0040575D /* nef */; };
 		8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C802397DC820040575D /* PlaygroundBookView.swift */; };
 		8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */; };
 		8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C84239807EF0040575D /* ProgressView.swift */; };
@@ -145,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B7F5C7F2397D30B0040575D /* nef in Frameworks */,
+				8B497A7D239A91EF00CEC130 /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +228,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8B497A7E239A92BB00CEC130 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8BB2892122CB6EFB006E4CCB = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +243,7 @@
 				8BB2895622CB6F81006E4CCB /* nef-plugin */,
 				8BEFF92E2301A897009AA042 /* Support Files */,
 				8BB2892B22CB6EFB006E4CCB /* Products */,
+				8B497A7E239A92BB00CEC130 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,8 +314,8 @@
 				8BBCA6442395547900BE058B /* nef */,
 				8BBCA6452395547E00BE058B /* nef-plugin */,
 				8BBCA63E239553B600BE058B /* project-appstore.xcconfig */,
-				8BBCA63F239553B600BE058B /* project-shared.xcconfig */,
 				8BBCA640239553B600BE058B /* project.xcconfig */,
+				8BBCA63F239553B600BE058B /* project-shared.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -386,7 +394,7 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8B7F5C7E2397D30B0040575D /* nef */,
+				8B497A7C239A91EF00CEC130 /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -416,7 +424,7 @@
 		8BB2892222CB6EFB006E4CCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
@@ -440,7 +448,7 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */,
+				8B497A7B239A91EF00CEC130 /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -610,119 +618,41 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		8BB2894722CB6EFD006E4CCB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BBCA640239553B600BE058B /* project.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		8BB2894922CB6EFD006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA647239554DB00BE058B /* nef.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				CURRENT_PROJECT_VERSION = 107;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
-		};
-		8BB2894A22CB6EFD006E4CCB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BBCA647239554DB00BE058B /* nef.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
 		};
 		8BB2896122CB6F81006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -730,12 +660,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
+				CURRENT_PROJECT_VERSION = 107;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -744,26 +669,7 @@
 			};
 			name = Debug;
 		};
-		8BB2896222CB6F81006E4CCB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BBCA648239554E500BE058B /* nef-plugin.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		8BBCA641239553FB00BE058B /* AppStore */ = {
+		8BBCA641239553FB00BE058B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA63E239553B600BE058B /* project-appstore.xcconfig */;
 			buildSettings = {
@@ -804,12 +710,17 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -817,45 +728,35 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
-			name = AppStore;
+			name = Release;
 		};
-		8BBCA642239553FB00BE058B /* AppStore */ = {
+		8BBCA642239553FB00BE058B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA646239554DB00BE058B /* nef-appstore.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
+				CURRENT_PROJECT_VERSION = 107;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
-			name = AppStore;
+			name = Release;
 		};
-		8BBCA643239553FB00BE058B /* AppStore */ = {
+		8BBCA643239553FB00BE058B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA649239554E500BE058B /* nef-plugin-appstore.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
+				CURRENT_PROJECT_VERSION = 107;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
-			name = AppStore;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -864,49 +765,46 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB2894622CB6EFD006E4CCB /* Debug */,
-				8BB2894722CB6EFD006E4CCB /* Release */,
-				8BBCA641239553FB00BE058B /* AppStore */,
+				8BBCA641239553FB00BE058B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB2894922CB6EFD006E4CCB /* Debug */,
-				8BB2894A22CB6EFD006E4CCB /* Release */,
-				8BBCA642239553FB00BE058B /* AppStore */,
+				8BBCA642239553FB00BE058B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		8BB2896022CB6F81006E4CCB /* Build configuration list for PBXNativeTarget "nef-plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB2896122CB6F81006E4CCB /* Debug */,
-				8BB2896222CB6F81006E4CCB /* Release */,
-				8BBCA643239553FB00BE058B /* AppStore */,
+				8BBCA643239553FB00BE058B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */ = {
+		8B497A7B239A91EF00CEC130 /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.2;
+				kind = exactVersion;
+				version = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B7F5C7E2397D30B0040575D /* nef */ = {
+		8B497A7C239A91EF00CEC130 /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8B497A7B239A91EF00CEC130 /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
 		};
 /* End XCSwiftPackageProductDependency section */
