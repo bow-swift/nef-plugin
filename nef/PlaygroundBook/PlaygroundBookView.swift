@@ -21,16 +21,16 @@ struct PlaygroundBookView: View {
                 .offset(y: -8)
             
             HStack {
-                NefImage.spm
+                NefImage.nef
                     .resizable()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 56, height: 56)
                     .aspectRatio(contentMode: .fit)
                 Text(console.historical)
                     .font(.caption).fontWeight(.light)
                     .offset(x: 16)
                     .lineLimit(3)
                 Spacer()
-            }.padding(.init(top: 0, leading: 16, bottom: 16, trailing: 16))
+            }.padding(.init(top: -8, leading: 8, bottom: 8, trailing: 0))
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
          .padding(16)
@@ -39,5 +39,6 @@ struct PlaygroundBookView: View {
     // MARK: - Constants
     enum NefImage {
         static let spm = Image("spm")
+        static let nef = Image("nef-favicon")
     }
 }

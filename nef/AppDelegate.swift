@@ -4,6 +4,20 @@ import SwiftUI
 import Bow
 import BowEffects
 
+let PACKAGE =   """
+                // swift-tools-version:5.0
+
+                import PackageDescription
+
+                let package = Package(
+                    name: "BowTestProject",
+                    dependencies: [
+                        .package(url: "https://github.com/bow-swift/bow.git", from: "0.6.0"),
+                    ]
+                )
+                """
+
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -13,6 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        playgroundBookDidFinishLaunching(package: PACKAGE); return;
+        
         guard let command = command else { applicationDidFinishLaunching(); return }
         
         switch command {
