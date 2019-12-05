@@ -17,10 +17,15 @@ class PlaygroundBookConsole: Console, ObservableObject {
     
     @Published var totalSteps: UInt  = 0
     @Published var currentStep: UInt = 0
+    
     @Published var task: String = ""
-    @Published var details: [String] = []
+    @Published var details: String = ""
+    @Published var historical: String = ""
+    
     @Published var status: Status = .succesful
     @Published var duration: DispatchTimeInterval = .seconds(1)
+    
+    private var lastTasks: [String] = []
     
     func printStep<E: Swift.Error>(step: Step, information: String) -> IO<E, Void> {
         IO.invoke { self.update(step: step, task: information, details: [], status: .running, duration: step.estimatedDuration) }^
@@ -43,10 +48,15 @@ class PlaygroundBookConsole: Console, ObservableObject {
         DispatchQueue.main.async {
             self.totalSteps  = step.total
             self.currentStep = step.partial
-            self.task = task
-            if !details.isEmpty { self.details = details }
+            
+            self.task = step.total == step.partial ? "Completed!" : task
+            self.details = details.isEmpty ? self.details : details.joined(separator: " - ")
+            self.historical = self.lastTasks.map { "✓ \($0)"}.joined(separator: "\n")
+            
             self.status  = status
             self.duration = duration
+            
+            if !task.isEmpty { self.lastTasks.insert(task, at: 0) }
         }
     }
 }

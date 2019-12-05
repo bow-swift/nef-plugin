@@ -24,3 +24,6 @@
 "preferences_option_size" = "Size";
 "preferences_description_lines" = "Line numbers";
 "preferences_description_watermark" = "Watermark";
+
+// MARK: - Playground Book
+"playground-book" = "Playground Book";

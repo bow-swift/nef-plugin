@@ -99,7 +99,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func playgroundBookDidFinishLaunching(package: String) {
         guard !package.isEmpty else { terminate(); return }
         
-        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 200),
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 160),
                           styleMask: [.titled, .closable],
                           backing: .buffered, defer: false)
         
@@ -111,6 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
+            Thread.sleep(forTimeInterval: 1)
             _ = output.map(self.showFile)
             self.terminate()
         }

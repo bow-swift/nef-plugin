@@ -24,3 +24,6 @@
 "preferences_option_size" = "Tamaño";
 "preferences_description_lines" = "Números de línea";
 "preferences_description_watermark" = "Marca de agua";
+
+// MARK: - Playground Book
+"playground-book" = "Playground Book";

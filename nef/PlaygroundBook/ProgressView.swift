@@ -4,12 +4,6 @@ import SwiftUI
 import AppKit
 
 struct ProgressView: NSViewRepresentable {
-    enum Speed: Double {
-        case slow = 20
-        case normal = 10
-        case fast = 5
-    }
-    
     @Binding var total: UInt
     @Binding var partial: UInt
     @Binding var duration: DispatchTimeInterval

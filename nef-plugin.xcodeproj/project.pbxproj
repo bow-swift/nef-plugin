@@ -334,8 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				8B7F5C802397DC820040575D /* PlaygroundBookView.swift */,
-				8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */,
 				8B7F5C84239807EF0040575D /* ProgressView.swift */,
+				8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */,
 			);
 			path = PlaygroundBook;
 			sourceTree = "<group>";
