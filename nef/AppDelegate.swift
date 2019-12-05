@@ -22,8 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             carbonDidFinishLaunching(code: code)
         case .markdownPage(let playground):
             markdownPageDidFinishLaunching(playground: playground)
-        case .swiftPlayground(let package):
-            swiftPlaygroundDidFinishLaunching(package: package)
+        case .playgroundBook(let package):
+            playgroundBookDidFinishLaunching(package: package)
         case .about:
             aboutDidFinishLaunching()
         }
@@ -96,13 +96,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.terminate()
     }
     
-    private func swiftPlaygroundDidFinishLaunching(package: String) {
+    private func playgroundBookDidFinishLaunching(package: String) {
         guard !package.isEmpty else { terminate(); return }
         
-        window = NSWindow.empty
+        window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 200),
+                          styleMask: [.titled, .closable],
+                          backing: .buffered, defer: false)
+        
+        window.center()
+        window.order(.above, relativeTo: 0)
+        window.title = i18n.playgroundBookTitle
+        window.setFrameAutosaveName(i18n.playgroundBookTitle)
+        window.contentView = NSHostingView(rootView: assembler.resolvePlaygroundBookView())
         window.makeKeyAndOrderFront(nil)
         
-        swiftPlaygroundIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
+        playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
             _ = output.map(self.showFile)
             self.terminate()
         }
@@ -133,14 +141,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }^.mapLeft { _ in .markdown }
     }
     
-    private func swiftPlaygroundIO(packageContent: String) -> IO<AppDelegate.Error, URL> {
+    private func playgroundBookIO(packageContent: String) -> IO<AppDelegate.Error, URL> {
         assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
             let output = IO<OpenPanelError, URL>.var()
             
             return binding(
-                  file <- self.outputURL(inFolder: folder, command: .swiftPlayground(package: packageContent)),
-                output <- self.assembler.resolveSwiftPlayground(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapLeft { _ in .unknown },
+                  file <- self.outputURL(inFolder: folder, command: .playgroundBook(package: packageContent)),
+                output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapLeft { _ in .unknown },
             yield: output.get)
         }^.mapLeft { _ in .swiftPlayground }
     }
@@ -166,7 +174,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case preferences
         case carbon(code: String)
         case markdownPage(playground: String)
-        case swiftPlayground(package: String)
+        case playgroundBook(package: String)
         
         var description: String {
             switch self {
@@ -174,7 +182,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .preferences: return "preferences"
             case .carbon: return "carbon"
             case .markdownPage: return "markdown"
-            case .swiftPlayground: return "swift-playground"
+            case .playgroundBook: return "playground-book"
             }
         }
     }
@@ -203,8 +211,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .carbon(code: value)
         case let ("markdownPage", value):
             return .markdownPage(playground: value)
-        case let ("swiftplayground", value):
-            return .swiftPlayground(package: value)
+        case let ("playgroundBook", value):
+            return .playgroundBook(package: value)
         case ("about", _):
             return .about
         default:
@@ -216,6 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     enum i18n {
         static let preferencesTitle = NSLocalizedString("preferences", comment: "")
         static let aboutTitle = NSLocalizedString("about", comment: "")
+        static let playgroundBookTitle = NSLocalizedString("playground-book", comment: "")
     }
     
     enum Error: Swift.Error {

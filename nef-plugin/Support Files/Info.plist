@@ -63,9 +63,9 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>swiftPlayground</string>
+					<string>playgroundBook</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Package    → Swift Playground (iPad)</string>
+					<string>Package    → Playground Book (iPad)</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

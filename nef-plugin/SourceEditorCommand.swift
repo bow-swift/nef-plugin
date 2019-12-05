@@ -18,10 +18,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             preferences(completion: completion)
         case .exportSnippet:
             carbon(editor: editor, completion: completion)
-        case .playgroundBook:
-            playgroundBook(editor: editor, completion: completion)
         case .markdownPage:
             markdownPage(editor: editor, completion: completion)
+        case .playgroundBook:
+            playgroundBook(editor: editor, completion: completion)
         }
     }
 

@@ -14,7 +14,7 @@ struct AppScheme {
             case .preferences: return URLQueryItem(name: "preferences", value: nil)
             case let .carbon(selection): return URLQueryItem(name: "carbon", value: selection)
             case let .markdownPage(playground): return URLQueryItem(name: "markdownPage", value: playground)
-            case let .playgroundBook(package): return URLQueryItem(name: "swiftplayground", value: package)
+            case let .playgroundBook(package): return URLQueryItem(name: "playgroundBook", value: package)
             }
         }
     }
