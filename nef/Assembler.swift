@@ -9,6 +9,8 @@ import BowEffects
 
 class Assembler {
     private lazy var preferencesDataSource = resolvePreferencesDataSource()
+    private lazy var console = resolvePlaygroundBookConsole()
+    
     
     func resolveAboutView() -> some View {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
@@ -16,7 +18,11 @@ class Assembler {
     }
     
     func resolvePreferencesView() -> some View {
-        return PreferencesView(viewModel: resolvePreferencesViewModel())
+        PreferencesView(viewModel: resolvePreferencesViewModel())
+    }
+    
+    func resolvePlaygroundBookView() -> some View {
+        PlaygroundBookView(console: console)
     }
     
     // MARK: - utils
@@ -27,16 +33,30 @@ class Assembler {
         return nef.Carbon.render(carbon: model, toFile: output).mapLeft { _ in .carbon }
     }
     
+    func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
+        nef.Markdown.render(content: playground, toFile: output).mapLeft { _ in .markdown }
+    }
+    
+    func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
+        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
+                           .provide(console)
+                           .mapLeft { _ in .swiftPlayground }
+    }
+    
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {
-        return PreferencesViewModel(preferences: preferencesDataSource,
-                                    colors: CarbonStyle.Color.all,
-                                    fonts: CarbonStyle.Font.allCases,
-                                    themes: CarbonStyle.Theme.allCases,
-                                    sizes: CarbonStyle.Size.allCases)
+        PreferencesViewModel(preferences: preferencesDataSource,
+                             colors: CarbonStyle.Color.all,
+                             fonts: CarbonStyle.Font.allCases,
+                             themes: CarbonStyle.Theme.allCases,
+                             sizes: CarbonStyle.Size.allCases)
     }
     
     private func resolvePreferencesDataSource() -> PreferencesDataSource {
-        return PreferencesDataSource(fileManager: .default)
+        PreferencesDataSource(fileManager: .default)
+    }
+    
+    private func resolvePlaygroundBookConsole() -> PlaygroundBookConsole {
+        PlaygroundBookConsole()
     }
 }

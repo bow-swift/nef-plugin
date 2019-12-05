@@ -12,6 +12,7 @@ struct AboutView: View {
     }
     
     @State var option: Bool = true
+    
     var body: some View {
         VStack(spacing: 16) {
             nefView

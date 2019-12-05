@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B0FB5AF237C2CBD00221548 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B0FB5AE237C2CBD00221548 /* nef */; };
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
@@ -20,10 +19,13 @@
 		8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */; };
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
-		8B50B4A1234C8FBC00C2429D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50B4A0234C8FBC00C2429D /* Reachability.swift */; };
 		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
+		8B7F5C7F2397D30B0040575D /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F5C7E2397D30B0040575D /* nef */; };
+		8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C802397DC820040575D /* PlaygroundBookView.swift */; };
+		8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */; };
+		8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C84239807EF0040575D /* ProgressView.swift */; };
 		8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B1922360A3690041F79B /* DispatchGroup.swift */; };
 		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
 		8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF222F036E3001EE2DF /* LoadingView.swift */; };
@@ -31,21 +33,23 @@
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
 		8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893622CB6EFD006E4CCB /* Main.storyboard */; };
-		8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */; };
-		8BB2895A22CB6F81006E4CCB /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2895922CB6F81006E4CCB /* SourceEditorCommand.swift */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEAFB11235C96F700118F31 /* Bookmark.swift */; };
 		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9372301AEDB009AA042 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF9392301AEDB009AA042 /* Localizable.stringsdict */; };
-		8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F4E235E0A1E0081C27C /* BowEffects */; };
-		8BF53F51235E0A1E0081C27C /* Bow in Frameworks */ = {isa = PBXBuildFile; productRef = 8BF53F50235E0A1E0081C27C /* Bow */; };
+		8BF68784239928BE006CC977 /* DispatchTimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */; };
 		8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */; };
 		8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA022DDD8BD009E57A9 /* Assembler.swift */; };
 		8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */; };
 		8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */; };
 		8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */; };
 		8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */; };
+		8BF86CB42397CC990071B37C /* AppScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CAF2397CC990071B37C /* AppScheme.swift */; };
+		8BF86CB52397CC990071B37C /* EditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB02397CC990071B37C /* EditorModel.swift */; };
+		8BF86CB62397CC990071B37C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB12397CC990071B37C /* Reachability.swift */; };
+		8BF86CB72397CC990071B37C /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */; };
+		8BF86CB82397CC990071B37C /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */; };
 		8BF9220623546D8D00C58AA0 /* OpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9220523546D8D00C58AA0 /* OpenPanel.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,12 +89,13 @@
 		8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Color.swift"; sourceTree = "<group>"; };
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
 		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
-		8B50B4A0234C8FBC00C2429D /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8B75AF98238061FF00388B1C /* NSView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
+		8B7F5C802397DC820040575D /* PlaygroundBookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookView.swift; sourceTree = "<group>"; };
+		8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookConsole.swift; sourceTree = "<group>"; };
+		8B7F5C84239807EF0040575D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		8B91B1922360A3690041F79B /* DispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchGroup.swift; sourceTree = "<group>"; };
-		8B9954E5237987D000C81A2A /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "../../../Library/Developer/Xcode/DerivedData/nef-plugin-gocpczkxmkvqayefticjfgnzzzmg/SourcePackages/checkouts/nef/project/Component/nef/Support Files/module.modulemap"; sourceTree = "<group>"; };
 		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
 		8B9F3CF222F036E3001EE2DF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -100,24 +105,38 @@
 		8BB2893122CB6EFD006E4CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB2893722CB6EFD006E4CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB2893922CB6EFD006E4CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BB2893A22CB6EFD006E4CCB /* nef.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef.entitlements; sourceTree = "<group>"; };
 		8BB2895222CB6F81006E4CCB /* nef-plugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "nef-plugin.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
-		8BB2895922CB6F81006E4CCB /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
-		8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef_plugin.entitlements; sourceTree = "<group>"; };
 		8BBCA62A2395496000BE058B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BBCA63A239553B600BE058B /* nef-appstore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "nef-appstore.entitlements"; sourceTree = "<group>"; };
+		8BBCA63B239553B600BE058B /* nef-plugin-appstore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "nef-plugin-appstore.entitlements"; sourceTree = "<group>"; };
+		8BBCA63C239553B600BE058B /* nef.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nef.entitlements; sourceTree = "<group>"; };
+		8BBCA63D239553B600BE058B /* nef-plugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "nef-plugin.entitlements"; sourceTree = "<group>"; };
+		8BBCA63E239553B600BE058B /* project-appstore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "project-appstore.xcconfig"; sourceTree = "<group>"; };
+		8BBCA63F239553B600BE058B /* project-shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "project-shared.xcconfig"; sourceTree = "<group>"; };
+		8BBCA640239553B600BE058B /* project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
+		8BBCA646239554DB00BE058B /* nef-appstore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "nef-appstore.xcconfig"; sourceTree = "<group>"; };
+		8BBCA647239554DB00BE058B /* nef.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = nef.xcconfig; sourceTree = "<group>"; };
+		8BBCA648239554E500BE058B /* nef-plugin.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "nef-plugin.xcconfig"; sourceTree = "<group>"; };
+		8BBCA649239554E500BE058B /* nef-plugin-appstore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "nef-plugin-appstore.xcconfig"; sourceTree = "<group>"; };
+		8BBCA64B2395580600BE058B /* Info-appstore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-appstore.plist"; sourceTree = "<group>"; };
 		8BEAFB11235C96F700118F31 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8BEFF92C2301A86B009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF92F2301A8B9009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF9312301A8CE009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		8BEFF9332301A8CF009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		8BEFF9382301AEDB009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchTimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		8BF68F9E22DDD802009E57A9 /* PreferencesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDataSource.swift; sourceTree = "<group>"; };
 		8BF68FA022DDD8BD009E57A9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		8BF68FA222DDE268009E57A9 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
 		8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesModel.swift; sourceTree = "<group>"; };
 		8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
 		8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Model.swift"; sourceTree = "<group>"; };
+		8BF86CAF2397CC990071B37C /* AppScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppScheme.swift; sourceTree = "<group>"; };
+		8BF86CB02397CC990071B37C /* EditorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorModel.swift; sourceTree = "<group>"; };
+		8BF86CB12397CC990071B37C /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		8BF9220523546D8D00C58AA0 /* OpenPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,9 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0FB5AF237C2CBD00221548 /* nef in Frameworks */,
-				8BF53F4F235E0A1E0081C27C /* BowEffects in Frameworks */,
-				8BF53F51235E0A1E0081C27C /* Bow in Frameworks */,
+				8B7F5C7F2397D30B0040575D /* nef in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +189,7 @@
 				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
 				8B75AF98238061FF00388B1C /* NSView+Layout.swift */,
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
+				8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,10 +231,10 @@
 		8BB2892122CB6EFB006E4CCB = {
 			isa = PBXGroup;
 			children = (
+				8BBCA638239553B600BE058B /* Config */,
 				8BB2892C22CB6EFB006E4CCB /* nef */,
 				8BB2895622CB6F81006E4CCB /* nef-plugin */,
 				8BEFF92E2301A897009AA042 /* Support Files */,
-				8BB2895322CB6F81006E4CCB /* Frameworks */,
 				8BB2892B22CB6EFB006E4CCB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -237,6 +255,7 @@
 				8BF68FA022DDD8BD009E57A9 /* Assembler.swift */,
 				8B3B21A522F8246E00E92BC9 /* About */,
 				8B41588922D8E45400588921 /* Preferences */,
+				8BBCA64F239558FC00BE058B /* PlaygroundBook */,
 				8B41588C22D8E48300588921 /* Views */,
 				8B3B21A822F8328B00E92BC9 /* Utils */,
 				8B41588622D8E42C00588921 /* Extensions */,
@@ -247,20 +266,14 @@
 			path = nef;
 			sourceTree = "<group>";
 		};
-		8BB2895322CB6F81006E4CCB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8B9954E5237987D000C81A2A /* module.modulemap */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8BB2895622CB6F81006E4CCB /* nef-plugin */ = {
 			isa = PBXGroup;
 			children = (
-				8BB2895722CB6F81006E4CCB /* SourceEditorExtension.swift */,
-				8BB2895922CB6F81006E4CCB /* SourceEditorCommand.swift */,
-				8B50B4A0234C8FBC00C2429D /* Reachability.swift */,
+				8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */,
+				8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */,
+				8BF86CAF2397CC990071B37C /* AppScheme.swift */,
+				8BF86CB02397CC990071B37C /* EditorModel.swift */,
+				8BF86CB12397CC990071B37C /* Reachability.swift */,
 				8BB2896522CB7060006E4CCB /* Support Files */,
 			);
 			path = "nef-plugin";
@@ -270,7 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				8BB2893922CB6EFD006E4CCB /* Info.plist */,
-				8BB2893A22CB6EFD006E4CCB /* nef.entitlements */,
+				8BBCA63C239553B600BE058B /* nef.entitlements */,
+				8BBCA63A239553B600BE058B /* nef-appstore.entitlements */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -279,9 +293,51 @@
 			isa = PBXGroup;
 			children = (
 				8BBCA62A2395496000BE058B /* Info.plist */,
-				8BB2895C22CB6F81006E4CCB /* nef_plugin.entitlements */,
+				8BBCA64B2395580600BE058B /* Info-appstore.plist */,
+				8BBCA63D239553B600BE058B /* nef-plugin.entitlements */,
+				8BBCA63B239553B600BE058B /* nef-plugin-appstore.entitlements */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		8BBCA638239553B600BE058B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8BBCA6442395547900BE058B /* nef */,
+				8BBCA6452395547E00BE058B /* nef-plugin */,
+				8BBCA63E239553B600BE058B /* project-appstore.xcconfig */,
+				8BBCA63F239553B600BE058B /* project-shared.xcconfig */,
+				8BBCA640239553B600BE058B /* project.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		8BBCA6442395547900BE058B /* nef */ = {
+			isa = PBXGroup;
+			children = (
+				8BBCA647239554DB00BE058B /* nef.xcconfig */,
+				8BBCA646239554DB00BE058B /* nef-appstore.xcconfig */,
+			);
+			path = nef;
+			sourceTree = "<group>";
+		};
+		8BBCA6452395547E00BE058B /* nef-plugin */ = {
+			isa = PBXGroup;
+			children = (
+				8BBCA648239554E500BE058B /* nef-plugin.xcconfig */,
+				8BBCA649239554E500BE058B /* nef-plugin-appstore.xcconfig */,
+			);
+			path = "nef-plugin";
+			sourceTree = "<group>";
+		};
+		8BBCA64F239558FC00BE058B /* PlaygroundBook */ = {
+			isa = PBXGroup;
+			children = (
+				8B7F5C802397DC820040575D /* PlaygroundBookView.swift */,
+				8B7F5C84239807EF0040575D /* ProgressView.swift */,
+				8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */,
+			);
+			path = PlaygroundBook;
 			sourceTree = "<group>";
 		};
 		8BEFF92E2301A897009AA042 /* Support Files */ = {
@@ -313,22 +369,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		8B9954E72379886000C81A2A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		8BB2892922CB6EFB006E4CCB /* nef */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef" */;
 			buildPhases = (
-				8B9954E72379886000C81A2A /* Headers */,
 				8BB2892622CB6EFB006E4CCB /* Sources */,
 				8BB2892722CB6EFB006E4CCB /* Frameworks */,
 				8BB2892822CB6EFB006E4CCB /* Resources */,
@@ -341,9 +386,7 @@
 			);
 			name = nef;
 			packageProductDependencies = (
-				8BF53F4E235E0A1E0081C27C /* BowEffects */,
-				8BF53F50235E0A1E0081C27C /* Bow */,
-				8B0FB5AE237C2CBD00221548 /* nef */,
+				8B7F5C7E2397D30B0040575D /* nef */,
 			);
 			productName = nef;
 			productReference = 8BB2892A22CB6EFB006E4CCB /* nef.app */;
@@ -382,6 +425,7 @@
 					};
 					8BB2895122CB6F81006E4CCB = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -396,8 +440,7 @@
 			);
 			mainGroup = 8BB2892122CB6EFB006E4CCB;
 			packageReferences = (
-				8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */,
-				8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */,
+				8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */,
 			);
 			productRefGroup = 8BB2892B22CB6EFB006E4CCB /* Products */;
 			projectDirPath = "";
@@ -443,6 +486,8 @@
 				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
 				8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */,
 				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
+				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
+				8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
@@ -459,11 +504,13 @@
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
+				8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */,
 				8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,
 				8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */,
 				8B3B21AE22F8691800E92BC9 /* InstallStepView.swift in Sources */,
+				8BF68784239928BE006CC977 /* DispatchTimeInterval+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,9 +518,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB2895822CB6F81006E4CCB /* SourceEditorExtension.swift in Sources */,
-				8BB2895A22CB6F81006E4CCB /* SourceEditorCommand.swift in Sources */,
-				8B50B4A1234C8FBC00C2429D /* Reachability.swift in Sources */,
+				8BF86CB52397CC990071B37C /* EditorModel.swift in Sources */,
+				8BF86CB42397CC990071B37C /* AppScheme.swift in Sources */,
+				8BF86CB82397CC990071B37C /* SourceEditorExtension.swift in Sources */,
+				8BF86CB62397CC990071B37C /* Reachability.swift in Sources */,
+				8BF86CB72397CC990071B37C /* SourceEditorCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +569,9 @@
 /* Begin XCBuildConfiguration section */
 		8BB2894622CB6EFD006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA640239553B600BE058B /* project.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -575,12 +626,15 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		8BB2894722CB6EFD006E4CCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA640239553B600BE058B /* project.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -628,88 +682,180 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		8BB2894922CB6EFD006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA647239554DB00BE058B /* nef.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		8BB2894A22CB6EFD006E4CCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA647239554DB00BE058B /* nef.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "nef/Support Files/nef.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "nef/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		8BB2896122CB6F81006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA648239554E500BE058B /* nef-plugin.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		8BB2896222CB6F81006E4CCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA648239554E500BE058B /* nef-plugin.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "nef-plugin/Support Files/nef_plugin.entitlements";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "nef-plugin/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
+		};
+		8BBCA641239553FB00BE058B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA63E239553B600BE058B /* project-appstore.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = AppStore;
+		};
+		8BBCA642239553FB00BE058B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA646239554DB00BE058B /* nef-appstore.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = AppStore;
+		};
+		8BBCA643239553FB00BE058B /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BBCA649239554E500BE058B /* nef-plugin-appstore.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = AppStore;
 		};
 /* End XCBuildConfiguration section */
 
@@ -719,6 +865,7 @@
 			buildConfigurations = (
 				8BB2894622CB6EFD006E4CCB /* Debug */,
 				8BB2894722CB6EFD006E4CCB /* Release */,
+				8BBCA641239553FB00BE058B /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -728,6 +875,7 @@
 			buildConfigurations = (
 				8BB2894922CB6EFD006E4CCB /* Debug */,
 				8BB2894A22CB6EFD006E4CCB /* Release */,
+				8BBCA642239553FB00BE058B /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -737,6 +885,7 @@
 			buildConfigurations = (
 				8BB2896122CB6F81006E4CCB /* Debug */,
 				8BB2896222CB6F81006E4CCB /* Release */,
+				8BBCA643239553FB00BE058B /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -744,39 +893,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */ = {
+		8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.0;
-			};
-		};
-		8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "http://github.com/bow-swift/bow.git";
-			requirement = {
-				branch = master;
-				kind = branch;
+				minimumVersion = 0.4.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B0FB5AE237C2CBD00221548 /* nef */ = {
+		8B7F5C7E2397D30B0040575D /* nef */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B0FB5AD237C2CBD00221548 /* XCRemoteSwiftPackageReference "nef" */;
+			package = 8B7F5C7D2397D30B0040575D /* XCRemoteSwiftPackageReference "nef" */;
 			productName = nef;
-		};
-		8BF53F4E235E0A1E0081C27C /* BowEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
-			productName = BowEffects;
-		};
-		8BF53F50235E0A1E0081C27C /* Bow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BF53F4B235E0A1E0081C27C /* XCRemoteSwiftPackageReference "bow" */;
-			productName = Bow;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
