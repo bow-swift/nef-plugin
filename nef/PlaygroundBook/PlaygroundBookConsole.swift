@@ -28,23 +28,23 @@ class PlaygroundBookConsole: Console, ObservableObject {
     private var lastTasks: [String] = []
     
     func printStep<E: Swift.Error>(step: Step, information: String) -> IO<E, Void> {
-        IO.invoke { self.update(step: step, task: information, details: [], status: .running, duration: step.estimatedDuration) }^
+        IO.invoke { self.update(step: step, task: information, details: [], status: .running) }^
     }
     
     func printSubstep<E: Swift.Error>(step: Step, information: [String]) -> IO<E, Void> {
-        IO.invoke { self.update(step: step, details: information, status: .running, duration: step.estimatedDuration) }^
+        IO.invoke { self.update(step: step, details: information, status: .running) }^
     }
     
     func printStatus<E: Swift.Error>(step: Step, success: Bool) -> IO<E, Void> {
-        IO.invoke { self.update(step: step, details: [], status: success ? .succesful : .failure, duration: step.estimatedDuration) }^
+        IO.invoke { self.update(step: step, details: [], status: success ? .succesful : .failure) }^
     }
     
     func printStatus<E: Swift.Error>(step: Step, information: String, success: Bool) -> IO<E, Void> {
-        IO.invoke { self.update(step: step, details: [information], status: success ? .succesful : .failure, duration: step.estimatedDuration) }^
+        IO.invoke { self.update(step: step, details: [information], status: success ? .succesful : .failure) }^
     }
     
     // MARK: internal helpers
-    private func update(step: Step, task: String = "", details: [String], status: Status, duration: DispatchTimeInterval) {
+    private func update(step: Step, task: String = "", details: [String], status: Status) {
         DispatchQueue.main.async {
             self.totalSteps  = step.total
             self.currentStep = step.partial
@@ -54,7 +54,7 @@ class PlaygroundBookConsole: Console, ObservableObject {
             self.historical = self.lastTasks.map { "✓ \($0)"}.joined(separator: "\n")
             
             self.status  = status
-            self.duration = duration
+            self.duration = step.estimatedDuration
             
             if !task.isEmpty { self.lastTasks.insert(task, at: 0) }
         }

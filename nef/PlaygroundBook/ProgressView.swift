@@ -25,7 +25,6 @@ struct ProgressView: NSViewRepresentable {
         
         guard view.doubleValue < partial else { return }
         
-        
         view.maxValue = maxValue
         view.minValue = minValue
         
