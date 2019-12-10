@@ -18,7 +18,6 @@
     <a href="https://www.apple.com/macos/catalina/">
     <img src="https://img.shields.io/badge/macOS-10.15%2B-blue" alt="macOS 10.15+">
     </a>
-
 </p>
 
 &nbsp;
@@ -37,16 +36,31 @@ To complete the installation, you should enable `nef` extension from `System Pre
     <img src="assets/nef-plugin-extensions.png" alt="nef: enable Xcode extension" width="90%"/>
 </p>
 
-## 🌁 Export code selection to snippet
+## 🌁 Export code selection to image
 
 In Xcode you can find the nef plugin options in `Editor`.
 
-If you want to export your current code selection into a snippet, you only need to select the action `Editor > nef > Export code snippet`
+If you want to export your current code selection into a snippet, you only need to select the action `Editor > nef > Code selection → Image`
 
 <p align="center">
     <img src="assets/nef-plugin-action-export.png" alt="nef: action for exporting code selection to snippet" width="90%"/>
     <img src="assets/nef-plugin-action-snippet.png" alt="nef: action for exporting code selection to snippet" width="50%"/>
 </p>
+
+&nbsp;
+
+## 📲 Create a Playground Book from your Swift package
+
+You can create a Playground compatible with you iPad from a Swift package. You only need to open the swift package in Xcode,
+and select the action `Editor > nef > Package → Playground Book`
+
+It will warn you where to save the Playground Book, and it will start to build it.
+
+<p align="center">
+    <img src="assets/nef-plugin-playgroundbook.png" alt="nef: action for making a Playground Book" width="90%"/>
+</p>
+
+> This feature needs to use SwiftPM tool. Consequently, it will need to disable the sandbox thus It is not allowed in the App Store, but if you want to enjoy this feature, you only need to install the `.dmg` you'll find in the [releases](https://github.com/bow-swift/nef-plugin/releases) section.
 
 &nbsp;
 
