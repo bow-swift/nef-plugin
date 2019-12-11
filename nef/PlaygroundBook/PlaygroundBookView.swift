@@ -45,3 +45,26 @@ struct PlaygroundBookView: View {
         static let nef = Image("nef-favicon")
     }
 }
+
+
+// MARK: - previews
+#if DEBUG
+import nef
+import BowEffects
+
+struct PlaygroundBookView_Previews: PreviewProvider {
+    static let console = PlaygroundBookConsole()
+    
+    static var previews: some View {
+        console.historical = "✓ It is a preview 1\n✓ It is a preview 2"
+        console.task    = "Preview"
+        console.details = "Preview details"
+        console.totalSteps  = 5
+        console.currentStep = 2
+        console.duration = .seconds(15)
+        console.status   = .running
+        
+        return PlaygroundBookView(console: console).frame(width: 800, height: 200, alignment: .center)
+    }
+}
+#endif

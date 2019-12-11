@@ -11,7 +11,7 @@
 "copyright" = "Copyright © 2019 The nef authors";
 "github" = "Read more about nef on GitHub";
 "install_preferences" = "Open 'System Preferences'";
-"install_extensions" = "Select 'Extension'";
+"install_extensions" = "Select 'Extensions'";
 "nef_extension" = "Xcode Source Editor";
 
 // MARK: - Preferences
