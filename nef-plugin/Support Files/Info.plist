@@ -57,7 +57,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>markdownPage</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Plaground → Markdown</string>
+					<string>Playground       → Markdown</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
@@ -65,7 +65,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>playgroundBook</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Package    → Playground Book (iPad)</string>
+					<string>Swift Package  → Playground Book (iPad)</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

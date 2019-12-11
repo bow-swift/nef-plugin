@@ -57,7 +57,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>markdownPage</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Plaground → Markdown</string>
+					<string>Playground → Markdown</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
