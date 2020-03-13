@@ -122,15 +122,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
-        assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
-            let file = IO<OpenPanelError, URL>.var()
-            let output = IO<OpenPanelError, URL>.var()
-            
-            return binding(
-                  file <- self.outputURL(inFolder: folder, command: .carbon(code: code)),
-                output <- self.assembler.resolveCarbon(code: code, output: file.get).mapLeft { _ in .unknown },
-            yield: output.get)
-        }^.mapLeft { _ in .carbon }
+        func persistImage(_ data: Data) -> IO<AppDelegate.Error, URL> {
+            assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
+                let output = IO<OpenPanelError, URL>.var()
+                return binding(
+                    output <- self.outputURL(inFolder: folder, command: .carbon(code: code)),
+                           |<-data.writeIO(to: output.get).mapError { _ in .unknown },
+                yield: output.get)
+            }^.mapError { _ in .carbon }^
+        }
+        
+        let image = IO<AppDelegate.Error, Data>.var()
+        let output = IO<AppDelegate.Error, URL>.var()
+        
+        return binding(
+             image <- self.assembler.resolveCarbon(code: code),
+            output <- persistImage(image.get),
+        yield: output.get)^
     }
     
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
@@ -140,9 +148,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             return binding(
                   file <- self.outputURL(inFolder: folder, command: .markdownPage(playground: playground)),
-                output <- self.assembler.resolveMarkdownPage(playground: playground, output: file.get).mapLeft { _ in .unknown },
+                output <- self.assembler.resolveMarkdownPage(playground: playground, output: file.get).mapError { _ in .unknown },
             yield: output.get)
-        }^.mapLeft { _ in .markdown }
+        }^.mapError { _ in .markdown }^
     }
     
     private func playgroundBookIO(packageContent: String) -> IO<AppDelegate.Error, URL> {
@@ -152,9 +160,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             return binding(
                   file <- self.outputURL(inFolder: folder, command: .playgroundBook(package: packageContent)),
-                output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapLeft { _ in .unknown },
+                output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapError { _ in .unknown },
             yield: output.get)
-        }^.mapLeft { _ in .swiftPlayground }
+        }^.mapError { _ in .swiftPlayground }
     }
 
     private func outputURL(inFolder url: URL, command: Command) -> IO<OpenPanelError, URL> {
