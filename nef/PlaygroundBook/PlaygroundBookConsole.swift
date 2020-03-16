@@ -9,6 +9,7 @@ import BowEffects
 
 
 class PlaygroundBookConsole: Console, ObservableObject {
+    
     enum Status: String {
         case failure
         case succesful
@@ -41,6 +42,14 @@ class PlaygroundBookConsole: Console, ObservableObject {
     
     func printStatus<E: Swift.Error>(step: Step, information: String, success: Bool) -> IO<E, Void> {
         IO.invoke { self.update(step: step, details: [information], status: success ? .succesful : .failure) }^
+    }
+    
+    func printStatus<E: Swift.Error>(success: Bool) -> IO<E, Void> {
+        IO.invoke { self.update(step: Step.empty, details: [], status: success ? .succesful : .failure) }^
+    }
+    
+    func printStatus<E: Swift.Error>(information: String, success: Bool) -> IO<E, Void> {
+        IO.invoke { self.update(step: Step.empty, details: [information], status: success ? .succesful : .failure) }^
     }
     
     // MARK: internal helpers

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
+		8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B230C82241C1DD400C31191 /* Data+IO.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
 		8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A622F82AAE00E92BC9 /* AboutView.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B230C82241C1DD400C31191 /* Data+IO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+IO.swift"; sourceTree = "<group>"; };
 		8B2CE74522D89C8900571F24 /* CheckOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOptionView.swift; sourceTree = "<group>"; };
 		8B2CE74722D8A35400571F24 /* ColorOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionView.swift; sourceTree = "<group>"; };
 		8B3B21A622F82AAE00E92BC9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -186,10 +188,11 @@
 			children = (
 				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
 				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
+				8B230C82241C1DD400C31191 /* Data+IO.swift */,
 				8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */,
+				8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */,
 				8B75AF98238061FF00388B1C /* NSView+Layout.swift */,
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
-				8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */,
 				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
 				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
+				8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */,
 				8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
@@ -795,8 +799,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
-				kind = exactVersion;
-				version = 0.5.1;
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

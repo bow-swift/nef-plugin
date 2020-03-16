@@ -28,19 +28,22 @@ class Assembler {
     // MARK: - utils
     func resolveOpenPanel() -> OpenPanel { OpenPanel() }
     
-    func resolveCarbon(code: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        let model = CarbonModel(code: code, style: preferencesDataSource.state.carbonStyle)
-        return nef.Carbon.render(carbon: model, toFile: output).mapLeft { _ in .carbon }
+    func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
+        nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
+            .provide(console)
+            .mapError { _ in .carbon }
     }
     
     func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        nef.Markdown.render(content: playground, toFile: output).mapLeft { _ in .markdown }
+        nef.Markdown.render(content: playground, toFile: output)
+            .provide(console)
+            .mapError { _ in .markdown }
     }
     
     func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
         nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
                            .provide(console)
-                           .mapLeft { _ in .swiftPlayground }
+                           .mapError { _ in .swiftPlayground }^
     }
     
     // MARK: - private methods
