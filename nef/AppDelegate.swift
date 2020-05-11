@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesDidFinishLaunching()
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
+        case .pasteboardCarbon(code: let code):
+            print(code)
         case .markdownPage(let playground):
             markdownPageDidFinishLaunching(playground: playground)
         case .playgroundBook(let package):

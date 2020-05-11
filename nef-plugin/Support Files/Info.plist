@@ -49,7 +49,15 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>exportSnippet</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Code selection → Image</string>
+					<string>Code selection → Image (File)</string>
+				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>exportSnippetToPasteboard</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Code selection → Image (Pasteboard)</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
