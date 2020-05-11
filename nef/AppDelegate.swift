@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
         case .pasteboardCarbon(code: let code):
-            print(code)
+            pasteboardCarbonDidFinishLaunching(code: code)
         case .markdownPage(let playground):
             markdownPageDidFinishLaunching(playground: playground)
         case .playgroundBook(let package):
@@ -91,6 +91,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    private func pasteboardCarbonDidFinishLaunching(code: String) {
+        guard !code.isEmpty else { terminate(); return }
+        
+        window = NSWindow.empty
+        window.makeKeyAndOrderFront(nil)
+        
+        pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
+            _ = output.map(self.writeToPasteboard)
+            self.terminate()
+        }
+    }
+    
     private func markdownPageDidFinishLaunching(playground: String) {
         guard !playground.isEmpty else { terminate(); return }
         
@@ -143,6 +155,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         yield: output.get)^
     }
     
+    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, NSImage> {
+        func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
+            data.makeImage().mapError { _ in AppDelegate.Error.carbon }
+        }
+        
+        let image = IO<AppDelegate.Error, Data>.var()
+        let output = IO<AppDelegate.Error, NSImage>.var()
+        
+        return binding(
+             image <- self.assembler.resolveCarbon(code: code),
+             output <- makeImage(image.get),
+        yield:output.get)^
+    }
+    
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
         assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
@@ -176,6 +202,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
+    private func writeToPasteboard(_ image: NSImage) {
+        let pb = NSPasteboard.general
+        pb.clearContents()
+        pb.writeObjects([image])
+    }
+    
     private func terminate() {
         DispatchQueue.main.async {
             NSApplication.shared.terminate(nil)
@@ -187,6 +219,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case about
         case preferences
         case carbon(code: String)
+        case pasteboardCarbon(code: String)
         case markdownPage(playground: String)
         case playgroundBook(package: String)
         
@@ -195,6 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .about: return "about"
             case .preferences: return "preferences"
             case .carbon: return "carbon"
+            case .pasteboardCarbon: return "pasteboardCarbon"
             case .markdownPage: return "markdown"
             case .playgroundBook: return "playground-book"
             }
@@ -223,6 +257,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .preferences
         case let ("carbon", value):
             return .carbon(code: value)
+        case let ("pasteboardCarbon", value):
+            return .pasteboardCarbon(code: value)
         case let ("markdownPage", value):
             return .markdownPage(playground: value)
         case let ("playgroundBook", value):
