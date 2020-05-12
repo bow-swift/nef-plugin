@@ -3,31 +3,27 @@
 import SwiftUI
 
 struct PlaygroundBookView: View {
-    @ObservedObject private var console: PlaygroundBookConsole
+    @ObservedObject private var progressReport: PlaygroundBookProgressReport
     
-    init(console: PlaygroundBookConsole) {
-        self.console = console
+    init(progressReport: PlaygroundBookProgressReport) {
+        self.progressReport = progressReport
     }
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("\(console.task)")
+            Text(progressReport.details)
                 .font(.body).fontWeight(.light)
-            ProgressView(total: $console.totalSteps, partial: $console.currentStep, duration: $console.duration, status: $console.status)
+            ProgressView(total: $progressReport.totalSteps, partial: $progressReport.currentStep, status: $progressReport.status)
                 .frame(maxWidth: .infinity)
             
-            Text(console.details)
-                .font(.footnote).fontWeight(.ultraLight)
-                .fixedSize(horizontal: false, vertical: true)
-                .lineLimit(2)
-                .offset(y: -8)
+            Spacer()
             
             HStack {
                 NefImage.nef
                     .resizable()
                     .frame(width: 64, height: 64)
                     .aspectRatio(contentMode: .fit)
-                Text(console.historical)
+                Text(progressReport.historical)
                     .font(.caption).fontWeight(.light)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(3)
@@ -53,18 +49,16 @@ import nef
 import BowEffects
 
 struct PlaygroundBookView_Previews: PreviewProvider {
-    static let console = PlaygroundBookConsole()
+    static let progressReport = PlaygroundBookProgressReport()
     
     static var previews: some View {
-        console.historical = "✓ It is a preview 1\n✓ It is a preview 2"
-        console.task    = "Preview"
-        console.details = "Preview details"
-        console.totalSteps  = 5
-        console.currentStep = 2
-        console.duration = .seconds(15)
-        console.status   = .running
+        progressReport.historical = "✓ It is a preview 1\n✓ It is a preview 2"
+        progressReport.details = "Preview details"
+        progressReport.totalSteps = 5
+        progressReport.currentStep = 2
+        progressReport.status = .inProgress
         
-        return PlaygroundBookView(console: console).frame(width: 800, height: 200, alignment: .center)
+        return PlaygroundBookView(progressReport: progressReport).frame(width: 800, height: 200, alignment: .center)
     }
 }
 #endif

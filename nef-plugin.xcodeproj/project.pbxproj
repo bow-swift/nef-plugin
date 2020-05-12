@@ -25,7 +25,7 @@
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
 		8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C802397DC820040575D /* PlaygroundBookView.swift */; };
-		8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */; };
+		8B7F5C832397DC820040575D /* PlaygroundBookProgressReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C812397DC820040575D /* PlaygroundBookProgressReport.swift */; };
 		8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C84239807EF0040575D /* ProgressView.swift */; };
 		8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B91B1922360A3690041F79B /* DispatchGroup.swift */; };
 		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
@@ -95,7 +95,7 @@
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
 		8B7F5C802397DC820040575D /* PlaygroundBookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookView.swift; sourceTree = "<group>"; };
-		8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookConsole.swift; sourceTree = "<group>"; };
+		8B7F5C812397DC820040575D /* PlaygroundBookProgressReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookProgressReport.swift; sourceTree = "<group>"; };
 		8B7F5C84239807EF0040575D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		8B91B1922360A3690041F79B /* DispatchGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchGroup.swift; sourceTree = "<group>"; };
 		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
@@ -346,7 +346,7 @@
 			children = (
 				8B7F5C802397DC820040575D /* PlaygroundBookView.swift */,
 				8B7F5C84239807EF0040575D /* ProgressView.swift */,
-				8B7F5C812397DC820040575D /* PlaygroundBookConsole.swift */,
+				8B7F5C812397DC820040575D /* PlaygroundBookProgressReport.swift */,
 			);
 			path = PlaygroundBook;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
 					8BB2892922CB6EFB006E4CCB = {
@@ -499,7 +499,7 @@
 				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
 				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
 				8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */,
-				8B7F5C832397DC820040575D /* PlaygroundBookConsole.swift in Sources */,
+				8B7F5C832397DC820040575D /* PlaygroundBookProgressReport.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
