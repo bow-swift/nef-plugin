@@ -2,12 +2,13 @@
 
 import SwiftUI
 import AppKit
+import nef
 
 struct ProgressView: NSViewRepresentable {
     @Binding var total: UInt
     @Binding var partial: UInt
-    @Binding var duration: DispatchTimeInterval
-    @Binding var status: PlaygroundBookConsole.Status
+    @Binding var status: nef.ProgressEventStatus
+    private let duration: DispatchTimeInterval = .seconds(30)
     
     func makeNSView(context: NSViewRepresentableContext<ProgressView>) -> NSProgressIndicator {
         let view = NSProgressIndicator()
@@ -19,7 +20,7 @@ struct ProgressView: NSViewRepresentable {
     }
     
     func updateNSView(_ view: NSProgressIndicator, context: NSViewRepresentableContext<ProgressView>) {
-        guard status != .failure else { showError(indicator: view); return }
+        guard status != .failed else { showError(indicator: view); return }
         guard view.doubleValue < Double(self.partial) else { return }
         
         let maxValue = Double(self.total)

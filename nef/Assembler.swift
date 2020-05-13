@@ -9,7 +9,7 @@ import BowEffects
 
 class Assembler {
     private lazy var preferencesDataSource = resolvePreferencesDataSource()
-    private lazy var console = resolvePlaygroundBookConsole()
+    private lazy var progressReport = resolvePlaygroundBookProgressReport()
     
     
     func resolveAboutView() -> some View {
@@ -22,7 +22,7 @@ class Assembler {
     }
     
     func resolvePlaygroundBookView() -> some View {
-        PlaygroundBookView(console: console)
+        PlaygroundBookView(progressReport: progressReport)
     }
     
     // MARK: - utils
@@ -30,19 +30,19 @@ class Assembler {
     
     func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
         nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
-            .provide(console)
+            .provide(progressReport)
             .mapError { _ in .carbon }
     }
     
     func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
         nef.Markdown.render(content: playground, toFile: output)
-            .provide(console)
+            .provide(progressReport)
             .mapError { _ in .markdown }
     }
     
     func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
         nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
-                           .provide(console)
+                           .provide(progressReport)
                            .mapError { _ in .swiftPlayground }^
     }
     
@@ -59,7 +59,7 @@ class Assembler {
         PreferencesDataSource(fileManager: .default)
     }
     
-    private func resolvePlaygroundBookConsole() -> PlaygroundBookConsole {
-        PlaygroundBookConsole()
+    private func resolvePlaygroundBookProgressReport() -> PlaygroundBookProgressReport {
+        PlaygroundBookProgressReport()
     }
 }
