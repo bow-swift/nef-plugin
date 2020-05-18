@@ -99,6 +99,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
             _ = output.map(self.writeToPasteboard)
+            self.showPasterboardFinishedNotification()
             self.terminate()
         }
     }
@@ -208,6 +209,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pb.writeObjects([image])
     }
     
+    private func showPasterboardFinishedNotification() {
+        let notification = NSUserNotification()
+        notification.identifier = "unique-id"
+        notification.title = "Snippet created"
+        notification.subtitle = "Your image was copied to the pasteboard!"
+        notification.deliveryDate = Date(timeIntervalSinceNow: 1)
+        NSUserNotificationCenter.default.delegate = self
+        DispatchQueue.main.async {
+            NSUserNotificationCenter.default.scheduleNotification(notification)
+        }
+        
+    }
+    
     private func terminate() {
         DispatchQueue.main.async {
             NSApplication.shared.terminate(nil)
@@ -281,5 +295,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case carbon
         case markdown
         case swiftPlayground
+    }
+}
+
+extension AppDelegate: NSUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        true
     }
 }
