@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let command = command else { applicationDidFinishLaunching(); return }
+        registerNotifications()
         
         switch command {
         case .preferences:
@@ -98,8 +99,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map(self.writeToPasteboard)
-            self.showPasterboardFinishedNotification()
+            _ = output.map { image in
+                self.writeToPasteboard(image)
+                self.showNotification(title: "nef", body: "Image copied to pasteboard!")
+            }
+            
             self.terminate()
         }
     }
@@ -209,19 +213,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pb.writeObjects([image])
     }
     
-    private func showPasterboardFinishedNotification() {
-        let notification = NSUserNotification()
-        notification.identifier = "unique-id"
-        notification.title = "Snippet created"
-        notification.subtitle = "Your image was copied to the pasteboard!"
-        notification.deliveryDate = Date(timeIntervalSinceNow: 1)
-        NSUserNotificationCenter.default.delegate = self
-        DispatchQueue.main.async {
-            NSUserNotificationCenter.default.scheduleNotification(notification)
-        }
-        
-    }
-    
     private func terminate() {
         DispatchQueue.main.async {
             NSApplication.shared.terminate(nil)
@@ -295,11 +286,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case carbon
         case markdown
         case swiftPlayground
-    }
-}
-
-extension AppDelegate: NSUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
-        true
     }
 }
