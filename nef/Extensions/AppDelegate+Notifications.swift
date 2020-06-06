@@ -2,6 +2,8 @@
 
 import Foundation
 import UserNotifications
+import Bow
+import BowEffects
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func registerNotifications() {
@@ -39,17 +41,31 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // MARK: delegate <UNUserNotificationCenterDelegate>
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        if let data = userInfo["imageData"] {
-            switch response.actionIdentifier {
-            case NefNotificationAction.saveImage.identifier:
-                print("do stuff: \(data)")
-            case UNNotificationDismissActionIdentifier:
-                break
-            default:
-                break
-            }
+        guard let data = userInfo["imageData"] as? Data else { return completionHandler() }
+        
+        switch response.actionIdentifier {
+        case NefNotificationAction.saveImage.identifier:
+            save(image: data, completion: completionHandler)
+        case UNNotificationDismissActionIdentifier:
+            fallthrough
+        default:
+            completionHandler()
         }
-        completionHandler()
+    }
+}
+
+private extension AppDelegate {
+    func save(image: Data, completion: @escaping () -> Void) {
+        let output = IO<AppDelegate.Error, URL>.var()
+        
+        let p = binding(
+             output <- image.persistImage(command: .pasteboardCarbon(code: "")),
+        yield: output.get)^
+        
+        p.unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
+            _ = output.map(self.showFile)
+            completion()
+        }
     }
 }
 

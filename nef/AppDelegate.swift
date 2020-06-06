@@ -188,7 +188,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }^.mapError { _ in .swiftPlayground }
     }
     
-    private func showFile(_ file: URL) {
+    func showFile(_ file: URL) {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
