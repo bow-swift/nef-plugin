@@ -99,9 +99,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
         
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map { image in
-                self.writeToPasteboard(image)
-                self.showNotification(title: "nef", body: "Image copied to pasteboard!")
+            _ = output.map { outputImage in
+                self.writeToPasteboard(outputImage.image)
+                self.showNotification(title: "nef", body: "Image copied to pasteboard!", imageData: outputImage.data, actions: [.cancel, .saveImage])
             }
             
             self.terminate()
@@ -160,18 +160,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         yield: output.get)^
     }
     
-    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, NSImage> {
+    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, (image: NSImage, data: Data)> {
         func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
             data.makeImage().mapError { _ in AppDelegate.Error.carbon }
         }
         
-        let image = IO<AppDelegate.Error, Data>.var()
-        let output = IO<AppDelegate.Error, NSImage>.var()
+        let data = IO<AppDelegate.Error, Data>.var()
+        let image = IO<AppDelegate.Error, NSImage>.var()
         
         return binding(
-             image <- self.assembler.resolveCarbon(code: code),
-             output <- makeImage(image.get),
-        yield:output.get)^
+             data <- self.assembler.resolveCarbon(code: code),
+             image <- makeImage(data.get),
+             yield:(image.get, data.get))^
     }
     
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {

@@ -9,7 +9,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             .requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func showNotification(title: String, body: String, actions: [NefNotificationAction] = []) {
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = []) {
         let notificationCenter = UNUserNotificationCenter.current()
         let notificationId = UUID().uuidString
         let categoryId = "CATEGORY_IDENTIFIER_\(notificationId)"
@@ -17,6 +17,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         content.title = title
         content.body = body
         content.categoryIdentifier = categoryId
+        
+        if let data = imageData {
+            content.userInfo = ["imageData": data]
+        }
         
         let category = UNNotificationCategory(identifier: categoryId,
                                               actions: actions.map(\.unNotificationAction),
@@ -29,21 +33,41 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([category])
-        notificationCenter.add(request) { _ in }
+        notificationCenter.add(request)
     }
     
     // MARK: delegate <UNUserNotificationCenterDelegate>
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // TODO
+        let userInfo = response.notification.request.content.userInfo
+        if let data = userInfo["imageData"] {
+            switch response.actionIdentifier {
+            case NefNotificationAction.saveImage.identifier:
+                print("do stuff: \(data)")
+            case UNNotificationDismissActionIdentifier:
+                break
+            default:
+                break
+            }
+        }
+        completionHandler()
     }
 }
 
 enum NefNotificationAction: Equatable {
-    case store(title: String)
+    case saveImage
+    case cancel
     
     var title: String {
         switch self {
-        case .store(let title): return title
+        case .saveImage: return "Save to disk"
+        case .cancel: return "Cancel"
+        }
+    }
+    
+    var identifier: String {
+        switch self {
+        case .saveImage: return String(describing: self)
+        case .cancel: return UNNotificationDismissActionIdentifier
         }
     }
 }
@@ -51,8 +75,8 @@ enum NefNotificationAction: Equatable {
 // MARK: - Helpers
 private extension NefNotificationAction {
     var unNotificationAction: UNNotificationAction {
-        .init(identifier: "\(self)",
-              title: self.title,
+        .init(identifier: identifier,
+              title: title,
               options: .foreground)
     }
 }
