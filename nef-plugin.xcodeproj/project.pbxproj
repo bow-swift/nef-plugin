@@ -53,6 +53,8 @@
 		8BF86CB72397CC990071B37C /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */; };
 		8BF86CB82397CC990071B37C /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */; };
 		8BF9220623546D8D00C58AA0 /* OpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9220523546D8D00C58AA0 /* OpenPanel.swift */; };
+		AF73C325248C196600168A64 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C324248C196600168A64 /* Command.swift */; };
+		AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C326248C1A4200168A64 /* URL+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,8 @@
 		8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		8BF9220523546D8D00C58AA0 /* OpenPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanel.swift; sourceTree = "<group>"; };
+		AF73C324248C196600168A64 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		AF73C326248C1A4200168A64 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,7 @@
 				8B3B21A922F8329900E92BC9 /* Browser.swift */,
 				8B91B1922360A3690041F79B /* DispatchGroup.swift */,
 				8BF9220523546D8D00C58AA0 /* OpenPanel.swift */,
+				AF73C324248C196600168A64 /* Command.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				8BF68783239928BE006CC977 /* DispatchTimeInterval+Extensions.swift */,
 				8B75AF98238061FF00388B1C /* NSView+Layout.swift */,
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
+				AF73C326248C1A4200168A64 /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,6 +504,7 @@
 				8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */,
 				8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */,
 				8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */,
+				AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */,
 				8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */,
 				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
 				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
@@ -511,6 +518,7 @@
 				8BF9220623546D8D00C58AA0 /* OpenPanel.swift in Sources */,
 				8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */,
 				8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */,
+				AF73C325248C196600168A64 /* Command.swift in Sources */,
 				8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */,
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,

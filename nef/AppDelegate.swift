@@ -141,22 +141,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
-        func persistImage(_ data: Data) -> IO<AppDelegate.Error, URL> {
-            assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
-                let output = IO<OpenPanelError, URL>.var()
-                return binding(
-                    output <- self.outputURL(inFolder: folder, command: .carbon(code: code)),
-                           |<-data.writeIO(to: output.get).mapError { _ in .unknown },
-                yield: output.get)
-            }^.mapError { _ in .carbon }^
-        }
-        
         let image = IO<AppDelegate.Error, Data>.var()
         let output = IO<AppDelegate.Error, URL>.var()
         
         return binding(
              image <- self.assembler.resolveCarbon(code: code),
-            output <- persistImage(image.get),
+             output <- image.get.persistImage(command: .carbon(code: code)),
         yield: output.get)^
     }
     
@@ -180,7 +170,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let output = IO<OpenPanelError, URL>.var()
             
             return binding(
-                  file <- self.outputURL(inFolder: folder, command: .markdownPage(playground: playground)),
+                  file <- folder.outputURL(command: .markdownPage(playground: playground)),
                 output <- self.assembler.resolveMarkdownPage(playground: playground, output: file.get).mapError { _ in .unknown },
             yield: output.get)
         }^.mapError { _ in .markdown }^
@@ -192,15 +182,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let output = IO<OpenPanelError, URL>.var()
             
             return binding(
-                  file <- self.outputURL(inFolder: folder, command: .playgroundBook(package: packageContent)),
+                  file <- folder.outputURL(command: .playgroundBook(package: packageContent)),
                 output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapError { _ in .unknown },
             yield: output.get)
         }^.mapError { _ in .swiftPlayground }
-    }
-
-    private func outputURL(inFolder url: URL, command: Command) -> IO<OpenPanelError, URL> {
-        let filename = "nef-\(command) \(Date.now.human)"
-        return IO.pure(url.appendingPathComponent(filename))^
     }
     
     private func showFile(_ file: URL) {
@@ -219,27 +204,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    // MARK: scheme url types
-    enum Command: CustomStringConvertible {
-        case about
-        case preferences
-        case carbon(code: String)
-        case pasteboardCarbon(code: String)
-        case markdownPage(playground: String)
-        case playgroundBook(package: String)
-        
-        var description: String {
-            switch self {
-            case .about: return "about"
-            case .preferences: return "preferences"
-            case .carbon: return "carbon"
-            case .pasteboardCarbon: return "pasteboardCarbon"
-            case .markdownPage: return "markdown"
-            case .playgroundBook: return "playground-book"
-            }
-        }
-    }
-    
+    // MARK: scheme url types    
     @objc private func handle(event: NSAppleEventDescriptor, withReplyEvent: NSAppleEventDescriptor) {
         let keyword = AEKeyword(keyDirectObject)
         let urlDescriptor = event.paramDescriptor(forKeyword: keyword)
