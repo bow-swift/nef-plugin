@@ -1,14 +1,22 @@
 //  Copyright © 2020 The nef Authors.
 
-import Foundation
+import AppKit
 import UserNotifications
 import Bow
 import BowEffects
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    func isLocalNotification(_ aNotification: Notification) -> Bool {
+        guard let userInfo = aNotification.userInfo,
+              let launchOption = userInfo["NSApplicationLaunchIsDefaultLaunchKey"] as? Int else { return false }
+        
+        return launchOption == 0
+    }
+    
     func registerNotifications() {
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound]) { granted, _  in }
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
     func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = []) {
@@ -21,7 +29,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         content.categoryIdentifier = categoryId
         
         if let data = imageData {
-            content.userInfo = ["imageData": data]
+            content.userInfo = [Self.imageDataUserInfoKey: data]
         }
         
         let category = UNNotificationCategory(identifier: categoryId,
@@ -33,40 +41,38 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
         
-        notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([category])
         notificationCenter.add(request)
     }
     
     // MARK: delegate <UNUserNotificationCenterDelegate>
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        guard let data = userInfo["imageData"] as? Data else { return completionHandler() }
+        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else { return }
+        command = .notification(userInfo: userInfo, action: response.actionIdentifier)
+        applicationDidFinishLaunching(Notification(name: .NSThreadWillExit))
+        completionHandler()
+    }
+    
+    func processNotification(_ userInfo: [String: Any], action: String) -> IO<AppDelegate.Error, Either<Void, URL>> {
+        guard let image = userInfo[Self.imageDataUserInfoKey] as? Data else { return IO.raiseError(.notification)^ }
         
-        switch response.actionIdentifier {
+        switch action {
         case NefNotificationAction.saveImage.identifier:
-            save(image: data, completion: completionHandler)
+            return image.persistImage(command: .pasteboardCarbon()).map(Either.right)^
         case UNNotificationDismissActionIdentifier:
-            fallthrough
+            return IO.pure(.left(()))^
         default:
-            completionHandler()
+            return IO.raiseError(.notification)^
         }
     }
 }
 
 private extension AppDelegate {
-    func save(image: Data, completion: @escaping () -> Void) {
-        let output = IO<AppDelegate.Error, URL>.var()
-        
-        let p = binding(
-             output <- image.persistImage(command: .pasteboardCarbon(code: "")),
-        yield: output.get)^
-        
-        p.unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map(self.showFile)
-            completion()
-        }
-    }
+    static let imageDataUserInfoKey = "imageDataUserInfoKey"
 }
 
 enum NefNotificationAction: Equatable {

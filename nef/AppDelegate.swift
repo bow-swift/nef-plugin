@@ -6,29 +6,18 @@ import BowEffects
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
     var window: NSWindow!
     private let assembler = Assembler()
-    private var command: Command?
+    var command: Command?
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        guard let command = command else { applicationDidFinishLaunching(); return }
         registerNotifications()
         
-        switch command {
-        case .preferences:
-            preferencesDidFinishLaunching()
-        case .carbon(let code):
-            carbonDidFinishLaunching(code: code)
-        case .pasteboardCarbon(code: let code):
-            pasteboardCarbonDidFinishLaunching(code: code)
-        case .markdownPage(let playground):
-            markdownPageDidFinishLaunching(playground: playground)
-        case .playgroundBook(let package):
-            playgroundBookDidFinishLaunching(package: package)
-        case .about:
-            aboutDidFinishLaunching()
+        if let command = command {
+            schemaURLDidFinishLaunching(command: command)
+        } else {
+            defaultDidFinishLaunching(aNotification)
         }
     }
     
@@ -50,8 +39,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: life cycle
-    private func applicationDidFinishLaunching() {
+    private func defaultDidFinishLaunching(_ aNotification: Notification) {
         aboutDidFinishLaunching()
+    }
+    
+    private func schemaURLDidFinishLaunching(command: Command) {
+        switch command {
+        case .preferences:
+            preferencesDidFinishLaunching()
+        case .carbon(let code):
+            carbonDidFinishLaunching(code: code)
+        case .pasteboardCarbon(let code):
+            pasteboardCarbonDidFinishLaunching(code: code)
+        case .markdownPage(let playground):
+            markdownPageDidFinishLaunching(playground: playground)
+        case .playgroundBook(let package):
+            playgroundBookDidFinishLaunching(package: package)
+        case .notification(let userInfo, let action):
+            notificationDidFinishLaunching(userInfo: userInfo, action: action)
+        case .about:
+            aboutDidFinishLaunching()
+        }
+    }
+    
+    private func emptyDidFinishLaunching() {
+        window = NSWindow.empty
+        window.makeKeyAndOrderFront(nil)
     }
     
     private func aboutDidFinishLaunching() {
@@ -82,9 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func carbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        
-        window = NSWindow.empty
-        window.makeKeyAndOrderFront(nil)
+        emptyDidFinishLaunching()
         
         carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
             _ = output.map(self.showFile)
@@ -94,9 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func pasteboardCarbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
-        
-        window = NSWindow.empty
-        window.makeKeyAndOrderFront(nil)
+        emptyDidFinishLaunching()
         
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
             _ = output.map { outputImage in
@@ -139,6 +148,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    private func notificationDidFinishLaunching(userInfo: [String: Any], action: String) {
+        emptyDidFinishLaunching()
+        
+        let io = processNotification(userInfo, action: action)
+        io.unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
+            _ = output.map { either in either.map(self.showFile) }
+            self.terminate()
+        }
+    }
+    
     // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
         let image = IO<AppDelegate.Error, Data>.var()
@@ -161,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return binding(
              data <- self.assembler.resolveCarbon(code: code),
              image <- makeImage(data.get),
-             yield:(image.get, data.get))^
+        yield:(image.get, data.get))^
     }
     
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
@@ -188,14 +207,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }^.mapError { _ in .swiftPlayground }
     }
     
-    func showFile(_ file: URL) {
-        NSWorkspace.shared.activateFileViewerSelecting([file])
-    }
-    
     private func writeToPasteboard(_ image: NSImage) {
         let pb = NSPasteboard.general
         pb.clearContents()
         pb.writeObjects([image])
+    }
+    
+    private func showFile(_ file: URL) {
+        NSWorkspace.shared.activateFileViewerSelecting([file])
     }
     
     private func terminate() {
@@ -251,5 +270,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case carbon
         case markdown
         case swiftPlayground
+        case notification
     }
 }
