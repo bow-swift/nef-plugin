@@ -14,33 +14,30 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func registerNotifications() {
-        let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = []) {
-        let notificationCenter = UNUserNotificationCenter.current()
-        let notificationId = UUID().uuidString
-        let categoryId = "CATEGORY_IDENTIFIER_\(notificationId)"
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = [], id: String = UUID().uuidString) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
-        content.categoryIdentifier = categoryId
+        content.categoryIdentifier = id
         
         if let data = imageData {
             content.userInfo = [Self.imageDataUserInfoKey: data]
         }
         
-        let category = UNNotificationCategory(identifier: categoryId,
+        let category = UNNotificationCategory(identifier: id,
                                               actions: actions.map(\.unNotificationAction),
                                               intentIdentifiers: [],
                                               hiddenPreviewsBodyPlaceholder: "",
                                               options: .customDismissAction)
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         
+        notificationCenter.removeAllDeliveredNotifications()
         notificationCenter.setNotificationCategories([category])
         notificationCenter.add(request)
     }
@@ -73,6 +70,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 private extension AppDelegate {
     static let imageDataUserInfoKey = "imageDataUserInfoKey"
+    var notificationCenter: UNUserNotificationCenter { .current() }
 }
 
 enum NefNotificationAction: Equatable {

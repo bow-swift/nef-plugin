@@ -6,16 +6,16 @@ import BowEffects
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var window: NSWindow!
-    private let assembler = Assembler()
     var command: Command?
-    @IBOutlet weak var aboutMenuItem: NSMenuItem!
+    private let assembler = Assembler()
+    private var window: NSWindow!
+    @IBOutlet private weak var aboutMenuItem: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         registerNotifications()
         
         if let command = command {
-            schemaURLDidFinishLaunching(command: command)
+            commandDidFinishLaunching(command: command)
         } else {
             defaultDidFinishLaunching(aNotification)
         }
@@ -40,10 +40,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: life cycle
     private func defaultDidFinishLaunching(_ aNotification: Notification) {
+        guard !isLocalNotification(aNotification) else { return }
         aboutDidFinishLaunching()
     }
     
-    private func schemaURLDidFinishLaunching(command: Command) {
+    private func commandDidFinishLaunching(command: Command) {
         switch command {
         case .preferences:
             preferencesDidFinishLaunching()
