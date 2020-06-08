@@ -29,7 +29,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         content.categoryIdentifier = id
         
         if let data = imageData {
-            content.userInfo = [NefNotification.Key.imageDataUserInfoKey: data]
+            content.userInfo = [NefNotification.UserInfoKey.imageData: data]
         }
         
         let category = UNNotificationCategory(identifier: id,
@@ -58,7 +58,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func processNotification(_ userInfo: [String: Any], action: String) -> IO<AppDelegate.Error, Either<Void, URL>> {
-        guard let image = userInfo[NefNotification.Key.imageDataUserInfoKey] as? Data else { return IO.raiseError(.notification)^ }
+        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return IO.raiseError(.notification)^ }
         
         switch action {
         case NefNotification.Action.saveImage.identifier:
@@ -97,8 +97,8 @@ extension NefNotification {
 }
 
 extension NefNotification {
-    enum Key {
-        static let imageDataUserInfoKey = "imageDataUserInfoKey"
+    enum UserInfoKey {
+        static let imageData = "imageDataUserInfoKey"
     }
 }
 
