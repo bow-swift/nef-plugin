@@ -111,6 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
             _ = output.map { outputImage in
                 self.writeToPasteboard(outputImage.image)
+                self.removeOldNotifications()
                 self.showNotification(title: "nef", body: "Image copied to pasteboard!", imageData: outputImage.data, actions: [.cancel, .saveImage])
             }
             

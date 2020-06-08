@@ -18,7 +18,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = [], id: String = UUID().uuidString) {
+    func removeOldNotifications() {
+        NefNotification.center.removeAllDeliveredNotifications()
+    }
+    
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
