@@ -14,8 +14,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func registerNotifications() {
-        notificationCenter.delegate = self
-        notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
+        NefNotification.center.delegate = self
+        NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
     func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotificationAction] = [], id: String = UUID().uuidString) {
@@ -25,7 +25,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         content.categoryIdentifier = id
         
         if let data = imageData {
-            content.userInfo = [Self.imageDataUserInfoKey: data]
+            content.userInfo = [NefNotification.Key.imageDataUserInfoKey: data]
         }
         
         let category = UNNotificationCategory(identifier: id,
@@ -37,9 +37,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         
-        notificationCenter.removeAllDeliveredNotifications()
-        notificationCenter.setNotificationCategories([category])
-        notificationCenter.add(request)
+        NefNotification.center.setNotificationCategories([category])
+        NefNotification.center.add(request)
     }
     
     // MARK: delegate <UNUserNotificationCenterDelegate>
@@ -55,10 +54,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func processNotification(_ userInfo: [String: Any], action: String) -> IO<AppDelegate.Error, Either<Void, URL>> {
-        guard let image = userInfo[Self.imageDataUserInfoKey] as? Data else { return IO.raiseError(.notification)^ }
+        guard let image = userInfo[NefNotification.Key.imageDataUserInfoKey] as? Data else { return IO.raiseError(.notification)^ }
         
         switch action {
-        case NefNotificationAction.saveImage.identifier:
+        case NefNotification.Action.saveImage.identifier:
             return image.persistImage(command: .pasteboardCarbon()).map(Either.right)^
         case UNNotificationDismissActionIdentifier:
             return IO.pure(.left(()))^
@@ -68,32 +67,39 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 }
 
-private extension AppDelegate {
-    static let imageDataUserInfoKey = "imageDataUserInfoKey"
-    var notificationCenter: UNUserNotificationCenter { .current() }
+enum NefNotification {
+    static var center: UNUserNotificationCenter { .current() }
 }
 
-enum NefNotificationAction: Equatable {
-    case saveImage
-    case cancel
-    
-    var title: String {
-        switch self {
-        case .saveImage: return "Save to disk"
-        case .cancel: return "Cancel"
+extension NefNotification {
+    enum Action: Equatable {
+        case saveImage
+        case cancel
+        
+        var title: String {
+            switch self {
+            case .saveImage: return "Save to disk"
+            case .cancel: return "Cancel"
+            }
+        }
+        
+        var identifier: String {
+            switch self {
+            case .saveImage: return String(describing: self)
+            case .cancel: return UNNotificationDismissActionIdentifier
+            }
         }
     }
-    
-    var identifier: String {
-        switch self {
-        case .saveImage: return String(describing: self)
-        case .cancel: return UNNotificationDismissActionIdentifier
-        }
+}
+
+extension NefNotification {
+    enum Key {
+        static let imageDataUserInfoKey = "imageDataUserInfoKey"
     }
 }
 
 // MARK: - Helpers
-private extension NefNotificationAction {
+private extension NefNotification.Action {
     var unNotificationAction: UNNotificationAction {
         .init(identifier: identifier,
               title: title,
