@@ -11,12 +11,12 @@ struct ClipboardConfig {
 }
 
 extension AppDelegate {
-    func pasteboardCarbonIO(data: Data) -> EnvIO<ClipboardConfig, AppDelegate.Error, NSImage> {
-        func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
-            data.makeImage().mapError { _ in AppDelegate.Error.carbon }
+    func pasteboardCarbonIO(data: Data) -> EnvIO<ClipboardConfig, Clipboard.Error, NSImage> {
+        func makeImage(_ data: Data) -> IO<Clipboard.Error, NSImage> {
+            data.makeImage().mapError { _ in .invalidData }
         }
         
-        let image = EnvIO<ClipboardConfig, AppDelegate.Error, NSImage>.var()
+        let image = EnvIO<ClipboardConfig, Clipboard.Error, NSImage>.var()
         
         return binding(
             image <- makeImage(data).env(),
@@ -29,10 +29,12 @@ extension AppDelegate {
         yield:image.get)^
     }
     
-    private func writeToPasteboard(_ image: NSImage) -> EnvIO<ClipboardConfig, AppDelegate.Error, Void> {
+    private func writeToPasteboard(_ image: NSImage) -> EnvIO<ClipboardConfig, Clipboard.Error, Void> {
         EnvIO.invoke { config in
             config.clipboard.clearContents()
-            config.clipboard.writeObjects([image])
+            if !config.clipboard.writeObjects([image]) {
+                throw Clipboard.Error.writeToClipboard
+            }
         }^
     }
 }
@@ -50,13 +52,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func removeOldNotifications() -> EnvIO<ClipboardConfig, AppDelegate.Error, Void> {
+    func removeOldNotifications() -> EnvIO<ClipboardConfig, Clipboard.Error, Void> {
         EnvIO.invoke { config in
             config.notificationCenter.removeAllDeliveredNotifications()
         }^
     }
     
-    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) -> EnvIO<ClipboardConfig,AppDelegate.Error, Void> {
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) -> EnvIO<ClipboardConfig, Clipboard.Error, Void> {
         EnvIO.invoke { config in
             let content = UNMutableNotificationContent()
             content.title = title
@@ -109,6 +111,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 enum NefNotification {
     static var center: UNUserNotificationCenter { .current() }
+}
+
+enum Clipboard {
+    enum Error: Swift.Error {
+        case invalidData
+        case writeToClipboard
+        case carbon
+    }
 }
 
 extension NefNotification {

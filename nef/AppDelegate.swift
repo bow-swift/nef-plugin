@@ -110,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let config = ClipboardConfig(clipboard: .general, notificationCenter: .current())
         
-        assembler.resolveCarbon(code: code).env()^
+        assembler.resolveCarbon(code: code).env()^.mapError { _ in .carbon }
             .flatMap(pasteboardCarbonIO)^
             .provide(config)
             .unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
