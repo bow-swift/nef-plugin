@@ -108,10 +108,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard !code.isEmpty else { terminate(); return }
         emptyDidFinishLaunching()
         
-        pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map { _ in
-                self.terminate()
-            }
+        let config = ClipboardConfig(clipboard: .general, notificationCenter: .current())
+        
+        assembler.resolveCarbon(code: code).env()^
+            .flatMap(pasteboardCarbonIO)^
+            .provide(config)
+            .unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
+                _ = output.map { _ in
+                    self.terminate()
+                }
         }
     }
     
@@ -167,26 +172,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         yield: output.get)^
     }
     
-    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, NSImage> {
-        func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
-            data.makeImage().mapError { _ in AppDelegate.Error.carbon }
-        }
-        
-        let data = IO<AppDelegate.Error, Data>.var()
-        let image = IO<AppDelegate.Error, NSImage>.var()
-        
-        return binding(
-            data <- self.assembler.resolveCarbon(code: code),
-            image <- makeImage(data.get),
-            |<-self.writeToPasteboard(image.get),
-            |<-self.removeOldNotifications(),
-            |<-self.showNotification(title: "nef",
-                                     body: "Image copied to pasteboard!",
-                                     imageData: data.get,
-                                     actions: [.cancel, .saveImage]),
-        yield:image.get)^
-    }
-    
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
         assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
             let file = IO<OpenPanelError, URL>.var()
@@ -209,14 +194,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapError { _ in .unknown },
             yield: output.get)
         }^.mapError { _ in .swiftPlayground }
-    }
-    
-    private func writeToPasteboard(_ image: NSImage) -> IO<AppDelegate.Error, Void> {
-        IO.invoke {
-            let pb = NSPasteboard.general
-            pb.clearContents()
-            pb.writeObjects([image])
-        }^
     }
     
     private func showFile(_ file: URL) {

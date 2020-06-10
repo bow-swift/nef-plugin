@@ -5,6 +5,38 @@ import UserNotifications
 import Bow
 import BowEffects
 
+struct ClipboardConfig {
+    let clipboard: NSPasteboard
+    let notificationCenter: UNUserNotificationCenter
+}
+
+extension AppDelegate {
+    func pasteboardCarbonIO(data: Data) -> EnvIO<ClipboardConfig, AppDelegate.Error, NSImage> {
+        func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
+            data.makeImage().mapError { _ in AppDelegate.Error.carbon }
+        }
+        
+        let image = EnvIO<ClipboardConfig, AppDelegate.Error, NSImage>.var()
+        
+        return binding(
+            image <- makeImage(data).env(),
+            |<-self.writeToPasteboard(image.get),
+            |<-self.removeOldNotifications(),
+            |<-self.showNotification(title: "nef",
+                                     body: "Image copied to pasteboard!",
+                                     imageData: data,
+                                     actions: [.cancel, .saveImage]),
+        yield:image.get)^
+    }
+    
+    private func writeToPasteboard(_ image: NSImage) -> EnvIO<ClipboardConfig, AppDelegate.Error, Void> {
+        EnvIO.invoke { config in
+            config.clipboard.clearContents()
+            config.clipboard.writeObjects([image])
+        }^
+    }
+}
+
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func isLocalNotification(_ aNotification: Notification) -> Bool {
         guard let userInfo = aNotification.userInfo,
@@ -18,12 +50,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func removeOldNotifications() -> IO<AppDelegate.Error, Void> {
-        IO.invoke { NefNotification.center.removeAllDeliveredNotifications() }^
+    func removeOldNotifications() -> EnvIO<ClipboardConfig, AppDelegate.Error, Void> {
+        EnvIO.invoke { config in
+            config.notificationCenter.removeAllDeliveredNotifications()
+        }^
     }
     
-    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) -> IO<AppDelegate.Error, Void> {
-        IO.invoke {
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) -> EnvIO<ClipboardConfig,AppDelegate.Error, Void> {
+        EnvIO.invoke { config in
             let content = UNMutableNotificationContent()
             content.title = title
             content.body = body
@@ -42,8 +76,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
             let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
             
-            NefNotification.center.setNotificationCategories([category])
-            NefNotification.center.add(request)
+            config.notificationCenter.setNotificationCategories([category])
+            config.notificationCenter.add(request)
         }^
     }
     
