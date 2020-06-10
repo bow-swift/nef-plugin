@@ -109,13 +109,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         emptyDidFinishLaunching()
         
         pasteboardCarbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map { outputImage in
-                self.writeToPasteboard(outputImage.image)
-                self.removeOldNotifications()
-                self.showNotification(title: "nef", body: "Image copied to pasteboard!", imageData: outputImage.data, actions: [.cancel, .saveImage])
+            _ = output.map { _ in
+                self.terminate()
             }
-            
-            self.terminate()
         }
     }
     
@@ -171,7 +167,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         yield: output.get)^
     }
     
-    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, (image: NSImage, data: Data)> {
+    private func pasteboardCarbonIO(code: String) -> IO<AppDelegate.Error, NSImage> {
         func makeImage(_ data: Data) -> IO<AppDelegate.Error, NSImage> {
             data.makeImage().mapError { _ in AppDelegate.Error.carbon }
         }
@@ -180,9 +176,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let image = IO<AppDelegate.Error, NSImage>.var()
         
         return binding(
-             data <- self.assembler.resolveCarbon(code: code),
-             image <- makeImage(data.get),
-        yield:(image.get, data.get))^
+            data <- self.assembler.resolveCarbon(code: code),
+            image <- makeImage(data.get),
+            |<-self.writeToPasteboard(image.get),
+            |<-self.removeOldNotifications(),
+            |<-self.showNotification(title: "nef",
+                                     body: "Image copied to pasteboard!",
+                                     imageData: data.get,
+                                     actions: [.cancel, .saveImage]),
+        yield:image.get)^
     }
     
     private func markdownIO(playground: String) -> IO<AppDelegate.Error, URL> {
@@ -209,10 +211,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }^.mapError { _ in .swiftPlayground }
     }
     
-    private func writeToPasteboard(_ image: NSImage) {
-        let pb = NSPasteboard.general
-        pb.clearContents()
-        pb.writeObjects([image])
+    private func writeToPasteboard(_ image: NSImage) -> IO<AppDelegate.Error, Void> {
+        IO.invoke {
+            let pb = NSPasteboard.general
+            pb.clearContents()
+            pb.writeObjects([image])
+        }^
     }
     
     private func showFile(_ file: URL) {

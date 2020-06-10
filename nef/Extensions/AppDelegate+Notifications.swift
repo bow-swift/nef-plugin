@@ -18,31 +18,33 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
-    func removeOldNotifications() {
-        NefNotification.center.removeAllDeliveredNotifications()
+    func removeOldNotifications() -> IO<AppDelegate.Error, Void> {
+        IO.invoke { NefNotification.center.removeAllDeliveredNotifications() }^
     }
     
-    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        content.categoryIdentifier = id
-        
-        if let data = imageData {
-            content.userInfo = [NefNotification.UserInfoKey.imageData: data]
-        }
-        
-        let category = UNNotificationCategory(identifier: id,
-                                              actions: actions.map(\.unNotificationAction),
-                                              intentIdentifiers: [],
-                                              hiddenPreviewsBodyPlaceholder: "",
-                                              options: .customDismissAction)
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        
-        NefNotification.center.setNotificationCategories([category])
-        NefNotification.center.add(request)
+    func showNotification(title: String, body: String, imageData: Data? = nil, actions: [NefNotification.Action] = [], id: String = UUID().uuidString) -> IO<AppDelegate.Error, Void> {
+        IO.invoke {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.categoryIdentifier = id
+            
+            if let data = imageData {
+                content.userInfo = [NefNotification.UserInfoKey.imageData: data]
+            }
+            
+            let category = UNNotificationCategory(identifier: id,
+                                                  actions: actions.map(\.unNotificationAction),
+                                                  intentIdentifiers: [],
+                                                  hiddenPreviewsBodyPlaceholder: "",
+                                                  options: .customDismissAction)
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
+            let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+            
+            NefNotification.center.setNotificationCategories([category])
+            NefNotification.center.add(request)
+        }^
     }
     
     // MARK: delegate <UNUserNotificationCenterDelegate>
