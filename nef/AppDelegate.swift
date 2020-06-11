@@ -154,11 +154,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func notificationDidFinishLaunching(userInfo: [String: Any], action: String) {
         emptyDidFinishLaunching()
         
-        let io = processNotification(userInfo, action: action)
-        io.unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-            _ = output.map { either in either.map(self.showFile) }
-            self.terminate()
-        }
+        processNotification(userInfo, action: action).env()
+            .flatMap(showClipboardFile)^
+            .provide(NSWorkspace.shared)
+            .unsafeRunAsync(on: .global(qos: .userInitiated)) { _ in self.terminate() }
     }
     
     // MARK: Helper methods

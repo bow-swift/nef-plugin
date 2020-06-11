@@ -48,8 +48,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func registerNotifications() {
-        NefNotification.center.delegate = self
-        NefNotification.center.requestAuthorization(options: [.alert, .sound]) { granted, _  in }
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _  in }
     }
     
     func removeOldNotifications() -> EnvIO<ClipboardConfig, Clipboard.Error, Void> {
@@ -95,22 +95,29 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func processNotification(_ userInfo: [String: Any], action: String) -> IO<AppDelegate.Error, Either<Void, URL>> {
-        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return IO.raiseError(.notification)^ }
+    func processNotification(_ userInfo: [String: Any], action: String) -> IO<NefNotification.Error, NefNotification.Response> {
+        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return IO.raiseError(.noImageData)^ }
         
         switch action {
         case NefNotification.Action.saveImage.identifier:
-            return image.persistImage(command: .pasteboardCarbon()).map(Either.right)^
+            return image
+                .persistImage(command: .pasteboardCarbon())
+                .mapError { _ in .persistImage }
+                .map { .saveImage($0) }^
         case UNNotificationDismissActionIdentifier:
-            return IO.pure(.left(()))^
+            return IO.pure(.dismiss)^
         default:
-            return IO.raiseError(.notification)^
+            return IO.raiseError(.unsupportedAction)^
         }
     }
-}
-
-enum NefNotification {
-    static var center: UNUserNotificationCenter { .current() }
+    
+    func showClipboardFile(response: NefNotification.Response) -> EnvIO<NSWorkspace, NefNotification.Error, Void> {
+        guard case let .saveImage(url) = response else { return EnvIO.pure(())^ }
+        
+        return EnvIO.invoke { workspace in
+            workspace.activateFileViewerSelecting([url])
+        }^
+    }
 }
 
 enum Clipboard {
@@ -121,7 +128,7 @@ enum Clipboard {
     }
 }
 
-extension NefNotification {
+enum NefNotification {
     enum Action: Equatable {
         case saveImage
         case cancel
@@ -140,11 +147,20 @@ extension NefNotification {
             }
         }
     }
-}
-
-extension NefNotification {
+    
+    enum Response {
+        case saveImage(URL)
+        case dismiss
+    }
+    
     enum UserInfoKey {
         static let imageData = "imageDataUserInfoKey"
+    }
+    
+    enum Error: Swift.Error {
+        case noImageData
+        case unsupportedAction
+        case persistImage
     }
 }
 
