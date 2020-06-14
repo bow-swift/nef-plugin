@@ -55,7 +55,7 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>exportSnippetToPasteboard</string>
+					<string>exportSnippetToClipboard</string>
 					<key>XCSourceEditorCommandName</key>
 					<string>Code selection → Image (Clipboard)</string>
 				</dict>

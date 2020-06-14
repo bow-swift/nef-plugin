@@ -50,8 +50,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesDidFinishLaunching()
         case .carbon(let code):
             carbonDidFinishLaunching(code: code)
-        case .pasteboardCarbon(let code):
-            pasteboardCarbonDidFinishLaunching(code: code)
+        case .clipboardCarbon(let code):
+            clipboardCarbonDidFinishLaunching(code: code)
         case .markdownPage(let playground):
             markdownPageDidFinishLaunching(playground: playground)
         case .playgroundBook(let package):
@@ -104,14 +104,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    private func pasteboardCarbonDidFinishLaunching(code: String) {
+    private func clipboardCarbonDidFinishLaunching(code: String) {
         guard !code.isEmpty else { terminate(); return }
         emptyDidFinishLaunching()
         
         let config = Clipboard.Config(clipboard: .general, notificationCenter: .current())
         
         assembler.resolveCarbon(code: code).env()^.mapError { _ in .carbon }
-            .flatMap(pasteboardCarbonIO)^
+            .flatMap(clipboardCarbonIO)^
             .provide(config)
             .unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
                 _ = output.map { _ in
@@ -231,8 +231,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return .preferences
         case let ("carbon", value):
             return .carbon(code: value)
-        case let ("pasteboardCarbon", value):
-            return .pasteboardCarbon(code: value)
+        case let ("clipboardCarbon", value):
+            return .clipboardCarbon(code: value)
         case let ("markdownPage", value):
             return .markdownPage(playground: value)
         case let ("playgroundBook", value):

@@ -9,7 +9,7 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     enum Command: String {
         case preferences
         case exportSnippet
-        case exportSnippetToPasteboard
+        case exportSnippetToClipboard
         case markdownPage
         case playgroundBook
     }

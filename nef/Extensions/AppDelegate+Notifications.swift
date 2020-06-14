@@ -6,7 +6,7 @@ import Bow
 import BowEffects
 
 extension AppDelegate {
-    func pasteboardCarbonIO(data: Data) -> EnvIO<Clipboard.Config, Clipboard.Error, NSImage> {
+    func clipboardCarbonIO(data: Data) -> EnvIO<Clipboard.Config, Clipboard.Error, NSImage> {
         func makeImage(_ data: Data) -> IO<Clipboard.Error, NSImage> {
             data.makeImage().mapError { _ in .invalidData }
         }
@@ -15,16 +15,16 @@ extension AppDelegate {
         
         return binding(
             image <- makeImage(data).env(),
-            |<-self.writeToPasteboard(image.get),
+            |<-self.writeToClipboard(image.get),
             |<-self.removeOldNotifications(),
             |<-self.showNotification(title: "nef",
-                                     body: "Image copied to pasteboard!",
+                                     body: "Image copied to clipboard!",
                                      imageData: data,
                                      actions: [.cancel, .saveImage]),
         yield:image.get)^
     }
     
-    private func writeToPasteboard(_ image: NSImage) -> EnvIO<Clipboard.Config, Clipboard.Error, Void> {
+    private func writeToClipboard(_ image: NSImage) -> EnvIO<Clipboard.Config, Clipboard.Error, Void> {
         EnvIO.invoke { config in
             config.clipboard.clearContents()
             if !config.clipboard.writeObjects([image]) {
@@ -96,7 +96,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch action {
         case NefNotification.Action.saveImage.identifier:
             return image
-                .persist    (command: .pasteboardCarbon())
+                .persist    (command: .clipboardCarbon())
                 .mapError { _ in .persistImage }
                 .contramap(\.openPanel)
                 .map { .saveImage($0) }^

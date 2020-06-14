@@ -6,7 +6,7 @@ struct AppScheme {
     enum Action {
         case preferences
         case carbon(selection: String)
-        case pasteboardCarbon(selection: String)
+        case clipboardCarbon(selection: String)
         case markdownPage(playground: String)
         case playgroundBook(package: String)
         
@@ -14,7 +14,7 @@ struct AppScheme {
             switch self {
             case .preferences: return URLQueryItem(name: "preferences", value: nil)
             case let .carbon(selection): return URLQueryItem(name: "carbon", value: selection)
-            case let .pasteboardCarbon(selection): return URLQueryItem(name: "pasteboardCarbon", value: selection)
+            case let .clipboardCarbon(selection): return URLQueryItem(name: "clipboardCarbon", value: selection)
             case let .markdownPage(playground): return URLQueryItem(name: "markdownPage", value: playground)
             case let .playgroundBook(package): return URLQueryItem(name: "playgroundBook", value: package)
             }

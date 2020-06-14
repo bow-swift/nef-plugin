@@ -18,8 +18,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             preferences(completion: completion)
         case .exportSnippet:
             carbon(editor: editor, completion: completion)
-        case .exportSnippetToPasteboard:
-            pasteboardCarbon(editor: editor, completion: completion)
+        case .exportSnippetToClipboard:
+            clipboardCarbon(editor: editor, completion: completion)
         case .markdownPage:
             markdownPage(editor: editor, completion: completion)
         case .playgroundBook:
@@ -41,11 +41,11 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         terminate(deadline: .now() + .seconds(5), completion)
     }
     
-    private func pasteboardCarbon(editor: Editor, completion: @escaping (Error?) -> Void) {
+    private func clipboardCarbon(editor: Editor, completion: @escaping (Error?) -> Void) {
         guard Reachability.isConnected else { completion(EditorError.internetConnection); return }
         guard let selection = editor.selection else { completion(EditorError.selection); return }
         
-        AppScheme(action: .pasteboardCarbon(selection: selection)).run()
+        AppScheme(action: .clipboardCarbon(selection: selection)).run()
         terminate(deadline: .now() + .seconds(5), completion)
     }
     
