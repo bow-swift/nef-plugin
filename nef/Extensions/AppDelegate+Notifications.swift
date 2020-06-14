@@ -5,35 +5,6 @@ import UserNotifications
 import Bow
 import BowEffects
 
-extension AppDelegate {
-    func clipboardCarbonIO(data: Data) -> EnvIO<Clipboard.Config, Clipboard.Error, NSImage> {
-        func makeImage(_ data: Data) -> IO<Clipboard.Error, NSImage> {
-            data.makeImage().mapError { _ in .invalidData }
-        }
-        
-        let image = EnvIO<Clipboard.Config, Clipboard.Error, NSImage>.var()
-        
-        return binding(
-            image <- makeImage(data).env(),
-            |<-self.writeToClipboard(image.get),
-            |<-self.removeOldNotifications(),
-            |<-self.showNotification(title: "nef",
-                                     body: "Image copied to clipboard!",
-                                     imageData: data,
-                                     actions: [.cancel, .saveImage]),
-        yield:image.get)^
-    }
-    
-    private func writeToClipboard(_ image: NSImage) -> EnvIO<Clipboard.Config, Clipboard.Error, Void> {
-        EnvIO.invoke { config in
-            config.clipboard.clearContents()
-            if !config.clipboard.writeObjects([image]) {
-                throw Clipboard.Error.writeToClipboard
-            }
-        }^
-    }
-}
-
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func isLocalNotification(_ aNotification: Notification) -> Bool {
         guard let userInfo = aNotification.userInfo,
@@ -96,7 +67,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch action {
         case NefNotification.Action.saveImage.identifier:
             return image
-                .persist    (command: .clipboardCarbon())
+                .persist(command: .clipboardCarbon(code: ""))
                 .mapError { _ in .persistImage }
                 .contramap(\.openPanel)
                 .map { .saveImage($0) }^
@@ -106,19 +77,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return EnvIO.raiseError(.unsupportedAction)^
         }
     }
-    
-    func showClipboardFile(response: NefNotification.Response) -> EnvIO<NotificationConfig, NefNotification.Error, Void> {
-        guard case let .saveImage(url) = response else { return EnvIO.pure(())^ }
-        
-        return EnvIO.invoke { config in
-            config.workspace.activateFileViewerSelecting([url])
-        }^
-    }
-}
-
-struct NotificationConfig {
-    let workspace: NSWorkspace
-    let openPanel: OpenPanel
 }
 
 enum Clipboard {

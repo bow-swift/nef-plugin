@@ -21,7 +21,7 @@
 		8B497A7D239A91EF00CEC130 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B497A7C239A91EF00CEC130 /* nef */; settings = {ATTRIBUTES = (Required, ); }; };
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
-		8B7583AC247278DA00C98A08 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7583AB247278DA00C98A08 /* AppDelegate+Notifications.swift */; };
+		8B7583AC247278DA00C98A08 /* AppDelegate+Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7583AB247278DA00C98A08 /* AppDelegate+Clipboard.swift */; };
 		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
@@ -56,6 +56,7 @@
 		AF73C325248C196600168A64 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C324248C196600168A64 /* Command.swift */; };
 		AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C326248C1A4200168A64 /* URL+Extension.swift */; };
 		AFD8024F24962732006E9297 /* NefNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD8024E24962732006E9297 /* NefNotification.swift */; };
+		AFD8025124962BDE006E9297 /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD8025024962BDE006E9297 /* AppDelegate+Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +96,7 @@
 		8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Color.swift"; sourceTree = "<group>"; };
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
 		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
-		8B7583AB247278DA00C98A08 /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
+		8B7583AB247278DA00C98A08 /* AppDelegate+Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Clipboard.swift"; sourceTree = "<group>"; };
 		8B75AF98238061FF00388B1C /* NSView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 		AF73C324248C196600168A64 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		AF73C326248C1A4200168A64 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		AFD8024E24962732006E9297 /* NefNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefNotification.swift; sourceTree = "<group>"; };
+		AFD8025024962BDE006E9297 /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +198,8 @@
 		8B41588622D8E42C00588921 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8B7583AB247278DA00C98A08 /* AppDelegate+Notifications.swift */,
+				8B7583AB247278DA00C98A08 /* AppDelegate+Clipboard.swift */,
+				AFD8025024962BDE006E9297 /* AppDelegate+Notifications.swift */,
 				8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */,
 				8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */,
 				8B230C82241C1DD400C31191 /* Data+IO.swift */,
@@ -513,6 +516,7 @@
 				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
 				8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */,
 				8B7F5C832397DC820040575D /* PlaygroundBookProgressReport.swift in Sources */,
+				AFD8025124962BDE006E9297 /* AppDelegate+Notifications.swift in Sources */,
 				8B41588522D8DDE700588921 /* ImageButton.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
@@ -531,7 +535,7 @@
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
 				8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */,
-				8B7583AC247278DA00C98A08 /* AppDelegate+Notifications.swift in Sources */,
+				8B7583AC247278DA00C98A08 /* AppDelegate+Clipboard.swift in Sources */,
 				8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */,
 				8BF68F9F22DDD802009E57A9 /* PreferencesDataSource.swift in Sources */,
 				8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */,

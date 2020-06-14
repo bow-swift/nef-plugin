@@ -4,7 +4,7 @@ enum Command: CustomStringConvertible {
     case about
     case preferences
     case carbon(code: String)
-    case clipboardCarbon(code: String = "")
+    case clipboardCarbon(code: String)
     case markdownPage(playground: String)
     case playgroundBook(package: String)
     case notification(userInfo: [String: Any], action: String)
