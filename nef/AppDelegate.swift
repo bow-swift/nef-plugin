@@ -154,20 +154,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func notificationDidFinishLaunching(userInfo: [String: Any], action: String) {
         emptyDidFinishLaunching()
         
-        processNotification(userInfo, action: action).env()
+        let config = NotificationConfig(workspace: .shared, openPanel: assembler.resolveOpenPanel())
+        
+        processNotification(userInfo, action: action)
             .flatMap(showClipboardFile)^
-            .provide(NSWorkspace.shared)
+            .provide(config)
             .unsafeRunAsync(on: .global(qos: .userInitiated)) { _ in self.terminate() }
     }
     
     // MARK: Helper methods
     private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
+        let panel = assembler.resolveOpenPanel()
         let image = IO<AppDelegate.Error, Data>.var()
         let output = IO<AppDelegate.Error, URL>.var()
         
         return binding(
              image <- self.assembler.resolveCarbon(code: code),
-             output <- image.get.persistImage(command: .carbon(code: code)),
+             output <- image.get.persist(command: .carbon(code: code)).provide(panel).mapError { _ in .carbon },
         yield: output.get)^
     }
     

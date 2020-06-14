@@ -10,6 +10,11 @@ struct ClipboardConfig {
     let notificationCenter: UNUserNotificationCenter
 }
 
+struct NotificationConfig {
+    let workspace: NSWorkspace
+    let openPanel: OpenPanel
+}
+
 extension AppDelegate {
     func pasteboardCarbonIO(data: Data) -> EnvIO<ClipboardConfig, Clipboard.Error, NSImage> {
         func makeImage(_ data: Data) -> IO<Clipboard.Error, NSImage> {
@@ -95,27 +100,28 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func processNotification(_ userInfo: [String: Any], action: String) -> IO<NefNotification.Error, NefNotification.Response> {
-        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return IO.raiseError(.noImageData)^ }
+    func processNotification(_ userInfo: [String: Any], action: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
+        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return EnvIO.raiseError(.noImageData)^ }
         
         switch action {
         case NefNotification.Action.saveImage.identifier:
             return image
-                .persistImage(command: .pasteboardCarbon())
+                .persist(command: .pasteboardCarbon())
                 .mapError { _ in .persistImage }
+                .contramap(\.openPanel)
                 .map { .saveImage($0) }^
         case UNNotificationDismissActionIdentifier:
-            return IO.pure(.dismiss)^
+            return EnvIO.pure(.dismiss)^
         default:
-            return IO.raiseError(.unsupportedAction)^
+            return EnvIO.raiseError(.unsupportedAction)^
         }
     }
     
-    func showClipboardFile(response: NefNotification.Response) -> EnvIO<NSWorkspace, NefNotification.Error, Void> {
+    func showClipboardFile(response: NefNotification.Response) -> EnvIO<NotificationConfig, NefNotification.Error, Void> {
         guard case let .saveImage(url) = response else { return EnvIO.pure(())^ }
         
-        return EnvIO.invoke { workspace in
-            workspace.activateFileViewerSelecting([url])
+        return EnvIO.invoke { config in
+            config.workspace.activateFileViewerSelecting([url])
         }^
     }
 }
