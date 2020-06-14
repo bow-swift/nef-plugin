@@ -55,6 +55,7 @@
 		8BF9220623546D8D00C58AA0 /* OpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9220523546D8D00C58AA0 /* OpenPanel.swift */; };
 		AF73C325248C196600168A64 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C324248C196600168A64 /* Command.swift */; };
 		AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C326248C1A4200168A64 /* URL+Extension.swift */; };
+		AFD8024F24962732006E9297 /* NefNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD8024E24962732006E9297 /* NefNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		8BF9220523546D8D00C58AA0 /* OpenPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanel.swift; sourceTree = "<group>"; };
 		AF73C324248C196600168A64 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		AF73C326248C1A4200168A64 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		AFD8024E24962732006E9297 /* NefNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NefNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				8B91B1922360A3690041F79B /* DispatchGroup.swift */,
 				8BF9220523546D8D00C58AA0 /* OpenPanel.swift */,
 				AF73C324248C196600168A64 /* Command.swift */,
+				AFD8024E24962732006E9297 /* NefNotification.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				8B3B21AA22F8329900E92BC9 /* Browser.swift in Sources */,
 				8B3B21AE22F8691800E92BC9 /* InstallStepView.swift in Sources */,
 				8BF68784239928BE006CC977 /* DispatchTimeInterval+Extensions.swift in Sources */,
+				AFD8024F24962732006E9297 /* NefNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

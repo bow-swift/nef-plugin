@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard !code.isEmpty else { terminate(); return }
         emptyDidFinishLaunching()
         
-        let config = ClipboardConfig(clipboard: .general, notificationCenter: .current())
+        let config = Clipboard.Config(clipboard: .general, notificationCenter: .current())
         
         assembler.resolveCarbon(code: code).env()^.mapError { _ in .carbon }
             .flatMap(pasteboardCarbonIO)^
