@@ -11,7 +11,6 @@ enum OpenPanelError: Error {
     case unknown
 }
 
-
 class OpenPanel {
     private let dialog: NSOpenPanel
     @Bookmark(key: Key.bookmark) private var bookmark: URL?
