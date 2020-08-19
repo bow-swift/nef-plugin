@@ -1,0 +1,28 @@
+//  Copyright © 2020 The nef Authors.
+
+import Foundation
+
+public extension Command {
+    var item: URLQueryItem { .init(name: key, value: code) }
+}
+
+public extension URLQueryItem {
+    var command: Command? {
+        switch name {
+        case Command.about.key:
+            return .about
+        case Command.preferences.key:
+            return .preferences
+        case Command.exportSnippet(selection: "").key:
+            return value.flatMap(Command.exportSnippet)
+        case Command.exportSnippetToClipboard(selection: "").key:
+            return value.flatMap(Command.exportSnippetToClipboard)
+        case Command.markdownPage(playground: "").key:
+            return value.flatMap(Command.markdownPage)
+        case Command.playgroundBook(package: "").key:
+            return value.flatMap(Command.playgroundBook)
+        default:
+            return nil
+        }
+    }
+}

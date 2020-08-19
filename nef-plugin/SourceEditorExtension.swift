@@ -55,6 +55,8 @@ extension SourceEditorModels.Command: XCSourceEditorCommandDefinition {
             return "Playground       → Markdown"
         case .playgroundBook:
             return "Swift Package  → Playground Book (iPad)"
+        case .about, .notification:
+            return ""
         }
     }
     

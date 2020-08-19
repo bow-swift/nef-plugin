@@ -21,7 +21,7 @@ struct AppScheme {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.scheme
         urlComponents.host = "xcode"
-        urlComponents.queryItems = [URLQueryItem(name: command.key, value: command.code)]
+        urlComponents.queryItems = [command.item]
         return urlComponents.url!
     }
     

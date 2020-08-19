@@ -2,10 +2,11 @@
 
 import Foundation
 import BowEffects
+import SourceEditorModels
 
 extension URL {
     func outputURL(command: Command) -> IO<OpenPanelError, URL> {
-        let filename = "nef-\(command) \(Date.now.human)"
+        let filename = "nef-\(command.key) \(Date.now.human)"
         let url = appendingPathComponent(filename).appendingCommandExtensionComponent(command: command)
         return IO.pure(url)^
     }
@@ -13,7 +14,7 @@ extension URL {
     func appendingCommandExtensionComponent(command: Command) -> URL {
         let ext: String
         switch command {
-        case .carbon, .clipboardCarbon: ext = "jpg"
+        case .exportSnippet, .exportSnippetToClipboard: ext = "jpg"
         case .markdownPage: ext = "md"
         default: ext = ""
         }

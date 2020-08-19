@@ -5,19 +5,21 @@ import XcodeKit
 import SourceEditorModels
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
-    
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
+        perform(with: invocation).terminate(completion: completionHandler)
+    }
+    
+    private func perform(with invocation: XCSourceEditorCommandInvocation) -> Result<AppScheme, EditorError> {
         guard let command = SourceEditorExtension.commands.first(where: { $0.identifierKey == invocation.commandIdentifier }) else {
-            completionHandler(EditorError.invalidCommand); return
-        }
-        guard let editor = Editor(invocation: invocation) else {
-            completionHandler(EditorError.unknown); return
+            return .failure(.invalidCommand)
         }
         
-        _ = schema(command: command, editor: editor)
-            .mapError { error in terminateError(error, completion: completionHandler) }
+        guard let editor = Editor(invocation: invocation) else {
+            return .failure(.unknown)
+        }
+        
+        return schema(command: command, editor: editor)
             .map { schema in schema.open() }
-            .map { task in terminate(duration: task.estimatedDuration, completion: completionHandler) }
     }
     
     private func schema(command: Command, editor: Editor) -> Result<AppScheme, EditorError> {
@@ -32,6 +34,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return markdownPage(editor: editor)
         case .playgroundBook:
             return playgroundBook(editor: editor)
+        case .about, .notification:
+            return .failure(.unknown)
         }
     }
 
@@ -77,20 +81,34 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let appscheme = AppScheme(command: .playgroundBook(package: editor.code))
         return .success(appscheme)
     }
+}
+
+// MARK: - Terminate <helpers>
+extension Result where Success == AppScheme, Failure == EditorError {
     
-    // MARK: helpers
-    func terminate(duration: DispatchTime, completion: @escaping (Error?) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: duration) {
-            completion(nil)
+    @discardableResult
+    func terminate(completion: @escaping (Error?) -> Void) -> Result {
+        flatMapError { error in
+            terminateError(error, completion: completion)
+        }.flatMap { schema in
+            terminate(duration: schema.estimatedDuration, completion: completion)
         }
     }
     
-    func terminateError(_ error: EditorError, completion: @escaping (Error?) -> Void) -> Error {
+    private func terminate(duration: DispatchTime, completion: @escaping (Error?) -> Void) -> Result {
+        DispatchQueue.main.asyncAfter(deadline: duration) {
+            completion(nil)
+        }
+        
+        return self
+    }
+    
+    private func terminateError(_ error: Failure, completion: @escaping (Error?) -> Void) -> Result {
         DispatchQueue.main.async {
             let e = NSError(domain: Bundle.namespace, code: error.rawValue, userInfo: [NSLocalizedDescriptionKey: error.localizedDescription])
             completion(e)
         }
         
-        return error
+        return self
     }
 }
