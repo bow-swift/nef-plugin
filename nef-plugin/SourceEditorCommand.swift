@@ -18,11 +18,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return .failure(.unknown)
         }
         
-        return schema(command: command, editor: editor)
-            .map { schema in schema.open() }
+        return appScheme(command: command, editor: editor).map { scheme in scheme.open() }
     }
     
-    private func schema(command: Command, editor: Editor) -> Result<AppScheme, EditorError> {
+    private func appScheme(command: Command, editor: Editor) -> Result<AppScheme, EditorError> {
         switch command {
         case .preferences:
             return preferences()
