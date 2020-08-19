@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */; };
 		8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B230C82241C1DD400C31191 /* Data+IO.swift */; };
+		8B2C3F9624ED36F8007DCBB4 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */; };
+		8B2C3F9724ED36F8007DCBB4 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */; };
+		8B2C3F9824ED36F8007DCBB4 /* AppScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CAF2397CC990071B37C /* AppScheme.swift */; };
+		8B2C3F9924ED36F8007DCBB4 /* EditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB02397CC990071B37C /* EditorModel.swift */; };
 		8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74522D89C8900571F24 /* CheckOptionView.swift */; };
 		8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2CE74722D8A35400571F24 /* ColorOptionView.swift */; };
 		8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A622F82AAE00E92BC9 /* AboutView.swift */; };
@@ -32,10 +36,14 @@
 		8B9F3CF122F036BD001EE2DF /* CarbonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */; };
 		8B9F3CF322F036E3001EE2DF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9F3CF222F036E3001EE2DF /* LoadingView.swift */; };
 		8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */; };
+		8BAE363E24ED4E56008AC150 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE362C24ED40FB008AC150 /* Command.swift */; };
+		8BAE364724ED4FCB008AC150 /* libSourceEditorModels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BAE363524ED4E4C008AC150 /* libSourceEditorModels.a */; };
+		8BAE364B24ED5247008AC150 /* EditorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE364A24ED5247008AC150 /* EditorError.swift */; };
 		8BB2892E22CB6EFB006E4CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */; };
 		8BB2893222CB6EFD006E4CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893122CB6EFD006E4CCB /* Assets.xcassets */; };
 		8BB2893822CB6EFD006E4CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB2893622CB6EFD006E4CCB /* Main.storyboard */; };
 		8BB2895F22CB6F81006E4CCB /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BB2895222CB6F81006E4CCB /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8BD8A03124ED2E1D00565FA5 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD8A03024ED2E1D00565FA5 /* Bundle+Extensions.swift */; };
 		8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEAFB11235C96F700118F31 /* Bookmark.swift */; };
 		8BEFF92B2301A86B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
 		8BEFF9342301A91B009AA042 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFF92D2301A86B009AA042 /* Localizable.strings */; };
@@ -47,11 +55,7 @@
 		8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB022DE0ED4009E57A9 /* PreferencesModel.swift */; };
 		8BF68FB322DE2154009E57A9 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB222DE2154009E57A9 /* PreferencesViewModel.swift */; };
 		8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF68FB422DE2403009E57A9 /* CarbonStyle+Model.swift */; };
-		8BF86CB42397CC990071B37C /* AppScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CAF2397CC990071B37C /* AppScheme.swift */; };
-		8BF86CB52397CC990071B37C /* EditorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB02397CC990071B37C /* EditorModel.swift */; };
 		8BF86CB62397CC990071B37C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB12397CC990071B37C /* Reachability.swift */; };
-		8BF86CB72397CC990071B37C /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */; };
-		8BF86CB82397CC990071B37C /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */; };
 		8BF9220623546D8D00C58AA0 /* OpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9220523546D8D00C58AA0 /* OpenPanel.swift */; };
 		AF73C325248C196600168A64 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C324248C196600168A64 /* Command.swift */; };
 		AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF73C326248C1A4200168A64 /* URL+Extension.swift */; };
@@ -60,6 +64,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8BAE364424ED4F57008AC150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BAE363424ED4E4C008AC150;
+			remoteInfo = "nef-models";
+		};
+		8BAE364824ED4FCB008AC150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BAE363424ED4E4C008AC150;
+			remoteInfo = "nef-models";
+		};
 		8BB2895D22CB6F81006E4CCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8BB2892222CB6EFB006E4CCB /* Project object */;
@@ -70,6 +88,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8BAE363024ED4886008AC150 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BB2896322CB6F81006E4CCB /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +135,9 @@
 		8B9F3CF022F036BD001EE2DF /* CarbonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarbonViewer.swift; sourceTree = "<group>"; };
 		8B9F3CF222F036E3001EE2DF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8BAAB73C22D4DB2A00FD3636 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8BAE362C24ED40FB008AC150 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		8BAE363524ED4E4C008AC150 /* libSourceEditorModels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSourceEditorModels.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BAE364A24ED5247008AC150 /* EditorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorError.swift; sourceTree = "<group>"; };
 		8BB2892A22CB6EFB006E4CCB /* nef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB2892D22CB6EFB006E4CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB2892F22CB6EFB006E4CCB /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
@@ -126,7 +157,7 @@
 		8BBCA647239554DB00BE058B /* nef.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = nef.xcconfig; sourceTree = "<group>"; };
 		8BBCA648239554E500BE058B /* nef-plugin.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "nef-plugin.xcconfig"; sourceTree = "<group>"; };
 		8BBCA649239554E500BE058B /* nef-plugin-appstore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "nef-plugin-appstore.xcconfig"; sourceTree = "<group>"; };
-		8BBCA64B2395580600BE058B /* Info-appstore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-appstore.plist"; sourceTree = "<group>"; };
+		8BD8A03024ED2E1D00565FA5 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		8BEAFB11235C96F700118F31 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8BEFF92C2301A86B009AA042 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BEFF92F2301A8B9009AA042 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -153,6 +184,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8BAE362A24ED40D0008AC150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BAE364724ED4FCB008AC150 /* libSourceEditorModels.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BAE363324ED4E4C008AC150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BB2892722CB6EFB006E4CCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,12 +299,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8BAE363624ED4E4C008AC150 /* nef-models */ = {
+			isa = PBXGroup;
+			children = (
+				8BAE362C24ED40FB008AC150 /* Command.swift */,
+			);
+			path = "nef-models";
+			sourceTree = "<group>";
+		};
 		8BB2892122CB6EFB006E4CCB = {
 			isa = PBXGroup;
 			children = (
 				8BBCA638239553B600BE058B /* Config */,
 				8BB2892C22CB6EFB006E4CCB /* nef */,
 				8BB2895622CB6F81006E4CCB /* nef-plugin */,
+				8BAE363624ED4E4C008AC150 /* nef-models */,
 				8BEFF92E2301A897009AA042 /* Support Files */,
 				8BB2892B22CB6EFB006E4CCB /* Products */,
 				8B497A7E239A92BB00CEC130 /* Frameworks */,
@@ -270,6 +325,7 @@
 			children = (
 				8BB2892A22CB6EFB006E4CCB /* nef.app */,
 				8BB2895222CB6F81006E4CCB /* nef-plugin.appex */,
+				8BAE363524ED4E4C008AC150 /* libSourceEditorModels.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,8 +354,9 @@
 				8BF86CB32397CC990071B37C /* SourceEditorExtension.swift */,
 				8BF86CB22397CC990071B37C /* SourceEditorCommand.swift */,
 				8BF86CAF2397CC990071B37C /* AppScheme.swift */,
+				8BAE364A24ED5247008AC150 /* EditorError.swift */,
 				8BF86CB02397CC990071B37C /* EditorModel.swift */,
-				8BF86CB12397CC990071B37C /* Reachability.swift */,
+				8BD8A02F24ED2DC400565FA5 /* Utils */,
 				8BB2896522CB7060006E4CCB /* Support Files */,
 			);
 			path = "nef-plugin";
@@ -319,7 +376,6 @@
 			isa = PBXGroup;
 			children = (
 				8BBCA62A2395496000BE058B /* Info.plist */,
-				8BBCA64B2395580600BE058B /* Info-appstore.plist */,
 				8BBCA63D239553B600BE058B /* nef-plugin.entitlements */,
 				8BBCA63B239553B600BE058B /* nef-plugin-appstore.entitlements */,
 			);
@@ -366,6 +422,15 @@
 			path = PlaygroundBook;
 			sourceTree = "<group>";
 		};
+		8BD8A02F24ED2DC400565FA5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8BF86CB12397CC990071B37C /* Reachability.swift */,
+				8BD8A03024ED2E1D00565FA5 /* Bundle+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8BEFF92E2301A897009AA042 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,7 +460,34 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		8BAE363124ED4E4C008AC150 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		8BAE363424ED4E4C008AC150 /* nef-models */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BAE363B24ED4E4C008AC150 /* Build configuration list for PBXNativeTarget "nef-models" */;
+			buildPhases = (
+				8BAE363124ED4E4C008AC150 /* Headers */,
+				8BAE363224ED4E4C008AC150 /* Sources */,
+				8BAE363324ED4E4C008AC150 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "nef-models";
+			productName = SourceEditorModels;
+			productReference = 8BAE363524ED4E4C008AC150 /* libSourceEditorModels.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		8BB2892922CB6EFB006E4CCB /* nef */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BB2894822CB6EFD006E4CCB /* Build configuration list for PBXNativeTarget "nef" */;
@@ -409,6 +501,7 @@
 			);
 			dependencies = (
 				8BB2895E22CB6F81006E4CCB /* PBXTargetDependency */,
+				8BAE364524ED4F57008AC150 /* PBXTargetDependency */,
 			);
 			name = nef;
 			packageProductDependencies = (
@@ -424,10 +517,13 @@
 			buildPhases = (
 				8BB2894E22CB6F81006E4CCB /* Sources */,
 				8BB2895022CB6F81006E4CCB /* Resources */,
+				8BAE362A24ED40D0008AC150 /* Frameworks */,
+				8BAE363024ED4886008AC150 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8BAE364924ED4FCB008AC150 /* PBXTargetDependency */,
 			);
 			name = "nef-plugin";
 			packageProductDependencies = (
@@ -443,9 +539,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "47 Degrees";
 				TargetAttributes = {
+					8BAE363424ED4E4C008AC150 = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					8BB2892922CB6EFB006E4CCB = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -474,6 +573,7 @@
 			targets = (
 				8BB2892922CB6EFB006E4CCB /* nef */,
 				8BB2895122CB6F81006E4CCB /* nef-plugin */,
+				8BAE363424ED4E4C008AC150 /* nef-models */,
 			);
 		};
 /* End PBXProject section */
@@ -501,6 +601,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8BAE363224ED4E4C008AC150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BAE363E24ED4E56008AC150 /* Command.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BB2892622CB6EFB006E4CCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -550,17 +658,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BF86CB52397CC990071B37C /* EditorModel.swift in Sources */,
-				8BF86CB42397CC990071B37C /* AppScheme.swift in Sources */,
-				8BF86CB82397CC990071B37C /* SourceEditorExtension.swift in Sources */,
+				8B2C3F9924ED36F8007DCBB4 /* EditorModel.swift in Sources */,
+				8BAE364B24ED5247008AC150 /* EditorError.swift in Sources */,
+				8BD8A03124ED2E1D00565FA5 /* Bundle+Extensions.swift in Sources */,
+				8B2C3F9624ED36F8007DCBB4 /* SourceEditorExtension.swift in Sources */,
+				8B2C3F9824ED36F8007DCBB4 /* AppScheme.swift in Sources */,
 				8BF86CB62397CC990071B37C /* Reachability.swift in Sources */,
-				8BF86CB72397CC990071B37C /* SourceEditorCommand.swift in Sources */,
+				8B2C3F9724ED36F8007DCBB4 /* SourceEditorCommand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8BAE364524ED4F57008AC150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BAE363424ED4E4C008AC150 /* nef-models */;
+			targetProxy = 8BAE364424ED4F57008AC150 /* PBXContainerItemProxy */;
+		};
+		8BAE364924ED4FCB008AC150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BAE363424ED4E4C008AC150 /* nef-models */;
+			targetProxy = 8BAE364824ED4FCB008AC150 /* PBXContainerItemProxy */;
+		};
 		8BB2895E22CB6F81006E4CCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8BB2895122CB6F81006E4CCB /* nef-plugin */;
@@ -599,6 +719,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8BAE363C24ED4E4C008AC150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = SourceEditorModels;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8BAE363D24ED4E4C008AC150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = SourceEditorModels;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		8BB2894622CB6EFD006E4CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA640239553B600BE058B /* project.xcconfig */;
@@ -668,11 +814,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA647239554DB00BE058B /* nef.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -685,11 +836,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -758,11 +909,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BBCA646239554DB00BE058B /* nef-appstore.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fortysevendeg.nef;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -775,16 +930,24 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fortysevendeg.nef-plugin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8BAE363B24ED4E4C008AC150 /* Build configuration list for PBXNativeTarget "nef-models" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BAE363C24ED4E4C008AC150 /* Debug */,
+				8BAE363D24ED4E4C008AC150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		8BB2892522CB6EFB006E4CCB /* Build configuration list for PBXProject "nef-plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
