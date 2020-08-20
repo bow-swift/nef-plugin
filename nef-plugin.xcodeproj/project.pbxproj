@@ -25,7 +25,6 @@
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
 		8B7583AC247278DA00C98A08 /* AppDelegate+Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7583AB247278DA00C98A08 /* AppDelegate+Clipboard.swift */; };
-		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B78F13F24EE7A3900869EF7 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A922F8329900E92BC9 /* Browser.swift */; };
 		8B78F14024EE7AC600869EF7 /* libSourceEditorUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B78F13624EE7A1900869EF7 /* libSourceEditorUtils.a */; };
 		8B78F14124EE7ACB00869EF7 /* libSourceEditorUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B78F13624EE7A1900869EF7 /* libSourceEditorUtils.a */; };
