@@ -292,14 +292,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8B41588C22D8E48300588921 /* Views */ = {
+		8B41588C22D8E48300588921 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
 				8B41588422D8DDE700588921 /* ImageButton.swift */,
 				8B9F3CF222F036E3001EE2DF /* LoadingView.swift */,
 				8B3B21AF22F86C5600E92BC9 /* SeparatorView.swift */,
 			);
-			path = Views;
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		8B497A7E239A92BB00CEC130 /* Frameworks */ = {
@@ -338,6 +338,17 @@
 				8B78F34724EEA26000869EF7 /* PlaygroundBookController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8B78F34924EEA7E800869EF7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8B3B21A522F8246E00E92BC9 /* About */,
+				8BBCA64F239558FC00BE058B /* PlaygroundBook */,
+				8B41588922D8E45400588921 /* Preferences */,
+				8B41588C22D8E48300588921 /* Theme */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		8BAE363624ED4E4C008AC150 /* nef-models */ = {
@@ -382,17 +393,14 @@
 				AFD8025024962BDE006E9297 /* AppDelegate+Notifications.swift */,
 				8BF68FA022DDD8BD009E57A9 /* Assembler.swift */,
 				8BBB49AA2523469E005FD43B /* Command.swift */,
+				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
+				8B78F34924EEA7E800869EF7 /* App */,
 				8B78F34024EEA0FE00869EF7 /* Controllers */,
 				8B78F33724EE943C00869EF7 /* Models */,
-				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
-				8B3B21A522F8246E00E92BC9 /* About */,
-				8B41588622D8E42C00588921 /* Extensions */,
-				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
-				8BBCA64F239558FC00BE058B /* PlaygroundBook */,
-				8B41588922D8E45400588921 /* Preferences */,
 				8BB2896422CB6FF0006E4CCB /* Support Files */,
+				8BB2893122CB6EFD006E4CCB /* Assets.xcassets */,
+				8B41588622D8E42C00588921 /* Extensions */,
 				8B3B21A822F8328B00E92BC9 /* Utils */,
-				8B41588C22D8E48300588921 /* Views */,
 			);
 			path = nef;
 			sourceTree = "<group>";
