@@ -29,19 +29,4 @@ public enum Command {
             return "notification"
         }
     }
-    
-    public var code: String {
-        switch self {
-        case .preferences, .about, .notification:
-            return ""
-        case .exportSnippet(let seleccion):
-            return seleccion
-        case .exportSnippetToClipboard(let selection):
-            return selection
-        case .markdownPage(let playground):
-            return playground
-        case .playgroundBook(let package):
-            return package
-        }
-    }
 }

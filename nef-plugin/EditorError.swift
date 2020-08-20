@@ -15,15 +15,15 @@ enum EditorError: Int, Error {
         case .unknown:
             return NSLocalizedString("Undefined error", comment: "")
         case .invalidCommand:
-            return NSLocalizedString("This command has not being implemented", comment: "")
+            return NSLocalizedString("This command has not been implemented", comment: "")
         case .selection:
             return NSLocalizedString("You must make a code selection first", comment: "")
         case .internetConnection:
-            return NSLocalizedString("You can not create a code snippet without an internet connection", comment: "")
+            return NSLocalizedString("You cannot create a code snippet without an Internet connection", comment: "")
         case .packageNotFound:
             return NSLocalizedString("This command only works on Swift Package files", comment: "")
         case .playgroundNotFound:
-            return NSLocalizedString("This command only works on Playground or Playground pages", comment: "")
+            return NSLocalizedString("This command only works on Playgrounds or Playground pages", comment: "")
         }
     }
 }

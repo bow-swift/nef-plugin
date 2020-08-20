@@ -3,7 +3,20 @@
 import Foundation
 
 public extension Command {
-    var item: URLQueryItem { .init(name: key, value: code) }
+    var item: URLQueryItem {
+        switch self {
+        case .exportSnippet(let selection):
+            return URLQueryItem(name: key, value: selection)
+        case .exportSnippetToClipboard(let selection):
+            return URLQueryItem(name: key, value: selection)
+        case .markdownPage(let playground):
+            return URLQueryItem(name: key, value: playground)
+        case .playgroundBook(let package):
+            return URLQueryItem(name: key, value: package)
+        case .preferences, .about, .notification:
+            return URLQueryItem(name: key, value: "")
+        }
+    }
 }
 
 public extension URLQueryItem {

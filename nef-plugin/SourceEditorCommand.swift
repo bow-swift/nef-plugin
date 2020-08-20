@@ -6,7 +6,15 @@ import SourceEditorModels
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
-        perform(with: invocation).terminate(completion: completionHandler)
+        perform(with: invocation)
+            .fold(
+                { error in
+                    terminateError(error, completion: completionHandler)
+                },
+                { schema in
+                    terminate(deadline: schema.estimatedDuration, completion: completionHandler)
+                }
+            )
     }
     
     private func perform(with invocation: XCSourceEditorCommandInvocation) -> Result<AppScheme, EditorError> {
@@ -80,34 +88,18 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         let appscheme = AppScheme(command: .playgroundBook(package: editor.code))
         return .success(appscheme)
     }
-}
-
-// MARK: - Terminate <helpers>
-extension Result where Success == AppScheme, Failure == EditorError {
     
-    @discardableResult
-    func terminate(completion: @escaping (Error?) -> Void) -> Result {
-        flatMapError { error in
-            terminateError(error, completion: completion)
-        }.flatMap { schema in
-            terminate(duration: schema.estimatedDuration, completion: completion)
-        }
-    }
-    
-    private func terminate(duration: DispatchTime, completion: @escaping (Error?) -> Void) -> Result {
-        DispatchQueue.main.asyncAfter(deadline: duration) {
+    // MARK: - Terminate <helpers>
+    private func terminate(deadline: DispatchTime, completion: @escaping (Error?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
             completion(nil)
         }
-        
-        return self
     }
     
-    private func terminateError(_ error: Failure, completion: @escaping (Error?) -> Void) -> Result {
+    private func terminateError(_ error: EditorError, completion: @escaping (Error?) -> Void) {
         DispatchQueue.main.async {
             let e = NSError(domain: Bundle.namespace, code: error.rawValue, userInfo: [NSLocalizedDescriptionKey: error.localizedDescription])
             completion(e)
         }
-        
-        return self
     }
 }
