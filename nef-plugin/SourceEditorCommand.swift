@@ -4,6 +4,7 @@ import Foundation
 import Bow
 import XcodeKit
 import SourceEditorModels
+import SourceEditorUtils
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
@@ -22,12 +23,16 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         guard let command = SourceEditorExtension.commands.first(where: { $0.identifierKey == invocation.commandIdentifier }) else {
             return .failure(.invalidCommand)
         }
-        
         guard let editor = Editor(invocation: invocation) else {
             return .failure(.unknown)
         }
         
-        return appScheme(command: command, editor: editor).map { scheme in scheme.open() }
+        return appScheme(command: command, editor: editor)
+            .flatMap { scheme in
+                Browser.open(url: scheme.url, options: .newInstance)
+                    .map { _ in scheme }
+                    .mapError { e in .invalidScheme(reason: e) }
+            }
     }
     
     private func appScheme(command: MenuEditorCommand, editor: Editor) -> Result<AppScheme, EditorError> {
@@ -47,7 +52,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
     }
 
-    // MARK: commands
+    // MARK: Commands
     private func preferences() -> Result<AppScheme, EditorError> {
         .success(AppScheme(command: .preferences))
     }
@@ -95,7 +100,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     private func terminateError(_ error: EditorError, completion: @escaping (Error?) -> Void) {
         DispatchQueue.main.async {
-            let e = NSError(domain: Bundle.namespace, code: error.rawValue, userInfo: [NSLocalizedDescriptionKey: error.localizedDescription])
+            let e = NSError(domain: Bundle.namespace, code: error.code, userInfo: [NSLocalizedDescriptionKey: error.localizedDescription])
             completion(e)
         }
     }

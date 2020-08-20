@@ -12,20 +12,11 @@ struct AppScheme {
         self.code = code
     }
     
-    func open() -> AppScheme {
-        try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
-        return self
-    }
-    
-    private var url: URL {
+    var url: URL {
         var urlComponents = URLComponents()
-        urlComponents.scheme = Constants.scheme
+        urlComponents.scheme = "nef-plugin"
         urlComponents.host = "xcode"
         urlComponents.queryItems = [command.item(code: code)]
         return urlComponents.url!
-    }
-    
-    enum Constants {
-        static let scheme = "nef-plugin"
     }
 }
