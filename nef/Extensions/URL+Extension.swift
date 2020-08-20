@@ -4,20 +4,20 @@ import Foundation
 import BowEffects
 
 extension URL {
-    func outputURL(command: Command) -> IO<OpenPanelError, URL> {
+    func outputURL<E: Error>(command: Command) -> IO<E, URL> {
         let filename = "nef-\(command.menuKey) \(Date.now.human)"
         let url = appendingPathComponent(filename).appendingCommandExtensionComponent(command: command)
         return IO.pure(url)^
     }
     
     func appendingCommandExtensionComponent(command: Command) -> URL {
-        let ext: String
         switch command {
-        case .exportSnippetToFile, .exportSnippetToClipboard: ext = "jpg"
-        case .markdownPage: ext = "md"
-        default: ext = ""
+        case .exportSnippetToFile, .exportSnippetToClipboard:
+            return appendingPathExtension("jpg")
+        case .markdownPage:
+            return appendingPathExtension("md")
+        default:
+            return self
         }
-        
-        return appendingPathExtension(ext)
     }
 }

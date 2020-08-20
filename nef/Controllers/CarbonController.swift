@@ -1,6 +1,13 @@
 //  Copyright © 2020 The nef Authors.
 
 import Foundation
+import SourceEditorModels
+import SourceEditorUtils
+
+import nef
+import Bow
+import BowEffects
+
 
 enum CarbonOutput {
     case clipboard
@@ -17,7 +24,7 @@ class CarbonController: NefController {
         self.output = output
     }
     
-    func run() -> Result<Void, Error> {
+    func run() -> Result<Void, Swift.Error> {
         fatalError()
         // -------- CARBON FILE
         //        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
@@ -51,3 +58,11 @@ class CarbonController: NefController {
 //             output <- image.get.persist(command: .exportSnippet(selection: code)).provide(panel).mapError { _ in .carbon },
 //        yield: output.get)^
 //    }
+
+// ASSEMBLER: nef
+//    func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
+//        nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
+//            .provide(progressReport)
+//            .mapError { _ in .carbon }
+//    }
+//    

@@ -25,7 +25,7 @@ public enum Browser {
         }
     }
     
-    func showFile(_ file: URL) {
+    public static func showFile(_ file: URL) {
         NSWorkspace.shared.activateFileViewerSelecting([file])
     }
 }

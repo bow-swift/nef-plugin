@@ -39,6 +39,7 @@
 		8B78F34424EEA24500869EF7 /* MarkdownPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78F34324EEA24500869EF7 /* MarkdownPageController.swift */; };
 		8B78F34624EEA25100869EF7 /* ImageNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78F34524EEA25100869EF7 /* ImageNotificationController.swift */; };
 		8B78F34824EEA26000869EF7 /* PlaygroundBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78F34724EEA26000869EF7 /* PlaygroundBookController.swift */; };
+		8B78F34B24EECB3100869EF7 /* IO+unsafeRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78F34A24EECB3100869EF7 /* IO+unsafeRun.swift */; };
 		8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */; };
 		8B7E0624235498CA003ED8E2 /* OutputFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */; };
 		8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F5C802397DC820040575D /* PlaygroundBookView.swift */; };
@@ -142,6 +143,7 @@
 		8B78F34324EEA24500869EF7 /* MarkdownPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPageController.swift; sourceTree = "<group>"; };
 		8B78F34524EEA25100869EF7 /* ImageNotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNotificationController.swift; sourceTree = "<group>"; };
 		8B78F34724EEA26000869EF7 /* PlaygroundBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBookController.swift; sourceTree = "<group>"; };
+		8B78F34A24EECB3100869EF7 /* IO+unsafeRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IO+unsafeRun.swift"; sourceTree = "<group>"; };
 		8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		8B7E0623235498CA003ED8E2 /* OutputFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFolderView.swift; sourceTree = "<group>"; };
 		8B7F5C802397DC820040575D /* PlaygroundBookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundBookView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				8B7E0621235493F7003ED8E2 /* NSWindow+Extension.swift */,
 				AF73C326248C1A4200168A64 /* URL+Extension.swift */,
 				8B78F33E24EE999900869EF7 /* Result+terminate.swift */,
+				8B78F34A24EECB3100869EF7 /* IO+unsafeRun.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				8B41588822D8E43A00588921 /* CarbonStyle+Color.swift in Sources */,
 				8B3B21B022F86C5600E92BC9 /* SeparatorView.swift in Sources */,
 				8B1A0C2522D77AEC0049B48F /* PreferencesView.swift in Sources */,
+				8B78F34B24EECB3100869EF7 /* IO+unsafeRun.swift in Sources */,
 				8B7F5C822397DC820040575D /* PlaygroundBookView.swift in Sources */,
 				8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */,
 				8B78F33924EE946300869EF7 /* NefWindow.swift in Sources */,

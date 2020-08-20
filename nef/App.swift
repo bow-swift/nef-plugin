@@ -10,7 +10,6 @@ struct App {
         self.assembler = assembler
     }
     
-    // MARK: life-cycle
     func didFinishLaunching(command: Command) -> NefWindow? {
         switch command {
         case .preferences:
@@ -60,7 +59,9 @@ struct App {
     }
     
     private func markdownPageWindow(page: String) -> NefWindow? {
-        MarkdownPageController(page: page)
+        MarkdownPageController(page: page,
+                               openPanel: assembler.resolveOpenPanel(),
+                               progressReport: assembler.resolveProgressReport())
             .flatMap(NefWindow.controller)
     }
     

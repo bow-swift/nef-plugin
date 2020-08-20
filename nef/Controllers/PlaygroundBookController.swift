@@ -1,6 +1,13 @@
 //  Copyright © 2020 The nef Authors.
 
 import Foundation
+import SourceEditorModels
+import SourceEditorUtils
+
+import nef
+import Bow
+import BowEffects
+
 
 class PlaygroundBookController: NefController {
     let packageContent: String
@@ -10,7 +17,7 @@ class PlaygroundBookController: NefController {
         self.packageContent = packageContent
     }
     
-    func run() -> Result<Void, Error> {
+    func run() -> Result<Void, Swift.Error> {
         fatalError()
         //        playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
         //            guard output.isRight else { return }
@@ -36,3 +43,12 @@ class PlaygroundBookController: NefController {
 //        }^.mapError { _ in .swiftPlayground }
 //    }
 //
+
+
+// ASSEMBLER: nef
+//
+//    func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
+//        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
+//                           .provide(progressReport)
+//                           .mapError { _ in .swiftPlayground }^
+//    }
