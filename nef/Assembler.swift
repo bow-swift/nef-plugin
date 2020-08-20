@@ -28,23 +28,23 @@ class Assembler {
     // MARK: - utils
     func resolveOpenPanel() -> OpenPanel { OpenPanel() }
     
-    func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
-        nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
-            .provide(progressReport)
-            .mapError { _ in .carbon }
-    }
-    
-    func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        nef.Markdown.render(content: playground, toFile: output)
-            .provide(progressReport)
-            .mapError { _ in .markdown }
-    }
-    
-    func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
-        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
-                           .provide(progressReport)
-                           .mapError { _ in .swiftPlayground }^
-    }
+//    func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
+//        nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
+//            .provide(progressReport)
+//            .mapError { _ in .carbon }
+//    }
+//    
+//    func resolveMarkdownPage(playground: String, output: URL) -> IO<AppDelegate.Error, URL> {
+//        nef.Markdown.render(content: playground, toFile: output)
+//            .provide(progressReport)
+//            .mapError { _ in .markdown }
+//    }
+//    
+//    func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
+//        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
+//                           .provide(progressReport)
+//                           .mapError { _ in .swiftPlayground }^
+//    }
     
     // MARK: - private methods
     private func resolvePreferencesViewModel() -> PreferencesViewModel {

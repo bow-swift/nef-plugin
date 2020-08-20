@@ -24,6 +24,10 @@ public enum Browser {
             return .failure(.notOpened)
         }
     }
+    
+    func showFile(_ file: URL) {
+        NSWorkspace.shared.activateFileViewerSelecting([file])
+    }
 }
 
 

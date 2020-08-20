@@ -5,18 +5,7 @@ import UserNotifications
 import Bow
 import BowEffects
 
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    func isLocalNotification(_ aNotification: Notification) -> Bool {
-        guard let userInfo = aNotification.userInfo,
-              let launchOption = userInfo["NSApplicationLaunchIsDefaultLaunchKey"] as? Int else { return false }
-        
-        return launchOption == 0
-    }
-    
-    func registerNotifications() {
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _  in }
-    }
+extension AppDelegate {
     
     func removeOldNotifications() -> EnvIO<Clipboard.Config, Clipboard.Error, Void> {
         EnvIO.invoke { config in
@@ -47,18 +36,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             config.notificationCenter.setNotificationCategories([category])
             config.notificationCenter.add(request)
         }^
-    }
-    
-    // MARK: delegate <UNUserNotificationCenterDelegate>
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.alert)
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else { return }
-        command = .notification(userInfo: userInfo, action: response.actionIdentifier)
-        applicationDidFinishLaunching(Notification(name: .NSThreadWillExit))
-        completionHandler()
     }
     
     func processNotification(_ userInfo: [String: Any], action: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
