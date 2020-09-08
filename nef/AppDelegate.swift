@@ -86,11 +86,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window.makeKeyAndOrderFront(nil)
         self.aboutMenuItem.isHidden = true
         
-        controller.run().terminate()
+        controller.runAsync { result in result.terminate() }
     }
     
     private func presentViewController(view: NSView, controller: NefController, config: NefWindow.Config) {
         presentView(view, config: config)
-        controller.run().terminate()
+        controller.runAsync { result in result.terminate() }
     }
 }

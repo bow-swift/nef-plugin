@@ -17,7 +17,7 @@ class PlaygroundBookController: NefController {
         self.packageContent = packageContent
     }
     
-    func run() -> Result<Void, Swift.Error> {
+    func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
         fatalError()
         //        playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
         //            guard output.isRight else { return }

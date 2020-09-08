@@ -29,10 +29,10 @@ class MarkdownPageController: NefController {
         self.config = MarkdownPageConfig(openPanel: openPanel, progressReport: progressReport)
     }
     
-    func run() -> Result<Void, Swift.Error> {
+    func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
         runIO(page: page).provide(config)
             .map(Browser.showFile)^
-            .unsafeRunSyncResult()
+            .unsafeRunAsyncResult(completion: completion)
     }
     
     private func runIO(page: String) -> EnvIO<MarkdownPageConfig, OpenPanelError, URL> {

@@ -5,12 +5,16 @@ import Bow
 import BowEffects
 
 extension IO {
-    func unsafeRunSyncResult(on queue: DispatchQueue = .main) -> Result<A, E> {
-        unsafeRunSyncEither(on: queue).toResult()
+    func unsafeRunAsyncResult(on queue: DispatchQueue = .main, completion: @escaping (Result<A, E>) -> Void) {
+        unsafeRunAsync(on: queue) { either in
+            completion(either.toResult())
+        }
     }
     
-    func unsafeRunSyncResult(on queue: DispatchQueue = .main) -> Result<A, Swift.Error> {
-        unsafeRunSyncEither(on: queue).toResult().eraseError()
+    func unsafeRunAsyncResult(on queue: DispatchQueue = .main, completion: @escaping (Result<A, Swift.Error>) -> Void) {
+        unsafeRunAsync(on: queue) { either in
+            completion(either.toResult().eraseError())
+        }
     }
 }
 

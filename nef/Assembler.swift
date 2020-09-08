@@ -35,6 +35,7 @@ extension Assembler {
     }
 }
 
+// MARK: - Appareance
 extension Assembler {
     func resolveCarbonStyle() -> CarbonStyle {
         preferencesDataSource.state.carbonStyle
@@ -55,7 +56,7 @@ extension Assembler {
         MacPasteboard(pasteboard: .general)
     }
     
-    func resolveNotificationCenter() -> MacNotificationController {
+    func resolveNotificationCenter() -> Notifications {
         MacNotificationController(notificationCenter: .current())
     }
 }

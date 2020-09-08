@@ -12,7 +12,7 @@ class ImageNotificationController: NefController {
         self.action = action
     }
     
-    func run() -> Result<Void, Error> {
+    func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
         fatalError()
         //        let config = NotificationConfig(workspace: .shared, openPanel: assembler.resolveOpenPanel())
         //

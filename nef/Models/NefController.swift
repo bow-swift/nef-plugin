@@ -3,5 +3,5 @@
 import Foundation
 
 protocol NefController: AnyObject {
-    func run() -> Result<Void, Error>
+    func runAsync(completion: @escaping (Result<Void, Error>) -> Void)
 }

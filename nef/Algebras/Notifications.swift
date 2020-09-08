@@ -1,7 +1,6 @@
 //  Copyright © 2020 The nef Authors.
 
 import Foundation
-import AppKit
 import BowEffects
 
 protocol Notifications {

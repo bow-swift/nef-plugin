@@ -34,10 +34,10 @@ class CarbonFileController: NefController {
         self.config = .init(style: style, progressReport: progressReport, panel: panel)
     }
     
-    func run() -> Result<Void, Swift.Error> {
+    func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
         runIO(code: code).provide(config)
             .map(Browser.showFile)^
-            .unsafeRunSyncResult()
+            .unsafeRunAsyncResult(on: .global(qos: .userInitiated), completion: completion)
     }
     
     private func runIO(code: String) -> EnvIO<CarbonFileConfig, CarbonError, URL> {
@@ -73,10 +73,10 @@ class CarbonClipboardController: NefController {
         self.config = .init(style: style, progressReport: progressReport, pasteboard: pasteboard, notifications: notifications)
     }
     
-    func run() -> Result<Void, Swift.Error> {
+    func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
         runIO(code: code).provide(config)
             .as(())^
-            .unsafeRunSyncResult()
+            .unsafeRunAsyncResult(on: .global(qos: .userInitiated), completion: completion)
     }
     
     private func runIO(code: String) -> EnvIO<CarbonClipboardConfig, CarbonError, NSImage> {
