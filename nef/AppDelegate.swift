@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     // MARK: Presentation
-    func presentWindow(window: NefWindow) {
+    private func presentWindow(window: NefWindow) {
         switch window {
         case let .view(view, config):
             presentView(view, config: config)
@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func presentView(_ contentView: NSView, config: NefWindow.Config) {
+    private func presentView(_ contentView: NSView, config: NefWindow.Config) {
         self.window = NSWindow(contentRect: config.rect,
                                styleMask: [.titled, .closable],
                                backing: .buffered, defer: false)
@@ -81,7 +81,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.aboutMenuItem.isHidden = !config.needMenu
     }
     
-    func presentController(_ controller: NefController) {
+    private func presentController(_ controller: NefController) {
         self.window = NSWindow.empty
         self.window.makeKeyAndOrderFront(nil)
         self.aboutMenuItem.isHidden = true
@@ -89,7 +89,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         controller.run().terminate()
     }
     
-    func presentViewController(view: NSView, controller: NefController, config: NefWindow.Config) {
+    private func presentViewController(view: NSView, controller: NefController, config: NefWindow.Config) {
         presentView(view, config: config)
         controller.run().terminate()
     }

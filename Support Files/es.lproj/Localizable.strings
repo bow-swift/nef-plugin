@@ -8,7 +8,7 @@
 "preferences" = "Preferencias";
 
 // MARK: - About
-"copyright" = "Copyright © 2019 Los autores de nef";
+"copyright" = "Copyright © 2020 Los autores de nef";
 "github" = "Leer más acerca de nef (GitHub)";
 "install_preferences" = "Abrir 'Preferencias del Sistema'";
 "install_extensions" = "Seleccionar 'Extensiones'";
