@@ -53,7 +53,7 @@ class MarkdownPageController: NefController {
                 .writableFolder(create: true)
                 .use { folder in
                     markdownIO(folder: folder, page: page).provide(env)^
-                        .mapError { _ in .unknown } // MOVERLO A BOW: extension ResourcePartial: MonadError {}
+                        .mapError { _ in .unknown }
             }
                 
         }^

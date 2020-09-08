@@ -16,8 +16,8 @@ extension Data {
         }
     }
     
-    func makeImage() -> IO<ImageError, NSImage> {
-        IO.invoke {
+    func makeImage<D>() -> EnvIO<D, ImageError, NSImage> {
+        EnvIO.invoke { _ in
             guard let image = NSImage(data: self) else {
                 throw ImageError.invalidData
             }

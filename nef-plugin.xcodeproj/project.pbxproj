@@ -24,7 +24,10 @@
 		8B497A7D239A91EF00CEC130 /* nef in Frameworks */ = {isa = PBXBuildFile; productRef = 8B497A7C239A91EF00CEC130 /* nef */; settings = {ATTRIBUTES = (Required, ); }; };
 		8B4D1E1522D7A37E004432CF /* PickerOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */; };
 		8B4D1E1722D88A5E004432CF /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D1E1622D88A5E004432CF /* OptionItem.swift */; };
-		8B7583AC247278DA00C98A08 /* AppDelegate+Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7583AB247278DA00C98A08 /* AppDelegate+Clipboard.swift */; };
+		8B53BB952507D8B400C2B874 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53BB942507D8B400C2B874 /* Pasteboard.swift */; };
+		8B53BB972507D8C000C2B874 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53BB962507D8C000C2B874 /* Notifications.swift */; };
+		8B53BB992507D8F100C2B874 /* MacPasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53BB982507D8F100C2B874 /* MacPasteboard.swift */; };
+		8B53BB9B2507D93300C2B874 /* MacNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B53BB9A2507D93300C2B874 /* MacNotifications.swift */; };
 		8B75AF99238061FF00388B1C /* NSView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75AF98238061FF00388B1C /* NSView+Layout.swift */; };
 		8B78F13F24EE7A3900869EF7 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B21A922F8329900E92BC9 /* Browser.swift */; };
 		8B78F14024EE7AC600869EF7 /* libSourceEditorUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B78F13624EE7A1900869EF7 /* libSourceEditorUtils.a */; };
@@ -132,6 +135,10 @@
 		8B41588722D8E43A00588921 /* CarbonStyle+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarbonStyle+Color.swift"; sourceTree = "<group>"; };
 		8B4D1E1422D7A37E004432CF /* PickerOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOptionView.swift; sourceTree = "<group>"; };
 		8B4D1E1622D88A5E004432CF /* OptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
+		8B53BB942507D8B400C2B874 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
+		8B53BB962507D8C000C2B874 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		8B53BB982507D8F100C2B874 /* MacPasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPasteboard.swift; sourceTree = "<group>"; };
+		8B53BB9A2507D93300C2B874 /* MacNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNotifications.swift; sourceTree = "<group>"; };
 		8B75AF98238061FF00388B1C /* NSView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+Layout.swift"; sourceTree = "<group>"; };
 		8B78F13624EE7A1900869EF7 /* libSourceEditorUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSourceEditorUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B78F33324EE801A00869EF7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -312,6 +319,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B53BB922507D89A00C2B874 /* Algebras */ = {
+			isa = PBXGroup;
+			children = (
+				8B53BB942507D8B400C2B874 /* Pasteboard.swift */,
+				8B53BB962507D8C000C2B874 /* Notifications.swift */,
+			);
+			path = Algebras;
+			sourceTree = "<group>";
+		};
+		8B53BB932507D8A500C2B874 /* Instances */ = {
+			isa = PBXGroup;
+			children = (
+				8B53BB982507D8F100C2B874 /* MacPasteboard.swift */,
+				8B53BB9A2507D93300C2B874 /* MacNotifications.swift */,
+			);
+			path = Instances;
+			sourceTree = "<group>";
+		};
 		8B78F13724EE7A1900869EF7 /* nef-utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +423,8 @@
 				8BBB49AA2523469E005FD43B /* Command.swift */,
 				8BB2893622CB6EFD006E4CCB /* Main.storyboard */,
 				8B78F34924EEA7E800869EF7 /* App */,
+				8B53BB922507D89A00C2B874 /* Algebras */,
+				8B53BB932507D8A500C2B874 /* Instances */,
 				8B78F34024EEA0FE00869EF7 /* Controllers */,
 				8B78F33724EE943C00869EF7 /* Models */,
 				8BB2896422CB6FF0006E4CCB /* Support Files */,
@@ -690,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2CE74622D89C8900571F24 /* CheckOptionView.swift in Sources */,
+				8B53BB972507D8C000C2B874 /* Notifications.swift in Sources */,
 				8B91B1932360A3690041F79B /* DispatchGroup.swift in Sources */,
 				8B7E0622235493F7003ED8E2 /* NSWindow+Extension.swift in Sources */,
 				8B78F33B24EE948F00869EF7 /* NefController.swift in Sources */,
@@ -699,6 +727,7 @@
 				AF73C327248C1A4200168A64 /* URL+Extension.swift in Sources */,
 				8B3B21AC22F8644000E92BC9 /* FixedToggle.swift in Sources */,
 				8B3B21A722F82AAE00E92BC9 /* AboutView.swift in Sources */,
+				8B53BB952507D8B400C2B874 /* Pasteboard.swift in Sources */,
 				8B7F5C85239807EF0040575D /* ProgressView.swift in Sources */,
 				8B230C83241C1DD500C31191 /* Data+IO.swift in Sources */,
 				8B7F5C832397DC820040575D /* PlaygroundBookProgressReport.swift in Sources */,
@@ -707,6 +736,7 @@
 				8B78F34624EEA25100869EF7 /* ImageNotificationController.swift in Sources */,
 				8BF68FB122DE0ED4009E57A9 /* PreferencesModel.swift in Sources */,
 				8BF68FA322DDE268009E57A9 /* ActionViewModel.swift in Sources */,
+				8B53BB992507D8F100C2B874 /* MacPasteboard.swift in Sources */,
 				8B2CE74822D8A35400571F24 /* ColorOptionView.swift in Sources */,
 				8BF68FA122DDD8BD009E57A9 /* Assembler.swift in Sources */,
 				8BBB49BA25234946005FD43B /* Command.swift in Sources */,
@@ -718,6 +748,7 @@
 				8BF68FB522DE2403009E57A9 /* CarbonStyle+Model.swift in Sources */,
 				8B78F33F24EE999900869EF7 /* Result+terminate.swift in Sources */,
 				8BAAB73D22D4DB2A00FD3636 /* Date+Extension.swift in Sources */,
+				8B53BB9B2507D93300C2B874 /* MacNotifications.swift in Sources */,
 				8B78F34424EEA24500869EF7 /* MarkdownPageController.swift in Sources */,
 				8B78F33D24EE950300869EF7 /* i18n.swift in Sources */,
 				8BEAFB12235C96F700118F31 /* Bookmark.swift in Sources */,
