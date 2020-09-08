@@ -49,12 +49,19 @@ struct App {
     }
     
     private func carbonWindow(code: String) -> NefWindow? {
-        CarbonController(code: code, output: .file)
+        CarbonFileController(code: code,
+                             style: assembler.resolveCarbonStyle(),
+                             progressReport: assembler.resolveProgressReport(),
+                             panel: assembler.resolveOpenPanel())
             .flatMap(NefWindow.controller)
     }
     
     private func clipboardCarbonWindow(code: String) -> NefWindow? {
-        CarbonController(code: code, output: .clipboard)
+        CarbonClipboardController(code: code,
+                                  style: assembler.resolveCarbonStyle(),
+                                  progressReport: assembler.resolveProgressReport(),
+                                  pasteboard: assembler.resolveClipboard(),
+                                  notifications: assembler.resolveNotificationCenter())
             .flatMap(NefWindow.controller)
     }
     

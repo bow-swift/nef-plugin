@@ -1,15 +1,13 @@
 //  Copyright © 2019 The nef Authors.
 
 import AppKit
+import UserNotifications
 import SwiftUI
-
 import nef
-import Bow
-import BowEffects
 
 class Assembler {
-    private lazy var preferencesDataSource = resolvePreferencesDataSource()
-    private lazy var progressReport = resolvePlaygroundBookProgressReport()
+    private lazy var preferencesDataSource = PreferencesDataSource(fileManager: .default)
+    private lazy var progressReport = PlaygroundBookProgressReport()
     
     // MARK: - Common methods <helpers>
     fileprivate func resolvePreferencesViewModel() -> PreferencesViewModel {
@@ -18,14 +16,6 @@ class Assembler {
                              fonts: CarbonStyle.Font.allCases,
                              themes: CarbonStyle.Theme.allCases,
                              sizes: CarbonStyle.Size.allCases)
-    }
-    
-    fileprivate func resolvePreferencesDataSource() -> PreferencesDataSource {
-        PreferencesDataSource(fileManager: .default)
-    }
-    
-    fileprivate func resolvePlaygroundBookProgressReport() -> PlaygroundBookProgressReport {
-        PlaygroundBookProgressReport()
     }
 }
 
@@ -45,6 +35,12 @@ extension Assembler {
     }
 }
 
+extension Assembler {
+    func resolveCarbonStyle() -> CarbonStyle {
+        preferencesDataSource.state.carbonStyle
+    }
+}
+
 // MARK: - Utils
 extension Assembler {
     func resolveOpenPanel() -> OpenPanel {
@@ -53,5 +49,13 @@ extension Assembler {
     
     func resolveProgressReport() -> ProgressReport {
         progressReport
+    }
+    
+    func resolveClipboard() -> Pasteboard {
+        MacPasteboard(pasteboard: .general)
+    }
+    
+    func resolveNotificationCenter() -> MacNotificationController {
+        MacNotificationController(notificationCenter: .current())
     }
 }

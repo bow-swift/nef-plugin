@@ -1,6 +1,7 @@
 //  Copyright © 2020 The nef Authors.
 
 import Foundation
+import AppKit
 import SourceEditorModels
 import SourceEditorUtils
 
@@ -9,60 +10,90 @@ import Bow
 import BowEffects
 
 
-enum CarbonOutput {
-    case clipboard
-    case file
+enum CarbonError: Swift.Error {
+    case render(Error)
+    case openPanel
+    case invalidData
+    case writeToClipboard
 }
 
-class CarbonController: NefController {
+
+struct CarbonFileConfig {
+    let style: CarbonStyle
+    let progressReport: ProgressReport
+    let panel: OpenPanel
+}
+
+class CarbonFileController: NefController {
     let code: String
-    let output: CarbonOutput
+    let config: CarbonFileConfig
     
-    init?(code: String, output: CarbonOutput) {
+    init?(code: String, style: CarbonStyle, progressReport: ProgressReport, panel: OpenPanel) {
         guard !code.isEmpty else { return nil }
         self.code = code
-        self.output = output
+        self.config = .init(style: style, progressReport: progressReport, panel: panel)
     }
     
     func run() -> Result<Void, Swift.Error> {
-        fatalError()
-        // -------- CARBON FILE
-        //        carbonIO(code: code).unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-        //            _ = output.map(self.showFile)
-        //            self.terminate()
-        //        }
+        runIO(code: code).provide(config)
+            .map(Browser.showFile)^
+            .unsafeRunSyncResult()
+    }
+    
+    private func runIO(code: String) -> EnvIO<CarbonFileConfig, CarbonError, URL> {
+        let env = EnvIO<CarbonFileConfig, CarbonError, CarbonFileConfig>.var()
+        let image = EnvIO<CarbonFileConfig, CarbonError, Data>.var()
+        let output = EnvIO<CarbonFileConfig, CarbonError, URL>.var()
         
-        // -------- CARBON CLIPBOARD
-        //        let config = Clipboard.Config(clipboard: .general, notificationCenter: .current())
-        //
-        //        assembler.resolveCarbon(code: code).env()^.mapError { _ in .carbon }
-        //            .flatMap(clipboardCarbonIO)^
-        //            .provide(config)
-        //            .unsafeRunAsync(on: .global(qos: .userInitiated)) { output in
-        //                _ = output.map { _ in
-        //                    self.terminate()
-        //                }
-        //        }
+        return binding(
+               env <- .ask(),
+             image <- nef.Carbon.render(code: code, style: env.get.style)
+                                .contramap(\.progressReport).mapError { e in .render(e) },
+            output <- image.get.persist(command: .exportSnippet(selection: code))
+                               .contramap(\.panel).mapError { _ in .openPanel },
+        yield: output.get)^
     }
 }
 
 
-//    // MARK: Helper methods
-//    private func carbonIO(code: String) -> IO<AppDelegate.Error, URL> {
-//        let panel = assembler.resolveOpenPanel()
-//        let image = IO<AppDelegate.Error, Data>.var()
-//        let output = IO<AppDelegate.Error, URL>.var()
-//
-//        return binding(
-//              image <- self.assembler.resolveCarbon(code: code),
-//             output <- image.get.persist(command: .exportSnippet(selection: code)).provide(panel).mapError { _ in .carbon },
-//        yield: output.get)^
-//    }
+struct CarbonClipboardConfig {
+    let style: CarbonStyle
+    let progressReport: ProgressReport
+    let pasteboard: Pasteboard
+    let notifications: Notifications
+}
 
-// ASSEMBLER: nef
-//    func resolveCarbon(code: String) -> IO<AppDelegate.Error, Data> {
-//        nef.Carbon.render(code: code, style: preferencesDataSource.state.carbonStyle)
-//            .provide(progressReport)
-//            .mapError { _ in .carbon }
-//    }
-//    
+class CarbonClipboardController: NefController {
+    let code: String
+    let config: CarbonClipboardConfig
+    
+    init?(code: String, style: CarbonStyle, progressReport: ProgressReport, pasteboard: Pasteboard, notifications: Notifications) {
+        guard !code.isEmpty else { return nil }
+        self.code = code
+        self.config = .init(style: style, progressReport: progressReport, pasteboard: pasteboard, notifications: notifications)
+    }
+    
+    func run() -> Result<Void, Swift.Error> {
+        runIO(code: code).provide(config)
+            .as(())^
+            .unsafeRunSyncResult()
+    }
+    
+    private func runIO(code: String) -> EnvIO<CarbonClipboardConfig, CarbonError, NSImage> {
+        let env = EnvIO<CarbonClipboardConfig, CarbonError, CarbonClipboardConfig>.var()
+        let data = EnvIO<CarbonClipboardConfig, CarbonError, Data>.var()
+        let image = EnvIO<CarbonClipboardConfig, CarbonError, NSImage>.var()
+        
+        return binding(
+               env <- .ask(),
+              data <- nef.Carbon.render(code: code, style: env.get.style)
+                                .contramap(\.progressReport).mapError { e in .render(e) },
+             image <- data.get.makeImage().mapError { _ in .invalidData },
+                   |<-env.get.pasteboard.write(image.get).mapError { _ in .writeToClipboard },
+                   |<-env.get.notifications.removeAllDelivered(),
+                   |<-env.get.notifications.show(title: "nef",
+                                                 body: "Image copied to clipboard!",
+                                                 options: .init(imageData: data.get, actions: [.cancel, .saveImage])),
+        yield: image.get)^
+    }
+}
