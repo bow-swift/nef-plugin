@@ -80,7 +80,9 @@ struct App {
     }
     
     private func playgroundBookWindow(packageContent: String) -> NefWindow? {
-        guard let controller = PlaygroundBookController(packageContent: packageContent) else { return nil }
+        guard let controller = PlaygroundBookController(packageContent: packageContent,
+                                                        openPanel: assembler.resolveOpenPanel(),
+                                                        progressReport: assembler.resolveProgressReport()) else { return nil }
         
         let view = NSHostingView(rootView: assembler.resolvePlaygroundBookView())
         let config = NefWindow.Config(title: i18n.WindowTitle.playgroundBook,
@@ -99,11 +101,3 @@ extension i18n {
         static let playgroundBook = NSLocalizedString("playground-book", comment: "")
     }
 }
-
-
-//    enum Error: Swift.Error {
-//        case carbon
-//        case markdown
-//        case swiftPlayground
-//        case notification
-//    }

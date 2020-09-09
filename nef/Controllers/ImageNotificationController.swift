@@ -5,6 +5,7 @@ import SourceEditorUtils
 import Bow
 import BowEffects
 
+
 struct NotificationConfig {
     let openPanel: OpenPanel
 }

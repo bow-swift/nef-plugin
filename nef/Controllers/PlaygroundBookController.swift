@@ -9,46 +9,51 @@ import Bow
 import BowEffects
 
 
+struct PlaygroundBookConfig {
+    let openPanel: OpenPanel
+    let progressReport: ProgressReport
+    let render: (String, String, URL) -> EnvIO<PlaygroundBookConfig, OpenPanelError, URL>
+}
+
 class PlaygroundBookController: NefController {
     let packageContent: String
+    let config: PlaygroundBookConfig
     
-    init?(packageContent: String) {
+    init?(packageContent: String, openPanel: OpenPanel, progressReport: ProgressReport) {
         guard !packageContent.isEmpty else { return nil }
         self.packageContent = packageContent
+        self.config = .init(openPanel: openPanel, progressReport: progressReport, render: PlaygroundBookController.render)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
-        fatalError()
-        //        playgroundBookIO(packageContent: package).unsafeRunAsync(on: .global(qos: .userInitiated))  { output in
-        //            guard output.isRight else { return }
-        //            Thread.sleep(forTimeInterval: 1)
-        //            _ = output.map(self.showFile)
-        //            self.terminate()
-        //        }
+        runIO(packageContent: packageContent).provide(config)
+            .map(Browser.showFile)^
+            .unsafeRunAsyncResult(on: .global(qos: .userInitiated), completion: completion)
+    }
+    
+    func runIO(packageContent: String) -> EnvIO<PlaygroundBookConfig, OpenPanelError, URL> {
+        EnvIO.accessM { config in
+            config.openPanel.writableFolder(create: true).use { folder in
+                self.render(packageContent: packageContent, into: folder).provide(config)
+            }^.env()^
+        }^
+    }
+    
+    private func render(packageContent: String, into folder: URL) -> EnvIO<PlaygroundBookConfig, OpenPanelError, URL> {
+        EnvIO.accessM { config in
+            let file = EnvIO<PlaygroundBookConfig, OpenPanelError, URL>.var()
+            let output = EnvIO<PlaygroundBookConfig, OpenPanelError, URL>.var()
+            
+            return binding(
+                  file <- folder.outputURL(command: .playgroundBook(package: packageContent)),
+                output <- config.render(packageContent, file.get.lastPathComponent, file.get.deletingLastPathComponent()),
+            yield: output.get)^
+        }
+    }
+    
+    private static func render(packageContent: String, name: String, output: URL) ->  EnvIO<PlaygroundBookConfig, OpenPanelError, URL> {
+        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
+            .contramap(\.progressReport)
+            .mapError { _ in OpenPanelError.unknown }
     }
 }
-
-
-//    // MARK: Helper methods
-//
-//    private func playgroundBookIO(packageContent: String) -> IO<AppDelegate.Error, URL> {
-//        assembler.resolveOpenPanel().writableFolder(create: true).use { folder in
-//            let file = IO<OpenPanelError, URL>.var()
-//            let output = IO<OpenPanelError, URL>.var()
-//
-//            return binding(
-//                  file <- folder.outputURL(command: .playgroundBook(package: packageContent)),
-//                output <- self.assembler.resolvePlaygroundBook(packageContent: packageContent, name: file.get.lastPathComponent, output: file.get.deletingLastPathComponent()).mapError { _ in .unknown },
-//            yield: output.get)
-//        }^.mapError { _ in .swiftPlayground }
-//    }
-//
-
-
-// ASSEMBLER: nef
-//
-//    func resolvePlaygroundBook(packageContent: String, name: String, output: URL) -> IO<AppDelegate.Error, URL> {
-//        nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
-//                           .provide(progressReport)
-//                           .mapError { _ in .swiftPlayground }^
-//    }
