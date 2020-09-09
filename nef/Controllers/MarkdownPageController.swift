@@ -35,27 +35,25 @@ class MarkdownPageController: NefController {
             .unsafeRunAsyncResult(completion: completion)
     }
     
-    private func runIO(page: String) -> EnvIO<MarkdownPageConfig, OpenPanelError, URL> {
-        func markdownIO(folder: URL, page: String) -> EnvIO<MarkdownPageConfig, MarkdownPageError, URL> {
-            let file = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
-            let output = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
-            
-            return binding(
-                  file <- folder.outputURL(command: .markdownPage(page: page)).env(),
-                output <- nef.Markdown.render(content: page, toFile: file.get)
-                                      .contramap(\.progressReport)
-                                      .mapError { e in .render(e) },
-            yield: output.get)^
-        }
-        
-        return EnvIO { env in
-            env.openPanel
-                .writableFolder(create: true)
-                .use { folder in
-                    markdownIO(folder: folder, page: page).provide(env)^
-                        .mapError { _ in .unknown }
+    func runIO(page: String) -> EnvIO<MarkdownPageConfig, OpenPanelError, URL> {
+        EnvIO { env in
+            env.openPanel.writableFolder(create: true).use { folder in
+                self.markdownIO(folder: folder, page: page)
+                    .provide(env)^
+                    .mapError { _ in .unknown }
             }
-                
         }^
+    }
+    
+    private func markdownIO(folder: URL, page: String) -> EnvIO<MarkdownPageConfig, MarkdownPageError, URL> {
+        let file = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
+        let output = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
+        
+        return binding(
+              file <- folder.outputURL(command: .markdownPage(page: page)).env(),
+            output <- nef.Markdown.render(content: page, toFile: file.get)
+                                  .contramap(\.progressReport)
+                                  .mapError { e in .render(e) },
+        yield: output.get)^
     }
 }
