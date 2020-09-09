@@ -22,6 +22,7 @@ struct CarbonFileConfig {
     let style: CarbonStyle
     let progressReport: ProgressReport
     let panel: OpenPanel
+    let render: (String, CarbonStyle) -> EnvIO<ProgressReport, CarbonError, Data>
 }
 
 class CarbonFileController: NefController {
@@ -31,7 +32,7 @@ class CarbonFileController: NefController {
     init?(code: String, style: CarbonStyle, progressReport: ProgressReport, panel: OpenPanel) {
         guard !code.isEmpty else { return nil }
         self.code = code
-        self.config = .init(style: style, progressReport: progressReport, panel: panel)
+        self.config = .init(style: style, progressReport: progressReport, panel: panel, render: CarbonController.render)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
@@ -42,15 +43,15 @@ class CarbonFileController: NefController {
     
     func runIO(code: String) -> EnvIO<CarbonFileConfig, CarbonError, URL> {
         let env = EnvIO<CarbonFileConfig, CarbonError, CarbonFileConfig>.var()
-        let image = EnvIO<CarbonFileConfig, CarbonError, Data>.var()
+        let data = EnvIO<CarbonFileConfig, CarbonError, Data>.var()
         let output = EnvIO<CarbonFileConfig, CarbonError, URL>.var()
         
         return binding(
                env <- .ask(),
-             image <- nef.Carbon.render(code: code, style: env.get.style)
-                                .contramap(\.progressReport).mapError { e in .render(e) },
-            output <- image.get.persist(command: .exportSnippet(selection: code))
-                               .contramap(\.panel).mapError { _ in .openPanel },
+              data <- env.get.render(code, env.get.style).contramap(\.progressReport),
+            output <- data.get.persist(command: .exportSnippet(selection: code))
+                              .contramap(\.panel)
+                              .mapError { _ in .openPanel },
         yield: output.get)^
     }
 }
@@ -61,6 +62,7 @@ struct CarbonClipboardConfig {
     let progressReport: ProgressReport
     let pasteboard: Pasteboard
     let notifications: Notifications
+    let render: (String, CarbonStyle) -> EnvIO<ProgressReport, CarbonError, Data>
 }
 
 class CarbonClipboardController: NefController {
@@ -70,7 +72,7 @@ class CarbonClipboardController: NefController {
     init?(code: String, style: CarbonStyle, progressReport: ProgressReport, pasteboard: Pasteboard, notifications: Notifications) {
         guard !code.isEmpty else { return nil }
         self.code = code
-        self.config = .init(style: style, progressReport: progressReport, pasteboard: pasteboard, notifications: notifications)
+        self.config = .init(style: style, progressReport: progressReport, pasteboard: pasteboard, notifications: notifications, render: CarbonController.render)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
@@ -81,14 +83,13 @@ class CarbonClipboardController: NefController {
     
     func runIO(code: String) -> EnvIO<CarbonClipboardConfig, CarbonError, NSImage> {
         let env = EnvIO<CarbonClipboardConfig, CarbonError, CarbonClipboardConfig>.var()
-        let data = EnvIO<CarbonClipboardConfig, CarbonError, Data>.var()
         let image = EnvIO<CarbonClipboardConfig, CarbonError, NSImage>.var()
+        let data = EnvIO<CarbonClipboardConfig, CarbonError, Data>.var()
         
         return binding(
                env <- .ask(),
-              data <- nef.Carbon.render(code: code, style: env.get.style)
-                                .contramap(\.progressReport).mapError { e in .render(e) },
-             image <- data.get.makeImage().mapError { _ in .invalidData },
+              data <- env.get.render(code, env.get.style).contramap(\.progressReport),
+             image <- data.get.makeImage().mapError { _ in .invalidData }^,
                    |<-env.get.pasteboard.write(image.get).mapError { _ in .writeToClipboard },
                    |<-env.get.notifications.removeAllDelivered(),
                    |<-env.get.notifications.show(title: "nef",
@@ -100,6 +101,13 @@ class CarbonClipboardController: NefController {
 
 
 // MARK: - Helpers
+enum CarbonController {
+    static func render(code: String, style: CarbonStyle) -> EnvIO<ProgressReport, CarbonError, Data> {
+        nef.Carbon.render(code: code, style: style)
+            .mapError { e in .render(e) }^
+    }
+}
+
 fileprivate extension Data {
     func makeImage<D>() -> EnvIO<D, CarbonError, NSImage> {
         EnvIO.invoke { _ in

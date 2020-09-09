@@ -12,6 +12,7 @@ import BowEffects
 struct MarkdownPageConfig {
     let openPanel: OpenPanel
     let progressReport: ProgressReport
+    let render: (String, URL) -> EnvIO<MarkdownPageConfig, MarkdownPageError, URL>
 }
 
 enum MarkdownPageError: Swift.Error {
@@ -26,7 +27,7 @@ class MarkdownPageController: NefController {
     init?(page: String, openPanel: OpenPanel, progressReport: ProgressReport) {
         guard !page.isEmpty else { return nil }
         self.page = page
-        self.config = MarkdownPageConfig(openPanel: openPanel, progressReport: progressReport)
+        self.config = MarkdownPageConfig(openPanel: openPanel, progressReport: progressReport, render: MarkdownPageController.render)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
@@ -46,14 +47,20 @@ class MarkdownPageController: NefController {
     }
     
     private func markdownIO(folder: URL, page: String) -> EnvIO<MarkdownPageConfig, MarkdownPageError, URL> {
+        let env = EnvIO<MarkdownPageConfig, MarkdownPageError, MarkdownPageConfig>.var()
         let file = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
         let output = EnvIO<MarkdownPageConfig, MarkdownPageError, URL>.var()
         
         return binding(
+               env <- .ask(),
               file <- folder.outputURL(command: .markdownPage(page: page)).env(),
-            output <- nef.Markdown.render(content: page, toFile: file.get)
-                                  .contramap(\.progressReport)
-                                  .mapError { e in .render(e) },
+            output <- env.get.render(page, file.get),
         yield: output.get)^
+    }
+    
+    private static func render(content: String, toFile file: URL) -> EnvIO<MarkdownPageConfig, MarkdownPageError, URL> {
+        nef.Markdown.render(content: content, toFile: file)
+            .contramap(\.progressReport)
+            .mapError { e in .render(e) }
     }
 }

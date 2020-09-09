@@ -51,7 +51,7 @@ class PlaygroundBookController: NefController {
         }
     }
     
-    private static func render(packageContent: String, name: String, output: URL) ->  EnvIO<PlaygroundBookConfig, OpenPanelError, URL> {
+    private static func render(packageContent: String, name: String, output: URL) -> EnvIO<PlaygroundBookConfig, OpenPanelError, URL> {
         nef.SwiftPlayground.render(packageContent: packageContent, name: name, output: output)
             .contramap(\.progressReport)
             .mapError { _ in OpenPanelError.unknown }
