@@ -40,7 +40,7 @@ class CarbonFileController: NefController {
             .unsafeRunAsyncResult(on: .global(qos: .userInitiated), completion: completion)
     }
     
-    private func runIO(code: String) -> EnvIO<CarbonFileConfig, CarbonError, URL> {
+    func runIO(code: String) -> EnvIO<CarbonFileConfig, CarbonError, URL> {
         let env = EnvIO<CarbonFileConfig, CarbonError, CarbonFileConfig>.var()
         let image = EnvIO<CarbonFileConfig, CarbonError, Data>.var()
         let output = EnvIO<CarbonFileConfig, CarbonError, URL>.var()
@@ -79,7 +79,7 @@ class CarbonClipboardController: NefController {
             .unsafeRunAsyncResult(on: .global(qos: .userInitiated), completion: completion)
     }
     
-    private func runIO(code: String) -> EnvIO<CarbonClipboardConfig, CarbonError, NSImage> {
+    func runIO(code: String) -> EnvIO<CarbonClipboardConfig, CarbonError, NSImage> {
         let env = EnvIO<CarbonClipboardConfig, CarbonError, CarbonClipboardConfig>.var()
         let data = EnvIO<CarbonClipboardConfig, CarbonError, Data>.var()
         let image = EnvIO<CarbonClipboardConfig, CarbonError, NSImage>.var()
@@ -95,5 +95,18 @@ class CarbonClipboardController: NefController {
                                                  body: "Image copied to clipboard!",
                                                  options: .init(imageData: data.get, actions: [.cancel, .saveImage])),
         yield: image.get)^
+    }
+}
+
+
+// MARK: - Helpers
+fileprivate extension Data {
+    func makeImage<D>() -> EnvIO<D, CarbonError, NSImage> {
+        EnvIO.invoke { _ in
+            guard let image = NSImage(data: self) else {
+                throw CarbonError.invalidData
+            }
+            return image
+        }
     }
 }
