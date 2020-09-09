@@ -1,8 +1,7 @@
-//  Copyright © 2019 The nef Authors.
+//  Copyright © 2020 The nef Authors.
 
-import AppKit
-import UserNotifications
 import SwiftUI
+import UserNotifications
 import nef
 
 class Assembler {
