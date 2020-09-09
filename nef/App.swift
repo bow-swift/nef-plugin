@@ -65,6 +65,13 @@ struct App {
             .flatMap(NefWindow.controller)
     }
     
+    private func notificationWindow(userInfo: [String: Any], action: String) -> NefWindow? {
+        ImageNotificationController(userInfo: userInfo,
+                                    action: action,
+                                    openPanel: assembler.resolveOpenPanel())
+            .flatMap(NefWindow.controller)
+    }
+    
     private func markdownPageWindow(page: String) -> NefWindow? {
         MarkdownPageController(page: page,
                                openPanel: assembler.resolveOpenPanel(),
@@ -81,11 +88,6 @@ struct App {
                                       needMenu: true)
         
         return .viewController(view: view, controller: controller, config: config)
-    }
-    
-    private func notificationWindow(userInfo: [String: Any], action: String) -> NefWindow? {
-        ImageNotificationController(userInfo: userInfo, action: action)
-            .flatMap(NefWindow.controller)
     }
 }
 
