@@ -5,11 +5,9 @@ import SourceEditorModels
 
 struct AppScheme {
     let command: Command
-    let estimatedDuration: DispatchTime
     
-    init(command: Command, estimatedDuration: DispatchTime = .now()) {
+    init(command: Command) {
         self.command = command
-        self.estimatedDuration = estimatedDuration
     }
     
     func open() -> AppScheme {

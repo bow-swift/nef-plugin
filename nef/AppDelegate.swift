@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         switch command {
         case .preferences:
             preferencesDidFinishLaunching()
-        case .exportSnippet(let selection):
+        case .exportSnippetToFile(let selection):
             carbonDidFinishLaunching(code: selection)
         case .exportSnippetToClipboard(let selection):
             clipboardCarbonDidFinishLaunching(code: selection)
@@ -171,7 +171,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         return binding(
               image <- self.assembler.resolveCarbon(code: code),
-             output <- image.get.persist(command: .exportSnippet(selection: code)).provide(panel).mapError { _ in .carbon },
+             output <- image.get.persist(command: .exportSnippetToFile(selection: code)).provide(panel).mapError { _ in .carbon },
         yield: output.get)^
     }
     

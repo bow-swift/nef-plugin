@@ -14,7 +14,7 @@ extension URL {
     func appendingCommandExtensionComponent(command: Command) -> URL {
         let ext: String
         switch command {
-        case .exportSnippet, .exportSnippetToClipboard: ext = "jpg"
+        case .exportSnippetToFile, .exportSnippetToClipboard: ext = "jpg"
         case .markdownPage: ext = "md"
         default: ext = ""
         }

@@ -26,7 +26,7 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
     static func debugCommandDefinitions() -> [Command] {
         [.preferences,
-         .exportSnippet(selection: ""),
+         .exportSnippetToFile(selection: ""),
          .exportSnippetToClipboard(selection: ""),
          .markdownPage(playground: ""),
          .playgroundBook(package: "")]
@@ -34,7 +34,7 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     
     static func appstoreCommandDefinitions() -> [Command] {
         [.preferences,
-         .exportSnippet(selection: ""),
+         .exportSnippetToFile(selection: ""),
          .exportSnippetToClipboard(selection: ""),
          .markdownPage(playground: "")]
     }
@@ -47,14 +47,14 @@ extension SourceEditorModels.Command: XCSourceEditorCommandDefinition {
         switch self {
         case .preferences:
             return "Preferences"
-        case .exportSnippet:
-            return "Code selection → Image (File)"
+        case .exportSnippetToFile:
+            return "Code selection to Image"
         case .exportSnippetToClipboard:
-            return "Code selection → Image (Clipboard)"
+            return "Copy selection to Image clipboard"
         case .markdownPage:
-            return "Playground       → Markdown"
+            return "Export Playground page to markdown"
         case .playgroundBook:
-            return "Swift Package  → Playground Book (iPad)"
+            return "Playground Book from Swift Package"
         case .about, .notification:
             return ""
         }

@@ -5,7 +5,7 @@ import Foundation
 public enum Command {
     case about
     case preferences
-    case exportSnippet(selection: String)
+    case exportSnippetToFile(selection: String)
     case exportSnippetToClipboard(selection: String)
     case markdownPage(playground: String)
     case playgroundBook(package: String)
@@ -17,7 +17,7 @@ public enum Command {
             return "about"
         case .preferences:
             return "preferences"
-        case .exportSnippet:
+        case .exportSnippetToFile:
             return "exportSnippet"
         case .exportSnippetToClipboard:
             return "exportSnippetToClipboard"

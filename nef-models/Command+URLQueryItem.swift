@@ -5,7 +5,7 @@ import Foundation
 public extension Command {
     var item: URLQueryItem {
         switch self {
-        case .exportSnippet(let selection):
+        case .exportSnippetToFile(let selection):
             return URLQueryItem(name: key, value: selection)
         case .exportSnippetToClipboard(let selection):
             return URLQueryItem(name: key, value: selection)
@@ -26,8 +26,8 @@ public extension URLQueryItem {
             return .about
         case Command.preferences.key:
             return .preferences
-        case Command.exportSnippet(selection: "").key:
-            return value.flatMap(Command.exportSnippet)
+        case Command.exportSnippetToFile(selection: "").key:
+            return value.flatMap(Command.exportSnippetToFile)
         case Command.exportSnippetToClipboard(selection: "").key:
             return value.flatMap(Command.exportSnippetToClipboard)
         case Command.markdownPage(playground: "").key:

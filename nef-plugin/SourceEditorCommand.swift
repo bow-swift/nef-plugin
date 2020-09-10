@@ -12,7 +12,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                     terminateError(error, completion: completionHandler)
                 },
                 { schema in
-                    terminate(deadline: schema.estimatedDuration, completion: completionHandler)
+                    terminate(deadline: .now() + .seconds(4), completion: completionHandler)
                 }
             )
     }
@@ -33,7 +33,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         switch command {
         case .preferences:
             return preferences()
-        case .exportSnippet:
+        case .exportSnippetToFile:
             return exportSnippet(editor: editor)
         case .exportSnippetToClipboard:
             return exportSnippetToClipboard(editor: editor)
@@ -55,9 +55,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         guard Reachability.isConnected else { return .failure(.internetConnection) }
         guard let selection = editor.selection else { return .failure(.selection) }
         
-        let appscheme = AppScheme(command: .exportSnippet(selection: selection),
-                                  estimatedDuration: .now() + .seconds(5))
-        
+        let appscheme = AppScheme(command: .exportSnippetToFile(selection: selection))
         return .success(appscheme)
     }
     
@@ -65,9 +63,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         guard Reachability.isConnected else { return .failure(.internetConnection) }
         guard let selection = editor.selection else { return .failure(.selection) }
         
-        let appscheme = AppScheme(command: .exportSnippetToClipboard(selection: selection),
-                                  estimatedDuration: .now() + .seconds(5))
-        
+        let appscheme = AppScheme(command: .exportSnippetToClipboard(selection: selection))
         return .success(appscheme)
     }
     
