@@ -2,14 +2,13 @@
 
 import Foundation
 
-public enum Command {
+public enum MenuEditorCommand {
     case about
     case preferences
-    case exportSnippetToFile(selection: String)
-    case exportSnippetToClipboard(selection: String)
-    case markdownPage(playground: String)
-    case playgroundBook(package: String)
-    case notification(userInfo: [String: Any], action: String)
+    case exportSnippetToFile
+    case exportSnippetToClipboard
+    case markdownPage
+    case playgroundBook
     
     public var key: String {
         switch self {
@@ -25,8 +24,6 @@ public enum Command {
             return "markdownPage"
         case .playgroundBook:
             return "playgroundBook"
-        case .notification:
-            return "notification"
         }
     }
 }

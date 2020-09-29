@@ -4,10 +4,12 @@ import AppKit
 import SourceEditorModels
 
 struct AppScheme {
-    let command: Command
+    let command: MenuEditorCommand
+    let code: String
     
-    init(command: Command) {
+    init(command: MenuEditorCommand, code: String = "") {
         self.command = command
+        self.code = code
     }
     
     func open() -> AppScheme {
@@ -19,7 +21,7 @@ struct AppScheme {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.scheme
         urlComponents.host = "xcode"
-        urlComponents.queryItems = [command.item]
+        urlComponents.queryItems = [command.item(code: code)]
         return urlComponents.url!
     }
     

@@ -2,11 +2,10 @@
 
 import Foundation
 import BowEffects
-import SourceEditorModels
 
 extension URL {
     func outputURL(command: Command) -> IO<OpenPanelError, URL> {
-        let filename = "nef-\(command.key) \(Date.now.human)"
+        let filename = "nef-\(command.menuKey) \(Date.now.human)"
         let url = appendingPathComponent(filename).appendingCommandExtensionComponent(command: command)
         return IO.pure(url)^
     }

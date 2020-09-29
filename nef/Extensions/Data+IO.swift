@@ -2,7 +2,6 @@
 
 import Foundation
 import AppKit
-import SourceEditorModels
 import Bow
 import BowEffects
 

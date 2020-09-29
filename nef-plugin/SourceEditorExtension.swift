@@ -16,7 +16,7 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
         SourceEditorExtension.commands.map(\.editorDefinitionKey)
     }
     
-    static var commands: [Command] = {
+    static var commands: [MenuEditorCommand] = {
         #if DEBUG
         return debugCommandDefinitions()
         #else
@@ -24,25 +24,25 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
         #endif
     }()
     
-    static func debugCommandDefinitions() -> [Command] {
+    static func debugCommandDefinitions() -> [MenuEditorCommand] {
         [.preferences,
-         .exportSnippetToFile(selection: ""),
-         .exportSnippetToClipboard(selection: ""),
-         .markdownPage(playground: ""),
-         .playgroundBook(package: "")]
+         .exportSnippetToFile,
+         .exportSnippetToClipboard,
+         .markdownPage,
+         .playgroundBook]
     }
     
-    static func appstoreCommandDefinitions() -> [Command] {
+    static func appstoreCommandDefinitions() -> [MenuEditorCommand] {
         [.preferences,
-         .exportSnippetToFile(selection: ""),
-         .exportSnippetToClipboard(selection: ""),
-         .markdownPage(playground: "")]
+         .exportSnippetToFile,
+         .exportSnippetToClipboard,
+         .markdownPage]
     }
 }
 
 
 // MARK: - Command <XCSourceEditorCommandDefinition>
-extension SourceEditorModels.Command: XCSourceEditorCommandDefinition {
+extension SourceEditorModels.MenuEditorCommand: XCSourceEditorCommandDefinition {
     public var displayName: String {
         switch self {
         case .preferences:
@@ -55,8 +55,8 @@ extension SourceEditorModels.Command: XCSourceEditorCommandDefinition {
             return "Export Playground page to markdown"
         case .playgroundBook:
             return "Playground Book from Swift Package"
-        case .about, .notification:
-            return ""
+        case .about:
+            return "About"
         }
     }
     

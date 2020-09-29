@@ -3,7 +3,6 @@
 import SwiftUI
 import Bow
 import BowEffects
-import SourceEditorModels
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

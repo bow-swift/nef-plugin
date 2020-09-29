@@ -29,7 +29,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         return appScheme(command: command, editor: editor).map { scheme in scheme.open() }
     }
     
-    private func appScheme(command: Command, editor: Editor) -> Result<AppScheme, EditorError> {
+    private func appScheme(command: MenuEditorCommand, editor: Editor) -> Result<AppScheme, EditorError> {
         switch command {
         case .preferences:
             return preferences()
@@ -41,7 +41,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return markdownPage(editor: editor)
         case .playgroundBook:
             return playgroundBook(editor: editor)
-        case .about, .notification:
+        case .about:
             return .failure(.unknown)
         }
     }
@@ -55,7 +55,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         guard Reachability.isConnected else { return .failure(.internetConnection) }
         guard let selection = editor.selection else { return .failure(.selection) }
         
-        let appscheme = AppScheme(command: .exportSnippetToFile(selection: selection))
+        let appscheme = AppScheme(command: .exportSnippetToFile, code: selection)
         return .success(appscheme)
     }
     
@@ -63,7 +63,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         guard Reachability.isConnected else { return .failure(.internetConnection) }
         guard let selection = editor.selection else { return .failure(.selection) }
         
-        let appscheme = AppScheme(command: .exportSnippetToClipboard(selection: selection))
+        let appscheme = AppScheme(command: .exportSnippetToClipboard, code: selection)
         return .success(appscheme)
     }
     
@@ -72,7 +72,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return .failure(.playgroundNotFound)
         }
         
-        let appscheme = AppScheme(command: .markdownPage(playground: editor.code))
+        let appscheme = AppScheme(command: .markdownPage, code: editor.code)
         return .success(appscheme)
     }
     
@@ -81,7 +81,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             return .failure(.packageNotFound)
         }
         
-        let appscheme = AppScheme(command: .playgroundBook(package: editor.code))
+        let appscheme = AppScheme(command: .playgroundBook, code: editor.code)
         return .success(appscheme)
     }
     
