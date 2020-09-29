@@ -51,8 +51,8 @@ extension Assembler {
         progressReport
     }
     
-    func resolveClipboard() -> Pasteboard {
-        MacPasteboard(pasteboard: .general)
+    func resolveClipboard() -> Clipboard {
+        MacClipboard(pasteboard: .general)
     }
     
     func resolveNotificationCenter() -> Notifications {

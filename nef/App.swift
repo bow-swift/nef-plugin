@@ -60,7 +60,7 @@ struct App {
         CarbonClipboardController(code: code,
                                   style: assembler.resolveCarbonStyle(),
                                   progressReport: assembler.resolveProgressReport(),
-                                  pasteboard: assembler.resolveClipboard(),
+                                  clipboard: assembler.resolveClipboard(),
                                   notifications: assembler.resolveNotificationCenter())
             .flatMap(NefWindow.controller)
     }

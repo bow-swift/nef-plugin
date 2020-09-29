@@ -60,7 +60,7 @@ class CarbonFileController: NefController {
 struct CarbonClipboardConfig {
     let style: CarbonStyle
     let progressReport: ProgressReport
-    let pasteboard: Pasteboard
+    let clipboard: Clipboard
     let notifications: Notifications
     let render: (String, CarbonStyle) -> EnvIO<ProgressReport, CarbonError, Data>
 }
@@ -69,10 +69,10 @@ class CarbonClipboardController: NefController {
     let code: String
     let config: CarbonClipboardConfig
     
-    init?(code: String, style: CarbonStyle, progressReport: ProgressReport, pasteboard: Pasteboard, notifications: Notifications) {
+    init?(code: String, style: CarbonStyle, progressReport: ProgressReport, clipboard: Clipboard, notifications: Notifications) {
         guard !code.isEmpty else { return nil }
         self.code = code
-        self.config = .init(style: style, progressReport: progressReport, pasteboard: pasteboard, notifications: notifications, render: CarbonController.render)
+        self.config = .init(style: style, progressReport: progressReport, clipboard: clipboard, notifications: notifications, render: CarbonController.render)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
@@ -90,7 +90,7 @@ class CarbonClipboardController: NefController {
                env <- .ask(),
               data <- env.get.render(code, env.get.style).contramap(\.progressReport),
              image <- data.get.makeImage().mapError { _ in .invalidData }^,
-                   |<-env.get.pasteboard.write(image.get).mapError { _ in .writeToClipboard },
+                   |<-env.get.clipboard.write(image.get).mapError { _ in .writeToClipboard },
                    |<-env.get.notifications.removeAllDelivered(),
                    |<-env.get.notifications.show(title: "nef",
                                                  body: "Image copied to clipboard!",
