@@ -11,11 +11,13 @@ protocol Notifications {
 
 struct NotificationOptions {
     let imageData: Data?
+    let description: String
     let actions: [NefNotification.Action]
     let identifier: String
     
-    init(imageData: Data? = nil, actions: [NefNotification.Action] = [], identifier: String = UUID().uuidString) {
+    init(imageData: Data? = nil, description: String = "", actions: [NefNotification.Action] = [], identifier: String = UUID().uuidString) {
         self.imageData = imageData
+        self.description = description
         self.actions = actions
         self.identifier = identifier
     }

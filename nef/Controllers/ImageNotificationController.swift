@@ -12,31 +12,34 @@ struct NotificationConfig {
 
 class ImageNotificationController: NefController {
     let image: Data
+    let code: String
     let action: String
     let config: NotificationConfig
     
     init?(userInfo: [String: Any], action: String, openPanel: OpenPanel) {
-        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return nil }
+        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data,
+              let code = userInfo[NefNotification.UserInfoKey.description] as? String else { return nil }
         self.image = image
+        self.code = code
         self.action = action
         self.config = .init(openPanel: openPanel)
     }
     
     func runAsync(completion: @escaping (Result<Void, Swift.Error>) -> Void) {
-        runIO(image: image, action: action).provide(config)
+        runIO(image: image, code: code, action: action).provide(config)
             .map(Browser.showFile)^
             .unsafeRunAsyncResult(completion: completion)
     }
     
-    func runIO(image: Data, action: String) -> EnvIO<NotificationConfig, NefNotification.Error, URL> {
-        processNotification(image: image, action: action)
+    func runIO(image: Data, code: String, action: String) -> EnvIO<NotificationConfig, NefNotification.Error, URL> {
+        processNotification(image: image, code: code, action: action)
             .flatMap(clipboardFile)^
     }
     
-    private func processNotification(image: Data, action: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
+    private func processNotification(image: Data, code: String, action: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
         switch action {
         case NefNotification.Action.saveImage.identifier:
-            return persistImage(image)
+            return persistImageClipboard(image: image, code: code)
         case NefNotification.Action.cancel.identifier:
             return EnvIO.pure(.dismiss)^
         default:
@@ -44,8 +47,8 @@ class ImageNotificationController: NefController {
         }
     }
     
-    private func persistImage(_ image: Data) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
-        image.persist(command: .exportSnippetToClipboard(selection: ""))
+    private func persistImageClipboard(image: Data, code: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
+        image.persist(command: .exportSnippetToClipboard(selection: code))
              .contramap(\.openPanel)
              .mapError { _ in .persistImage }.map { .saveImage($0) }^
     }

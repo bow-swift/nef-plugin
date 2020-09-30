@@ -26,9 +26,10 @@ class MacNotificationController: Notifications {
             content.title = title
             content.body = body
             content.categoryIdentifier = options.identifier
+            content.userInfo = [NefNotification.UserInfoKey.description: options.description]
             
             if let imageData = options.imageData {
-                content.userInfo = [NefNotification.UserInfoKey.imageData: imageData]
+                content.userInfo = content.userInfo.combine([NefNotification.UserInfoKey.imageData: imageData])
             }
             
             let category = UNNotificationCategory(identifier: options.identifier,

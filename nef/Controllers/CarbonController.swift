@@ -94,7 +94,9 @@ class CarbonClipboardController: NefController {
                    |<-env.get.notifications.removeAllDelivered(),
                    |<-env.get.notifications.show(title: "nef",
                                                  body: "Image copied to clipboard!",
-                                                 options: .init(imageData: data.get, actions: [.cancel, .saveImage])),
+                                                 options: .init(imageData: data.get,
+                                                                description: code,
+                                                                actions: [.cancel, .saveImage])),
         yield: image.get)^
     }
 }
