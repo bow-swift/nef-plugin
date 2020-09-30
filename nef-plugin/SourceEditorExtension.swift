@@ -4,13 +4,6 @@ import Foundation
 import XcodeKit
 import SourceEditorModels
 
-public protocol XCSourceEditorCommandDefinition {
-    var displayName: String { get }
-    var identifierKey: String { get }
-    var editorDefinitionKey: [XCSourceEditorCommandDefinitionKey : Any] { get }
-}
-
-
 class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     var commandDefinitions: [[XCSourceEditorCommandDefinitionKey : Any]] {
         SourceEditorExtension.commands.map(\.editorDefinitionKey)
@@ -42,8 +35,8 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
 
 
 // MARK: - Command <XCSourceEditorCommandDefinition>
-extension SourceEditorModels.MenuEditorCommand: XCSourceEditorCommandDefinition {
-    public var displayName: String {
+extension SourceEditorModels.MenuEditorCommand {
+    var displayName: String {
         switch self {
         case .preferences:
             return "Preferences"
@@ -60,13 +53,13 @@ extension SourceEditorModels.MenuEditorCommand: XCSourceEditorCommandDefinition 
         }
     }
     
-    public var identifierKey: String {
+    var identifierKey: String {
         "\(Bundle.namespace).\(key)"
             .replacingOccurrences(of: "_", with: "-")
             .replacingOccurrences(of: " ", with: "-")
     }
     
-    public var editorDefinitionKey: [XCSourceEditorCommandDefinitionKey : Any] {
+    var editorDefinitionKey: [XCSourceEditorCommandDefinitionKey : Any] {
         [.identifierKey: identifierKey,
          .classNameKey: classNameKey,
          .nameKey: displayName]
