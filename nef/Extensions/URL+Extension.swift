@@ -7,9 +7,11 @@ import BowEffects
 
 extension URL {
     func outputURL<E: Error>(command: Command) -> IO<E, URL> {
-        let filename = "nef-\(command.menuKey) \(Date.now.human)"
-        let url = appendingPathComponent(filename).appendingCommandExtensionComponent(command: command)
-        return IO.pure(url)^
+        IO.invoke {
+            let filename = "nef-\(command.menuKey) \(Date.now.human)"
+            let url = appendingPathComponent(filename).appendingCommandExtensionComponent(command: command)
+            return url
+        }
     }
     
     func outputURL<D, E: Error>(command: Command) -> EnvIO<D, E, URL> {
