@@ -1,6 +1,7 @@
 //  Copyright © 2019 The nef Authors.
 
 import Foundation
+import Bow
 import XcodeKit
 import SourceEditorModels
 
@@ -9,10 +10,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         perform(with: invocation)
             .fold(
                 { error in
-                    terminateError(error, completion: completionHandler)
+                    self.terminateError(error, completion: completionHandler)
                 },
                 { schema in
-                    terminate(deadline: .now() + .seconds(4), completion: completionHandler)
+                    self.terminate(deadline: .now() + .seconds(4), completion: completionHandler)
                 }
             )
     }

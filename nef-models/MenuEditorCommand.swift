@@ -2,7 +2,7 @@
 
 import Foundation
 
-public enum MenuEditorCommand {
+public enum MenuEditorCommand: String {
     case about
     case preferences
     case exportSnippetToFile
@@ -10,20 +10,5 @@ public enum MenuEditorCommand {
     case markdownPage
     case playgroundBook
     
-    public var key: String {
-        switch self {
-        case .about:
-            return "about"
-        case .preferences:
-            return "preferences"
-        case .exportSnippetToFile:
-            return "exportSnippet"
-        case .exportSnippetToClipboard:
-            return "exportSnippetToClipboard"
-        case .markdownPage:
-            return "markdownPage"
-        case .playgroundBook:
-            return "playgroundBook"
-        }
-    }
+    public var key: String { rawValue }
 }
