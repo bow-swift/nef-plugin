@@ -29,7 +29,7 @@ extension Command {
         case .playgroundBook:
             return MenuEditorCommand.playgroundBook.key
         case .notification:
-            return ""
+            return "notification"
         }
     }
 }
