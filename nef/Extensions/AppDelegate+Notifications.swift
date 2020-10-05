@@ -62,12 +62,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func processNotification(_ userInfo: [String: Any], action: String) -> EnvIO<NotificationConfig, NefNotification.Error, NefNotification.Response> {
-        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else { return EnvIO.raiseError(.noImageData)^ }
+        guard let image = userInfo[NefNotification.UserInfoKey.imageData] as? Data else {
+            return EnvIO.raiseError(.noImageData)^
+        }
         
         switch action {
         case NefNotification.Action.saveImage.identifier:
             return image
-                .persist(command: .clipboardCarbon(code: ""))
+                .persist(command: .exportSnippetToClipboard(selection: ""))
                 .mapError { _ in .persistImage }
                 .contramap(\.openPanel)
                 .map { .saveImage($0) }^

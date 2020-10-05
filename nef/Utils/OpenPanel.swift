@@ -3,7 +3,6 @@
 import AppKit
 import BowEffects
 
-
 typealias BookmarkResource = Resource<IOPartial<OpenPanelError>, URL>
 
 enum OpenPanelError: Error {

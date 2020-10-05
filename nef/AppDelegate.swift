@@ -48,10 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         switch command {
         case .preferences:
             preferencesDidFinishLaunching()
-        case .carbon(let code):
-            carbonDidFinishLaunching(code: code)
-        case .clipboardCarbon(let code):
-            clipboardCarbonDidFinishLaunching(code: code)
+        case .exportSnippetToFile(let selection):
+            carbonDidFinishLaunching(code: selection)
+        case .exportSnippetToClipboard(let selection):
+            clipboardCarbonDidFinishLaunching(code: selection)
         case .markdownPage(let playground):
             markdownPageDidFinishLaunching(playground: playground)
         case .playgroundBook(let package):
@@ -169,8 +169,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let output = IO<AppDelegate.Error, URL>.var()
         
         return binding(
-             image <- self.assembler.resolveCarbon(code: code),
-             output <- image.get.persist(command: .carbon(code: code)).provide(panel).mapError { _ in .carbon },
+              image <- self.assembler.resolveCarbon(code: code),
+             output <- image.get.persist(command: .exportSnippetToFile(selection: code)).provide(panel).mapError { _ in .carbon },
         yield: output.get)^
     }
     
@@ -217,31 +217,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: false),
             let queryItems = components.queryItems else { return }
         
-        let params = queryItems.map { item in (name: item.name, value: item.value ?? "") }
-        self.command = params.first(where: self.isOperation).flatMap(self.operation)
-    }
-    
-    private func isOperation(param: (name: String, value: String)) -> Bool {
-        return operation(for: param) != nil
-    }
-    
-    private func operation(for param: (name: String, value: String)) -> Command? {
-        switch param {
-        case ("preferences", _):
-            return .preferences
-        case let ("carbon", value):
-            return .carbon(code: value)
-        case let ("clipboardCarbon", value):
-            return .clipboardCarbon(code: value)
-        case let ("markdownPage", value):
-            return .markdownPage(playground: value)
-        case let ("playgroundBook", value):
-            return .playgroundBook(package: value)
-        case ("about", _):
-            return .about
-        default:
-            return nil
-        }
+        self.command = queryItems.compactMap(\.command).first
     }
     
     // MARK: Constants

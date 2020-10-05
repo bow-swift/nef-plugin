@@ -1,41 +1,30 @@
 //  Copyright © 2019 The nef Authors.
 
 import AppKit
+import SourceEditorModels
 
 struct AppScheme {
-    enum Action {
-        case preferences
-        case carbon(selection: String)
-        case clipboardCarbon(selection: String)
-        case markdownPage(playground: String)
-        case playgroundBook(package: String)
-        
-        var item: URLQueryItem {
-            switch self {
-            case .preferences: return URLQueryItem(name: "preferences", value: nil)
-            case let .carbon(selection): return URLQueryItem(name: "carbon", value: selection)
-            case let .clipboardCarbon(selection): return URLQueryItem(name: "clipboardCarbon", value: selection)
-            case let .markdownPage(playground): return URLQueryItem(name: "markdownPage", value: playground)
-            case let .playgroundBook(package): return URLQueryItem(name: "playgroundBook", value: package)
-            }
-        }
+    let command: MenuEditorCommand
+    let code: String
+    
+    init(command: MenuEditorCommand, code: String = "") {
+        self.command = command
+        self.code = code
     }
     
-    let action: AppScheme.Action
-    
-    func run() {
+    func open() -> AppScheme {
         try! NSWorkspace.shared.open(url, options: .newInstance, configuration: [:])
+        return self
     }
     
     private var url: URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = Constants.scheme
         urlComponents.host = "xcode"
-        urlComponents.queryItems = [action.item]
+        urlComponents.queryItems = [command.item(code: code)]
         return urlComponents.url!
     }
     
-    // MARK: - Constants
     enum Constants {
         static let scheme = "nef-plugin"
     }

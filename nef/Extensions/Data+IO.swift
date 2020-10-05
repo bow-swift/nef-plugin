@@ -1,9 +1,9 @@
 //  Copyright © 2020 The nef Authors.
 
 import Foundation
+import AppKit
 import Bow
 import BowEffects
-import AppKit
 
 enum ImageError: Error {
     case invalidData

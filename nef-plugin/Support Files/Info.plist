@@ -33,49 +33,6 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>XCSourceEditorCommandDefinitions</key>
-			<array>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>preferences</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Preferences</string>
-				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>exportSnippet</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Code selection → Image (File)</string>
-				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>exportSnippetToClipboard</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Code selection → Image (Clipboard)</string>
-				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>markdownPage</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Playground       → Markdown</string>
-				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>playgroundBook</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Swift Package  → Playground Book (iPad)</string>
-				</dict>
-			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>
 		</dict>
