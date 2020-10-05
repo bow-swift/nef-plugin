@@ -1,14 +1,13 @@
 //  Copyright © 2019 The nef Authors.
 
 import SwiftUI
+import SourceEditorUtils
 
 struct AboutView: View {
     private let version: String
-    private let browser: Browser
     
-    init(version: String, browser: Browser) {
+    init(version: String) {
         self.version = version
-        self.browser = browser
     }
     
     @State var option: Bool = true
@@ -62,11 +61,11 @@ struct AboutView: View {
     
     // MARK: actions
     private func openPreferences() {
-        browser.open(url: "x-apple.systempreferences:com.apple.preferences")
+        Browser.open(url: "x-apple.systempreferences:com.apple.preferences")
     }
     
     private func openGithub() {
-        browser.open(url: Constants.githubURL)
+        Browser.open(url: Constants.githubURL)
     }
     
     // MARK: Constants

@@ -14,7 +14,7 @@ class Assembler {
     
     func resolveAboutView() -> some View {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
-        return AboutView(version: version, browser: Browser())
+        return AboutView(version: version)
     }
     
     func resolvePreferencesView() -> some View {

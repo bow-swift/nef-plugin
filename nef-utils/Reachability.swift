@@ -3,8 +3,8 @@
 import Foundation
 import SystemConfiguration
 
-class Reachability {
-    static var isConnected: Bool {
+public enum Reachability {
+    public static var isConnected: Bool {
         var flags = SCNetworkReachabilityFlags(rawValue: 0)
         var address = zeroAddress
         guard let defaultRouteReachability = createNetworkReachability(withAddress: &address),
