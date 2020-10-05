@@ -52,7 +52,7 @@ extension Assembler {
     }
     
     func resolveClipboard() -> Clipboard {
-        MacClipboard(pasteboard: .general)
+        MacClipboard()
     }
     
     func resolveNotificationCenter() -> Notifications {

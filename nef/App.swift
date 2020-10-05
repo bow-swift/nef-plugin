@@ -14,7 +14,7 @@ struct App {
         switch command {
         case .preferences:
             return preferencesWindow()
-        case .exportSnippet(let selection):
+        case .exportSnippetToFile(let selection):
             return carbonWindow(code: selection)
         case .exportSnippetToClipboard(let selection):
             return clipboardCarbonWindow(code: selection)

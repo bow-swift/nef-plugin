@@ -53,7 +53,7 @@ class MarkdownPageController: NefController {
         
         return binding(
                env <- .ask(),
-              file <- folder.outputURL(command: .markdownPage(page: page)).env(),
+              file <- folder.outputURL(command: .markdownPage(playground: page)).env(),
             output <- env.get.render(page, file.get),
         yield: output.get)^
     }

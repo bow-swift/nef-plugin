@@ -10,7 +10,7 @@ import BowEffects
 class MacClipboard: Clipboard {
     let pasteboard: NSPasteboard
     
-    init(pasteboard: NSPasteboard) {
+    init(pasteboard: NSPasteboard = .general) {
         self.pasteboard = pasteboard
     }
     

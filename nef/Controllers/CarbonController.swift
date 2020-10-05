@@ -49,7 +49,7 @@ class CarbonFileController: NefController {
         return binding(
                env <- .ask(),
               data <- env.get.render(code, env.get.style).contramap(\.progressReport),
-            output <- data.get.persist(command: .exportSnippet(selection: code))
+            output <- data.get.persist(command: .exportSnippetToFile(selection: code))
                               .contramap(\.panel)
                               .mapError { _ in .openPanel },
         yield: output.get)^
