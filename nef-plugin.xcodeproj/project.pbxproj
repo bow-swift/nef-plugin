@@ -224,7 +224,6 @@
 		8B0B1B1C252B389300CA58A1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		8B0B1B49252B3BCF00CA58A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B0B1B4B252B3BCF00CA58A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
-		8B0B1B4C252B3BCF00CA58A1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,7 +878,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B0B1B49252B3BCF00CA58A1 /* en */,
-				8B0B1B4C252B3BCF00CA58A1 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
