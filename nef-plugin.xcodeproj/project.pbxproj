@@ -10,13 +10,6 @@
 		8B0B199B252B2F1C00CA58A1 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B199A252B2F1C00CA58A1 /* SourceEditorExtension.swift */; };
 		8B0B199D252B2F1C00CA58A1 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B199C252B2F1C00CA58A1 /* SourceEditorCommand.swift */; };
 		8B0B19A2252B2F1C00CA58A1 /* nef-plugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8B0B1993252B2F1C00CA58A1 /* nef-plugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8B0B19E0252B34C000CA58A1 /* nef-appstore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19D8252B34C000CA58A1 /* nef-appstore.xcconfig */; };
-		8B0B19E1252B34C000CA58A1 /* nef.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19D9252B34C000CA58A1 /* nef.xcconfig */; };
-		8B0B19E2252B34C000CA58A1 /* nef-plugin.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19DB252B34C000CA58A1 /* nef-plugin.xcconfig */; };
-		8B0B19E3252B34C000CA58A1 /* nef-plugin-appstore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19DC252B34C000CA58A1 /* nef-plugin-appstore.xcconfig */; };
-		8B0B19E4252B34C000CA58A1 /* project-appstore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19DD252B34C000CA58A1 /* project-appstore.xcconfig */; };
-		8B0B19E5252B34C000CA58A1 /* project-shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19DE252B34C000CA58A1 /* project-shared.xcconfig */; };
-		8B0B19E6252B34C000CA58A1 /* project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B19DF252B34C000CA58A1 /* project.xcconfig */; };
 		8B0B1A14252B359200CA58A1 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B1A13252B359200CA58A1 /* Browser.swift */; };
 		8B0B1A1E252B359C00CA58A1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B1A1D252B359C00CA58A1 /* Reachability.swift */; };
 		8B0B1A28252B35B600CA58A1 /* MenuEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B1A27252B35B600CA58A1 /* MenuEditorCommand.swift */; };
@@ -84,7 +77,7 @@
 		8B0B1B15252B387B00CA58A1 /* libSourceEditorModels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B19F6252B356B00CA58A1 /* libSourceEditorModels.a */; };
 		8B0B1B18252B387B00CA58A1 /* libSourceEditorUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B1A06252B357400CA58A1 /* libSourceEditorUtils.a */; };
 		8B0B1B41252B3A5F00CA58A1 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B1997252B2F1C00CA58A1 /* XcodeKit.framework */; };
-		8B0B1B42252B3A5F00CA58A1 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B1997252B2F1C00CA58A1 /* XcodeKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B0B1B42252B3A5F00CA58A1 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0B1997252B2F1C00CA58A1 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B0B1B4D252B3BCF00CA58A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B1B48252B3BCF00CA58A1 /* Localizable.strings */; };
 		8B0B1B4E252B3BCF00CA58A1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B1B4A252B3BCF00CA58A1 /* Localizable.stringsdict */; };
 /* End PBXBuildFile section */
@@ -684,7 +677,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					8B0B1977252B2EFA00CA58A1 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -731,17 +724,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0B19E1252B34C000CA58A1 /* nef.xcconfig in Resources */,
 				8B0B1B0E252B386A00CA58A1 /* Main.storyboard in Resources */,
-				8B0B19E0252B34C000CA58A1 /* nef-appstore.xcconfig in Resources */,
 				8B0B1B4E252B3BCF00CA58A1 /* Localizable.stringsdict in Resources */,
-				8B0B19E4252B34C000CA58A1 /* project-appstore.xcconfig in Resources */,
 				8B0B1AD9252B380B00CA58A1 /* Assets.xcassets in Resources */,
 				8B0B1B4D252B3BCF00CA58A1 /* Localizable.strings in Resources */,
-				8B0B19E5252B34C000CA58A1 /* project-shared.xcconfig in Resources */,
-				8B0B19E6252B34C000CA58A1 /* project.xcconfig in Resources */,
-				8B0B19E2252B34C000CA58A1 /* nef-plugin.xcconfig in Resources */,
-				8B0B19E3252B34C000CA58A1 /* nef-plugin-appstore.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +884,7 @@
 			baseConfigurationReference = 8B0B19DF252B34C000CA58A1 /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -962,6 +949,7 @@
 			baseConfigurationReference = 8B0B19DD252B34C000CA58A1 /* project-appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1024,7 +1012,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1063,7 +1052,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6BF8738QJ;
+				DEVELOPMENT_TEAM = PKCNK63FZQ;
+				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
