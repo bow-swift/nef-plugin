@@ -37,14 +37,14 @@ struct App {
     private func aboutWindow() -> NefWindow? {
         .view(NSHostingView(rootView: assembler.resolveAboutView()),
               config: .init(title: i18n.WindowTitle.about,
-                            rect: NSRect(x: 0, y: 0, width: 350, height: 350),
+                            rect: NSRect(x: 0, y: 0, width: 350, height: 550),
                             needMenu: false))
     }
     
     private func preferencesWindow() -> NefWindow? {
         .view(NSHostingView(rootView: assembler.resolvePreferencesView()),
               config: .init(title: i18n.WindowTitle.preferences,
-                            rect: NSRect(x: 0, y: 0, width: 800, height: 768),
+                            rect: NSRect(x: 0, y: 0, width: 800, height: 780),
                             needMenu: true))
     }
     
