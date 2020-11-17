@@ -29,6 +29,7 @@ enum NefNotification {
     
     enum UserInfoKey {
         static let imageData = "imageDataUserInfoKey"
+        static let description = "descriptionUserInfoKey"
     }
     
     enum Error: Swift.Error {

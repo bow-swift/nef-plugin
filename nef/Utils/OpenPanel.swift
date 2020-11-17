@@ -3,7 +3,7 @@
 import AppKit
 import BowEffects
 
-typealias BookmarkResource = Resource<IOPartial<OpenPanelError>, URL>
+typealias BookmarkResource = IOResource<OpenPanelError, URL>
 
 enum OpenPanelError: Error {
     case denied

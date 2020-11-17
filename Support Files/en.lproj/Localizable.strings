@@ -1,6 +1,6 @@
 /* 
   Localizable.strings
-  Copyright © 2019 The nef Authors.
+  Copyright © 2020 The nef Authors.
 */
 
 // MARK: - Screens
@@ -8,7 +8,7 @@
 "preferences" = "Preferences";
 
 // MARK: - About
-"copyright" = "Copyright © 2019 The nef authors";
+"copyright" = "Copyright © 2020 The nef authors";
 "github" = "Read more about nef on GitHub";
 "install_preferences" = "Open 'System Preferences'";
 "install_extensions" = "Select 'Extensions'";
