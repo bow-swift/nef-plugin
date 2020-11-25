@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/bow-swift/bow-art/blob/master/assets/nef-brand-xcode-shadow.png?raw=true" alt="nef: an Xcode plugin" width="30%"/>
+    <img src="https://github.com/bow-swift/nef-plugin/blob/master/assets/nef-brand-xcode-shadow.png?raw=true" alt="nef: an Xcode plugin" width="30%"/>
 </p>
 
 <p align="center">
