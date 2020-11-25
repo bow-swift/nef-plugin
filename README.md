@@ -76,7 +76,11 @@ You can export your current code selection into a snippet, you only need to sele
 
 ### 📃 Generates markdown file from Playground
 
-Xcode Playgrounds let you write comments in markdown format using the symbols //: for single line comments, or /*: */ for multiline comments. Markup for playgrounds includes page level formatting for headings and other elements, formatting spans of characters, showing inline images, and several other features. You can read more in the [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html).
+Xcode Playgrounds let you write comments in markdown format using the symbols:
+1. `//: ` for single line comments.
+2. `/*:  */` for multiline comments. 
+
+Markup for playgrounds includes page level formatting for headings and other elements, formatting spans of characters, showing inline images, and several other features. You can read more in the [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html).
 
 You can create a markdown file from playground page with the nef action `Editor > nef > Export Playground page to markdown`
 
