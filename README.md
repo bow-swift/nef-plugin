@@ -41,13 +41,9 @@ This project provides an extension for Xcode to integrate some nef features dire
 
 > To complete the installation, you should enable `nef` extension from `System Preferences > Extensions > Xcode Source Editor`
 
-<p align="center">
-    <img src="assets/nef-plugin-extensions.png" alt="nef: enable Xcode extension" width="60%"/>
-</p>
-
 &nbsp;
 
-## Usage
+## ✍️ Usage
 
 You can find the nef plugin options in `Xcode > Editor`
 
@@ -58,7 +54,7 @@ You can find the nef plugin options in `Xcode > Editor`
 You can customize the output image using the preferences action `Editor > nef > Preferences`
 
 <p align="center">
-    <img src="assets/nef-xcode-preferences.png" alt="nef: preferences Xcode extension" width="70%"/>
+    <img src="assets/nef-xcode-preferences.png" alt="nef: preferences Xcode extension" width="75%"/>
 </p>
 
 &nbsp;
