@@ -57,8 +57,6 @@ You can customize the output image using the preferences action `Editor > nef > 
     <img src="assets/nef-xcode-preferences.png" alt="nef: preferences Xcode extension" width="75%"/>
 </p>
 
-&nbsp;
-
 ### 🌁 Export code selection to image or clipboard
 You can export your current code selection into a snippet, you only need to select the action `Editor > nef > Code selection...`
 - **Image file** it will create an image in the [output folder](#-preferences).
@@ -76,15 +74,11 @@ You can export your current code selection into a snippet, you only need to sele
   </tr>
 </table>
 
-&nbsp;
-
 ### 📃 Generates markdown file from Playground
 
 Xcode Playgrounds let you write comments in markdown format using the symbols //: for single line comments, or /*: */ for multiline comments. Markup for playgrounds includes page level formatting for headings and other elements, formatting spans of characters, showing inline images, and several other features. You can read more in the [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html).
 
 You can create a markdown file from playground page with the nef action `Editor > nef > Export Playground page to markdown`
-
-&nbsp;
 
 ### 📲 Create a Playground Book from your Swift package
 
