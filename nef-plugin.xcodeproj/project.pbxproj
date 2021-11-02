@@ -1192,8 +1192,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bow-swift/nef.git";
 			requirement = {
-				branch = develop;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
