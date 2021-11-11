@@ -36,7 +36,7 @@ This project provides an extension for Xcode to integrate some nef features dire
 
 ## 💻 Installation
 
-#### ➊ Latest binary in [Releases section](https://github.com/bow-swift/nef-plugin/releases/latest/download/nef-installer.dmg) (preferred)
+#### ➊ Latest binary in [Releases section](https://github.com/bow-swift/nef-plugin/releases/latest/download/nef-installer.zip) (preferred)
 #### ➋ Using [Mac App Store](https://apps.apple.com/app/nef/id1479391704?mt=8)
 
 > To complete the installation, you should enable `nef` extension from `System Preferences > Extensions > Xcode Source Editor`
